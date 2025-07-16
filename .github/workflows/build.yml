@@ -1,82 +1,85 @@
-name: Build Polish Road Signs Addon
+name: Build and Release Polish Road Signs Addon
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version to build (e.g., 1.0.32)'
-        required: false
-        default: ''
+    branches: [ main ]
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  build:
+  build-and-release:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-        
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        
-    - name: Build .mcaddon package
-      run: |
-        python3 build_mcaddon.py
-        
-    - name: Build .mcpack packages
-      run: |
-        python3 build_mcpack.py
-        
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-artifacts
-        path: |
-          dist/*.mcaddon
-          dist/*.mcpack
-        retention-days: 30
-        
-    - name: Create Release
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.version != ''
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: v${{ github.event.inputs.version }}
-        name: Release v${{ github.event.inputs.version }}
-        body: |
-          ## Polish Road Signs Addon v${{ github.event.inputs.version }}
-          
-          ### 📦 Zawartość:
-          - PolishRoadSigns.mcaddon (lokalna instalacja)
-          - PolishRoadSigns_BP.mcpack (serwery - Behavior Pack)
-          - PolishRoadSigns_RP.mcpack (serwery - Resource Pack)
-          
-          ### 🚦 Funkcje:
-          - Wszystkie polskie znaki drogowe (A, B, C, D)
-          - Oficjalne nazwy i tłumaczenia
-          - Kompatybilność z Minecraft Bedrock 1.16.0+
-          - Wsparcie dla serwerów Aternos
-          
-          ### 📋 Instalacja:
-          1. **Lokalnie**: Otwórz plik .mcaddon w Minecraft
-          2. **Serwer**: Wgraj oba pliki .mcpack na serwer
-          
-        files: |
-          dist/*.mcaddon
-          dist/*.mcpack
-        draft: false
-        prerelease: false 
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Auto-bump version in manifests
+        run: |
+          python3 build_mcaddon.py
+
+      - name: Commit and push version bump
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add BP/manifest.json RP/manifest.json
+          git commit -m "Auto-bump version after push" || exit 0
+          git push origin main
+
+      - name: Build .mcpack
+        run: python3 build_mcpack.py
+
+      - name: Build .mcaddon
+        run: python3 build_mcaddon.py
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist/*.mcaddon
+            dist/*.mcpack
+          retention-days: 30
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v$(python3 -c "import json; print('.'.join(map(str, json.load(open('BP/manifest.json'))['header']['version'])))")
+          name: Release v$(python3 -c "import json; print('.'.join(map(str, json.load(open('BP/manifest.json'))['header']['version'])))")
+          body: |
+            ## Polish Road Signs Addon ${{ github.sha }}
+            
+            ### 📦 Zawartość:
+            - PolishRoadSigns.mcaddon (lokalna instalacja)
+            - PolishRoadSigns_BP.mcpack (serwery - Behavior Pack)
+            - PolishRoadSigns_RP.mcpack (serwery - Resource Pack)
+            
+            ### 🚦 Funkcje:
+            - Wszystkie polskie znaki drogowe (A, B, C, D)
+            - Oficjalne nazwy i tłumaczenia
+            - Kompatybilność z Minecraft Bedrock 1.16.0+
+            - Wsparcie dla serwerów Aternos
+            
+            ### 📋 Instalacja:
+            1. **Lokalnie**: Otwórz plik .mcaddon w Minecraft
+            2. **Serwer**: Wgraj oba pliki .mcpack na serwer
+            
+          files: |
+            dist/*.mcaddon
+            dist/*.mcpack
+          draft: false
+          prerelease: false 
