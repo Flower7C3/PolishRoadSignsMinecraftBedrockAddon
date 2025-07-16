@@ -55,11 +55,17 @@ jobs:
             dist/*.mcpack
           retention-days: 30
 
+      - name: Get version for release
+        id: get_version
+        run: |
+          VERSION=$(python3 -c "import json; print('.'.join(map(str, json.load(open('BP/manifest.json'))['header']['version'])))")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v$(python3 -c "import json; print('.'.join(map(str, json.load(open('BP/manifest.json'))['header']['version'])))")
-          name: Release v$(python3 -c "import json; print('.'.join(map(str, json.load(open('BP/manifest.json'))['header']['version'])))")
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: Release v${{ steps.get_version.outputs.version }}
           body: |
             ## Polish Road Signs Addon ${{ github.sha }}
             
