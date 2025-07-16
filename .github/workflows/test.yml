@@ -70,8 +70,14 @@ jobs:
         python3 build_mcpack.py
         
         # Check if files were created
-        test -f dist/*.mcaddon || exit 1
-        test -f dist/*.mcpack || exit 1
+        if [ ! -f dist/*.mcaddon ]; then
+          echo "❌ No .mcaddon files found"
+          exit 1
+        fi
+        if [ ! -f dist/*.mcpack ]; then
+          echo "❌ No .mcpack files found"
+          exit 1
+        fi
         echo "✅ Build process completed successfully"
         
     - name: Upload test artifacts
