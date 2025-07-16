@@ -20,17 +20,21 @@ jobs:
     - name: Get current version
       id: current-version
       run: |
-        python3 -c "
+        VERSION=$(python3 -c "
         import json
         with open('BP/manifest.json', 'r') as f:
             manifest = json.load(f)
         version = manifest.get('header', {}).get('version', [0, 0, 0])
-        print(f'Current version: {version[0]}.{version[1]}.{version[2]}')
-        print(f'version={version[0]}.{version[1]}.{version[2]}' >> $GITHUB_OUTPUT)
-        print(f'major={version[0]}' >> $GITHUB_OUTPUT)
-        print(f'minor={version[1]}' >> $GITHUB_OUTPUT)
-        print(f'patch={version[2]}' >> $GITHUB_OUTPUT)
-        "
+        print(f'{version[0]}.{version[1]}.{version[2]}')
+        ")
+        MAJOR=$(echo $VERSION | cut -d. -f1)
+        MINOR=$(echo $VERSION | cut -d. -f2)
+        PATCH=$(echo $VERSION | cut -d. -f3)
+        echo "Current version: $VERSION"
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "major=$MAJOR" >> $GITHUB_OUTPUT
+        echo "minor=$MINOR" >> $GITHUB_OUTPUT
+        echo "patch=$PATCH" >> $GITHUB_OUTPUT
         
     - name: Bump patch version
       run: |
