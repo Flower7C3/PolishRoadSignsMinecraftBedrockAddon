@@ -274,26 +274,12 @@ Instaluje paczkę lokalnie:
 Projekt używa GitHub Actions do automatycznego budowania i testowania:
 
 #### build.yml
-- **Trigger**: Push do main/master, Pull Request, Manual dispatch
+- **Trigger**: Push do main/master
 - **Funkcje**:
-  - Buduje .mcaddon i .mcpack pliki
-  - Uploaduje artifacts
-  - Tworzy releases (manual dispatch z wersją)
-
-#### test.yml
-- **Trigger**: Push do main/master, Pull Request
-- **Funkcje**:
-  - Waliduje strukturę projektu
-  - Sprawdza zgodność manifestów
-  - Testuje proces budowania
-  - Uploaduje test artifacts
-
-#### version-bump.yml
-- **Trigger**: Po udanym build workflow
-- **Funkcje**:
-  - Automatycznie zwiększa patch version
-  - Aktualizuje manifesty BP i RP
-  - Commit i push zmian
+  - **Build job**: Auto-version bump, buduje .mcaddon i .mcpack
+  - **Test job**: Waliduje strukturę projektu i manifesty
+  - **Release job**: Tworzy automatyczne releases
+  - **Integracja**: Jeden workflow z zależnościami między jobami
 
 ### Środowisko wirtualne (venv) - macOS
 

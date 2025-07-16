@@ -44,8 +44,8 @@ Projekt używa GitHub Actions do automatycznego budowania:
 
 - **Automatyczne budowanie** przy każdym push do main/master
 - **Testowanie** struktury projektu i manifestów  
-- **Releases** - manualne tworzenie z określoną wersją
-- **Auto-version bump** po udanych buildach
+- **Automatyczne releases** z auto-version bump
+- **Integracja** - jeden workflow dla build, test i release
 
 ### Wymagania:
 - Python 3.7+
@@ -114,9 +114,7 @@ PolishRoadSigns/
 ├── setup_venv.sh              # Skrypt konfiguracji venv (macOS)
 ├── requirements.txt            # Zależności Python
 └── .github/workflows/         # GitHub Actions
-    ├── build.yml              # Automatyczne budowanie
-    ├── test.yml               # Testowanie
-    └── version-bump.yml       # Auto-version bump
+    └── build.yml              # Automatyczne budowanie, testowanie i release
 ```
 
 ## 🎮 Użycie
@@ -171,6 +169,12 @@ MIT License - zobacz plik [LICENSE](LICENSE) dla szczegółów.
 - Brak znanych problemów w aktualnej wersji
 
 ## 📈 Historia wersji
+
+### v1.0.32 (2025-07-16)
+- ✅ Uproszczono workflowy GitHub Actions
+- ✅ Zintegrowano build, test i release w jeden workflow
+- ✅ Usunięto niepotrzebne pliki workflow
+- ✅ Automatyczne releases z auto-version bump
 
 ### v1.0.31 (2025-07-16)
 - ✅ Naprawiono nazewnictwo (małe litery)
