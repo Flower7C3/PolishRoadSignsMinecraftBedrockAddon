@@ -1,0 +1,461 @@
+{
+  "resource_pack_name": "polish_road_sign",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "b_20": {
+      "textures": "textures/blocks/b/b_20.png"
+    },
+    "a_7": {
+      "textures": "textures/blocks/a/a_7.png"
+    },
+    "b_2": {
+      "textures": "textures/blocks/b/b_2.png"
+    },
+    "b_1": {
+      "textures": "textures/blocks/b/b_1.png"
+    },
+    "b_25": {
+      "textures": "textures/blocks/b/b_25.png"
+    },
+    "b_26": {
+      "textures": "textures/blocks/b/b_26.png"
+    },
+    "b_33": {
+      "textures": "textures/blocks/b/b_33.png"
+    },
+    "b_34": {
+      "textures": "textures/blocks/b/b_34.png"
+    },
+    "b_35": {
+      "textures": "textures/blocks/b/b_35.png"
+    },
+    "d_18": {
+      "textures": "textures/blocks/d/d_18.png"
+    },
+    "d_6": {
+      "textures": "textures/blocks/d/d_6.png"
+    },
+    "a_17": {
+      "textures": "textures/blocks/a/a_17.png"
+    },
+    "a_14": {
+      "textures": "textures/blocks/a/a_14.png"
+    },
+    "d_37": {
+      "textures": "textures/blocks/d/d_37.png"
+    },
+    "d_38": {
+      "textures": "textures/blocks/d/d_38.png"
+    },
+    "d_41": {
+      "textures": "textures/blocks/d/d_41.png"
+    },
+    "d_42": {
+      "textures": "textures/blocks/d/d_42.png"
+    },
+    "d_40": {
+      "textures": "textures/blocks/d/d_40.png"
+    },
+    "d_43": {
+      "textures": "textures/blocks/d/d_43.png"
+    },
+    "a_3": {
+      "textures": "textures/blocks/a/a_3.png"
+    },
+    "d_30": {
+      "textures": "textures/blocks/d/d_30.png"
+    },
+    "a_32": {
+      "textures": "textures/blocks/a/a_32.png"
+    },
+    "b_19": {
+      "textures": "textures/blocks/b/b_19.png"
+    },
+    "b_42": {
+      "textures": "textures/blocks/b/b_42.png"
+    },
+    "b_30": {
+      "textures": "textures/blocks/b/b_30.png"
+    },
+    "d_20": {
+      "textures": "textures/blocks/d/d_20.png"
+    },
+    "c_19": {
+      "textures": "textures/blocks/c/c_19.png"
+    },
+    "b_8": {
+      "textures": "textures/blocks/b/b_8.png"
+    },
+    "a_6a": {
+      "textures": "textures/blocks/a/a_6a.png"
+    },
+    "d_31": {
+      "textures": "textures/blocks/d/d_31.png"
+    },
+    "b_14": {
+      "textures": "textures/blocks/b/b_14.png"
+    },
+    "d_10": {
+      "textures": "textures/blocks/d/d_10.png"
+    },
+    "d_25": {
+      "textures": "textures/blocks/d/d_25.png"
+    },
+    "a_33": {
+      "textures": "textures/blocks/a/a_33.png"
+    },
+    "a_5": {
+      "textures": "textures/blocks/a/a_5.png"
+    },
+    "c_14": {
+      "textures": "textures/blocks/c/c_14.png"
+    },
+    "a_16": {
+      "textures": "textures/blocks/a/a_16.png"
+    },
+    "a_11": {
+      "textures": "textures/blocks/a/a_11.png"
+    },
+    "d_44": {
+      "textures": "textures/blocks/d/d_44.png"
+    },
+    "c_15": {
+      "textures": "textures/blocks/c/c_15.png"
+    },
+    "b_37": {
+      "textures": "textures/blocks/b/b_37.png"
+    },
+    "b_7": {
+      "textures": "textures/blocks/b/b_7.png"
+    },
+    "b_36": {
+      "textures": "textures/blocks/b/b_36.png"
+    },
+    "b_3": {
+      "textures": "textures/blocks/b/b_3.png"
+    },
+    "d_12a": {
+      "textures": "textures/blocks/d/d_12a.png"
+    },
+    "b_12": {
+      "textures": "textures/blocks/b/b_12.png"
+    },
+    "b_18": {
+      "textures": "textures/blocks/b/b_18.png"
+    },
+    "c_11": {
+      "textures": "textures/blocks/c/c_11.png"
+    },
+    "b_3a": {
+      "textures": "textures/blocks/b/b_3a.png"
+    },
+    "d_39": {
+      "textures": "textures/blocks/d/d_39.png"
+    },
+    "c_8": {
+      "textures": "textures/blocks/c/c_8.png"
+    },
+    "d_11": {
+      "textures": "textures/blocks/d/d_11.png"
+    },
+    "b_9": {
+      "textures": "textures/blocks/b/b_9.png"
+    },
+    "b_4": {
+      "textures": "textures/blocks/b/b_4.png"
+    },
+    "c_10": {
+      "textures": "textures/blocks/c/c_10.png"
+    },
+    "b_15": {
+      "textures": "textures/blocks/b/b_15.png"
+    },
+    "a_23": {
+      "textures": "textures/blocks/a/a_23.png"
+    },
+    "a_28": {
+      "textures": "textures/blocks/a/a_28.png"
+    },
+    "d_12b": {
+      "textures": "textures/blocks/d/d_12b.png"
+    },
+    "a_19": {
+      "textures": "textures/blocks/a/a_19.png"
+    },
+    "d_36": {
+      "textures": "textures/blocks/d/d_36.png"
+    },
+    "d_5": {
+      "textures": "textures/blocks/d/d_5.png"
+    },
+    "b_28": {
+      "textures": "textures/blocks/b/b_28.png"
+    },
+    "b_6": {
+      "textures": "textures/blocks/b/b_6.png"
+    },
+    "d_46": {
+      "textures": "textures/blocks/d/d_46.png"
+    },
+    "c_16": {
+      "textures": "textures/blocks/c/c_16.png"
+    },
+    "d_3": {
+      "textures": "textures/blocks/d/d_3.png"
+    },
+    "b_24": {
+      "textures": "textures/blocks/b/b_24.png"
+    },
+    "a_12b": {
+      "textures": "textures/blocks/a/a_12b.png"
+    },
+    "b_41": {
+      "textures": "textures/blocks/b/b_41.png"
+    },
+    "c_1": {
+      "textures": "textures/blocks/c/c_1.png"
+    },
+    "d_23": {
+      "textures": "textures/blocks/d/d_23.png"
+    },
+    "a_34": {
+      "textures": "textures/blocks/a/a_34.png"
+    },
+    "d_16": {
+      "textures": "textures/blocks/d/d_16.png"
+    },
+    "c_12": {
+      "textures": "textures/blocks/c/c_12.png"
+    },
+    "b_22": {
+      "textures": "textures/blocks/b/b_22.png"
+    },
+    "d_27": {
+      "textures": "textures/blocks/d/d_27.png"
+    },
+    "c_7": {
+      "textures": "textures/blocks/c/c_7.png"
+    },
+    "d_1": {
+      "textures": "textures/blocks/d/d_1.png"
+    },
+    "d_7": {
+      "textures": "textures/blocks/d/d_7.png"
+    },
+    "a_20": {
+      "textures": "textures/blocks/a/a_20.png"
+    },
+    "d_29": {
+      "textures": "textures/blocks/d/d_29.png"
+    },
+    "d_14": {
+      "textures": "textures/blocks/d/d_14.png"
+    },
+    "b_39": {
+      "textures": "textures/blocks/b/b_39.png"
+    },
+    "b_5": {
+      "textures": "textures/blocks/b/b_5.png"
+    },
+    "b_10": {
+      "textures": "textures/blocks/b/b_10.png"
+    },
+    "b_27": {
+      "textures": "textures/blocks/b/b_27.png"
+    },
+    "b_32": {
+      "textures": "textures/blocks/b/b_32.png"
+    },
+    "d_24": {
+      "textures": "textures/blocks/d/d_24.png"
+    },
+    "b_31": {
+      "textures": "textures/blocks/b/b_31.png"
+    },
+    "c_18": {
+      "textures": "textures/blocks/c/c_18.png"
+    },
+    "c_2": {
+      "textures": "textures/blocks/c/c_2.png"
+    },
+    "a_2": {
+      "textures": "textures/blocks/a/a_2.png"
+    },
+    "a_18b": {
+      "textures": "textures/blocks/a/a_18b.png"
+    },
+    "a_1": {
+      "textures": "textures/blocks/a/a_1.png"
+    },
+    "b_16": {
+      "textures": "textures/blocks/b/b_16.png"
+    },
+    "a_22": {
+      "textures": "textures/blocks/a/a_22.png"
+    },
+    "a_29": {
+      "textures": "textures/blocks/a/a_29.png"
+    },
+    "a_10": {
+      "textures": "textures/blocks/a/a_10.png"
+    },
+    "d_33": {
+      "textures": "textures/blocks/d/d_33.png"
+    },
+    "b_43": {
+      "textures": "textures/blocks/b/b_43.png"
+    },
+    "a_13": {
+      "textures": "textures/blocks/a/a_13.png"
+    },
+    "d_4b": {
+      "textures": "textures/blocks/d/d_4b.png"
+    },
+    "c_9": {
+      "textures": "textures/blocks/c/c_9.png"
+    },
+    "d_8": {
+      "textures": "textures/blocks/d/d_8.png"
+    },
+    "c_4": {
+      "textures": "textures/blocks/c/c_4.png"
+    },
+    "d_28": {
+      "textures": "textures/blocks/d/d_28.png"
+    },
+    "a_27": {
+      "textures": "textures/blocks/a/a_27.png"
+    },
+    "d_15": {
+      "textures": "textures/blocks/d/d_15.png"
+    },
+    "b_29": {
+      "textures": "textures/blocks/b/b_29.png"
+    },
+    "a_30": {
+      "textures": "textures/blocks/a/a_30.png"
+    },
+    "a_12a": {
+      "textures": "textures/blocks/a/a_12a.png"
+    },
+    "d_17": {
+      "textures": "textures/blocks/d/d_17.png"
+    },
+    "c_3": {
+      "textures": "textures/blocks/c/c_3.png"
+    },
+    "a_4": {
+      "textures": "textures/blocks/a/a_4.png"
+    },
+    "d_4a": {
+      "textures": "textures/blocks/d/d_4a.png"
+    },
+    "d_32": {
+      "textures": "textures/blocks/d/d_32.png"
+    },
+    "d_19": {
+      "textures": "textures/blocks/d/d_19.png"
+    },
+    "c_17": {
+      "textures": "textures/blocks/c/c_17.png"
+    },
+    "a_18a": {
+      "textures": "textures/blocks/a/a_18a.png"
+    },
+    "d_35": {
+      "textures": "textures/blocks/d/d_35.png"
+    },
+    "a_9": {
+      "textures": "textures/blocks/a/a_9.png"
+    },
+    "d_22": {
+      "textures": "textures/blocks/d/d_22.png"
+    },
+    "a_15": {
+      "textures": "textures/blocks/a/a_15.png"
+    },
+    "b_40": {
+      "textures": "textures/blocks/b/b_40.png"
+    },
+    "d_45": {
+      "textures": "textures/blocks/d/d_45.png"
+    },
+    "d_2": {
+      "textures": "textures/blocks/d/d_2.png"
+    },
+    "b_17": {
+      "textures": "textures/blocks/b/b_17.png"
+    },
+    "a_6b": {
+      "textures": "textures/blocks/a/a_6b.png"
+    },
+    "b_21": {
+      "textures": "textures/blocks/b/b_21.png"
+    },
+    "b_11": {
+      "textures": "textures/blocks/b/b_11.png"
+    },
+    "d_13": {
+      "textures": "textures/blocks/d/d_13.png"
+    },
+    "a_24": {
+      "textures": "textures/blocks/a/a_24.png"
+    },
+    "a_21": {
+      "textures": "textures/blocks/a/a_21.png"
+    },
+    "a_25": {
+      "textures": "textures/blocks/a/a_25.png"
+    },
+    "b_13": {
+      "textures": "textures/blocks/b/b_13.png"
+    },
+    "d_9": {
+      "textures": "textures/blocks/d/d_9.png"
+    },
+    "c_6": {
+      "textures": "textures/blocks/c/c_6.png"
+    },
+    "d_34": {
+      "textures": "textures/blocks/d/d_34.png"
+    },
+    "b_23": {
+      "textures": "textures/blocks/b/b_23.png"
+    },
+    "a_26": {
+      "textures": "textures/blocks/a/a_26.png"
+    },
+    "c_13": {
+      "textures": "textures/blocks/c/c_13.png"
+    },
+    "d_26": {
+      "textures": "textures/blocks/d/d_26.png"
+    },
+    "d_21": {
+      "textures": "textures/blocks/d/d_21.png"
+    },
+    "b_38": {
+      "textures": "textures/blocks/b/b_38.png"
+    },
+    "d_47": {
+      "textures": "textures/blocks/d/d_47.png"
+    },
+    "a_31": {
+      "textures": "textures/blocks/a/a_31.png"
+    },
+    "c_5": {
+      "textures": "textures/blocks/c/c_5.png"
+    },
+    "gray_concrete": {
+      "textures": "textures/blocks/gray_concrete.png"
+    },
+    "black_concrete": {
+      "textures": "textures/blocks/black_concrete.png"
+    },
+    "a_8": {
+      "textures": "textures/blocks/a/a_8.png"
+    }
+  }
+}

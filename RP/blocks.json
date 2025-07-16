@@ -1,0 +1,444 @@
+{
+  "format_version": "1.21.0",
+  "polish_road_sign:a_3": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_7": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_14": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_17": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_1": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_2": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_20": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_25": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_26": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_33": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_34": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_35": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_6": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_18": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_25": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_26": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_40": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_41": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_42": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_43": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_27": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_18a": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_31": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_6a": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_11": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_10": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_12b": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_2": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_30": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_26": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_9": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_21": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_5": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_4": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_20": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_16": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_15": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_19": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_23": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_22": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_34": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_1": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_33": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_25": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_13": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_12a": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_29": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_28": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_6b": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_24": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_18b": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_32": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_2": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_16": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_17": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_3": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_10": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_8": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_4": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_5": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_9": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_11": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_12": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_6": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_7": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_13": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_18": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_14": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_15": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_19": {
+    "sound": "stone"
+  },
+  "polish_road_sign:c_1": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_4b": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_24": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_32": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_45": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_28": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_29": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_13": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_44": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_33": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_1": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_14": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_38": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_22": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_34": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_35": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_23": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_7": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_19": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_39": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_15": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_8": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_16": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_36": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_20": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_21": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_5": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_37": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_17": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_9": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_30": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_2": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_10": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_47": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_46": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_11": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_4a": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_27": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_3": {
+    "sound": "stone"
+  },
+  "polish_road_sign:d_31": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_37": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_6": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_21": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_17": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_40": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_41": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_16": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_3a": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_7": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_36": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_11": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_31": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_27": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_30": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_10": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_13": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_29": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_32": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_3": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_24": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_28": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_12": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_19": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_23": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_4": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_42": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_15": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_8": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_39": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_38": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_9": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_14": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_43": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_5": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_22": {
+    "sound": "stone"
+  },
+  "polish_road_sign:b_18": {
+    "sound": "stone"
+  },
+  "polish_road_sign:a_8": {
+    "sound": "stone"
+  }
+}

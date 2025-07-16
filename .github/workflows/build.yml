@@ -1,0 +1,78 @@
+name: Build Polish Road Signs Addon
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build (e.g., 1.0.32)'
+        required: false
+        default: ''
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Build .mcaddon package
+      run: |
+        python3 build_mcaddon.py
+        
+    - name: Build .mcpack packages
+      run: |
+        python3 build_mcpack.py
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: |
+          dist/*.mcaddon
+          dist/*.mcpack
+        retention-days: 30
+        
+    - name: Create Release
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.version != ''
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ github.event.inputs.version }}
+        name: Release v${{ github.event.inputs.version }}
+        body: |
+          ## Polish Road Signs Addon v${{ github.event.inputs.version }}
+          
+          ### 📦 Zawartość:
+          - PolishRoadSigns.mcaddon (lokalna instalacja)
+          - PolishRoadSigns_BP.mcpack (serwery - Behavior Pack)
+          - PolishRoadSigns_RP.mcpack (serwery - Resource Pack)
+          
+          ### 🚦 Funkcje:
+          - Wszystkie polskie znaki drogowe (A, B, C, D)
+          - Oficjalne nazwy i tłumaczenia
+          - Kompatybilność z Minecraft Bedrock 1.16.0+
+          - Wsparcie dla serwerów Aternos
+          
+          ### 📋 Instalacja:
+          1. **Lokalnie**: Otwórz plik .mcaddon w Minecraft
+          2. **Serwer**: Wgraj oba pliki .mcpack na serwer
+          
+        files: |
+          dist/*.mcaddon
+          dist/*.mcpack
+        draft: false
+        prerelease: false 

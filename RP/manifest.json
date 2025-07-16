@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Polish Road Signs RP",
+    "description": "Resource Pack for Polish Road Signs addon",
+    "uuid": "d0e9f8a7-3456-7890-1234-567890bcdef1",
+    "version": [
+      1,
+      0,
+      31
+    ],
+    "min_engine_version": [
+      1,
+      16,
+      0
+    ]
+  },
+  "metadata": {
+    "authors": [
+      "Flower7C3"
+    ],
+    "url": "https://github.com/Flower7C3/PolishRoadSignsMinecraftBedrockAddon",
+    "license": "MIT"
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "version": [
+        1,
+        0,
+        31
+      ],
+      "uuid": "e1f0a9b8-4567-8901-2345-678901cdef12"
+    }
+  ]
+}

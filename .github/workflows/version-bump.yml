@@ -1,0 +1,84 @@
+name: Auto Version Bump
+
+on:
+  workflow_run:
+    workflows: ["Build Polish Road Signs Addon"]
+    types:
+      - completed
+
+jobs:
+  version-bump:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Get current version
+      id: current-version
+      run: |
+        python3 -c "
+        import json
+        with open('BP/manifest.json', 'r') as f:
+            manifest = json.load(f)
+        version = manifest.get('header', {}).get('version', [0, 0, 0])
+        print(f'Current version: {version[0]}.{version[1]}.{version[2]}')
+        print(f'::set-output name=version::{version[0]}.{version[1]}.{version[2]}')
+        print(f'::set-output name=major::{version[0]}')
+        print(f'::set-output name=minor::{version[1]}')
+        print(f'::set-output name=patch::{version[2]}')
+        "
+        
+    - name: Bump patch version
+      run: |
+        python3 -c "
+        import json
+        import sys
+        
+        # Read current version
+        with open('BP/manifest.json', 'r') as f:
+            bp_manifest = json.load(f)
+        with open('RP/manifest.json', 'r') as f:
+            rp_manifest = json.load(f)
+            
+        # Bump patch version
+        current_version = bp_manifest['header']['version']
+        new_version = [current_version[0], current_version[1], current_version[2] + 1]
+        
+        # Update BP manifest
+        bp_manifest['header']['version'] = new_version
+        if 'modules' in bp_manifest:
+            for module in bp_manifest['modules']:
+                module['version'] = new_version
+        if 'dependencies' in bp_manifest:
+            for dep in bp_manifest['dependencies']:
+                dep['version'] = new_version
+                
+        # Update RP manifest
+        rp_manifest['header']['version'] = new_version
+        if 'modules' in rp_manifest:
+            for module in rp_manifest['modules']:
+                module['version'] = new_version
+        if 'dependencies' in rp_manifest:
+            for dep in rp_manifest['dependencies']:
+                dep['version'] = new_version
+                
+        # Write updated manifests
+        with open('BP/manifest.json', 'w') as f:
+            json.dump(bp_manifest, f, indent=2)
+        with open('RP/manifest.json', 'w') as f:
+            json.dump(rp_manifest, f, indent=2)
+            
+        print(f'Version bumped from {current_version} to {new_version}')
+        "
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add BP/manifest.json RP/manifest.json
+        git commit -m "Auto-bump version after successful build" || exit 0
+        git push 

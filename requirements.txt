@@ -1,0 +1,10 @@
+# Polish Road Signs - Minecraft Bedrock Addon
+# Python dependencies for building and development
+
+# Core dependencies
+json5>=0.9.0
+pathlib2>=2.3.0
+
+# Development dependencies (optional)
+# requests>=2.25.0  # For downloading textures (if needed)
+# Pillow>=8.0.0     # For image processing (if needed) 
