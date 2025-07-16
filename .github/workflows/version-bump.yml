@@ -26,10 +26,10 @@ jobs:
             manifest = json.load(f)
         version = manifest.get('header', {}).get('version', [0, 0, 0])
         print(f'Current version: {version[0]}.{version[1]}.{version[2]}')
-        print(f'::set-output name=version::{version[0]}.{version[1]}.{version[2]}')
-        print(f'::set-output name=major::{version[0]}')
-        print(f'::set-output name=minor::{version[1]}')
-        print(f'::set-output name=patch::{version[2]}')
+        print(f'version={version[0]}.{version[1]}.{version[2]}' >> $GITHUB_OUTPUT)
+        print(f'major={version[0]}' >> $GITHUB_OUTPUT)
+        print(f'minor={version[1]}' >> $GITHUB_OUTPUT)
+        print(f'patch={version[2]}' >> $GITHUB_OUTPUT)
         "
         
     - name: Bump patch version
