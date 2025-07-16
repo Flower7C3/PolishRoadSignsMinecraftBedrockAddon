@@ -75,7 +75,7 @@ jobs:
         echo "✅ Build process completed successfully"
         
     - name: Upload test artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-artifacts
         path: dist/
