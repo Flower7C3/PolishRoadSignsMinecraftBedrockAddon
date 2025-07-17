@@ -1,0 +1,132 @@
+{
+  "format_version": "1.20.60",
+  "minecraft:block": {
+    "description": {
+      "identifier": "polish_road_sign:d_26c",
+      "menu_category": {
+        "category": "construction"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ]
+        }
+      }
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "origin": [
+          -8,
+          0,
+          -2
+        ],
+        "size": [
+          16,
+          16,
+          4
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -2
+        ],
+        "size": [
+          16,
+          16,
+          4
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 30
+      },
+      "minecraft:geometry": "geometry.road_sign_rectangle_horizontal",
+      "minecraft:display_name": "D_26C",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "gray_concrete",
+          "render_method": "opaque"
+        },
+        "south": {
+          "texture": "d_26c",
+          "render_method": "opaque"
+        },
+        "north": {
+          "texture": "rectangle_horizontal_back",
+          "render_method": "opaque"
+        },
+        "east": {
+          "texture": "black_concrete",
+          "render_method": "opaque"
+        },
+        "west": {
+          "texture": "black_concrete",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "black_concrete",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "black_concrete",
+          "render_method": "opaque"
+        }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              180,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              270,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [
+              0,
+              90,
+              0
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

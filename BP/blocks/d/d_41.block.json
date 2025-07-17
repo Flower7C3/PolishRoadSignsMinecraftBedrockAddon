@@ -19,24 +19,24 @@
         "origin": [
           -8,
           0,
-          -1
+          -2
         ],
         "size": [
           16,
           16,
-          2
+          4
         ]
       },
       "minecraft:selection_box": {
         "origin": [
           -8,
           0,
-          -1
+          -2
         ],
         "size": [
           16,
           16,
-          2
+          4
         ]
       },
       "minecraft:destructible_by_mining": {
@@ -45,7 +45,7 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.road_sign_rectangle_horizontal",
+      "minecraft:geometry": "geometry.road_sign_rectangle_horizontal_wide",
       "minecraft:material_instances": {
         "*": {
           "texture": "gray_concrete",
@@ -56,26 +56,27 @@
           "render_method": "alpha_test"
         },
         "north": {
-          "texture": "rectangle_horizontal_back",
+          "texture": "rectangle_horizontal_wide_back",
           "render_method": "alpha_test"
         },
         "east": {
           "texture": "black_concrete",
-          "render_method": "alpha_test"
+          "render_method": "opaque"
         },
         "west": {
           "texture": "black_concrete",
-          "render_method": "alpha_test"
+          "render_method": "opaque"
         },
         "up": {
           "texture": "black_concrete",
-          "render_method": "alpha_test"
+          "render_method": "opaque"
         },
         "down": {
           "texture": "black_concrete",
-          "render_method": "alpha_test"
+          "render_method": "opaque"
         }
-      }
+      },
+      "minecraft:display_name": "D-41"
     },
     "permutations": [
       {

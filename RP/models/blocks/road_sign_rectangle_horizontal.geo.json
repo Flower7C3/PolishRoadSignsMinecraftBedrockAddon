@@ -5,7 +5,7 @@
       "description": {
         "identifier": "geometry.road_sign_rectangle_horizontal",
         "texture_width": 32,
-        "texture_height": 16,
+        "texture_height": 128,
         "visible_bounds_width": 2.5,
         "visible_bounds_height": 2,
         "visible_bounds_offset": [
@@ -46,7 +46,7 @@
                     0
                   ],
                   "uv_size": [
-                    32,
+                    4,
                     16
                   ]
                 },
@@ -56,7 +56,7 @@
                     0
                   ],
                   "uv_size": [
-                    32,
+                    4,
                     16
                   ]
                 },
@@ -66,7 +66,7 @@
                     0
                   ],
                   "uv_size": [
-                    32,
+                    4,
                     16
                   ]
                 },
@@ -76,7 +76,7 @@
                     0
                   ],
                   "uv_size": [
-                    32,
+                    4,
                     16
                   ]
                 },
@@ -86,8 +86,8 @@
                     16
                   ],
                   "uv_size": [
-                    -32,
-                    -16
+                    4,
+                    16
                   ]
                 },
                 "down": {
@@ -96,8 +96,8 @@
                     16
                   ],
                   "uv_size": [
-                    -32,
-                    -16
+                    4,
+                    16
                   ]
                 }
               }

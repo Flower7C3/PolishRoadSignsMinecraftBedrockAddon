@@ -4,13 +4,13 @@
     {
       "description": {
         "identifier": "geometry.road_sign_rectangle_horizontal_small",
-        "texture_width": 24,
-        "texture_height": 16,
-        "visible_bounds_width": 2.2,
-        "visible_bounds_height": 2,
+        "texture_width": 60,
+        "texture_height": 30,
+        "visible_bounds_width": 1.5,
+        "visible_bounds_height": 0.75,
         "visible_bounds_offset": [
           0,
-          0.5,
+          0.125,
           0
         ]
       },
@@ -30,13 +30,13 @@
           "cubes": [
             {
               "origin": [
-                -9,
+                -6,
                 0,
                 -1
               ],
               "size": [
-                18,
-                16,
+                12,
+                4,
                 2
               ],
               "uv": {
@@ -46,8 +46,8 @@
                     0
                   ],
                   "uv_size": [
-                    24,
-                    16
+                    7,
+                    3
                   ]
                 },
                 "east": {
@@ -56,8 +56,8 @@
                     0
                   ],
                   "uv_size": [
-                    24,
-                    16
+                    7,
+                    3
                   ]
                 },
                 "south": {
@@ -66,8 +66,8 @@
                     0
                   ],
                   "uv_size": [
-                    24,
-                    16
+                    7,
+                    3
                   ]
                 },
                 "west": {
@@ -76,28 +76,28 @@
                     0
                   ],
                   "uv_size": [
-                    24,
-                    16
+                    7,
+                    3
                   ]
                 },
                 "up": {
                   "uv": [
-                    24,
-                    16
+                    12,
+                    4
                   ],
                   "uv_size": [
-                    -24,
-                    -16
+                    7,
+                    3
                   ]
                 },
                 "down": {
                   "uv": [
-                    24,
-                    16
+                    12,
+                    4
                   ],
                   "uv_size": [
-                    -24,
-                    -16
+                    7,
+                    3
                   ]
                 }
               }

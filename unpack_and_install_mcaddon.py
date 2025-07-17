@@ -11,6 +11,10 @@ def get_minecraft_dir():
     mac_path = os.path.join(home, "Library/Application Support/minecraftpe")
     if os.path.exists(mac_path):
         return mac_path
+    # mcpelauncher
+    mcpelauncher_path = os.path.join(home, "Library/Application Support/mcpelauncher/games/com.mojang")
+    if os.path.exists(mcpelauncher_path):
+        return mcpelauncher_path
     # Windows
     win_path = os.path.join(home, "AppData/Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang")
     if os.path.exists(win_path):
