@@ -75,8 +75,7 @@
           "texture": "black_concrete",
           "render_method": "opaque"
         }
-      },
-      "minecraft:display_name": "nakazuje kierującemu skręt w lewo przed znakiem (C-3)"
+      }
     },
     "permutations": [
       {

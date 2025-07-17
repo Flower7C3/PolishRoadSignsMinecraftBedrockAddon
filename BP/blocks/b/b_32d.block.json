@@ -46,7 +46,6 @@
         "explosion_resistance": 30
       },
       "minecraft:geometry": "geometry.road_sign_circle",
-      "minecraft:display_name": "B_32D",
       "minecraft:material_instances": {
         "*": {
           "texture": "gray_concrete",

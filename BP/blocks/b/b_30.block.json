@@ -75,8 +75,7 @@
           "texture": "black_concrete",
           "render_method": "opaque"
         }
-      },
-      "minecraft:display_name": "odwołuje zakaz używania sygnałów dźwiękowych (B-30)"
+      }
     },
     "permutations": [
       {

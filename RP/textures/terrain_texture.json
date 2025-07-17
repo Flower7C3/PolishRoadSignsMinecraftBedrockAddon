@@ -390,9 +390,6 @@
     "circle_back": {
       "textures": "textures/blocks/sign_backs/circle_back.png"
     },
-    "circle_side": {
-      "textures": "textures/blocks/sign_sides/circle_side.png"
-    },
     "d_1": {
       "textures": "textures/blocks/d/d_1.png"
     },
@@ -405,12 +402,7 @@
     "d_12": {
       "textures": "textures/blocks/d/d_12.png"
     },
-    "d_12a": {
-      "textures": "textures/blocks/d/d_12a.png"
-    },
-    "d_12b": {
-      "textures": "textures/blocks/d/d_12b.png"
-    },
+
     "d_13": {
       "textures": "textures/blocks/d/d_13.png"
     },
@@ -639,9 +631,6 @@
     "diamond_back": {
       "textures": "textures/blocks/sign_backs/diamond_back.png"
     },
-    "diamond_side": {
-      "textures": "textures/blocks/sign_sides/diamond_side.png"
-    },
     "gray_concrete": {
       "textures": "textures/blocks/gray_concrete.png"
     },
@@ -650,9 +639,6 @@
     },
     "octagon_back": {
       "textures": "textures/blocks/sign_backs/octagon_back.png"
-    },
-    "octagon_side": {
-      "textures": "textures/blocks/sign_sides/octagon_side.png"
     },
     "rectangle_horizontal_back": {
       "textures": "textures/blocks/sign_backs/rectangle_horizontal_back.png"
@@ -678,14 +664,8 @@
     "square_large_back": {
       "textures": "textures/blocks/sign_backs/square_large_back.png"
     },
-    "square_side": {
-      "textures": "textures/blocks/sign_sides/square_side.png"
-    },
     "triangle_back": {
       "textures": "textures/blocks/sign_backs/triangle_back.png"
-    },
-    "triangle_side": {
-      "textures": "textures/blocks/sign_sides/triangle_side.png"
     }
   },
   "texture_name": "atlas.terrain"

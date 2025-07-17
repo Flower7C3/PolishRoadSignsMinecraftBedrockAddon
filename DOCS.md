@@ -15,10 +15,10 @@ Addon składa się z dwóch głównych komponentów:
 BP/
 ├── manifest.json              # Konfiguracja BP
 ├── blocks/                    # Definicje bloków
-│   ├── a/                    # Znaki ostrzegawcze
-│   ├── b/                    # Znaki zakazu  
-│   ├── c/                    # Znaki nakazu
-│   └── d/                    # Znaki informacyjne
+│   ├── a/                    # Znaki ostrzegawcze (34)
+│   ├── b/                    # Znaki zakazu (43)
+│   ├── c/                    # Znaki nakazu (19)
+│   └── d/                    # Znaki informacyjne (55)
 └── item_catalog/             # Katalog przedmiotów
     └── crafting_item_catalog.json
 
@@ -30,13 +30,25 @@ RP/
 │       ├── a/               # Tekstury znaków A
 │       ├── b/               # Tekstury znaków B
 │       ├── c/               # Tekstury znaków C
-│       └── d/               # Tekstury znaków D
+│       ├── d/               # Tekstury znaków D
+│       └── sign_backs/      # Tła znaków
 ├── texts/                     # Tłumaczenia
 │   ├── pl_PL.lang           # Polski
 │   └── en_US.lang           # Angielski
 ├── models/                    # Modele 3D
 │   └── blocks/
-│       └── road_sign.geo.json
+│       ├── road_sign_triangle.geo.json
+│       ├── road_sign_circle.geo.json
+│       ├── road_sign_square.geo.json
+│       ├── road_sign_diamond.geo.json
+│       ├── road_sign_octagon.geo.json
+│       ├── road_sign_rectangle_horizontal.geo.json
+│       ├── road_sign_rectangle_vertical.geo.json
+│       ├── road_sign_rectangle_horizontal_small.geo.json
+│       ├── road_sign_rectangle_horizontal_wide.geo.json
+│       ├── road_sign_rectangle_vertical_tall.geo.json
+│       ├── road_sign_square_large.geo.json
+│       └── road_sign_inverted_triangle.geo.json
 └── blocks.json               # Konfiguracja bloków
 ```
 
@@ -51,21 +63,21 @@ RP/
     "name": "Polish Road Signs BP",
     "description": "Behavior Pack for Polish Road Signs addon",
     "uuid": "b8c7d9e0-f1a2-3456-7890-abcdef123456",
-    "version": [1, 0, 31],
+    "version": [1, 0, 46],
     "min_engine_version": [1, 16, 0]
   },
   "modules": [
     {
       "description": "Behavior",
       "type": "data",
-      "version": [1, 0, 31],
+      "version": [1, 0, 46],
       "uuid": "c9d8e7f6-2345-6789-0123-456789abcdef"
     }
   ],
   "dependencies": [
     {
       "uuid": "d0e9f8a7-3456-7890-1234-567890bcdef1",
-      "version": [1, 0, 31]
+      "version": [1, 0, 46]
     }
   ]
 }
@@ -80,13 +92,13 @@ RP/
     "name": "Polish Road Signs RP",
     "description": "Resource Pack for Polish Road Signs addon",
     "uuid": "d0e9f8a7-3456-7890-1234-567890bcdef1",
-    "version": [1, 0, 31],
+    "version": [1, 0, 46],
     "min_engine_version": [1, 16, 0]
   },
   "modules": [
     {
       "type": "resources",
-      "version": [1, 0, 31],
+      "version": [1, 0, 46],
       "uuid": "e1f0a9b8-4567-8901-2345-678901cdef12"
     }
   ]
@@ -129,7 +141,7 @@ RP/
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.polish_road_sign",
+      "minecraft:geometry": "geometry.road_sign_triangle",
       "minecraft:material_instances": {
         "*": {
           "texture": "gray_concrete",
@@ -148,7 +160,7 @@ RP/
 ### Właściwości bloków
 
 - **Identifier**: `polish_road_sign:sign_code`
-- **Geometry**: Wspólny model `road_sign.geo.json`
+- **Geometry**: Różne modele w zależności od kształtu znaku
 - **Textures**:
   - `*` - szary beton (ramka)
   - `south` - tekstura znaku (przezroczysta)
@@ -179,6 +191,7 @@ RP/
 - **Klucze**: `sign_code` (np. `a_1`, `b_20`)
 - **Format**: PNG z przezroczystością
 - **Rozmiar**: 16x16 pikseli
+- **Tła**: Szare tło dla wszystkich znaków
 
 ## 🌐 System tłumaczeń
 
@@ -258,13 +271,28 @@ Buduje osobne pliki .mcpack dla BP i RP:
 
 ### unpack_and_install_mcaddon.py
 
-Instaluje paczkę lokalnie:
+Instaluje paczkę lokalnie z automatycznym usuwaniem starych wersji:
 
 ```python
 # Funkcje:
+- remove_existing_packs() - usuwa stare wersje paczek
 - Rozpakowuje .mcaddon
 - Kopiuje BP i RP do katalogów Minecraft
 - Automatyczne nazewnictwo katalogów
+- Opcje --clean i --no-clean
+```
+
+### verify_all.py
+
+Weryfikuje integralność całego projektu:
+
+```python
+# Funkcje:
+- Sprawdza wszystkie tekstury i modele
+- Weryfikuje definicje bloków
+- Kontroluje tłumaczenia
+- Sprawdza bazę danych
+- Wykrywa nadmiarowe/brakujące pliki
 ```
 
 ## 🔄 GitHub Workflows
@@ -287,6 +315,10 @@ Projekt używa GitHub Actions do automatycznego budowania i testowania:
 Przed uruchomieniem skryptów na macOS:
 
 ```bash
+# Automatyczna konfiguracja (zalecane)
+./setup_venv.sh
+
+# Lub ręcznie:
 # Utwórz środowisko wirtualne
 python3 -m venv venv
 
@@ -354,14 +386,22 @@ grep "identifier" BP/blocks/*/*.block.json
 - **A (Ostrzegawcze)**: 34 znaki
 - **B (Zakazu)**: 43 znaki  
 - **C (Nakazu)**: 19 znaków
-- **D (Informacyjne)**: 47 znaków
-- **Łącznie**: 143 znaki
+- **D (Informacyjne)**: 55 znaków
+- **Łącznie**: 151 znaków
 
 ### Pliki
 
-- **Bloki**: 143 pliki .block.json
-- **Tekstury**: 143 pliki .png
-- **Tłumaczenia**: 286 wpisów (2 języki × 143 znaki)
+- **Bloki**: 151 plików .block.json
+- **Tekstury**: 151 plików .png
+- **Modele 3D**: 12 różnych kształtów
+- **Tłumaczenia**: 302 wpisy (2 języki × 151 znaków)
+- **Baza danych**: 151 wpisów z metadanymi
+
+### Rozmiar projektu
+
+- **Paczka .mcaddon**: ~1.6 MB
+- **Wersja**: 1.0.46
+- **Ostatnia aktualizacja**: 17 lipca 2025
 
 ## 🚀 Rozwój
 
@@ -400,12 +440,19 @@ cp BP/blocks/a/a_1.block.json BP/blocks/a/a_35.block.json
 # Dodaj do BP/item_catalog/crafting_item_catalog.json
 ```
 
+6. **Zaktualizuj bazę danych**:
+
+```bash
+# Dodaj wpis do road_signs_full_database.json
+```
+
 ### Konwencje kodowania
 
 - **Nazwy plików**: małe litery, podkreślniki
 - **Identyfikatory**: `polish_road_sign:category_number`
 - **Tekstury**: `category/number.png`
 - **Tłumaczenia**: `tile.polish_road_sign:identifier.name`
+- **Modele**: `geometry.road_sign_shape`
 
 ## 🔗 Zasoby zewnętrzne
 

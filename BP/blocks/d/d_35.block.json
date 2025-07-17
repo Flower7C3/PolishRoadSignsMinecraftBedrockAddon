@@ -75,8 +75,7 @@
           "texture": "black_concrete",
           "render_method": "opaque"
         }
-      },
-      "minecraft:display_name": "Jest tym samym znakiem coD (D-35)"
+      }
     },
     "permutations": [
       {

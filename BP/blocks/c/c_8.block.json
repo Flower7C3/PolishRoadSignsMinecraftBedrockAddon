@@ -75,8 +75,7 @@
           "texture": "black_concrete",
           "render_method": "opaque"
         }
-      },
-      "minecraft:display_name": "nakazuje kierującemu jazdę w prawo lub w lewo (C-8)"
+      }
     },
     "permutations": [
       {

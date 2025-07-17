@@ -28,8 +28,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Auto-bump version in manifests
-        run: python3 build_mcaddon.py
+      - name: Verify project integrity
+        run: python3 verify_all.py
+
+      - name: Build all packages (.mcaddon and .mcpack)
+        run: |
+          python3 build_mcaddon.py
+          python3 build_mcpack.py
 
       - name: Commit and push version bump
         run: |
@@ -38,12 +43,6 @@ jobs:
           git add BP/manifest.json RP/manifest.json
           git commit -m "Auto-bump version after push" || exit 0
           git push origin main
-
-      - name: Build .mcaddon
-        run: python3 build_mcaddon.py
-
-      - name: Build .mcpack
-        run: python3 build_mcpack.py
 
       - name: List dist contents
         run: ls -lh dist/

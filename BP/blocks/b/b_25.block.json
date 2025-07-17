@@ -75,8 +75,7 @@
           "texture": "black_concrete",
           "render_method": "opaque"
         }
-      },
-      "minecraft:display_name": "B-25„zakaz wyprzedzania”, (B-25)"
+      }
     },
     "permutations": [
       {

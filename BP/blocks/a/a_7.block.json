@@ -46,7 +46,6 @@
         "explosion_resistance": 30
       },
       "minecraft:geometry": "geometry.road_sign_inverted_triangle",
-      "minecraft:display_name": "A-7",
       "minecraft:material_instances": {
         "*": {
           "texture": "gray_concrete",

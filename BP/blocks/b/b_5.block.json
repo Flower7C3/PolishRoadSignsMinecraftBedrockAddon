@@ -75,8 +75,7 @@
           "texture": "black_concrete",
           "render_method": "opaque"
         }
-      },
-      "minecraft:display_name": "Odmiany B (B-5)"
+      }
     },
     "permutations": [
       {

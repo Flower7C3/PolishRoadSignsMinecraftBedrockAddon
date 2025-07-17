@@ -75,8 +75,7 @@
           "texture": "black_concrete",
           "render_method": "opaque"
         }
-      },
-      "minecraft:display_name": "początkustrefy zamieszkaniaoznaczonej znakiemD (D-40)"
+      }
     },
     "permutations": [
       {
