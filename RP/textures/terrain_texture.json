@@ -136,9 +136,6 @@
     "b_3": {
       "textures": "textures/blocks/b/b_3.png"
     },
-    "d_12a": {
-      "textures": "textures/blocks/d/d_12a.png"
-    },
     "b_12": {
       "textures": "textures/blocks/b/b_12.png"
     },
@@ -177,9 +174,6 @@
     },
     "a_28": {
       "textures": "textures/blocks/a/a_28.png"
-    },
-    "d_12b": {
-      "textures": "textures/blocks/d/d_12b.png"
     },
     "a_19": {
       "textures": "textures/blocks/a/a_19.png"
@@ -448,14 +442,86 @@
     "c_5": {
       "textures": "textures/blocks/c/c_5.png"
     },
-    "gray_concrete": {
-      "textures": "textures/blocks/gray_concrete.png"
-    },
-    "black_concrete": {
-      "textures": "textures/blocks/black_concrete.png"
-    },
     "a_8": {
       "textures": "textures/blocks/a/a_8.png"
+    },
+    "a_6c": {
+      "textures": "textures/blocks/a/a_6c.png"
+    },
+    "a_6d": {
+      "textures": "textures/blocks/a/a_6d.png"
+    },
+    "a_6e": {
+      "textures": "textures/blocks/a/a_6e.png"
+    },
+    "a_11a": {
+      "textures": "textures/blocks/a/a_11a.png"
+    },
+    "a_12c": {
+      "textures": "textures/blocks/a/a_12c.png"
+    },
+    "b_13a": {
+      "textures": "textures/blocks/b/b_13a.png"
+    },
+    "b_3_4": {
+      "textures": "textures/blocks/b/b_3_4.png"
+    },
+    "b_6_8": {
+      "textures": "textures/blocks/b/b_6_8.png"
+    },
+    "b_6_8_9": {
+      "textures": "textures/blocks/b/b_6_8_9.png"
+    },
+    "b_9_12": {
+      "textures": "textures/blocks/b/b_9_12.png"
+    },
+    "b_13_14": {
+      "textures": "textures/blocks/b/b_13_14.png"
+    },
+    "b_3_4_10": {
+      "textures": "textures/blocks/b/b_3_4_10.png"
+    },
+    "c_13a": {
+      "textures": "textures/blocks/c/c_13a.png"
+    },
+    "c_16a": {
+      "textures": "textures/blocks/c/c_16a.png"
+    },
+    "c_13_16_v1": {
+      "textures": "textures/blocks/c/c_13_16_v1.png"
+    },
+    "c_13_16_v2": {
+      "textures": "textures/blocks/c/c_13_16_v2.png"
+    },
+    "c_13_16_v3": {
+      "textures": "textures/blocks/c/c_13_16_v3.png"
+    },
+    "triangle_back": {
+      "textures": "textures/blocks/sign_backs/triangle_back.png"
+    },
+    "inverted_triangle_back": {
+      "textures": "textures/blocks/sign_backs/inverted_triangle_back.png"
+    },
+    "circle_back": {
+      "textures": "textures/blocks/sign_backs/circle_back.png"
+    },
+    "square_back": {
+      "textures": "textures/blocks/sign_backs/square_back.png"
+    },
+    "octagon_back": {
+      "textures": "textures/blocks/sign_backs/octagon_back.png"
+    },
+    "diamond_back": {
+      "textures": "textures/blocks/sign_backs/diamond_back.png"
+    },
+    "rectangle_horizontal_back": {
+      "textures": "textures/blocks/sign_backs/rectangle_horizontal_back.png"
+    },
+    "rectangle_vertical_back": {
+      "textures": "textures/blocks/sign_backs/rectangle_vertical_back.png"
+    },
+    "rectangle_horizontal_small_back": {
+      "textures": "textures/blocks/sign_backs/rectangle_horizontal_small_back.png"
     }
   }
 }

@@ -1,0 +1,933 @@
+{
+  "road_signs": {
+    "A": {
+      "category": "Znaki ostrzegawcze",
+      "signs": {
+        "a_1": {
+          "name": "Znak ostrzega przed pojedynczym niebezpiecznym zakrętem w prawo. Stosuje się go na ogół poza miastami, gdy kąt zwrotu łuku drogi jest większy niż 5°, a jego promień jest mniejszy niż 750 m oraz w zależności od przechyłki. Ustawiany także na zakrętach o ograniczonej widoczności, bądź gdzie dochodzi do częstych wypadków lub kolizji.",
+          "code": "A-1",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-1",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Znak_A-1.svg/120px-Znak_A-1.svg.png"
+        },
+        "a_2": {
+          "name": "Znak ostrzega przed pojedynczym niebezpiecznym zakrętem w lewo. Stosuje się go analogicznie jak znakA-1.",
+          "code": "A-2",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-2",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Znak_A-2.svg/120px-Znak_A-2.svg.png"
+        },
+        "a_3": {
+          "name": "T-3„tabliczka wskazująca koniec odcinka, na którym powtarza się lub występuje niebezpieczeństwo”. Tabliczką tą oznacza się koniec odcinka oznaczonego znakiem z tabliczką T-1 i T-2. W przypadku zastosowania tabliczki T-2 ze znakiem A-3 lub A-4 (niebezpieczne zakręty), znaku z tabliczką T-3 nie należy stosować, jeżeli miałby on być umieszczony w odległości mniejszej niż 500 m od następnego znaku ostrzegającego, uprzedzającego o niebezpiecznych zakrętach.",
+          "code": "A-3",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-3",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Znak_A-3.svg/120px-Znak_A-3.svg.png"
+        },
+        "a_4": {
+          "name": "Znak ostrzega przed niebezpiecznymi zakrętami, z których pierwszy jest w lewo. Stosuje się go analogicznie jak znakA-3.Gdy liczba zakrętów jest większa niż 2, pod znakiem mogą być umieszczone tabliczki:T-2„tabliczka wskazująca długość odcinka drogi, na którym powtarza się lub występuje niebezpieczeństwo” (koniec tego odcinka wskazuje tabliczkaT-3),T-4„tabliczka wskazująca liczbę zakrętów”,T-5„tabliczka wskazująca początek drogi krętej” (gdy krętość odcinka przekracza 160°/km).",
+          "code": "A-4",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-4",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Znak_A-4.svg/120px-Znak_A-4.svg.png"
+        },
+        "a_5": {
+          "name": "Znak ostrzega przed skrzyżowaniem dróg, na którym pierwszeństwo nie jest określone znakami (skrzyżowanie równorzędne). Stosowany wyłącznie wtedy, gdy jedna z dróg miała nadane pierwszeństwo znakiemD-1„droga z pierwszeństwem”,A-6a,A-6b,A-6c,A-6d,A-6e„skrzyżowanie z drogą podporządkowaną”, lub gdy układ skrzyżowania może sugerować inne zasady pierwszeństwa.",
+          "code": "A-5",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-5",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Znak_A-5.svg/120px-Znak_A-5.svg.png"
+        },
+        "a_6a": {
+          "name": "Skrzyżowanie z drogą podporządkowaną",
+          "code": "A-6A",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-6a",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Znak_A-6a.svg/120px-Znak_A-6a.svg.png"
+        },
+        "a_6b": {
+          "name": "Skrzyżowanie z drogą podporządkowaną",
+          "code": "A-6B",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-6b",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Znak_A-6b.svg/120px-Znak_A-6b.svg.png"
+        },
+        "a_7": {
+          "name": "Podobnie jak w przypadku wszystkich pionowych znaków drogowych w Polsce, wyróżnia się pięć grup wielkości znaków ostrzegawczych: wielkie (W, długość boku 1200 mm), duże (D, długość boku 1050 mm), średnie (S, długość boku 900 mm), małe (M, długość boku 750 mm) oraz mini (MI, długość boku 600 mm). W zależności od wielkości znaku oprócz długości boku zmieniają się również promienie wyokrąglenia wierzchołków znaku oraz szerokość czerwonego obrzeża. Znaki A-7 „ustąp pierwszeństwa” występują jedynie jako znaki duże i średnie.",
+          "code": "A-7",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-7",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Znak_A-7.svg/120px-Znak_A-7.svg.png"
+        },
+        "a_8": {
+          "name": "Znak ostrzega przed skrzyżowaniem, na którym ruch odbywa się dookoła wyspy lub placu w kierunku wskazanym na znaku, oznaczonym znakiemC-12„ruch okrężny”. Stosowany zwykle, gdy droga miała wcześniej nadane pierwszeństwo lub skrzyżowanie nie jest widoczne z dostatecznej odległości.",
+          "code": "A-8",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-8",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Znak_A-8.svg/120px-Znak_A-8.svg.png"
+        },
+        "a_9": {
+          "name": "Znak ostrzega przedprzejazdem kolejowo-drogowymwyposażonym w zapory zamykające całą szerokość jezdni lub półzapory zamykające wjazd na przejazd. Wraz ze znakiem stosuje się słupki wskaźnikoweG-1a,G-1b,G-1c(po prawej stronie jezdni),G-1d,G-1e,G-1f(po lewej stronie jezdni na jezdniach jednokierunkowych). Umieszczany na wszystkich przejazdach kategorii „B”, na większości „A” oraz opcjonalnie „F”[5].",
+          "code": "A-9",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-9",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Znak_A-9.svg/120px-Znak_A-9.svg.png"
+        },
+        "a_10": {
+          "name": "Znak ostrzega przed przejazdem kolejowo-drogowym niewyposażonym w zapory lub półzapory. Umieszczany na wszystkich przejazdach kategorii „C” (tj. wyposażonych w samoczynną sygnalizację świetlną), „D” oraz sporadycznie „A”[5].W przypadku przejazdów niebezpiecznych ze względu na ostry kąt przecięcia się drogi z linią kolejową lub przebieg linii kolejowej po łuku, pod znakiem stosuje się tabliczkęT-7„tabliczka wskazująca układ torów i drogi na przejeździe”.Wraz ze znakiem również stosuje się słupki wskaźnikowe, a także „krzyż św. Andrzeja”G-3lubG-4, wyznaczający miejsce, w którym powinien być zatrzymany pojazd w związku z przejazdem pociągu (nie bliżej niż 5 m od skrajnej szyny).",
+          "code": "A-10",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-10",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Znak_A-10.svg/120px-Znak_A-10.svg.png"
+        },
+        "a_11": {
+          "name": "Znak ostrzega przed odcinkiem jezdni na którym występują poprzeczne nierówności jezdni, które mogą być niebezpieczne dla ruchu lub obniżają komfort jazdy.",
+          "code": "A-11",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-11",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Znak_A-11.svg/120px-Znak_A-11.svg.png"
+        },
+        "a_12a": {
+          "name": "Przejazd kolejowy",
+          "code": "A-12A",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-12a",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Znak_A-12a.svg/120px-Znak_A-12a.svg.png"
+        },
+        "a_12b": {
+          "name": "Przejazd kolejowy",
+          "code": "A-12B",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-12b",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Znak_A-12b.svg/120px-Znak_A-12b.svg.png"
+        },
+        "a_13": {
+          "name": "Znak ostrzega przed mostem o ruchomym przęśle. Umieszczany jest przed wjazdem na czynnymost zwodzonylubobrotowy.",
+          "code": "A-13",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-13",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Znak_A-13.svg/120px-Znak_A-13.svg.png"
+        },
+        "a_14": {
+          "name": "Znak ostrzega przed miejscem, w którym prowadzone są na drodze roboty, gdzie kierujący może spotkać osoby pracujące na drodze lub przeszkody utrudniające ruch, takie jak maszyny, materiały.Umieszczona pod znakiem tabliczkaT-19wskazuje na malowanie znaków poziomych.",
+          "code": "A-14",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-14",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Znak_A-14.svg/120px-Znak_A-14.svg.png"
+        },
+        "a_15": {
+          "name": "Znak ostrzega przed możliwością poślizgu pojazdu z powodu zmniejszonej szorstkości jezdni spowodowanej w szczególności:zmianą nawierzchni jezdni,stałym lub okresowym zawilgoceniem nawierzchni jezdni.",
+          "code": "A-15",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-15",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Znak_A-15.svg/120px-Znak_A-15.svg.png"
+        },
+        "a_16": {
+          "name": "Znak ostrzega przed przejściem dla pieszych. Umieszcza się go przed przejściem bez sygnalizacji świetlnej na drogach o dopuszczalnej prędkości powyżej 60 km/h lub przed przejściem poza skrzyżowaniami, gdy może nie być widoczne odpowiednio wcześnie.",
+          "code": "A-16",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-16",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Znak_A-16.svg/120px-Znak_A-16.svg.png"
+        },
+        "a_17": {
+          "name": "Znak ostrzega przed miejscem na drodze szczególnie uczęszczanym przez dzieci w wieku od 7 do 15 lat. Znak umieszcza się zwłaszcza w pobliżu szkół podstawowych, gimnazjów, placówek prowadzących zajęcia z dziećmi, terenów zabaw itp.",
+          "code": "A-17",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-17",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Znak_A-17.svg/120px-Znak_A-17.svg.png"
+        },
+        "a_18a": {
+          "name": "Śliska jezdnia",
+          "code": "A-18A",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-18a",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Znak_A-18a.svg/120px-Znak_A-18a.svg.png"
+        },
+        "a_18b": {
+          "name": "Śliska jezdnia",
+          "code": "A-18B",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-18b",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Znak_A-18b.svg/120px-Znak_A-18b.svg.png"
+        },
+        "a_19": {
+          "name": "Znak ostrzega przed miejscem, w którym mogą występować silne boczne podmuchy wiatru, np. przy wyjeździe z gęstego lasu, głębokiego wykopu, obszaru o zwartej zabudowie na otwarty teren. W miejscach występowania silnych podmuchów wiatru może być ustawiony sygnalizator pokazujący siłę i kierunek wiatru w danej chwili.",
+          "code": "A-19",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-19",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Znak_A-19.svg/120px-Znak_A-19.svg.png"
+        },
+        "a_20": {
+          "name": "Znak ostrzega jadących jezdnią jednokierunkową przed miejscem, w którym rozpoczyna się ruch dwukierunkowy. Stosowany w sytuacji, gdy:dwie jezdnie jednokierunkowe łączą się w jedną jezdnię dwukierunkową,przy wprowadzeniu ruchu w przeciwnym kierunku na jezdnię mającą dotychczas ruch jednokierunkowy.",
+          "code": "A-20",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-20",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Znak_A-20.svg/120px-Znak_A-20.svg.png"
+        },
+        "a_21": {
+          "name": "Znak ostrzega przed przecięciem drogi przez tory tramwajowe w taki sposób, że kierujący mogą nie zorientować się odpowiednio wcześnie o istnieniu tych torów.Przed przejazdami tramwajowymi niebezpiecznymi ze względu na ostry kąt przecięcia się drogi z linią kolejową lub przebieg torów po łuku, pod znakiem stosuje się tabliczkęT-7„tabliczka wskazująca układ torów i drogi na przejeździe”.TabliczkaT-8pod znakiem wskazuje pas ruchu skierowany na tory tramwajowe.",
+          "code": "A-21",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-21",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Znak_A-21.svg/120px-Znak_A-21.svg.png"
+        },
+        "a_22": {
+          "name": "Znak ostrzega przed znacznym spadkiem podłużnym drogi, co najmniej 10% w terenie górskim, a na pozostałych drogach co najmniej 7%, bądź gdy zjazd jest niebezpieczny ze względu na ostre zakręty lub zły stan nawierzchni. Umieszczona pod znakiem tabliczkaT-9wskazujewartość absolutnąrzeczywistej wielkości spadku.",
+          "code": "A-22",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-22",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Znak_A-22.svg/120px-Znak_A-22.svg.png"
+        },
+        "a_23": {
+          "name": "Znak ostrzega przed znacznym wzniesieniem drogi, co najmniej 8% w terenie górskim, a na pozostałych drogach co najmniej 6%, bądź gdy wjazd na wzniesienie jest utrudniony ze względu na ostre zakręty lub zły stan nawierzchni. Umieszczona pod znakiem tabliczkaT-9wskazujewartość absolutnąrzeczywistej wielkości wzniesienia.",
+          "code": "A-23",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-23",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Znak_A-23.svg/120px-Znak_A-23.svg.png"
+        },
+        "a_24": {
+          "name": "Znak ostrzega przed miejscem, w którym rowerzyści wyjeżdżają z drogi dla rowerów. Umieszcza się go też przed przejazdem dla rowerzystów na drogach o dopuszczalnej prędkości powyżej 60 km/h lub przed przejazdem poza skrzyżowaniami, albo gdy przejazd może nie być widoczny odpowiednio wcześnie.",
+          "code": "A-24",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-24",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Znak_A-24.svg/120px-Znak_A-24.svg.png"
+        },
+        "a_25": {
+          "name": "Znak ostrzega przed miejscem, w którym na drogę mogą staczać się lub zalegać na niej odłamki skalne, stanowiące niebezpieczeństwo dla nadjeżdżających pojazdów.",
+          "code": "A-25",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-25",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Znak_A-25.svg/120px-Znak_A-25.svg.png"
+        },
+        "a_26": {
+          "name": "Znak ostrzega przed możliwością nagłego pojawienia się nisko przelatującego samolotu lub śmigłowca. Znak stosuje się w pobliżu lotnisk czy lądowisk, gdzie nagłe pojawienie się przelatującego nisko samolotu może przestraszyć kierującego pojazdem i spowodować nieprawidłowy manewr.",
+          "code": "A-26",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-26",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Znak_A-26.svg/120px-Znak_A-26.svg.png"
+        },
+        "a_27": {
+          "name": "Znak ostrzega przed odcinkiem drogi prowadzącym bezpośrednio do nabrzeża lub wzdłuż brzegu rzeki lub innego zbiornika wodnego w odległości mniejszej niż 10 m, gdzie nie są zastosowane bariery ochronne.",
+          "code": "A-27",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-27",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Znak_A-27.svg/120px-Znak_A-27.svg.png"
+        },
+        "a_28": {
+          "name": "Znak ostrzega przed odcinkiem drogi pokrytej żwirem (grysem), który może być wyrzucany spod kół jadących pojazdów. Dotyczy to przede wszystkim nawierzchni tłuczniowych oraz nawierzchni, na których przeprowadzone powierzchniowe utrwalenie warstwy ścieralnej do czasu stabilnego oblepienia kruszywa przez bitum. Ponadto znak może być umieszczony przed wyjazdami z kamieniołomów lub żwirowni.",
+          "code": "A-28",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-28",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Znak_A-28.svg/120px-Znak_A-28.svg.png"
+        },
+        "a_29": {
+          "name": "Znak ostrzega przed miejscem, w którym ruch jest kierowany za pomocą sygnalizacji świetlnej. Znak stosuje się:przed każdą sygnalizacją świetlną poza obszarem zabudowanym,przed pierwszą sygnalizacją w obszarze zabudowanym,w każdym miejscu, gdzie sygnalizacja zastosowana została do kierowania ruchem wahadłowym,w każdym miejscu, gdzie sygnalizator jest tylko zawieszony nad jezdnią.",
+          "code": "A-29",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-29",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Znak_A-29.svg/120px-Znak_A-29.svg.png"
+        },
+        "a_30": {
+          "name": "§ 114. 1. Do dnia 31 grudnia 2005 r.:(...)4)   znak A-30 z tabliczką zawierającą symbol umieszczony na znaku A-32 ma takie samo znaczenie, jak znak A-32",
+          "code": "A-30",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-30",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Znak_A-30.svg/120px-Znak_A-30.svg.png"
+        },
+        "a_31": {
+          "name": "znak",
+          "code": "A-31",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-31",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Znak_A-31.svg/120px-Znak_A-31.svg.png"
+        },
+        "a_32": {
+          "name": "Znak ostrzega przed mogącym występować na drodze oszronieniem jezdni lub gołoledzią. Stosowany jest wyłącznie w okresie zimowym[9][a]przed mostami i wiaduktami, na których oszronienie jezdni lub gołoledź pojawia się, gdy nie występuje jeszcze na innych odcinkach drogi oraz w pobliżu rzek i zbiorników wodnych.Wprowadzony w 1999 roku na mocy rozporządzenia[7]; jednocześnie do końca 2005 r. zestawienie znaku A-30 z tabliczką zawierającą symbol znaku A-32 () miało takie samo znaczenie jak znak A-32[10].",
+          "code": "A-32",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-32",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Znak_A-32.svg/120px-Znak_A-32.svg.png"
+        },
+        "a_33": {
+          "name": "Znak ostrzega przed częstym występowaniem zablokowania ruchu ze względu na natężenie ruchu pojazdów, gdy stojące pojazdy mogą nie zostać w porę dostrzeżone przez kierującego, np. przed skrzyżowaniem z sygnalizacją świetlną, gdy odcinek jezdni jest niewidoczny ze względu na zakręt lub wzniesienie.Wprowadzony w 1999 roku na mocy rozporządzenia[7].",
+          "code": "A-33",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-33",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Znak_A-33.svg/120px-Znak_A-33.svg.png"
+        },
+        "a_34": {
+          "name": "Znak ostrzega przed miejscem, w którym na skutek wypadku drogowego nastąpiło zablokowanie drogi lub znaczne utrudnienie ruchu pojazdów. Znak ustawiany jest przez służby zabezpieczające miejsce wypadku, następując znak zakazu B-42.Wprowadzony w 1999 roku na mocy rozporządzenia[7].",
+          "code": "A-34",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce#A-34",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Znak_A-34.svg/120px-Znak_A-34.svg.png"
+        }
+      }
+    },
+    "B": {
+      "category": "Znaki zakazu",
+      "signs": {
+        "b_1": {
+          "name": "Umieszczona pod znakiem B-1 tabliczka z napisem „Nie dotyczy” wraz z symbolem pojazdu lub wyrażeniem określającym pojazd wskazuje, że zakaz nie dotyczy pojazdu określonego tabliczką.",
+          "code": "B-1",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-1",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Znak_B-1.svg/120px-Znak_B-1.svg.png"
+        },
+        "b_2": {
+          "name": "Umieszczona pod znakiem B-2 tabliczka z napisem „Nie dotyczy” wraz z symbolem pojazdu lub wyrażeniem określającym pojazd wskazuje, że zakaz nie dotyczy pojazdu określonego tabliczką.",
+          "code": "B-2",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-2",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Znak_B-2.svg/120px-Znak_B-2.svg.png"
+        },
+        "b_3": {
+          "name": "Dopuszcza się stosowanie na jednej tarczy konfiguracji dwóch lub trzech symboli ze znakówB-14. Znaki łączone mają takie samo znaczenie jak zastosowane razem znaki pojedyncze.",
+          "code": "B-3",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-3",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Znak_B-3.svg/120px-Znak_B-3.svg.png"
+        },
+        "b_4": {
+          "name": "B-4„zakaz wjazdu motocykli”,",
+          "code": "B-4",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-4",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Znak_B-4.svg/120px-Znak_B-4.svg.png"
+        },
+        "b_5": {
+          "name": "Odmiany B",
+          "code": "B-5",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-5",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Znak_B-5.svg/120px-Znak_B-5.svg.png"
+        },
+        "b_6": {
+          "name": "B-6/8/9: zakaz wjazdu pojazdów innych niż samochodowe",
+          "code": "B-6",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-6",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Znak_B-6.svg/120px-Znak_B-6.svg.png"
+        },
+        "b_7": {
+          "name": "zakazuje ruchu pojazdów z przyczepą",
+          "code": "B-7",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-7",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Znak_B-7.svg/120px-Znak_B-7.svg.png"
+        },
+        "b_8": {
+          "name": "Znak zakazuje ruchupojazdów zaprzęgowych, a takżejeźdźcówipoganiaczy. Stosowany na drogach, na których występuje duże natężenie ruchu, gdzie ruch pojazdów zaprzęgowych może powodować tamowanie ruchu.",
+          "code": "B-8",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-8",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Znak_B-8.svg/120px-Znak_B-8.svg.png"
+        },
+        "b_9": {
+          "name": "B-9/12: zakaz wjazdu rowerów i wózków ręcznych",
+          "code": "B-9",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-9",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Znak_B-9.svg/120px-Znak_B-9.svg.png"
+        },
+        "b_10": {
+          "name": "B-10„zakaz wjazdu motorowerów”,",
+          "code": "B-10",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-10",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Znak_B-10.svg/120px-Znak_B-10.svg.png"
+        },
+        "b_11": {
+          "name": "Znak zakazuje ruchu wózków rowerowych. Stosowany na drogach o dużym natężeniu ruchu, gdzie ruch tych pojazdów może powodować tamowanie ruchu.",
+          "code": "B-11",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-11",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Znak_B-11.svg/120px-Znak_B-11.svg.png"
+        },
+        "b_12": {
+          "name": "Znak zakazuje ruchu na jezdni i poboczu wózków ręcznych prowadzonych, ciągniętych lub pchanych.",
+          "code": "B-12",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-12",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Znak_B-12.svg/120px-Znak_B-12.svg.png"
+        },
+        "b_13": {
+          "name": "B-13/14: zakaz wjazdu pojazdów z towarami wybuchowymi lub łatwo zapalnymi oraz towarami mogącymi skazić wodę",
+          "code": "B-13",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-13",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Znak_B-13.svg/120px-Znak_B-13.svg.png"
+        },
+        "b_14": {
+          "name": "Znak zakazuje ruchu pojazdów przewożących w ilościach, dla których jest wymagane oznakowanie pojazdu tablicami ostrzegawczymi barwy pomarańczowej, towary klasADR:2 T – gazy trujące,2 TC – gazy żrące,3 – materiały ciekłe zapalne,4.3 – materiały wytwarzające w zetknięciu z wodą gazy palne,6.1 – materiały trujące,6.2 – materiały zakaźne,8 – materiały żrące,materiały zagrażające środowisku klasy 9.",
+          "code": "B-14",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-14",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Znak_B-14.svg/120px-Znak_B-14.svg.png"
+        },
+        "b_15": {
+          "name": "Znak zakazuje ruchu pojazdów, których szerokość wraz z ładunkiem jest większa od wartości podanej na znaku. Ruch pojazdów ze względu na szerokość ogranicza się, gdy szerokość przejazdu jest mniejsza niż 3,5 m. Na znaku podaje się odległość między elementami konstrukcyjnymi ograniczającymi skrajnie poziomą pomniejszoną o 1 m. Stawiany jest ze względu na wąskie obiekty drogowe jak np. tunele, mosty, a także wąskie ulice i pasy ruchu (wówczas znak może być umieszczony nad pasem ruchu, którego dotyczy lub jako element znakuF-22„ograniczenia na pasie ruchu”).",
+          "code": "B-15",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-15",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Znak_B-15.svg/120px-Znak_B-15.svg.png"
+        },
+        "b_16": {
+          "name": "Znak zakazuje ruchu pojazdów, których wysokość wraz z ładunkiem jest większa od wartości podanej na znaku. Ruch pojazdów ze względu na wysokość ogranicza się, gdy wysokość przejazdu jest mniejsza niż 4,5 m. Na znaku podaje się wysokość obiektu nad jezdnią pomniejszoną o 0,5 m. Jest ustawiany ze względu na niskie tunele, wiadukty, linie sieci napowietrznej.",
+          "code": "B-16",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-16",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Znak_B-16.svg/120px-Znak_B-16.svg.png"
+        },
+        "b_17": {
+          "name": "Znak zakazuje ruchu pojazdów lub zespołów pojazdów, których długość wraz z ładunkiem jest większa od wartości podanej na znaku. Ruch pojazdów ze względu na długość ogranicza się na drogach o ostrych i wąskich zakrętach oraz tam, gdzie ruch takich pojazdów może utrudniać ruch.",
+          "code": "B-17",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-17",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Znak_B-17.svg/120px-Znak_B-17.svg.png"
+        },
+        "b_18": {
+          "name": "Znak zakazuje ruchu pojazdów lub zespołów pojazdów, którychrzeczywista masa całkowitajest większa od wartości podanej na znaku. Stawiany jest ze względu na odcinki dróg o niewystarczającej nośności.",
+          "code": "B-18",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-18",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Znak_B-18.svg/120px-Znak_B-18.svg.png"
+        },
+        "b_19": {
+          "name": "Znak zakazuje ruchu pojazdów, którychnacisk osijest większy od nacisku odpowiadającego masie podanej na znaku. W przypadku osi wielokrotnej nacisk żadnej z osi składowych nie może odpowiadać masie większej niż 80% masy podanej na znaku.Znak stosuje się na drodze publicznej lub jej odcinku, na granicach obszaru strefy o obniżonej nośności orazprzejściach granicznychznajdujących się na zewnętrznej granicy Unii Europejskiej[3].\nPrzykładowo nacisk osi ograniczony do 5 t odpowiada nośności 5000 [kg] ·g≈ 50 [kN], dlag≈ 10 m/s².",
+          "code": "B-19",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-19",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Znak_B-19.svg/120px-Znak_B-19.svg.png"
+        },
+        "b_20": {
+          "name": "WPolsceznaki zakazu określaRozporządzenie w sprawie znaków i sygnałów drogowych(Dz.U. z 2019 r. poz. 2310), a zakres ich stosowania – załącznik nr 1 doRozporządzenia w sprawie szczegółowych warunków technicznych dla znaków i sygnałów drogowych oraz urządzeń bezpieczeństwa ruchu drogowego i warunków ich umieszczania na drogach(Dz.U. z 2019 r. poz. 2311). Mają kształt koła (z wyjątkiem znakówB-20„stop”,B-39„strefa ograniczonego postoju” iB-43„strefa ograniczonej prędkości”), z czerwoną obwódką i białym tłem lub niebieskim tłem. W całejEuropiestosowany jest jednolity system symboli zgodny zKonwencją wiedeńską o znakach i sygnałach drogowychz 1968 r. (Dz.U. z 1988 r. nr 5, poz. 42), dopuszczającą, oprócz kolorystyki stosowanej w Polsce, także kolor żółty w miejscu białego.",
+          "code": "B-20",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-20",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Znak_B-20.svg/120px-Znak_B-20.svg.png"
+        },
+        "b_21": {
+          "name": "Umieszczona pod znakiem B-21 lub B-22 tabliczka z napisem „Nie dotyczy” wraz z symbolem pojazdu lub wyraże-\nniem określającym pojazd wskazuje, że zakaz nie dotyczy pojazdu określonego tabliczką.",
+          "code": "B-21",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-21",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Znak_B-21.svg/120px-Znak_B-21.svg.png"
+        },
+        "b_22": {
+          "name": "Rozporządzenie w sprawie szczegółowych warunków technicznych dla znaków i sygnałów drogowych oraz urządzeń bezpieczeństwa ruchu drogowego i warunków ich umieszczania na drogachprzewiduje stosowanie odmiany znakuF-7„sposób jazdy w związku z zakazem skręcania w lewo” występującej wraz ze znakiemB-22. Nie ma jej jednak wRozporządzeniu w sprawie znaków i sygnałów drogowych.",
+          "code": "B-22",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-22",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Znak_B-22.svg/120px-Znak_B-22.svg.png"
+        },
+        "b_23": {
+          "name": "B-23„zakaz zawracania”,",
+          "code": "B-23",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-23",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Znak_B-23.svg/120px-Znak_B-23.svg.png"
+        },
+        "b_24": {
+          "name": "odwołuje zakaz zawracania",
+          "code": "B-24",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-24",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Znak_B-24.svg/120px-Znak_B-24.svg.png"
+        },
+        "b_25": {
+          "name": "B-25„zakaz wyprzedzania”,",
+          "code": "B-25",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-25",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Znak_B-25.svg/120px-Znak_B-25.svg.png"
+        },
+        "b_26": {
+          "name": "B-26„zakaz wyprzedzania przez samochody ciężarowe”,",
+          "code": "B-26",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-26",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Znak_B-26.svg/120px-Znak_B-26.svg.png"
+        },
+        "b_27": {
+          "name": "odwołuje zakaz wyprzedzania",
+          "code": "B-27",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-27",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Znak_B-27.svg/120px-Znak_B-27.svg.png"
+        },
+        "b_28": {
+          "name": "Znak odwołuje zakaz wyprzedzania przez samochody ciężarowe.",
+          "code": "B-28",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-28",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Znak_B-28.svg/120px-Znak_B-28.svg.png"
+        },
+        "b_29": {
+          "name": "B-29„zakaz używania sygnałów dźwiękowych”",
+          "code": "B-29",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-29",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Znak_B-29.svg/120px-Znak_B-29.svg.png"
+        },
+        "b_30": {
+          "name": "odwołuje zakaz używania sygnałów dźwiękowych",
+          "code": "B-30",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-30",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Znak_B-30.svg/120px-Znak_B-30.svg.png"
+        },
+        "b_31": {
+          "name": "Znak zabrania kierującym wjazdu lub wejścia na zwężony odcinek jezdni, jeżeli zmusiłoby to kierujących znajdujących się na tym odcinku lub zbliżających się do niego z przeciwnej strony do zatrzymania się.Po przeciwnej stronie zwężenia ustawiany jest znakD-5„pierwszeństwo na zwężonym odcinku jezdni”. Taka organizacja ruchu wprowadzana jest na zwężonych odcinkach krótszych niż 150 m, gdzie nie mogą wyminąć się pojazdy o szerokości 2,5 m oraz gdy kierujący mają dobrą widoczność pojazdów nadjeżdżających z przeciwka.",
+          "code": "B-31",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-31",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Znak_B-31.svg/120px-Znak_B-31.svg.png"
+        },
+        "b_32": {
+          "name": "Odmiany B-32:Po odpowiedniej zmianie napisu znak może wskazywać obowiązek zatrzymania pojazdu z innej przyczyny. Zasady zatrzymania pojazdu i zezwolenia na dalszy ruch w każdym przypadku są takie same.",
+          "code": "B-32",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-32",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Znak_B-32.svg/120px-Znak_B-32.svg.png"
+        },
+        "b_33": {
+          "name": "Prędkość pojazdów ogranicza się ze względu na wymagające tego warunki drogowe, gdy inne działania nie wpływają na poprawę bezpieczeństwa ruchu drogowego. W przypadku braku lub uchylenia ograniczenia prędkości wyrażonej znakiem B-33, obowiązujądopuszczalne prędkościokreślone w ustawie – Prawo o ruchu drogowym.",
+          "code": "B-33",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-33",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Znak_B-33.svg/120px-Znak_B-33.svg.png"
+        },
+        "b_34": {
+          "name": "znakuB",
+          "code": "B-34",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-34",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Znak_B-34.svg/120px-Znak_B-34.svg.png"
+        },
+        "b_35": {
+          "name": "znak",
+          "code": "B-35",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-35",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Znak_B-35.svg/120px-Znak_B-35.svg.png"
+        },
+        "b_36": {
+          "name": "Znak zabrania zatrzymywania pojazdu z wyjątkiem unieruchomienia ze względu na warunki lub przepisy ruchu drogowego. Pozostałe przepisy są analogiczne jak w przypadku znakuB-35„zakaz postoju”.",
+          "code": "B-36",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-36",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Znak_B-36.svg/120px-Znak_B-36.svg.png"
+        },
+        "b_37": {
+          "name": "§ 28.[…]6. Znaki:1) B-37 „zakaz postoju w dni nieparzyste”,2) B-38 „zakaz postoju w dni parzyste”oznaczają zakaz postoju pojazdów odpowiednio w nieparzyste lub parzyste dni miesiąca; zakaz nie obowiązuje od godziny 21 do 24; przepisy ust. 1 i 3–5 stosuje się odpowiednio do tych znaków.",
+          "code": "B-37",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-37",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Znak_B-37.svg/120px-Znak_B-37.svg.png"
+        },
+        "b_38": {
+          "name": "stosowany tak jak znakB",
+          "code": "B-38",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-38",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Znak_B-38.svg/120px-Znak_B-38.svg.png"
+        },
+        "b_39": {
+          "name": "B-39„strefa ograniczonego postoju”.",
+          "code": "B-39",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-39",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Znak_B-39.svg/120px-Znak_B-39.svg.png"
+        },
+        "b_40": {
+          "name": "Oznacza wyjazd ze strefy ograniczonego postoju",
+          "code": "B-40",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-40",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Znak_B-40.svg/120px-Znak_B-40.svg.png"
+        },
+        "b_41": {
+          "name": "Znak zabrania ruchu pieszych po tej stronie drogi, po której znak jest umieszczony. Stosowany ze względu na brak chodnika przy dużym ruchu pojazdów stanowiących niebezpieczeństwo dla pieszych lub gdy droga posiada wydzielony ciąg przeznaczony do ruchu pieszego.",
+          "code": "B-41",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-41",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Znak_B-41.svg/120px-Znak_B-41.svg.png"
+        },
+        "b_42": {
+          "name": "Znak odwołuje wszystkie obowiązujące zakazy wyrażone znakami posiadającymi własny znak odwołujący:B-23„zakaz zawracania”,B-25„zakaz wyprzedzania”,B-26„zakaz wyprzedzania przez samochody ciężarowe”,B-29„zakaz używania sygnałów dźwiękowych”B-33„ograniczenie prędkości”.",
+          "code": "B-42",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-42",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Znak_B-42.svg/120px-Znak_B-42.svg.png"
+        },
+        "b_43": {
+          "name": "Znak wskazuje wjazd do strefy, w której na wszystkich drogach obowiązuje zakaz przekraczania prędkości określonej na znaku przez liczbę kilometrów na godzinę. Dopuszczalna prędkość mniejsza lub równa 30 km/h oznacza, że umieszczone w strefie urządzenia wymuszające powolną jazdę (progi zwalniające, miejscowe przewężenia) nie muszą być oznakowane znakami ostrzegawczymi. Strefy ograniczonej prędkości wyznacza się na obszarach z dużą liczbą skrzyżowań oraz dużym natężeniu ruchu pojazdów i pieszych.",
+          "code": "B-43",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce#B-43",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Znak_B-43.svg/120px-Znak_B-43.svg.png"
+        }
+      }
+    },
+    "C": {
+      "category": "Znaki nakazu",
+      "signs": {
+        "c_1": {
+          "name": "Znak nakazuje kierującemu skręt w prawo przed znakiem. Znak ten umieszczony jest na przedłużeniu osi części jezdni, jadących którą nakaz dotyczy. Stosowany zwykle na skrzyżowaniach z jezdnią jednokierunkową, gdzie nie ma możliwości jazdy na wprost.",
+          "code": "C-1",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-1",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Znak_C-1.svg/120px-Znak_C-1.svg.png"
+        },
+        "c_2": {
+          "name": "Znak nakazuje kierującemu skręt w prawo za znakiem. Znak ten umieszczony jest obok jezdni, której dotyczy i obowiązuje na najbliższym skrzyżowaniu lub w miejscu, gdzie występuje możliwość zmiany kierunku jazdy.",
+          "code": "C-2",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-2",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Znak_C-2.svg/120px-Znak_C-2.svg.png"
+        },
+        "c_3": {
+          "name": "nakazuje kierującemu skręt w lewo przed znakiem",
+          "code": "C-3",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-3",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Znak_C-3.svg/120px-Znak_C-3.svg.png"
+        },
+        "c_4": {
+          "name": "nakazuje kierującemu skręt w lewo za znakiem",
+          "code": "C-4",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-4",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Znak_C-4.svg/120px-Znak_C-4.svg.png"
+        },
+        "c_5": {
+          "name": "Znak nakazuje kierującemu jazdę prosto. Znak obowiązuje na najbliższym skrzyżowaniu lub w miejscu, gdzie występuje możliwość zmiany kierunku jazdy. Często stosowany jest poza skrzyżowaniami na drogach o dużym natężeniu ruchu w celu wyeliminowania skręcania (szczególnie w lewo) pojazdów do obiektów przydrożnych.",
+          "code": "C-5",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-5",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Znak_C-5.svg/120px-Znak_C-5.svg.png"
+        },
+        "c_6": {
+          "name": "Znak nakazuje kierującemu jazdę prosto lub w prawo. Stosowany na skrzyżowaniach o więcej niż czterech wlotach, gdy nie można zastosować znakuB-21„zakaz skręcania w lewo”.",
+          "code": "C-6",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-6",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Znak_C-6.svg/120px-Znak_C-6.svg.png"
+        },
+        "c_7": {
+          "name": "Znak nakazuje kierującemu jazdę prosto lub w lewo. Stosowany na skrzyżowaniach o więcej niż czterech wlotach, gdy nie można zastosować znakuB-22„zakaz skręcania w prawo”.",
+          "code": "C-7",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-7",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Znak_C-7.svg/120px-Znak_C-7.svg.png"
+        },
+        "c_8": {
+          "name": "nakazuje kierującemu jazdę w prawo lub w lewo",
+          "code": "C-8",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-8",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Znak_C-8.svg/120px-Znak_C-8.svg.png"
+        },
+        "c_9": {
+          "name": "Znak nakazuje kierującemu ominięcie wysepki lub przeszkody na jezdni z prawej strony znaku. Umieszczony na pasie dzielącym drogi oznacza początek jezdni jednokierunkowej.",
+          "code": "C-9",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-9",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Znak_C-9.svg/120px-Znak_C-9.svg.png"
+        },
+        "c_10": {
+          "name": "Znak nakazuje kierującemu ominięcie wysepki lub przeszkody na jezdni po lewej stronie znaku, lecz nie oznacza jednocześnie jezdni jednokierunkowej.",
+          "code": "C-10",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-10",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Znak_C-10.svg/120px-Znak_C-10.svg.png"
+        },
+        "c_11": {
+          "name": "Znak nakazuje kierującemu ominięcie wysepki lub przeszkody na jezdni z lewej lub prawej strony znaku. Umieszczany jest w miejscu rozdzielenia jezdni.",
+          "code": "C-11",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-11",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Znak_C-11.svg/120px-Znak_C-11.svg.png"
+        },
+        "c_12": {
+          "name": "Znak nakazuje kierującemu jazdę dookoła wyspy lub placu w kierunku wskazanym na znaku (skrzyżowanie o ruchu okrężnym). ZnakC-12najczęściej występuje łącznie ze znakiemA-7„ustąp pierwszeństwa”, co oznacza pierwszeństwo kierującego znajdującego się na skrzyżowaniu przed kierującym wjeżdżającym na to skrzyżowanie. W przypadku znakuC-12występującego samodzielnie, pojazd znajdujący się na skrzyżowaniu ustępuje pierwszeństwa pojazdowi na wjeżdżającemu (zgodnie zzasadą prawej ręki).",
+          "code": "C-12",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-12",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Znak_C-12.svg/120px-Znak_C-12.svg.png"
+        },
+        "c_13": {
+          "name": "ZnakC",
+          "code": "C-13",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-13",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Znak_C-13.svg/120px-Znak_C-13.svg.png"
+        },
+        "c_14": {
+          "name": "Znak oznacza obowiązek jazdy z prędkością nie mniejszą niż określona na znaku liczbą kilometrów na godzinę przy zachowaniu ograniczeń prędkości wynikających z przepisów ustawy – Prawo o ruchu drogowym, chyba że warunki ruchu lub jego bezpieczeństwo wymagają zmniejszenia prędkości. Zgodnie z art. 19 ustawy – Prawo o ruchu drogowym, kierujący jest w każdej sytuacji zobowiązany jechać z prędkością nieutrudniającą jazdy innym kierującym. ZnakC-14stosowany jest, gdy kierujący nagminnie zmniejszają prędkość jazdy z przyczyn niewynikających ze stanu technicznego drogi.",
+          "code": "C-14",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-14",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Znak_C-14.svg/120px-Znak_C-14.svg.png"
+        },
+        "c_15": {
+          "name": "Znak oznacza miejsce, w którym prędkość minimalna określona znakiemC-14przestaje obowiązywać.",
+          "code": "C-15",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-15",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Znak_C-15.svg/120px-Znak_C-15.svg.png"
+        },
+        "c_16": {
+          "name": "Znak nakazuje pieszym korzystanie z drogi przeznaczonej wyłącznie do ruchu pieszego. Stosowany tam, gdzie ze względu na duże natężenie ruchu pieszego, wyeliminowanie ruchu pojazdów zapewnia poprawę bezpieczeństwa.",
+          "code": "C-16",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-16",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Znak_C-16.svg/120px-Znak_C-16.svg.png"
+        },
+        "c_17": {
+          "name": "WPolsceznaki nakazu określaRozporządzenie w sprawie znaków i sygnałów drogowych(Dz.U. z 2019 r. poz. 2310), a zakres ich stosowania – załącznik nr 1 doRozporządzenia w sprawie szczegółowych warunków technicznych dla znaków i sygnałów drogowych oraz urządzeń bezpieczeństwa ruchu drogowego i warunków ich umieszczania na drogach(Dz.U. z 2019 r. poz. 2311). Mają kształt koła (z wyjątkiem znakówC-17„Nakazany kierunek jazdy dla pojazdów z materiałami niebezpiecznymi”), z błękitnym tłem i białym obrazem (z wyjątkiemC-17). W całejEuropiestosowany jest jednolity system symboli zgodny zKonwencją wiedeńską o znakach i sygnałach drogowychz1968r. (Dz.U. z 1988 r. nr 5, poz. 42). Wspomniana konwencja dopuszcza także dla znaków nakazu białe tło z czerwoną obwódką, czyli taki sam schemat, jak dlaznaków zakazu. Taka kolorystyka obowiązuje np. wIrlandii.",
+          "code": "C-17",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-17",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Znak_C-17.svg/120px-Znak_C-17.svg.png"
+        },
+        "c_18": {
+          "name": "Znak oznacza, że kierujący pojazdem silnikowym ma obowiązek stosowaćłańcuchy przeciwpoślizgowena co najmniej dwóch kołach napędowych. Stosowany w okresie zimowym na drogach, na których podczas opadów śniegu występują trudności poruszania się pojazdów niewyposażonych w łańcuchy. Umieszczona pod znakiem tabliczka odT-23adoT-23joznacza, że nakaz dotyczy pojazdów określonych na tabliczce.",
+          "code": "C-18",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-18",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Znak_C-18.svg/120px-Znak_C-18.svg.png"
+        },
+        "c_19": {
+          "name": "Znak oznacza miejsce, w którym nakaz używania łańcuchów przeciwpoślizgowych przestaje obowiązywać.",
+          "code": "C-19",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce#C-19",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Znak_C-19.svg/120px-Znak_C-19.svg.png"
+        }
+      }
+    },
+    "D": {
+      "category": "Znaki informacyjne",
+      "signs": {
+        "d_1": {
+          "name": "Oznacza początek lub kontynuację drogi z pierwszeństwem. Znak posiada dwie wersje różniące się wielkością:o długości boku 600 lub 900 mm – umieszczaną na początku drogi z pierwszeństwem w obszarze zabudowanym oraz przed każdym skrzyżowaniem, na którym droga z pierwszeństwem zmienia kierunek wraz z tabliczkamiT-6aalboT-6bwskazującymi odpowiednio rzeczywisty przebieg drogi z pierwszeństwem przez skrzyżowanie lub układ dróg podporządkowanych (gruba linia na tabliczkach oznacza drogę z pierwszeństwem) w odległości do 50 m od skrzyżowania.o długości boku 400 mm – powtarzaną przed skrzyżowaniami wzdłuż drogi z pierwszeństwem.",
+          "code": "D-1",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-1",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Znak_D-1.svg/120px-Znak_D-1.svg.png"
+        },
+        "d_2": {
+          "name": "Oznacza odwołanie pierwszeństwa nadanego znakiem drogiD-1droga z pierwszeństwemprzed skrzyżowaniem z inną drogą z pierwszeństwem, skrzyżowaniem równorzędnym lub skrzyżowaniem o ruchu okrężnym.",
+          "code": "D-2",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-2",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Znak_D-2.svg/120px-Znak_D-2.svg.png"
+        },
+        "d_3": {
+          "name": "Oznacza początek lub kontynuację drogi lub jezdni, na której ruch odbywa się w jednym kierunku. Umieszczona pod znakiem tabliczkaT-22wskazuje, że ruch rowerów jednośladowych na wyznaczonym na jezdni pasie ruchu przeznaczonym dla tych pojazdów odbywa się w kierunku przeciwnym do wskazanego na znaku.",
+          "code": "D-3",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-3",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Znak_D-3.svg/120px-Znak_D-3.svg.png"
+        },
+        "d_4a": {
+          "name": "Droga dwujezdniowa",
+          "code": "D-4A",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-4a",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Znak_D-4a.svg/120px-Znak_D-4a.svg.png"
+        },
+        "d_4b": {
+          "name": "Koniec drogi dwujezdniowej",
+          "code": "D-4B",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-4b",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Znak_D-4b.svg/120px-Znak_D-4b.svg.png"
+        },
+        "d_5": {
+          "name": "Oznacza, że kierujący przejeżdżają lub przechodzą przed kierującymi zbliżającymi się z kierunku przeciwnego.Po przeciwnej stronie zwężenia ustawiany jest znakB-31pierwszeństwo dla nadjeżdżających z przeciwka. Taka organizacja ruchu wprowadzana jest na zwężonych odcinkach krótszych niż 150 m, gdzie nie mogą wyminąć się pojazdy o szerokości 2,5 m oraz gdy kierujący mają dobrą widoczność pojazdów nadjeżdżających z przeciwka.",
+          "code": "D-5",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-5",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Znak_D-5.svg/120px-Znak_D-5.svg.png"
+        },
+        "d_6": {
+          "name": "Oznacza miejsce przeznaczone do przechodzenia pieszych w poprzek drogi. Znak umieszcza się bezpośrednio przedprzejściem dla pieszychoznaczonym znakiem poziomymP-10. Kierujący pojazdem zbliżający się do miejsca oznaczonego znakiem jest zobowiązany zmniejszyć prędkość tak, aby nie narazić na niebezpieczeństwo pieszych znajdujących się w tych miejscach lub na nie wchodzących. Umieszczona pod znakiem tabliczkaT-27wskazuje, że przejście dla pieszych jest szczególnie uczęszczane przez dzieci.",
+          "code": "D-6",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-6",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Znak_D-6.svg/120px-Znak_D-6.svg.png"
+        },
+        "d_7": {
+          "name": "Oznacza początek lub kontynuacjędrogi ekspresowej. Umieszczona pod znakiem tabliczkaT-1awskazuje odległość do początku drogi. Umieszczona pod znakiem tabliczkaT-28wskazuje, że za przejazd pobierane są opłaty.",
+          "code": "D-7",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-7",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Znak_D-7.svg/120px-Znak_D-7.svg.png"
+        },
+        "d_8": {
+          "name": "Oznacza koniec drogi ekspresowej. Umieszczona pod znakiem tabliczkaT-1awskazuje odległość do końca drogi.",
+          "code": "D-8",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-8",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Znak_D-8.svg/120px-Znak_D-8.svg.png"
+        },
+        "d_9": {
+          "name": "Oznacza początek lub kontynuacjęautostrady. Umieszczona pod znakiem tabliczkaT-1awskazuje odległość do początku autostrady. Umieszczona pod znakiem tabliczkaT-28wskazuje, że za przejazd pobierane są opłaty.",
+          "code": "D-9",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-9",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Znak_D-9.svg/120px-Znak_D-9.svg.png"
+        },
+        "d_10": {
+          "name": "Oznacza koniec autostrady. Umieszczona pod znakiem tabliczkaT-1awskazuje odległość do końca autostrady.",
+          "code": "D-10",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-10",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Znak_D-10.svg/120px-Znak_D-10.svg.png"
+        },
+        "d_11": {
+          "name": "Oznacza początek pasa ruchu przeznaczonego tylko dlaautobusówitrolejbusóworaz innych pojazdów wykonujących odpłatny przewóz osób na regularnych liniach. Jeżeli na pasie dopuszczony jest ruch innych pojazdów, na znaku umieszczony jest odpowiedni napis, np. TAXI, co oznacza, że na pasie oznaczonym tym znakiem jest dopuszczony także ruch taksówek.Wyznaczanie pasów ruchu dla autobusów i trolejbusów ma na celu poprawienie sprawności kursowania tych pojazdów na zatłoczonych ulicach.",
+          "code": "D-11",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-11",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Znak_D-11.svg/120px-Znak_D-11.svg.png"
+        },
+        "d_12a": {
+          "name": "Droga dla rowerów i pieszych",
+          "code": "D-12A",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-12a"
+        },
+        "d_12b": {
+          "name": "Droga dla rowerów i pieszych",
+          "code": "D-12B",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-12b"
+        },
+        "d_13": {
+          "name": "Oznacza początek pasa ruchu, z którego są obowiązani korzystać kierujący pojazdami nieosiągającymi na wzniesieniu minimalnej prędkości określonej na znaku liczbą kilometrów na godzinę. Umieszczona pod znakiem tabliczkaT-1awskazuje odległość do początku pasa ruchu.",
+          "code": "D-13",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-13",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Znak_D-13.svg/120px-Znak_D-13.svg.png"
+        },
+        "d_14": {
+          "name": "Oznacza koniec skrajnego pasa ruchu, znajdującego się po stronie wskazanej na znaku. ZnakD-14umieszczony przy pasie ruchu powolnego oznacza koniec tego pasa ruchu. Umieszczona pod znakiem tabliczkaT-1awskazuje odległość do początku lub końca pasa ruchu.",
+          "code": "D-14",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-14",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Znak_D-14.svg/120px-Znak_D-14.svg.png"
+        },
+        "d_15": {
+          "name": "na znakach dotyczących komunikacji zbiorowej takich jakD-15:przystanek autobusowy,D-16:przystanek trolejbusowy iD-17:przystanek tramwajowy nie dopuszcza się umieszczania dodatkowych napisów lub symboli[13]:logo lub nazwę przewoźnika, np.MPK,MZK,ZKM,ZTM,MKS,WPK,PKSitp. lub jego symbol;rodzaj przystanku, np. na żądanie, techniczny, tymczasowy, początkowy, końcowy lub krańcowy, nieczynny, szkolny, dla wsiadających, dla wysiadających itp.;nazwę lub numer przystanku;oznaczenia numerów linii na którym się zatrzymują.",
+          "code": "D-15",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-15",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Znak_D-15.svg/120px-Znak_D-15.svg.png"
+        },
+        "d_16": {
+          "name": "Oznacza miejsce zatrzymywania się wskazanych na znaku pojazdów wykonujących odpłatny przewóz osób na regularnych liniach.",
+          "code": "D-16",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-16",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Znak_D-16.svg/120px-Znak_D-16.svg.png"
+        },
+        "d_17": {
+          "name": "Oznacza miejsce zatrzymywania się wskazanych na znaku pojazdów wykonujących odpłatny przewóz osób na regularnych liniach.",
+          "code": "D-17",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-17",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Znak_D-17.svg/120px-Znak_D-17.svg.png"
+        },
+        "d_18": {
+          "name": "Oznacza miejsce przeznaczone na postój pojazdów (zespołów pojazdów), z wyjątkiem przyczep kempingowych; umieszczona pod znakiem tabliczkaT-23eoznacza, że na parkingu jest dopuszczony także postój przyczep kempingowych. Umieszczona pod znakiemD-18tabliczkaT-30wskazuje sposób ustawienia pojazdu względem krawędzi jezdni (oznaczonej na tabliczce barwą szarą) oraz że miejsce jest przeznaczone dla pojazdów samochodowych o dopuszczalnej masie całkowitej nieprzekraczającej 2,5 t. Umieszczona pod znakiemD-18tabliczkaT-3awskazuje koniec miejsca przeznaczonego na postój. Umieszczona pod znakiem tabliczkaT-29informuje o miejscu przeznaczonym dla pojazdu samochodowego uprawnionej osoby niepełnosprawnej o obniżonej sprawności ruchowej oraz dla kierującego pojazdem przewożącego taką osobę. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-18",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-18",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Znak_D-18.svg/120px-Znak_D-18.svg.png"
+        },
+        "d_19": {
+          "name": "Oznacza miejsce przeznaczone na postój taksówek osobowych, z wyjątkiem taksówek zajętych. Jeśli na postoju taksówek nie umieszczono znakuD-20, to znakD-19obowiązuje w odległości do 20 m od miejsca jego umieszczenia[1][2]. Znak ten powinien być wykonany jako dwustronny – wówczas na odwrotnej stronie umieszcza się znakD-20[2].",
+          "code": "D-19",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-19",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Znak_D-19.svg/120px-Znak_D-19.svg.png"
+        },
+        "d_20": {
+          "name": "Oznacza miejsce, w którym kończy się postój taksówek. Znak ten powinien być wykonany jako dwustronny – wówczas na jego odwrotnej stronie umieszcza się znakD-19[2].",
+          "code": "D-20",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-20",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Znak_D-20.svg/120px-Znak_D-20.svg.png"
+        },
+        "d_21": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-21",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-21",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Znak_D-21.svg/120px-Znak_D-21.svg.png"
+        },
+        "d_22": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-22",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-22",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Znak_D-22.svg/120px-Znak_D-22.svg.png"
+        },
+        "d_23": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Umieszczony w dolnej części znaku napis „LPGGAZ” informuje, że stacja prowadzi także sprzedaż gazu do napędu pojazdów. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-23",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-23",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Znak_D-23.svg/120px-Znak_D-23.svg.png"
+        },
+        "d_24": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-24",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-24",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Znak_D-24.svg/120px-Znak_D-24.svg.png"
+        },
+        "d_25": {
+          "name": "Tarcza znaku",
+          "code": "D-25",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-25",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Znak_D-25.svg/120px-Znak_D-25.svg.png"
+        },
+        "d_26": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-26",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-26",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Znak_D-26.svg/120px-Znak_D-26.svg.png"
+        },
+        "d_27": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-27",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-27",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Znak_D-27.svg/120px-Znak_D-27.svg.png"
+        },
+        "d_28": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-28",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-28",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Znak_D-28.svg/120px-Znak_D-28.svg.png"
+        },
+        "d_29": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni, znak informuje również o innych miejscach noclegowych.",
+          "code": "D-29",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-29",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Znak_D-29.svg/120px-Znak_D-29.svg.png"
+        },
+        "d_30": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-30",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-30",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Znak_D-30.svg/120px-Znak_D-30.svg.png"
+        },
+        "d_31": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-31",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-31",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Znak_D-31.svg/120px-Znak_D-31.svg.png"
+        },
+        "d_32": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-32",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-32",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Znak_D-32.svg/120px-Znak_D-32.svg.png"
+        },
+        "d_33": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-33",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-33",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Znak_D-33.svg/120px-Znak_D-33.svg.png"
+        },
+        "d_34": {
+          "name": "Informuje o wskazanym na znaku obiekcie znajdującym się przy drodze. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-34",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-34",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Znak_D-34.svg/120px-Znak_D-34.svg.png"
+        },
+        "d_35": {
+          "name": "Jest tym samym znakiem coD",
+          "code": "D-35",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-35",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Znak_D-35.svg/120px-Znak_D-35.svg.png"
+        },
+        "d_36": {
+          "name": "Jest tym samym znakiem coD",
+          "code": "D-36",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-36",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Znak_D-36.svg/120px-Znak_D-36.svg.png"
+        },
+        "d_37": {
+          "name": "Oznacza wjazd do tunelu",
+          "code": "D-37",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-37",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Znak_D-37.svg/120px-Znak_D-37.svg.png"
+        },
+        "d_38": {
+          "name": "Oznacza wyjazd z tunelu",
+          "code": "D-38",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-38",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Znak_D-38.svg/120px-Znak_D-38.svg.png"
+        },
+        "d_39": {
+          "name": "Informuje o dopuszczalnych prędkościach obowiązujących na terytoriumRzeczypospolitej Polskiej. Na przejściu granicznym mogą być także umieszczone tablice z napisami lub symbolami podające informacje o przepisach obowiązujących na terytorium Polski.",
+          "code": "D-39",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-39",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Znak_D-39.svg/120px-Znak_D-39.svg.png"
+        },
+        "d_40": {
+          "name": "początkustrefy zamieszkaniaoznaczonej znakiemD",
+          "code": "D-40",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-40",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Znak_D-40.svg/120px-Znak_D-40.svg.png"
+        },
+        "d_41": {
+          "name": "Oznacza wyjazd ze strefy zamieszkania. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni.",
+          "code": "D-41",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-41",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Znak_D-41.svg/120px-Znak_D-41.svg.png"
+        },
+        "d_42": {
+          "name": "Oznacza wjazd na obszar zabudowany",
+          "code": "D-42",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-42",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Znak_D-42.svg/120px-Znak_D-42.svg.png"
+        },
+        "d_43": {
+          "name": "Oznacza wyjazd z obszaru zabudowanego",
+          "code": "D-43",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-43",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Znak_D-43.svg/120px-Znak_D-43.svg.png"
+        },
+        "d_44": {
+          "name": "Oznacza wjazd do strefy, w której za postój pojazdu jest pobierana opłata. W strefie tej zabroniony jest postój pojazdu bez wniesienia opłaty, z wyjątkiem postoju pojazdów osób lub jednostek, dla których ustalona została zerowa stawka opłaty oraz postoju pojazdów komunikacji publicznej na wyznaczonych dla nich miejscach. Znak wprowadzono w 1999 roku[4].",
+          "code": "D-44",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-44",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Znak_D-44.svg/120px-Znak_D-44.svg.png"
+        },
+        "d_45": {
+          "name": "Oznacza wyjazd ze strefy parkowania",
+          "code": "D-45",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-45",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Znak_D-45.svg/120px-Znak_D-45.svg.png"
+        },
+        "d_46": {
+          "name": "Oznacza początek ogólnodostępnej drogi niepublicznej; napis umieszczony na znaku wskazuje zarządcę tej drogi. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni. Znak formalnie wprowadzono w 1999 roku[4], dawniej jego odpowiednik stanowiła biała tablica z czarnym napisemDroga niepubliczna[6].",
+          "code": "D-46",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-46",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Znak_D-46.svg/120px-Znak_D-46.svg.png"
+        },
+        "d_47": {
+          "name": "Oznacza wyjazd z drogi wewnętrznej na drogę publiczną. Znak może być umieszczony w innym miejscu niż po prawej stronie jezdni. Znak formalnie wprowadzono w 1999 roku[4].",
+          "code": "D-47",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce#D-47",
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Znak_D-47.svg/120px-Znak_D-47.svg.png"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "total_signs": 164,
+    "categories": {
+      "A": {
+        "name": "Znaki ostrzegawcze",
+        "count": 34
+      },
+      "B": {
+        "name": "Znaki zakazu",
+        "count": 43
+      },
+      "C": {
+        "name": "Znaki nakazu",
+        "count": 19
+      },
+      "D": {
+        "name": "Znaki informacyjne",
+        "count": 47
+      }
+    },
+    "created": "2024-12-19",
+    "description": "Baza danych polskich znaków drogowych z nazwami i linkami do Wikipedii"
+  }
+}
