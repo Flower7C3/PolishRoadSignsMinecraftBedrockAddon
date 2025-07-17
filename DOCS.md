@@ -11,7 +11,7 @@ Addon składa się z dwóch głównych komponentów:
 
 ### Struktura plików
 
-```
+```text
 BP/
 ├── manifest.json              # Konfiguracja BP
 ├── blocks/                    # Definicje bloków
@@ -149,7 +149,7 @@ RP/
 
 - **Identifier**: `polish_road_sign:sign_code`
 - **Geometry**: Wspólny model `road_sign.geo.json`
-- **Textures**: 
+- **Textures**:
   - `*` - szary beton (ramka)
   - `south` - tekstura znaku (przezroczysta)
 - **Collision**: 16x16x2 piksele
@@ -274,6 +274,7 @@ Instaluje paczkę lokalnie:
 Projekt używa GitHub Actions do automatycznego budowania i testowania:
 
 #### build.yml
+
 - **Trigger**: Push do main/master
 - **Funkcje**:
   - **Build job**: Auto-version bump, buduje .mcaddon i .mcpack
@@ -348,14 +349,16 @@ grep "identifier" BP/blocks/*/*.block.json
 
 ## 📊 Statystyki projektu
 
-### Liczba znaków:
+### Liczba znaków
+
 - **A (Ostrzegawcze)**: 34 znaki
 - **B (Zakazu)**: 43 znaki  
 - **C (Nakazu)**: 19 znaków
 - **D (Informacyjne)**: 47 znaków
 - **Łącznie**: 143 znaki
 
-### Pliki:
+### Pliki
+
 - **Bloki**: 143 pliki .block.json
 - **Tekstury**: 143 pliki .png
 - **Tłumaczenia**: 286 wpisów (2 języki × 143 znaki)
@@ -365,32 +368,37 @@ grep "identifier" BP/blocks/*/*.block.json
 ### Dodawanie nowego znaku
 
 1. **Dodaj blok**:
-   ```bash
-   cp BP/blocks/a/a_1.block.json BP/blocks/a/a_35.block.json
-   # Edytuj identifier i teksturę
-   ```
+
+```bash
+cp BP/blocks/a/a_1.block.json BP/blocks/a/a_35.block.json
+# Edytuj identifier i teksturę
+```
 
 2. **Dodaj teksturę**:
-   ```bash
-   # Umieść a_35.png w RP/textures/blocks/a/
-   ```
+
+```bash
+# Umieść a_35.png w RP/textures/blocks/a/
+```
 
 3. **Zaktualizuj terrain_texture.json**:
-   ```json
-   "a_35": {
-     "textures": "textures/blocks/a/a_35.png"
-   }
-   ```
+
+```json
+"a_35": {
+  "textures": "textures/blocks/a/a_35.png"
+}
+```
 
 4. **Dodaj tłumaczenia**:
-   ```bash
-   # Dodaj do RP/texts/pl_PL.lang i en_US.lang
-   ```
+
+```bash
+# Dodaj do RP/texts/pl_PL.lang i en_US.lang
+```
 
 5. **Zaktualizuj katalog**:
-   ```bash
-   # Dodaj do BP/item_catalog/crafting_item_catalog.json
-   ```
+
+```bash
+# Dodaj do BP/item_catalog/crafting_item_catalog.json
+```
 
 ### Konwencje kodowania
 
@@ -402,14 +410,16 @@ grep "identifier" BP/blocks/*/*.block.json
 ## 🔗 Zasoby zewnętrzne
 
 ### Dokumentacja Minecraft Bedrock
+
 - [Behavior Pack Documentation](https://docs.microsoft.com/en-us/minecraft/creator/documents/behaviorpack)
 - [Resource Pack Documentation](https://docs.microsoft.com/en-us/minecraft/creator/documents/resourcepack)
 - [Block Documentation](https://docs.microsoft.com/en-us/minecraft/creator/reference/content/blockreference)
 
 ### Narzędzia
+
 - [Blockbench](https://www.blockbench.net/) - edytor modeli i tekstur
 - [Minecraft Bedrock Dedicated Server](https://www.minecraft.net/en-us/download/server/bedrock)
 
 ---
 
-**Uwaga**: Ta dokumentacja jest przeznaczona dla developerów i contributorów projektu. 
+**Uwaga**: Ta dokumentacja jest przeznaczona dla developerów i contributorów projektu.

@@ -44,3 +44,4 @@ for folder, target in [('BP', BP_TARGET), ('RP', RP_TARGET)]:
         print(f'Brak folderu {src} w paczce!')
 
 print(f'Gotowe! BP i RP są wgrane do Minecraft jako {plugin_name}.') 
+ 
