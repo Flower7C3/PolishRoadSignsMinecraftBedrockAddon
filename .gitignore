@@ -61,4 +61,7 @@ logs/
 *.tmp
 *.temp
 temp/
-tmp/ 
+tmp/
+
+# SVG cache files (downloaded from Wikipedia)
+*.svg 
