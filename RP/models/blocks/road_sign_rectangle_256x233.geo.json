@@ -1,0 +1,110 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.road_sign_rectangle_256x233",
+        "texture_width": 256,
+        "texture_height": 233,
+        "visible_bounds_width": 4.0,
+        "visible_bounds_height": 3.640625,
+        "visible_bounds_offset": [
+          0,
+          1.8203125,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "block",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                0,
+                0
+              ],
+              "size": [
+                32,
+                29,
+                0.1
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    256,
+                    233
+                  ]
+                },
+                "east": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    256,
+                    233
+                  ]
+                },
+                "south": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    256,
+                    233
+                  ]
+                },
+                "west": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    256,
+                    233
+                  ]
+                },
+                "up": {
+                  "uv": [
+                    32,
+                    32
+                  ],
+                  "uv_size": [
+                    256,
+                    233
+                  ]
+                },
+                "down": {
+                  "uv": [
+                    32,
+                    32
+                  ],
+                  "uv_size": [
+                    256,
+                    233
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
