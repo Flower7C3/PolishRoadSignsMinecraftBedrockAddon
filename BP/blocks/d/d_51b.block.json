@@ -23,7 +23,7 @@
         ],
         "size": [
           16,
-          16,
+          24,
           0.1
         ]
       },
@@ -35,7 +35,7 @@
         ],
         "size": [
           16,
-          16,
+          24,
           0.1
         ]
       },
@@ -49,11 +49,11 @@
       "minecraft:material_instances": {
         "south": {
           "texture": "polish_road_sign:d_51b",
-          "render_method": "alpha_test"
+          "render_method": "alpha_test_single_sided"
         },
         "north": {
-          "texture": "polish_road_sign:rectangle_back_128x160",
-          "render_method": "alpha_test"
+          "texture": "polish_road_sign:square_back_128x128",
+          "render_method": "alpha_test_single_sided"
         }
       }
     },

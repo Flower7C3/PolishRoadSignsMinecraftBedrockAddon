@@ -65,7 +65,7 @@ def verify_geometry_texture_compatibility():
             if width and height:
                 model_dimensions[model_name] = (width, height)
     
-    print(f"✓ Models loaded: {len(model_dimensions)}")
+    print(f"📐 Models loaded: {len(model_dimensions)}")
     print(f"  Model dimensions: {', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}")
     
     # Sprawdź wszystkie bloki
@@ -143,7 +143,7 @@ def verify_geometry_texture_compatibility():
                         compatibility_issues.append(f"{sign_id} (error: {str(e)})")
     
     # Wyświetl wyniki
-    print(f"✓ Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
+    print(f"📋 Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
     
     if texture_model_mismatches:
         print(f"  ⚠️  Texture-model mismatches: {len(texture_model_mismatches)}")
@@ -217,7 +217,7 @@ def verify_textures():
             else:
                 total_missing += 1
     
-    print(f"✓ Found: {total_found}, Missing: {total_missing}")
+    print(f"📋 Found: {total_found}, Missing: {total_missing}")
     print(f"  Dimensions: {', '.join([f'{dim}({count})' for dim, count in sorted(dimension_stats.items())])}")
     
     # Sprawdź wszystkie tekstury w terrain_texture.json i nadmiarowe pliki PNG
@@ -239,7 +239,7 @@ def verify_textures():
             terrain_textures_missing += 1
             missing_textures.append(texture_id)
     
-    print(f"✓ Terrain textures: {terrain_textures_found}/{terrain_textures_found + terrain_textures_missing}")
+    print(f"🎨 Terrain textures: {terrain_textures_found}/{terrain_textures_found + terrain_textures_missing}")
     
     if missing_textures:
         print(f"  Missing: {', '.join(missing_textures)}")
@@ -283,7 +283,7 @@ def verify_textures():
     # Znajdź nadmiarowe pliki PNG
     extra_png_files = all_png_files - terrain_texture_paths
     
-    print(f"✓ PNG files: {len(all_png_files)}")
+    print(f"📁 PNG files: {len(all_png_files)}")
     print(f"  Terrain textures: {len(terrain_texture_paths)}")
     print(f"  Extra PNG files: {len(extra_png_files)}")
     
@@ -322,9 +322,9 @@ def verify_textures():
     terrain_texture_keys = set(terrain_data['texture_data'].keys())
     missing_in_terrain = block_textures - terrain_texture_keys
     
-    print(f"✓ Block textures: {len(block_textures)}")
-    print(f"  In terrain: {len(block_textures - missing_in_terrain)}")
-    print(f"  Missing in terrain: {len(missing_in_terrain)}")
+    print(f"🔗 Block textures referenced in block definitions: {len(block_textures)}")
+    print(f"  Found in terrain_texture.json: {len(block_textures - missing_in_terrain)}")
+    print(f"  Missing from terrain_texture.json: {len(missing_in_terrain)}")
     
     if missing_in_terrain:
         print(f"  Missing: {', '.join(sorted(missing_in_terrain))}")
@@ -373,7 +373,7 @@ def verify_models():
             if not is_used:
                 unused_models.append(filename)
     
-    print(f"✓ Used: {len(used_models)}, Unused: {len(unused_models)}")
+    print(f"📐 Used: {len(used_models)}, Unused: {len(unused_models)}")
     
     if unused_models:
         print("  Details:")
@@ -408,7 +408,7 @@ def verify_block_definitions():
             else:
                 total_missing += 1
     
-    print(f"✓ Found: {total_found}, Missing: {total_missing}")
+    print(f"📋 Found: {total_found}, Missing: {total_missing}")
     
     return total_found, total_missing
 
@@ -423,28 +423,40 @@ def verify_database():
     categories = ['A', 'B', 'C', 'D']
     total_signs = 0
     signs_with_dimensions = 0
-    signs_with_wikipedia = 0
+    signs_with_wikipedia_file = 0
     signs_with_translations = 0
+    categories_with_wikipedia_url = 0
+    categories_with_translations = 0
     
     for category in categories:
         signs = data['road_signs'][category]['signs']
         category_count = len(signs)
         total_signs += category_count
         
+        # Sprawdź URL kategorii
+        if 'wikipedia_url' in data['road_signs'][category]:
+            categories_with_wikipedia_url += 1
+        
+        # Sprawdź tłumaczenia kategorii
+        if 'translations' in data['road_signs'][category]:
+            categories_with_translations += 1
+        
         for sign_id, sign_data in signs.items():
             if 'image_width' in sign_data and 'image_height' in sign_data:
                 signs_with_dimensions += 1
-            if 'wikipedia_url' in sign_data:
-                signs_with_wikipedia += 1
+            if 'wikipedia_file_page' in sign_data:
+                signs_with_wikipedia_file += 1
             if 'translation_pl' in sign_data and 'translation_en' in sign_data:
                 signs_with_translations += 1
     
-    print(f"✓ Total: {total_signs}")
+    print(f"📊 Total: {total_signs}")
     print(f"  With dimensions: {signs_with_dimensions}")
-    print(f"  With Wikipedia links: {signs_with_wikipedia}")
+    print(f"  With Wikipedia file pages: {signs_with_wikipedia_file}")
     print(f"  With translations: {signs_with_translations}")
+    print(f"  Categories with Wikipedia URLs: {categories_with_wikipedia_url}/4")
+    print(f"  Categories with translations: {categories_with_translations}/4")
     
-    return total_signs, signs_with_dimensions, signs_with_wikipedia, signs_with_translations
+    return total_signs, signs_with_dimensions, signs_with_wikipedia_file, signs_with_translations
 
 def verify_project_structure():
     """Weryfikuj strukturę projektu"""
@@ -465,7 +477,7 @@ def verify_project_structure():
         else:
             missing_dirs.append(dir_path)
     
-    print(f"✓ Found: {found_dirs}, Missing: {len(missing_dirs)}")
+    print(f"📋 Found: {found_dirs}, Missing: {len(missing_dirs)}")
     
     if missing_dirs:
         print(f"  Missing: {', '.join(missing_dirs)}")
@@ -509,7 +521,7 @@ def verify_translations():
     extra_pl = pl_translations - all_signs
     extra_en = en_translations - all_signs
     
-    print(f"✓ Polish: {len(pl_translations)}/{len(all_signs)}")
+    print(f"🇵🇱 Polish: {len(pl_translations)}/{len(all_signs)}")
     if missing_pl:
         print(f"    Missing {len(missing_pl)}:")
         for name in missing_pl:
@@ -518,7 +530,7 @@ def verify_translations():
         print(f"    Extra {len(extra_pl)}:")
         for name in extra_pl:
             print(f"      {name}")
-    print(f"✓ English: {len(en_translations)}/{len(all_signs)}")
+    print(f"🇬🇧 English: {len(en_translations)}/{len(all_signs)}")
     if missing_en:
         print(f"    Missing {len(missing_en)}:")
         for name in missing_en:
@@ -591,7 +603,7 @@ def verify_signs_completeness():
     extra_pl = pl_translations - database_signs
     extra_en = en_translations - database_signs
     
-    print(f"✓ Database: {len(database_signs)} signs")
+    print(f"📊 Database: {len(database_signs)} signs")
     print(f"  Missing blocks: {len(missing_blocks)}")
     print(f"  Missing PNGs: {len(missing_pngs)}")
     print(f"  Missing PL: {len(missing_pl)}")
@@ -615,8 +627,34 @@ def verify_blocks_comprehensive():
     with open('RP/textures/terrain_texture.json', 'r', encoding='utf-8') as f:
         terrain_data = json.load(f)
     
+    # 0. SPRAWDŹ POLE SHAPE W BAZIE DANYCH
+    print("📐 SHAPE FIELD VERIFICATION")
+    print("-" * 30)
+    
+    signs_with_shape = 0
+    signs_without_shape = 0
+    shape_types = {}
+    
+    for category in ['A', 'B', 'C', 'D']:
+        signs = data['road_signs'][category]['signs']
+        for sign_id, sign_data in signs.items():
+            if 'shape' in sign_data:
+                signs_with_shape += 1
+                shape_type = sign_data['shape']
+                if shape_type not in shape_types:
+                    shape_types[shape_type] = 0
+                shape_types[shape_type] += 1
+            else:
+                signs_without_shape += 1
+    
+    print(f"✓ Signs with shape field: {signs_with_shape}")
+    if signs_without_shape > 0:
+        print(f"  ⚠️  Signs without shape field: {signs_without_shape}")
+    
+    print(f"  Shape types: {', '.join([f'{shape}({count})' for shape, count in shape_types.items()])}")
+    
     # 1. SPRAWDŹ DEFINICJE BLOKÓW
-    print("📋 BLOCK DEFINITIONS")
+    print("\n📋 BLOCK DEFINITIONS")
     print("-" * 30)
     
     categories = ['A', 'B', 'C', 'D']
@@ -633,7 +671,7 @@ def verify_blocks_comprehensive():
             else:
                 total_missing += 1
     
-    print(f"✓ Found: {total_found}, Missing: {total_missing}")
+    print(f"📋 Found: {total_found}, Missing: {total_missing}")
     
     # 2. SPRAWDŹ TEKSTURY I PLIKI PNG
     print("\n🎨 TEXTURES & PNG FILES")
@@ -642,7 +680,7 @@ def verify_blocks_comprehensive():
     # Sprawdź czy wszystkie tekstury z terrain_texture.json istnieją
     terrain_textures_found = 0
     terrain_textures_missing = 0
-    missing_textures = []
+    missing_png_textures = []
     
     for texture_id, texture_info in terrain_data['texture_data'].items():
         texture_path = texture_info['textures']
@@ -652,14 +690,16 @@ def verify_blocks_comprehensive():
             terrain_textures_found += 1
         else:
             terrain_textures_missing += 1
-            missing_textures.append(texture_id)
+            missing_png_textures.append(texture_id)
     
-    print(f"✓ Terrain textures from blocks: {terrain_textures_found}")
+    # Test 1: Sprawdź czy wszystkie zdefiniowane tekstury mają pliki PNG
+    print(f"✓ Terrain textures from definition: {len(terrain_data['texture_data'])}")
+    print(f"  PNG files defined in terrain_texture.json: {terrain_textures_found}")
+    if terrain_textures_missing > 0:
+        print(f"  Missing files amount: {terrain_textures_missing}")
+        print(f"  Missing textures: {', '.join(missing_png_textures)}")
     
-    if missing_textures:
-        print(f"✖ Missing {terrain_textures_missing}: {', '.join(missing_textures)}")
-    
-    # Zbierz wszystkie pliki PNG
+    # Test 2: Sprawdź czy są pliki PNG bez definicji
     all_png_files = set()
     
     for category in ['a', 'b', 'c', 'd']:
@@ -692,16 +732,16 @@ def verify_blocks_comprehensive():
     # Znajdź nadmiarowe pliki PNG
     extra_png_files = all_png_files - terrain_texture_paths
     
-    print(f"✓  Terrain textures from definition: {len(terrain_texture_paths)}")
-    print(f" PNG files: {len(all_png_files)}")
-    print(f"  ✖  Extra PNG files: {len(extra_png_files)}")
+    print(f"✓ Existing PNG files with texture definition in terrain_texture.json: {len(all_png_files)}")
+    if len(extra_png_files) > 0:
+        print(f"  PNG files not defined in terrain_texture.json: {len(extra_png_files)}")
     
     if extra_png_files:
         print("  Details:")
         for extra_file in sorted(extra_png_files):
             print(f"    - {extra_file}")
     
-    # 3. SPRAWDŹ TEKSTURY Z BLOKÓW
+    # Test 3: Sprawdź czy wszystkie używane tekstury z bloków są zdefiniowane
     print("\n🔗 BLOCK TEXTURES IN TERRAIN")
     print("-" * 30)
     
@@ -725,13 +765,20 @@ def verify_blocks_comprehensive():
     
     terrain_texture_keys = set(terrain_data['texture_data'].keys())
     missing_in_terrain = block_textures - terrain_texture_keys
+    unused_textures = terrain_texture_keys - block_textures
     
-    print(f"✓ Block textures: {len(block_textures)}")
-    print(f"  In terrain: {len(block_textures - missing_in_terrain)}")
-    print(f"  Missing in terrain: {len(missing_in_terrain)}")
+    print(f"✓ Block textures referenced in block definitions: {len(block_textures)}")
+    print(f"  Found in terrain_texture.json: {len(block_textures - missing_in_terrain)}")
+    if len(missing_in_terrain) > 0:
+        print(f"  Missing from terrain_texture.json: {len(missing_in_terrain)}")
     
     if missing_in_terrain:
-        print(f"  Missing: {', '.join(sorted(missing_in_terrain))}")
+        print(f"  Missing from terrain_texture.json: {', '.join(sorted(missing_in_terrain))}")
+    
+    # Test 4: Sprawdź czy są nieużywane tekstury
+    if len(unused_textures) > 0:
+        print(f"  Unused textures in terrain_texture.json: {len(unused_textures)}")
+        print(f"  Unused: {', '.join(sorted(unused_textures))}")
     
     # 4. SPRAWDŹ MODELE 3D
     print("\n📐 3D MODELS")
@@ -769,7 +816,7 @@ def verify_blocks_comprehensive():
             if not is_used:
                 unused_models.append(filename)
     
-    print(f"✓ Used: {len(used_models)}, Unused: {len(unused_models)}")
+    print(f"📐 Used: {len(used_models)}, Unused: {len(unused_models)}")
     
     if unused_models:
         print("  Details:")
@@ -790,7 +837,7 @@ def verify_blocks_comprehensive():
             if width and height:
                 model_dimensions[model_name] = (width, height)
     
-    print(f"✓ Models loaded: {len(model_dimensions)}")
+    print(f"📐 Models loaded: {len(model_dimensions)}")
     print(f"  Model dimensions: {', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}")
     
     # Sprawdź kompatybilność
@@ -866,7 +913,7 @@ def verify_blocks_comprehensive():
                     except Exception as e:
                         compatibility_issues.append(f"{sign_id} (error: {str(e)})")
     
-    print(f"✓ Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
+    print(f"📋 Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
     
     if texture_model_mismatches:
         print(f"  ⚠️  Texture-model mismatches: {len(texture_model_mismatches)}")
@@ -896,22 +943,11 @@ def verify_blocks_comprehensive():
         if len(compatibility_issues) > 3:
             print(f"    ... and {len(compatibility_issues) - 3} more")
     
-    if not texture_model_mismatches and not missing_models and not missing_textures and not compatibility_issues:
-        print(f"  ✅ All blocks have compatible geometries and textures!")
-    
-    # Podsumowanie sekcji bloków
-    print(f"\n📊 BLOCKS SUMMARY:")
-    print(f"  ✓ Block definitions: {total_found}/{total_found + total_missing}")
-    print(f"  ✓ Terrain textures: {terrain_textures_found}/{terrain_textures_found + terrain_textures_missing}")
-    print(f"  ✓ PNG files: {len(all_png_files)} total, {len(extra_png_files)} extra")
-    print(f"  ✓ Block textures: {len(block_textures)} total, {len(missing_in_terrain)} missing in terrain")
-    print(f"  ✓ 3D models: {len(used_models)} used, {len(unused_models)} unused")
-    print(f"  ✓ Compatibility: {len(texture_model_mismatches)} mismatches, {len(missing_models)} missing models")
-    
     return (total_found, total_missing, terrain_textures_found, terrain_textures_missing, 
             all_png_files, extra_png_files, block_textures, missing_in_terrain,
             len(used_models), len(unused_models), texture_model_mismatches, 
-            len(missing_models), len(missing_textures), len(compatibility_issues))
+            len(missing_models), len(missing_textures), len(compatibility_issues),
+            signs_with_shape, signs_without_shape, unused_textures)
 
 def main():
     """Główna funkcja weryfikacji"""
@@ -922,7 +958,8 @@ def main():
     (blocks_found, blocks_missing, terrain_textures_found, terrain_textures_missing, 
      all_png_files, extra_png_files, block_textures, missing_in_terrain,
      models_used, models_unused, texture_model_mismatches, 
-     missing_models, missing_textures, compatibility_issues) = verify_blocks_comprehensive()
+     missing_models, missing_textures, compatibility_issues,
+     signs_with_shape, signs_without_shape, unused_textures) = verify_blocks_comprehensive()
     
     # 2. MENU I TŁUMACZENIA
     pl_trans, en_trans, pl_missing, en_missing = verify_translations()
@@ -937,25 +974,66 @@ def main():
     print("📊 OVERALL SUMMARY")
     print("=" * 50)
     
-    # Oblicz sukces tekstur na podstawie terrain_textures
+    # Oblicz procenty sukcesu
     texture_success_rate = 100.0 if (terrain_textures_found + terrain_textures_missing) > 0 else 0
     if terrain_textures_found + terrain_textures_missing > 0:
         texture_success_rate = (terrain_textures_found / (terrain_textures_found + terrain_textures_missing)) * 100
     
-    print(f"Textures: {terrain_textures_found}/{terrain_textures_found + terrain_textures_missing} ({texture_success_rate:.1f}%)")
-    print(f"Models: {models_used}/{models_used + models_unused} (Used: {models_used}, Unused: {models_unused})")
-    print(f"Block Definitions: {blocks_found}/{blocks_found + blocks_missing} ({blocks_found / (blocks_found + blocks_missing) * 100:.1f}%)")
-    print(f"Database: {db_total} signs with dimensions")
-    print(f"Structure: {structure_found}/{structure_found + structure_missing} directories found")
-    print(f"Translations: PL {pl_trans}/{signs_total}, EN {en_trans}/{signs_total}")
-    print(f"Signs completeness: missing blocks: {signs_missing_blocks}, missing PNGs: {signs_missing_pngs}, missing PL: {signs_missing_pl}, missing EN: {signs_missing_en}")
-    print(f"Geometry-Texture Compatibility: mismatches: {len(texture_model_mismatches)}, missing models: {missing_models}, missing textures: {missing_textures}, compatibility issues: {compatibility_issues}")
+    model_success_rate = 100.0 if (models_used + models_unused) > 0 else 0
+    if models_used + models_unused > 0:
+        model_success_rate = (models_used / (models_used + models_unused)) * 100
     
-    # Dodaj podsumowanie wszystkich weryfikacji
-    print(f"\n🔍 COMPREHENSIVE VERIFICATION:")
-    print(f"  ✓ Terrain textures: {terrain_textures_found}/{terrain_textures_found + terrain_textures_missing}")
-    print(f"  ✓ PNG files: {len(all_png_files)} total, {len(extra_png_files)} extra")
-    print(f"  ✓ Block textures: {len(block_textures)} total, {len(missing_in_terrain)} missing in terrain")
+    block_success_rate = 100.0 if (blocks_found + blocks_missing) > 0 else 0
+    if blocks_found + blocks_missing > 0:
+        block_success_rate = (blocks_found / (blocks_found + blocks_missing)) * 100
+    
+    structure_success_rate = 100.0 if (structure_found + structure_missing) > 0 else 0
+    if structure_found + structure_missing > 0:
+        structure_success_rate = (structure_found / (structure_found + structure_missing)) * 100
+    
+    pl_success_rate = 100.0 if signs_total > 0 else 0
+    if signs_total > 0:
+        pl_success_rate = (pl_trans / signs_total) * 100
+    
+    en_success_rate = 100.0 if signs_total > 0 else 0
+    if signs_total > 0:
+        en_success_rate = (en_trans / signs_total) * 100
+    
+    shape_success_rate = 100.0 if (signs_with_shape + signs_without_shape) > 0 else 0
+    if signs_with_shape + signs_without_shape > 0:
+        shape_success_rate = (signs_with_shape / (signs_with_shape + signs_without_shape)) * 100
+    
+    print(f"Textures defined in terrain_texture.json: {terrain_textures_found}")
+    print(f"  Missing PNG files: {terrain_textures_missing}")
+    print(f"  Success rate: {texture_success_rate:.1f}%")
+    print()
+    print(f"PNG files found: {len(all_png_files)}")
+    print(f"  Extra files (not in terrain_texture.json): {len(extra_png_files)}")
+    print()
+    print(f"Models used by blocks: {models_used}")
+    print(f"  Unused models: {models_unused}")
+    print(f"  Success rate: {model_success_rate:.1f}%")
+    print()
+    print(f"Block definitions found: {blocks_found}")
+    print(f"  Missing blocks: {blocks_missing}")
+    print(f"  Success rate: {block_success_rate:.1f}%")
+    print()
+    print(f"Database entries: {db_total} signs with dimensions")
+    print()
+    print(f"Project directories found: {structure_found}")
+    print(f"  Missing directories: {structure_missing}")
+    print(f"  Success rate: {structure_success_rate:.1f}%")
+    print()
+    print(f"Translations - Polish: {pl_trans}/{signs_total} ({pl_success_rate:.1f}%)")
+    print(f"Translations - English: {en_trans}/{signs_total} ({en_success_rate:.1f}%)")
+    print()
+    print(f"Signs with shape field: {signs_with_shape}")
+    print(f"  Signs without shape: {signs_without_shape}")
+    print(f"  Success rate: {shape_success_rate:.1f}%")
+    print()
+    print(f"Block textures referenced: {len(block_textures)}")
+    print(f"  Missing in terrain_texture.json: {len(missing_in_terrain)}")
+    print(f"  Unused textures in terrain_texture.json: {len(unused_textures)}")
     
     # Sprawdź czy wszystko jest w porządku
     all_good = (
@@ -974,14 +1052,16 @@ def main():
         len(texture_model_mismatches) == 0 and
         missing_models == 0 and
         missing_textures == 0 and
-        compatibility_issues == 0
+        compatibility_issues == 0 and
+        signs_without_shape == 0 and
+        len(unused_textures) == 0
     )
     
     if all_good:
         print(f"\n🎉 ALL VERIFICATIONS PASSED!")
         print(f"  ✅ Project is complete and consistent")
     else:
-        print(f"\n⚠️  SOME ISSUES DETECTED:")
+        print(f"\n⚠️  ISSUES DETECTED:")
         if terrain_textures_missing > 0:
             print(f"  ❌ Missing terrain textures: {terrain_textures_missing}")
         if models_unused > 0:
@@ -992,8 +1072,6 @@ def main():
             print(f"  ❌ Missing directories: {structure_missing}")
         if pl_missing > 0 or en_missing > 0:
             print(f"  ❌ Missing translations: PL {pl_missing}, EN {en_missing}")
-        if terrain_textures_missing > 0:
-            print(f"  ❌ Missing terrain textures: {terrain_textures_missing}")
         if len(extra_png_files) > 0:
             print(f"  ❌ Extra PNG files: {len(extra_png_files)}")
         if len(missing_in_terrain) > 0:
@@ -1006,8 +1084,12 @@ def main():
             print(f"  ❌ Missing textures: {missing_textures}")
         if compatibility_issues > 0:
             print(f"  ❌ Compatibility issues: {compatibility_issues}")
+        if signs_without_shape > 0:
+            print(f"  ❌ Signs without shape field: {signs_without_shape}")
+        if len(unused_textures) > 0:
+            print(f"  ❌ Unused textures in terrain_texture.json: {len(unused_textures)}")
     
-    print("\n✅ Verification completed!")
+    print("\nVerification completed!")
 
 if __name__ == "__main__":
     main() 

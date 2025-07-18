@@ -37,6 +37,27 @@ def find_sign_in_database(sign_id, data):
             return data['road_signs'][category]['signs'][sign_id]
     return None
 
+def get_category_for_sign(sign_id, data):
+    """Pobierz kategorię dla znaku"""
+    for category in ['A', 'B', 'C', 'D']:
+        if sign_id in data['road_signs'][category]['signs']:
+            return category
+    return None
+
+def get_background_texture_for_shape(shape, width, height):
+    """Pobierz nazwę tekstury tła na podstawie kształtu znaku"""
+    shape_to_background = {
+        'triangle': 'triangle_back',
+        'inverted_triangle': 'inverted_triangle_back',
+        'circle': 'circle_back',
+        'square': 'square_back_128x128',
+        'diamond': 'diamond_back',
+        'octagon': 'octagon_back',
+        'rectangle': f'rectangle_back_{width}x{height}'
+    }
+    
+    return shape_to_background.get(shape, f'rectangle_back_{width}x{height}')
+
 def download_wikipedia_page(url):
     """Pobierz stronę Wikipedii"""
     try:
@@ -220,8 +241,92 @@ def add_to_terrain_texture(texture_name):
     
     print(f"✓ Dodano {texture_name} do terrain_texture.json")
 
-def update_block_definition(sign_id, model_name, background_name):
-    """Zaktualizuj definicję bloku"""
+def get_model_dimensions(model_name):
+    """Pobierz wymiary modelu z pliku geometry"""
+    model_path = f"RP/models/blocks/{model_name}.geo.json"
+    
+    if not os.path.exists(model_path):
+        print(f"⚠️  Nie znaleziono modelu: {model_path}")
+        return None, None
+    
+    try:
+        with open(model_path, 'r') as f:
+            model_data = json.load(f)
+        
+        # Pobierz wymiary z pierwszego cuba
+        if (model_data.get("minecraft:geometry") and 
+            len(model_data["minecraft:geometry"]) > 0 and
+            model_data["minecraft:geometry"][0].get("bones") and
+            len(model_data["minecraft:geometry"][0]["bones"]) > 0 and
+            model_data["minecraft:geometry"][0]["bones"][0].get("cubes") and
+            len(model_data["minecraft:geometry"][0]["bones"][0]["cubes"]) > 0):
+            
+            cube = model_data["minecraft:geometry"][0]["bones"][0]["cubes"][0]
+            origin = cube["origin"]
+            size = cube["size"]
+            
+            # Oblicz wymiary
+            width = size[0]
+            height = size[1]
+            
+            return width, height
+        else:
+            print(f"⚠️  Nieprawidłowa struktura modelu: {model_path}")
+            return None, None
+            
+    except Exception as e:
+        print(f"Błąd odczytu modelu {model_name}: {e}")
+        return None, None
+
+def update_collision_and_selection_boxes(sign_id, model_name):
+    """Zaktualizuj collision_box i selection_box na podstawie wymiarów modelu"""
+    category = sign_id.split('_')[0]
+    block_path = f"BP/blocks/{category}/{sign_id}.block.json"
+    
+    if not os.path.exists(block_path):
+        print(f"⚠️  Nie znaleziono pliku bloku: {block_path}")
+        return False
+    
+    # Pobierz wymiary modelu
+    width, height = get_model_dimensions(model_name)
+    if width is None or height is None:
+        print(f"⚠️  Nie udało się pobrać wymiarów modelu dla {sign_id}")
+        return False
+    
+    # Oblicz origin (środek modelu)
+    origin_x = -width // 2
+    origin_y = 0
+    origin_z = 0
+    
+    try:
+        with open(block_path, 'r') as f:
+            block_data = json.load(f)
+        
+        # Zaktualizuj collision_box
+        block_data["minecraft:block"]["components"]["minecraft:collision_box"] = {
+            "origin": [origin_x, origin_y, origin_z],
+            "size": [width, height, 0.1]
+        }
+        
+        # Zaktualizuj selection_box
+        block_data["minecraft:block"]["components"]["minecraft:selection_box"] = {
+            "origin": [origin_x, origin_y, origin_z],
+            "size": [width, height, 0.1]
+        }
+        
+        # Zapisz zaktualizowany blok
+        with open(block_path, 'w') as f:
+            json.dump(block_data, f, indent=2)
+        
+        print(f"✓ Zaktualizowano collision/selection box dla {sign_id}: {width}x{height}")
+        return True
+        
+    except Exception as e:
+        print(f"Błąd aktualizacji collision/selection box dla {sign_id}: {e}")
+        return False
+
+def update_block_definition(sign_id, model_name, background_name, shape):
+    """Zaktualizuj definicję bloku z uwzględnieniem kształtu"""
     category = sign_id.split('_')[0]
     block_path = f"BP/blocks/{category}/{sign_id}.block.json"
     
@@ -235,17 +340,21 @@ def update_block_definition(sign_id, model_name, background_name):
     # Zaktualizuj geometrię
     block_data["minecraft:block"]["components"]["minecraft:geometry"] = f"geometry.{model_name}"
     
-    # Zaktualizuj teksturę tła
+    # Zaktualizuj teksturę tła na podstawie kształtu
     for face, material in block_data["minecraft:block"]["components"]["minecraft:material_instances"].items():
         if face == "north":  # Tylna strona
             material["texture"] = f"polish_road_sign:{background_name}"
+            material["render_method"] = "alpha_test_single_sided"  # Poprawne renderowanie przezroczystości
             break
+    
+    # Zaktualizuj collision_box i selection_box
+    update_collision_and_selection_boxes(sign_id, model_name)
     
     # Zapisz zaktualizowany blok
     with open(block_path, 'w') as f:
         json.dump(block_data, f, indent=2)
     
-    print(f"✓ Zaktualizowano blok {sign_id}: model={model_name}, tło={background_name}")
+    print(f"✓ Zaktualizowano blok {sign_id}: model={model_name}, tło={background_name} (kształt: {shape})")
     return True
 
 def update_database(database_path, sign_id, width, height):
@@ -279,21 +388,41 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
     """Przetwórz pojedynczy znak z automatycznym tworzeniem modeli i tekstur"""
     print(f"\n🔍 Przetwarzanie {sign_id}...")
     
-    # Pobierz stronę Wikipedii
+    # Pobierz dane znaku z bazy danych
+    with open(database_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    sign_data = find_sign_in_database(sign_id, data)
+    if not sign_data:
+        print(f"❌ Nie znaleziono znaku {sign_id} w bazie danych")
+        return False
+    
+    # Pobierz kategorię
+    category = get_category_for_sign(sign_id, data)
+    if not category:
+        print(f"❌ Nie znaleziono kategorii dla {sign_id}")
+        return False
+    
+    print(f"📂 Kategoria: {category}")
+    
+    # Pobierz kształt znaku z bazy danych
+    shape = sign_data.get('shape', 'rectangle')
+    print(f"📐 Kształt znaku: {shape}")
+    
+    # Pobierz stronę Wikipedii (użyj bezpośredniego linku do pliku)
     html_content = download_wikipedia_page(wikipedia_file_page)
     if not html_content:
         print(f"❌ Nie udało się pobrać strony dla {sign_id}")
         return False
     
-    # Wyciągnij link do SVG
+    # Wyciągnij link do SVG z pliku
     svg_url = extract_svg_url(html_content)
     if not svg_url:
         print(f"❌ Nie znaleziono linku SVG dla {sign_id}")
         return False
     
     # Przygotuj katalogi
-    category = sign_id.split('_')[0]
-    target_dir = f"RP/textures/blocks/{category}"
+    target_dir = f"RP/textures/blocks/{category.lower()}"
     os.makedirs(target_dir, exist_ok=True)
     
     # Pobierz SVG do katalogu cache obok PNG
@@ -322,13 +451,19 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
     
     # Automatycznie twórz model i teksturę tła
     model_name = create_model_if_needed(width, height)
-    background_name = create_background_texture_if_needed(width, height)
     
-    if background_name:
-        add_to_terrain_texture(background_name)
+    # Pobierz odpowiednią teksturę tła na podstawie kształtu
+    background_name = get_background_texture_for_shape(shape, width, height)
+    print(f"🎨 Tekstura tła: {background_name}")
+    
+    # Jeśli to prostokąt, utwórz teksturę tła jeśli nie istnieje
+    if shape == 'rectangle':
+        background_name = create_background_texture_if_needed(width, height)
+        if background_name:
+            add_to_terrain_texture(background_name)
     
     # Zaktualizuj definicję bloku
-    if update_block_definition(sign_id, model_name, background_name):
+    if update_block_definition(sign_id, model_name, background_name, shape):
         print(f"✓ Zaktualizowano definicję bloku {sign_id}")
     
     # Zaktualizuj bazę danych
@@ -349,12 +484,12 @@ def main():
     
     # Sprawdź argumenty
     if len(sys.argv) < 2:
-        print("❌ Użycie: python resize_simple.py <kod_znaku1> [kod_znaku2] [kod_znaku3] ...")
+        print("❌ Użycie: python road_sign_processor.py <kod_znaku1> [kod_znaku2] [kod_znaku3] ...")
         print("   Przykłady:")
-        print("     python resize_simple.py a-1")
-        print("     python resize_simple.py B_5 c-10 d_25")
-        print("     python resize_simple.py A1 B2 C3 D4")
-        print("     python resize_simple.py all  # przetwórz wszystkie znaki")
+        print("     python road_sign_processor.py a-1")
+        print("     python road_sign_processor.py B_5 c-10 d_25")
+        print("     python road_sign_processor.py A1 B2 C3 D4")
+        print("     python road_sign_processor.py all  # przetwórz wszystkie znaki")
         return
     
     # Wczytaj bazę danych
@@ -380,9 +515,9 @@ def main():
                 for sign_id in signs:
                     total_count += 1
                     
-                    # Sprawdź czy znak ma link do Wikipedii
+                    # Sprawdź czy znak ma link do pliku Wikipedii
                     if 'wikipedia_file_page' not in signs[sign_id]:
-                        print(f"⚠️  {sign_id}: brak linku do Wikipedii")
+                        print(f"⚠️  {sign_id}: brak linku do pliku Wikipedii")
                         continue
                     
                     wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
@@ -411,10 +546,10 @@ def main():
                 errors.append(f"{sign_id}: nie znaleziono w bazie")
                 continue
             
-            # Sprawdź czy znak ma link do Wikipedii
+            # Sprawdź czy znak ma link do pliku Wikipedii
             if 'wikipedia_file_page' not in sign_data:
-                print(f"⚠️  {sign_id}: brak linku do Wikipedii")
-                errors.append(f"{sign_id}: brak linku do Wikipedii")
+                print(f"⚠️  {sign_id}: brak linku do pliku Wikipedii")
+                errors.append(f"{sign_id}: brak linku do pliku Wikipedii")
                 continue
             
             wikipedia_file_page = sign_data['wikipedia_file_page']

@@ -151,21 +151,41 @@ python3 verify_all.py
 
 ### Pobieranie i skalowanie obrazków
 
-Skrypt `resize_simple.py` automatycznie pobiera obrazki znaków z Wikipedii:
+Skrypt `road_sign_processor.py` automatycznie pobiera obrazki znaków z Wikipedii:
 
 ```bash
 # Pobierz i przeskaluj pojedynczy znak
-python3 resize_simple.py a_1
+python3 road_sign_processor.py a_1
 
 # Pobierz i przeskaluj wszystkie znaki
-python3 resize_simple.py
+python3 road_sign_processor.py all
 
 # Funkcje skryptu:
 # - Pobiera SVG z Wikipedii przez .fullImageLink a
 # - Skaluje z zachowaniem proporcji do 128px szerokości
 # - Konwertuje SVG→PNG używając Inkscape
+# - Zapisuje SVG jako cache obok PNG plików
+# - Automatycznie tworzy modele 3D dla nowych wymiarów
+# - Automatycznie tworzy tekstury tła dla nowych wymiarów
+# - Automatycznie dostosowuje collision_box i selection_box
 # - Aktualizuje bazę danych z wymiarami obrazków
 # - Podsumowuje błędy na końcu
+```
+
+### Synchronizacja wymiarów bloków
+
+Skrypt `sync_block_dimensions.py` automatycznie dostosowuje collision_box i selection_box dla wszystkich bloków:
+
+```bash
+# Dostosuj wymiary dla wszystkich bloków
+python3 sync_block_dimensions.py
+
+# Funkcje skryptu:
+# - Analizuje modele geometry z plików .geo.json
+# - Wyciąga wymiary z cubes w modelach
+# - Oblicza odpowiednie origin i size dla boxów
+# - Aktualizuje collision_box i selection_box
+# - Zapewnia spójność między modelami a boxami
 ```
 
 ### Skrypty
@@ -187,7 +207,10 @@ python3 unpack_and_install_mcaddon.py dist/PolishRoadSigns_v*.mcaddon --no-clean
 python3 update_crafting_catalog.py
 
 # Pobieranie i skalowanie obrazków
-python3 resize_simple.py [sign_id]
+python3 road_sign_processor.py [sign_id]
+
+# Synchronizacja wymiarów bloków
+python3 sync_block_dimensions.py
 ```
 
 ## 📁 Struktura projektu
@@ -221,7 +244,8 @@ PolishRoadSigns/
 ├── unpack_and_install_mcaddon.py # Skrypt instalacji z auto-clean
 ├── update_crafting_catalog.py # Skrypt aktualizacji katalogu craftingowego
 ├── verify_all.py              # Skrypt weryfikacji projektu
-├── resize_simple.py           # Skrypt pobierania i skalowania obrazków
+├── road_sign_processor.py     # Skrypt pobierania i skalowania obrazków
+├── sync_block_dimensions.py   # Skrypt synchronizacji wymiarów bloków
 ├── setup_venv.sh              # Skrypt konfiguracji venv (macOS)
 ├── requirements.txt            # Zależności Python
 ├── road_signs_full_database.json # Pełna baza danych znaków
@@ -245,6 +269,8 @@ PolishRoadSigns/
 - **Trwałość** - znaki można zniszczyć młotkiem
 - **Dźwięk** - znaki wydają dźwięk kamienia
 - **Szare tło** - wszystkie znaki mają realistyczne szare tło
+- **Dokładne collision boxy** - collision_box i selection_box odpowiadają rzeczywistym wymiarom modeli
+- **Precyzyjne klikanie** - gracze mogą dokładnie kliknąć na znaki bez problemów z niewidocznymi obszarami
 
 ## 🌐 Tłumaczenia
 
