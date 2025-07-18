@@ -19,24 +19,24 @@
         "origin": [
           -8,
           0,
-          -2
+          0
         ],
         "size": [
           16,
           16,
-          4
+          0.1
         ]
       },
       "minecraft:selection_box": {
         "origin": [
           -8,
           0,
-          -2
+          0
         ],
         "size": [
           16,
           16,
-          4
+          0.1
         ]
       },
       "minecraft:destructible_by_mining": {
@@ -45,35 +45,15 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.road_sign_circle",
+      "minecraft:geometry": "geometry.road_sign_rectangle_128x128",
       "minecraft:material_instances": {
-        "*": {
-          "texture": "gray_concrete",
-          "render_method": "alpha_test"
-        },
         "south": {
-          "texture": "b_14",
+          "texture": "polish_road_sign:b_14",
           "render_method": "alpha_test"
         },
         "north": {
-          "texture": "circle_back",
+          "texture": "polish_road_sign:rectangle_back_128x128",
           "render_method": "alpha_test"
-        },
-        "east": {
-          "texture": "black_concrete",
-          "render_method": "opaque"
-        },
-        "west": {
-          "texture": "black_concrete",
-          "render_method": "opaque"
-        },
-        "up": {
-          "texture": "black_concrete",
-          "render_method": "opaque"
-        },
-        "down": {
-          "texture": "black_concrete",
-          "render_method": "opaque"
         }
       }
     },

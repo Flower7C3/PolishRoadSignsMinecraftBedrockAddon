@@ -11,19 +11,20 @@ Ten addon dodaje do Minecraft wszystkie polskie znaki drogowe zgodne z przepisam
 ### Kategorie znaków
 
 - **A (Ostrzegawcze)** - 34 znaki (A-1 do A-34)
-- **B (Zakazu)** - 43 znaki (B-1 do B-43)
+- **B (Zakazu)** - 44 znaki (B-1 do B-44)
 - **C (Nakazu)** - 19 znaków (C-1 do C-19)
 - **D (Informacyjne)** - 55 znaków (D-1 do D-55)
 
 ### Funkcje
 
 - ✅ Wszystkie znaki z oficjalnymi nazwami polskimi
-- ✅ Tłumaczenia angielskie
+- ✅ Dokładne tłumaczenia angielskie
 - ✅ Pionowe ustawienie znaków
 - ✅ Realistyczne tekstury z szarymi tłem
 - ✅ Grupowanie w kreatywnym trybie
 - ✅ Kompatybilność z serwerami
 - ✅ Automatyczne usuwanie starych wersji przy instalacji
+- ✅ Automatyczne pobieranie i skalowanie obrazków z Wikipedii
 
 ## 🛠️ Instalacja
 
@@ -109,6 +110,8 @@ Projekt używa GitHub Actions do automatycznego budowania:
 
 - Python 3.7+
 - Minecraft Bedrock Edition
+- Inkscape (do konwersji SVG→PNG)
+- curl (do pobierania obrazków)
 
 ### Środowisko wirtualne (venv) - macOS
 
@@ -146,6 +149,25 @@ python3 verify_all.py
 # - Nadmiarowe/brakujące pliki
 ```
 
+### Pobieranie i skalowanie obrazków
+
+Skrypt `resize_simple.py` automatycznie pobiera obrazki znaków z Wikipedii:
+
+```bash
+# Pobierz i przeskaluj pojedynczy znak
+python3 resize_simple.py a_1
+
+# Pobierz i przeskaluj wszystkie znaki
+python3 resize_simple.py
+
+# Funkcje skryptu:
+# - Pobiera SVG z Wikipedii przez .fullImageLink a
+# - Skaluje z zachowaniem proporcji do 128px szerokości
+# - Konwertuje SVG→PNG używając Inkscape
+# - Aktualizuje bazę danych z wymiarami obrazków
+# - Podsumowuje błędy na końcu
+```
+
 ### Skrypty
 
 ```bash
@@ -163,6 +185,9 @@ python3 unpack_and_install_mcaddon.py dist/PolishRoadSigns_v*.mcaddon --no-clean
 
 # Aktualizacja katalogu craftingowego
 python3 update_crafting_catalog.py
+
+# Pobieranie i skalowanie obrazków
+python3 resize_simple.py [sign_id]
 ```
 
 ## 📁 Struktura projektu
@@ -172,7 +197,7 @@ PolishRoadSigns/
 ├── BP/                          # Behavior Pack
 │   ├── blocks/                  # Definicje bloków
 │   │   ├── a/                  # Znaki ostrzegawcze (34)
-│   │   ├── b/                  # Znaki zakazu (43)
+│   │   ├── b/                  # Znaki zakazu (44)
 │   │   ├── c/                  # Znaki nakazu (19)
 │   │   └── d/                  # Znaki informacyjne (55)
 │   ├── item_catalog/           # Katalog przedmiotów
@@ -186,6 +211,8 @@ PolishRoadSigns/
 │   │       ├── d/             # Tekstury znaków D
 │   │       └── sign_backs/    # Tła znaków
 │   ├── texts/                  # Tłumaczenia
+│   │   ├── pl_PL.lang         # Polski
+│   │   └── en_US.lang         # Angielski
 │   ├── models/                 # Modele 3D
 │   └── manifest.json           # Manifest RP
 ├── dist/                       # Zbudowane paczki
@@ -194,6 +221,7 @@ PolishRoadSigns/
 ├── unpack_and_install_mcaddon.py # Skrypt instalacji z auto-clean
 ├── update_crafting_catalog.py # Skrypt aktualizacji katalogu craftingowego
 ├── verify_all.py              # Skrypt weryfikacji projektu
+├── resize_simple.py           # Skrypt pobierania i skalowania obrazków
 ├── setup_venv.sh              # Skrypt konfiguracji venv (macOS)
 ├── requirements.txt            # Zależności Python
 ├── road_signs_full_database.json # Pełna baza danych znaków
@@ -220,10 +248,19 @@ PolishRoadSigns/
 
 ## 🌐 Tłumaczenia
 
-Addon zawiera tłumaczenia w:
+Addon zawiera dokładne tłumaczenia w:
 
-- 🇵🇱 **Polski** - oficjalne nazwy znaków
-- 🇬🇧 **Angielski** - tłumaczenia nazw
+- 🇵🇱 **Polski** - oficjalne nazwy znaków zgodne z przepisami
+- 🇬🇧 **Angielski** - precyzyjne tłumaczenia nazw
+
+### Przykłady tłumaczeń
+
+| Polski | Angielski |
+|--------|-----------|
+| A-1: niebezpieczny zakręt w prawo | A-1: Dangerous curve to the right |
+| B-20: stop | B-20: Stop |
+| C-1: nakaz jazdy w prawo przed znakiem | C-1: Turn right before sign |
+| D-1: droga z pierwszeństwem | D-1: Priority road |
 
 ## 🔧 Konfiguracja
 
@@ -240,6 +277,14 @@ Addon zawiera tłumaczenia w:
 - Tekstury: `textures/blocks/category/sign_code.png`
 - Tłumaczenia: `tile.polish_road_sign:sign_code.name`
 
+### Baza danych
+
+Plik `road_signs_full_database.json` zawiera:
+- Pełne informacje o wszystkich znakach
+- Linki do Wikipedii dla pobierania obrazków
+- Wymiary obrazków (aktualizowane automatycznie)
+- Tłumaczenia polskie i angielskie
+
 ## 📝 Licencja
 
 MIT License - zobacz plik [LICENSE](LICENSE) dla szczegółów.
@@ -248,24 +293,3 @@ MIT License - zobacz plik [LICENSE](LICENSE) dla szczegółów.
 
 - **Flower7C3** - główny developer
 - **Współpraca** - poprawki i sugestie
-
-## 🔗 Linki
-
-- [GitHub Repository](https://github.com/Flower7C3/PolishRoadSignsMinecraftBedrockAddon)
-- [Issues](https://github.com/Flower7C3/PolishRoadSignsMinecraftBedrockAddon/issues)
-- [Releases](https://github.com/Flower7C3/PolishRoadSignsMinecraftBedrockAddon/releases)
-
-## 🐛 Znane problemy
-
-- Brak znanych problemów w aktualnej wersji
-
-## 📊 Statystyki
-
-- **Łączna liczba znaków**: 151
-- **Rozmiar paczki**: ~1.6 MB
-- **Wersja**: 1.0.46
-- **Ostatnia aktualizacja**: 17 lipca 2025
-
----
-
-**Uwaga**: Ten addon jest zgodny z polskimi przepisami ruchu drogowego i może być używany do edukacji o znakach drogowych.

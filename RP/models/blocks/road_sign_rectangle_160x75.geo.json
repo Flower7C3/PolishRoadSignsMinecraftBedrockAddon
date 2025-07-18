@@ -6,11 +6,11 @@
         "identifier": "geometry.road_sign_rectangle_160x75",
         "texture_width": 160,
         "texture_height": 75,
-        "visible_bounds_width": 3.125,
-        "visible_bounds_height": 0.9375,
+        "visible_bounds_width": 2.5,
+        "visible_bounds_height": 1.171875,
         "visible_bounds_offset": [
           0,
-          0.46875,
+          0.29296875,
           0
         ]
       },
@@ -36,7 +36,7 @@
               ],
               "size": [
                 20,
-                11,
+                12,
                 0.1
               ],
               "uv": {

@@ -4,8 +4,8 @@
     {
       "description": {
         "identifier": "geometry.road_sign_rectangle_128x160",
-        "texture_width": 120,
-        "texture_height": 147,
+        "texture_width": 128,
+        "texture_height": 160,
         "visible_bounds_width": 2.5,
         "visible_bounds_height": 2,
         "visible_bounds_offset": [
@@ -36,7 +36,7 @@
               ],
               "size": [
                 16,
-                16,
+                24,
                 0.1
               ],
               "uv": {
@@ -46,8 +46,8 @@
                     0
                   ],
                   "uv_size": [
-                    120,
-                    147
+                    128,
+                    160
                   ]
                 },
                 "east": {
@@ -56,8 +56,8 @@
                     0
                   ],
                   "uv_size": [
-                    120,
-                    147
+                    128,
+                    160
                   ]
                 },
                 "south": {
@@ -66,8 +66,8 @@
                     0
                   ],
                   "uv_size": [
-                    120,
-                    147
+                    128,
+                    160
                   ]
                 },
                 "west": {
@@ -76,28 +76,28 @@
                     0
                   ],
                   "uv_size": [
-                    120,
-                    147
+                    128,
+                    160
                   ]
                 },
                 "up": {
                   "uv": [
-                    32,
+                    16,
                     16
                   ],
                   "uv_size": [
-                    120,
-                    147
+                    128,
+                    160
                   ]
                 },
                 "down": {
                   "uv": [
-                    32,
+                    16,
                     16
                   ],
                   "uv_size": [
-                    120,
-                    147
+                    128,
+                    160
                   ]
                 }
               }

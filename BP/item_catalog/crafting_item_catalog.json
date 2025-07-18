@@ -7,7 +7,7 @@
         "groups": [
           {
             "group_identifier": {
-              "icon": "polish_road_sign:a_1",
+              "icon": "polish_road_sign:a_30",
               "name": "polish_road_sign:warning_signs"
             },
             "items": [
@@ -126,7 +126,7 @@
           },
           {
             "group_identifier": {
-              "icon": "polish_road_sign:c_1",
+              "icon": "polish_road_sign:c_5",
               "name": "polish_road_sign:mandatory_signs"
             },
             "items": [
@@ -143,10 +143,10 @@
               "polish_road_sign:c_11",
               "polish_road_sign:c_12",
               "polish_road_sign:c_13",
+              "polish_road_sign:c_13a",
               "polish_road_sign:c_13_16_v1",
               "polish_road_sign:c_13_16_v2",
               "polish_road_sign:c_13_16_v3",
-              "polish_road_sign:c_13a",
               "polish_road_sign:c_14",
               "polish_road_sign:c_15",
               "polish_road_sign:c_16",
@@ -166,8 +166,8 @@
               "polish_road_sign:d_2",
               "polish_road_sign:d_3",
               "polish_road_sign:d_4a",
-              "polish_road_sign:d_4b",
-              "polish_road_sign:d_4c",
+              "polish_road_sign:d_4b1",
+              "polish_road_sign:d_4b2",
               "polish_road_sign:d_5",
               "polish_road_sign:d_6",
               "polish_road_sign:d_6a",

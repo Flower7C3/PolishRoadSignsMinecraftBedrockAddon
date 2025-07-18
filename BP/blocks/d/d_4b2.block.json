@@ -2,7 +2,7 @@
   "format_version": "1.20.60",
   "minecraft:block": {
     "description": {
-      "identifier": "polish_road_sign:d_4c",
+      "identifier": "polish_road_sign:d_4b2",
       "menu_category": {
         "category": "construction"
       },
@@ -16,12 +16,28 @@
     },
     "components": {
       "minecraft:collision_box": {
-        "origin": [-8, 0, 0],
-        "size": [16, 16, 0.1]
+        "origin": [
+          -8,
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16,
+          0.1
+        ]
       },
       "minecraft:selection_box": {
-        "origin": [-8, 0, 0],
-        "size": [16, 16, 0.1]
+        "origin": [
+          -8,
+          0,
+          0
+        ],
+        "size": [
+          16,
+          16,
+          0.1
+        ]
       },
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 1
@@ -29,17 +45,15 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.road_sign_rectangle_120x120",
+      "minecraft:geometry": "geometry.road_sign_rectangle_128x128",
       "minecraft:material_instances": {
-
         "south": {
-          "texture": "polish_road_sign:d_4c",
+          "texture": "polish_road_sign:d_4b2",
           "render_method": "alpha_test"
         },
         "north": {
-          "texture": "polish_road_sign:rectangle_back_120x120",
+          "texture": "polish_road_sign:rectangle_back_128x128",
           "render_method": "alpha_test"
-
         }
       }
     },

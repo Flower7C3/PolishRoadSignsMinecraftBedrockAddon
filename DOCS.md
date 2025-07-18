@@ -16,7 +16,7 @@ BP/
 ├── manifest.json              # Konfiguracja BP
 ├── blocks/                    # Definicje bloków
 │   ├── a/                    # Znaki ostrzegawcze (34)
-│   ├── b/                    # Znaki zakazu (43)
+│   ├── b/                    # Znaki zakazu (44)
 │   ├── c/                    # Znaki nakazu (19)
 │   └── d/                    # Znaki informacyjne (55)
 └── item_catalog/             # Katalog przedmiotów
@@ -42,12 +42,12 @@ RP/
 │       ├── road_sign_square.geo.json
 │       ├── road_sign_diamond.geo.json
 │       ├── road_sign_octagon.geo.json
-│       ├── road_sign_rectangle_horizontal.geo.json
-│       ├── road_sign_rectangle_vertical.geo.json
-│       ├── road_sign_rectangle_horizontal_small.geo.json
-│       ├── road_sign_rectangle_horizontal_wide.geo.json
-│       ├── road_sign_rectangle_vertical_tall.geo.json
-│       ├── road_sign_square_large.geo.json
+│       ├── road_sign_rectangle_128x160.geo.json
+│       ├── road_sign_rectangle_160x128.geo.json
+│       ├── road_sign_rectangle_128x128.geo.json
+│       ├── road_sign_rectangle_160x160.geo.json
+│       ├── road_sign_rectangle_192x128.geo.json
+│       ├── road_sign_rectangle_128x192.geo.json
 │       └── road_sign_inverted_triangle.geo.json
 └── blocks.json               # Konfiguracja bloków
 ```
@@ -144,11 +144,11 @@ RP/
       "minecraft:geometry": "geometry.road_sign_triangle",
       "minecraft:material_instances": {
         "*": {
-          "texture": "gray_concrete",
-          "render_method": "opaque"
+          "texture": "texture.sign_backs.triangle_back",
+          "render_method": "alpha_test"
         },
         "south": {
-          "texture": "a_1",
+          "texture": "polish_road_sign:a_1",
           "render_method": "alpha_test"
         }
       }
@@ -190,7 +190,7 @@ RP/
 - **Tekstury**: `textures/blocks/category/sign_code.png`
 - **Klucze**: `sign_code` (np. `a_1`, `b_20`)
 - **Format**: PNG z przezroczystością
-- **Rozmiar**: 16x16 pikseli
+- **Rozmiar**: 128x128 pikseli (skalowane z zachowaniem proporcji)
 - **Tła**: Szare tło dla wszystkich znaków
 
 ## 🌐 System tłumaczeń
@@ -198,275 +198,152 @@ RP/
 ### Format pliku .lang
 
 ```
-tile.polish_road_sign:a_1.name=Znak ostrzegawczy A-1
-tile.polish_road_sign:a_1.desc=Niebezpieczny zakręt w prawo
+tile.polish_road_sign:a_1.name=A-1: niebezpieczny zakręt w prawo
+tile.polish_road_sign:b_20.name=B-20: stop
+tile.polish_road_sign:c_1.name=C-1: nakaz jazdy w prawo przed znakiem
+tile.polish_road_sign:d_1.name=D-1: droga z pierwszeństwem
 ```
 
-### Struktura tłumaczeń
+### Konwencje tłumaczeń
 
-- **Klucz**: `tile.polish_road_sign:sign_code.name`
-- **Opis**: `tile.polish_road_sign:sign_code.desc`
-- **Języki**: pl_PL.lang, en_US.lang
+- **Polski**: Oficjalne nazwy zgodne z przepisami
+- **Angielski**: Precyzyjne tłumaczenia nazw
+- **Format**: `tile.polish_road_sign:sign_code.name`
+- **Struktura**: `KOD: nazwa znaku`
 
-## 📋 Katalog przedmiotów
+## 🔄 Automatyzacja
 
-### crafting_item_catalog.json
+### Skrypt resize_simple.py
+
+Skrypt automatycznie pobiera i przetwarza obrazki znaków:
+
+```python
+# Funkcje:
+# - Pobiera SVG z Wikipedii przez .fullImageLink a
+# - Skaluje z zachowaniem proporcji do 128px szerokości
+# - Konwertuje SVG→PNG używając Inkscape
+# - Aktualizuje bazę danych z wymiarami obrazków
+# - Podsumowuje błędy na końcu
+
+# Użycie:
+python3 resize_simple.py a_1    # Pojedynczy znak
+python3 resize_simple.py         # Wszystkie znaki
+```
+
+### Baza danych road_signs_full_database.json
 
 ```json
 {
-  "format_version": "1.21.60",
-  "minecraft:crafting_items_catalog": {
-    "categories": [
-      {
-        "category_name": "construction",
-        "groups": [
-          {
-            "group_identifier": {
-              "icon": "polish_road_sign:a_1",
-              "name": "polish_road_sign:warning_signs"
-            },
-            "items": [
-              "polish_road_sign:a_1",
-              "polish_road_sign:a_2"
-            ]
-          }
-        ]
+  "road_signs": {
+    "A": {
+      "signs": {
+        "a_1": {
+          "code": "A-1",
+          "translation_pl": "Niebezpieczny zakręt w prawo (A-1)",
+          "translation_en": "Dangerous curve to the right (A-1)",
+          "wikipedia_url": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:Znak_A-1.svg",
+          "image_width": "128",
+          "image_height": "128"
+        }
       }
-    ]
+    }
   }
 }
 ```
 
-### Grupy znaków
-
-- **A**: `warning_signs` - znaki ostrzegawcze
-- **B**: `prohibition_signs` - znaki zakazu
-- **C**: `mandatory_signs` - znaki nakazu
-- **D**: `information_signs` - znaki informacyjne
-
-## 🛠️ Skrypty budowania
-
-### build_mcaddon.py
-
-Buduje pojedynczy plik .mcaddon zawierający BP i RP:
-
-```python
-# Funkcje:
-- read_manifest() - odczytuje nazwę i wersję z manifestu
-- bump_version() - zwiększa wersję o 1
-- update_version() - aktualizuje manifesty
-- build_mcaddon() - główna funkcja budowania
-```
-
-### build_mcpack.py
-
-Buduje osobne pliki .mcpack dla BP i RP:
-
-```python
-# Funkcje:
-- build_mcpack() - buduje osobne pliki .mcpack
-- Automatyczne nazewnictwo plików
-- Kompatybilność z serwerami Aternos
-```
-
-### unpack_and_install_mcaddon.py
-
-Instaluje paczkę lokalnie z automatycznym usuwaniem starych wersji:
-
-```python
-# Funkcje:
-- remove_existing_packs() - usuwa stare wersje paczek
-- Rozpakowuje .mcaddon
-- Kopiuje BP i RP do katalogów Minecraft
-- Automatyczne nazewnictwo katalogów
-- Opcje --clean i --no-clean
-```
+## 🛠️ Skrypty narzędziowe
 
 ### verify_all.py
-
-Weryfikuje integralność całego projektu:
-
-```python
-# Funkcje:
-- Sprawdza wszystkie tekstury i modele
-- Weryfikuje definicje bloków
-- Kontroluje tłumaczenia
-- Sprawdza bazę danych
+Sprawdza integralność całego projektu:
+- Weryfikuje tekstury i modele 3D
+- Sprawdza definicje bloków
+- Waliduje bazę danych i tłumaczenia
 - Wykrywa nadmiarowe/brakujące pliki
-```
 
-## 🔄 GitHub Workflows
+### build_mcaddon.py
+Buduje paczkę .mcaddon:
+- Automatycznie zwiększa wersję
+- Tworzy strukturę BP i RP
+- Pakuje do pliku .mcaddon
 
-### Automatyczne budowanie
+### build_mcpack.py
+Buduje paczki .mcpack dla serwerów:
+- Tworzy osobne pliki BP i RP
+- Optymalizuje dla serwerów
 
-Projekt używa GitHub Actions do automatycznego budowania i testowania:
+### unpack_and_install_mcaddon.py
+Instaluje paczkę lokalnie:
+- Automatycznie usuwa stare wersje
+- Instaluje w katalogu Minecraft
+- Obsługuje flagę --no-clean
 
-#### build.yml
-
-- **Trigger**: Push do main/master
-- **Funkcje**:
-  - **Build job**: Auto-version bump, buduje .mcaddon i .mcpack
-  - **Test job**: Waliduje strukturę projektu i manifesty
-  - **Release job**: Tworzy automatyczne releases
-  - **Integracja**: Jeden workflow z zależnościami między jobami
-
-### Środowisko wirtualne (venv) - macOS
-
-Przed uruchomieniem skryptów na macOS:
-
-```bash
-# Automatyczna konfiguracja (zalecane)
-./setup_venv.sh
-
-# Lub ręcznie:
-# Utwórz środowisko wirtualne
-python3 -m venv venv
-
-# Aktywuj środowisko
-source venv/bin/activate
-
-# Zainstaluj zależności
-pip install -r requirements.txt
-
-# Uruchom skrypty
-python3 build_mcaddon.py
-```
-
-### requirements.txt
-
-```txt
-# Core dependencies
-json5>=0.9.0
-pathlib2>=2.3.0
-
-# Development dependencies (optional)
-# requests>=2.25.0  # For downloading textures
-# Pillow>=8.0.0     # For image processing
-```
-
-## 🔍 Debugowanie
-
-### Sprawdzanie manifestów
-
-```bash
-# Sprawdź wersje
-grep "version" BP/manifest.json RP/manifest.json
-
-# Sprawdź UUID
-grep "uuid" BP/manifest.json RP/manifest.json
-
-# Sprawdź zależności
-grep -A 5 "dependencies" BP/manifest.json
-```
-
-### Sprawdzanie tekstur
-
-```bash
-# Sprawdź terrain_texture.json
-cat RP/textures/terrain_texture.json | jq '.texture_data | keys'
-
-# Sprawdź pliki tekstur
-find RP/textures/blocks -name "*.png" | wc -l
-```
-
-### Sprawdzanie bloków
-
-```bash
-# Sprawdź liczbę bloków
-find BP/blocks -name "*.block.json" | wc -l
-
-# Sprawdź identyfikatory
-grep "identifier" BP/blocks/*/*.block.json
-```
+### update_crafting_catalog.py
+Aktualizuje katalog craftingowy:
+- Synchronizuje z definicjami bloków
+- Dodaje nowe znaki automatycznie
 
 ## 📊 Statystyki projektu
 
 ### Liczba znaków
-
 - **A (Ostrzegawcze)**: 34 znaki
-- **B (Zakazu)**: 43 znaki  
+- **B (Zakazu)**: 44 znaki  
 - **C (Nakazu)**: 19 znaków
 - **D (Informacyjne)**: 55 znaków
-- **Łącznie**: 151 znaków
+- **Łącznie**: 152 znaki
 
-### Pliki
+### Modele 3D
+- **Trójkąt**: Znaki ostrzegawcze (A)
+- **Koło**: Znaki zakazu (B)
+- **Kwadrat**: Znaki nakazu (C)
+- **Prostokąt**: Znaki informacyjne (D)
+- **Ośmiokąt**: Stop (B-20)
+- **Odwrócony trójkąt**: Ustąp pierwszeństwa (A-7)
 
-- **Bloki**: 151 plików .block.json
-- **Tekstury**: 151 plików .png
-- **Modele 3D**: 12 różnych kształtów
-- **Tłumaczenia**: 302 wpisy (2 języki × 151 znaków)
-- **Baza danych**: 151 wpisów z metadanymi
+### Tekstury
+- **Rozmiar**: 128x128 pikseli
+- **Format**: PNG z przezroczystością
+- **Tło**: Szare dla wszystkich znaków
+- **Źródło**: Wikipedia (automatyczne pobieranie)
 
-### Rozmiar projektu
+## 🔍 Weryfikacja jakości
 
-- **Paczka .mcaddon**: ~1.6 MB
-- **Wersja**: 1.0.46
-- **Ostatnia aktualizacja**: 17 lipca 2025
+### verify_all.py - Raport
 
-## 🚀 Rozwój
-
-### Dodawanie nowego znaku
-
-1. **Dodaj blok**:
-
-```bash
-cp BP/blocks/a/a_1.block.json BP/blocks/a/a_35.block.json
-# Edytuj identifier i teksturę
+```
+📊 VERIFICATION SUMMARY
+==================================================
+✅ Block definitions: 206 found
+✅ Terrain textures: 212 found
+✅ Block textures: 225 total (14 missing in terrain)
+✅ 3D models: 6 used
+✅ Texture-model matches: 8 mismatches
+✅ Missing models: 28 (some replaced by similar existing models)
+✅ Translations: 100% complete
+✅ Missing blocks: 0
+✅ Missing PNGs: 0
 ```
 
-2. **Dodaj teksturę**:
+## 🚀 Deployment
 
-```bash
-# Umieść a_35.png w RP/textures/blocks/a/
-```
+### GitHub Actions
+Automatyczne budowanie i release:
+- Weryfikacja projektu
+- Budowanie paczek
+- Testowanie struktury
+- Automatyczne releases
+- Version bump
 
-3. **Zaktualizuj terrain_texture.json**:
+### Wymagania systemowe
+- Python 3.7+
+- Inkscape (konwersja SVG→PNG)
+- curl (pobieranie obrazków)
+- Minecraft Bedrock Edition 1.16.0+
 
-```json
-"a_35": {
-  "textures": "textures/blocks/a/a_35.png"
-}
-```
+## 📝 Licencja
 
-4. **Dodaj tłumaczenia**:
-
-```bash
-# Dodaj do RP/texts/pl_PL.lang i en_US.lang
-```
-
-5. **Zaktualizuj katalog**:
-
-```bash
-# Dodaj do BP/item_catalog/crafting_item_catalog.json
-```
-
-6. **Zaktualizuj bazę danych**:
-
-```bash
-# Dodaj wpis do road_signs_full_database.json
-```
-
-### Konwencje kodowania
-
-- **Nazwy plików**: małe litery, podkreślniki
-- **Identyfikatory**: `polish_road_sign:category_number`
-- **Tekstury**: `category/number.png`
-- **Tłumaczenia**: `tile.polish_road_sign:identifier.name`
-- **Modele**: `geometry.road_sign_shape`
-
-## 🔗 Zasoby zewnętrzne
-
-### Dokumentacja Minecraft Bedrock
-
-- [Behavior Pack Documentation](https://docs.microsoft.com/en-us/minecraft/creator/documents/behaviorpack)
-- [Resource Pack Documentation](https://docs.microsoft.com/en-us/minecraft/creator/documents/resourcepack)
-- [Block Documentation](https://docs.microsoft.com/en-us/minecraft/creator/reference/content/blockreference)
-
-### Narzędzia
-
-- [Blockbench](https://www.blockbench.net/) - edytor modeli i tekstur
-- [Minecraft Bedrock Dedicated Server](https://www.minecraft.net/en-us/download/server/bedrock)
+MIT License - zobacz plik [LICENSE](LICENSE) dla szczegółów.
 
 ---
 
-**Uwaga**: Ta dokumentacja jest przeznaczona dla developerów i contributorów projektu.
+**Uwaga**: Ta dokumentacja jest aktualizowana automatycznie przy każdej zmianie w projekcie.
