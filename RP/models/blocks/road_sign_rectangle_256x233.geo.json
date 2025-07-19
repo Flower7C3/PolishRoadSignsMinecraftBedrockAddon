@@ -7,26 +7,62 @@
         "texture_width": 256,
         "texture_height": 233,
         "visible_bounds_width": 4.0,
-        "visible_bounds_height": 3.640625,
-        "visible_bounds_offset": [
-          0,
-          1.8203125,
-          0
-        ]
+        "visible_bounds_height": 0,
+        "visible_bounds_offset": [0,0,0]
       },
-      "bones": [
-        {
-          "name": "block",
-          "pivot": [
-            0,
-            0,
-            0
-          ],
+      "item_display_transforms": {
+        "firstperson_righthand": {
           "rotation": [
             0,
             180,
             0
           ],
+          "scale": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "translation": [
+            0,
+            4,
+            0
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "scale": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "translation": [
+            0,
+            4,
+            0
+          ]
+        },
+        "fixed": {
+          "scale": [
+            1.5,
+            1.5,
+            1.5
+          ]
+        },
+        "gui": {
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      },
+      "bones": [
+        {
+          "name": "block",
           "cubes": [
             {
               "origin": [

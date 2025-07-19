@@ -143,12 +143,12 @@ RP/
       },
       "minecraft:geometry": "geometry.road_sign_triangle",
       "minecraft:material_instances": {
-        "*": {
-          "texture": "texture.sign_backs.triangle_back",
+        "north": {
+          "texture": "polish_road_sign:a_1",
           "render_method": "alpha_test_single_sided"
         },
         "south": {
-          "texture": "polish_road_sign:a_1",
+          "texture": "polish_road_sign_back:triangle_128x113",
           "render_method": "alpha_test_single_sided"
         }
       }

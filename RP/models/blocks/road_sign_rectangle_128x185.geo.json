@@ -6,13 +6,45 @@
         "identifier": "geometry.road_sign_rectangle_128x185",
         "texture_width": 128,
         "texture_height": 185,
-        "visible_bounds_width": 2.5,
-        "visible_bounds_height": 2.3125,
-        "visible_bounds_offset": [
-          0,
-          0.578125,
-          0
-        ]
+        "visible_bounds_width": 0,
+        "visible_bounds_height": 0,
+        "visible_bounds_offset": [0,0,0]
+      },
+      "item_display_transforms": {
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "gui": {
+          "rotation": [
+            180,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
       },
       "bones": [
         {
@@ -24,7 +56,7 @@
           ],
           "rotation": [
             0,
-            180,
+            0,
             0
           ],
           "cubes": [

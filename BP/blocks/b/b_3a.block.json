@@ -45,14 +45,14 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.road_sign_rectangle_128x128",
+      "minecraft:geometry": "geometry.road_sign_circle_128x128",
       "minecraft:material_instances": {
-        "south": {
+        "north": {
           "texture": "polish_road_sign:b_3a",
           "render_method": "alpha_test_single_sided"
         },
-        "north": {
-          "texture": "polish_road_sign:circle_back",
+        "south": {
+          "texture": "polish_road_sign_back:circle_128x128",
           "render_method": "alpha_test_single_sided"
         }
       }
@@ -64,7 +64,7 @@
           "minecraft:transformation": {
             "rotation": [
               0,
-              0,
+              180,
               0
             ]
           }
@@ -76,7 +76,7 @@
           "minecraft:transformation": {
             "rotation": [
               0,
-              180,
+              0,
               0
             ]
           }
@@ -88,7 +88,7 @@
           "minecraft:transformation": {
             "rotation": [
               0,
-              270,
+              90,
               0
             ]
           }
@@ -100,7 +100,7 @@
           "minecraft:transformation": {
             "rotation": [
               0,
-              90,
+              270,
               0
             ]
           }

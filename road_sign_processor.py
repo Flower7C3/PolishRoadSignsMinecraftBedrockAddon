@@ -47,16 +47,16 @@ def get_category_for_sign(sign_id, data):
 def get_background_texture_for_shape(shape, width, height):
     """Pobierz nazwę tekstury tła na podstawie kształtu znaku"""
     shape_to_background = {
-        'triangle': 'triangle_back',
-        'inverted_triangle': 'inverted_triangle_back',
-        'circle': 'circle_back',
-        'square': 'square_back_128x128',
-        'diamond': 'diamond_back',
-        'octagon': 'octagon_back',
-        'rectangle': f'rectangle_back_{width}x{height}'
+        'triangle': f'triangle_{width}x{height}',
+        'inverted_triangle': f'inverted_triangle_{width}x{height}',
+        'circle': f'circle_{width}x{height}',
+        'square': f'square_{width}x{height}',
+        'diamond': f'diamond_{width}x{height}',
+        'octagon': f'octagon_{width}x{height}',
+        'rectangle': f'rectangle_{width}x{height}'
     }
     
-    return shape_to_background.get(shape, f'rectangle_back_{width}x{height}')
+    return shape_to_background.get(shape, f'rectangle_{width}x{height}')
 
 def download_wikipedia_page(url):
     """Pobierz stronę Wikipedii"""
@@ -147,9 +147,9 @@ def get_image_dimensions(png_path):
         print(f"Błąd pobierania wymiarów: {e}")
     return None, None
 
-def create_model_if_needed(width, height):
-    """Twórz model jeśli nie istnieje"""
-    model_name = f"road_sign_rectangle_{width}x{height}"
+def create_model_if_needed(width, height, shape):
+    """Twórz model 3D jeśli nie istnieje"""
+    model_name = f"road_sign_{shape}_{width}x{height}"
     model_path = f"RP/models/blocks/{model_name}.geo.json"
     
     if os.path.exists(model_path):
@@ -165,26 +165,38 @@ def create_model_if_needed(width, height):
                     "identifier": f"geometry.{model_name}",
                     "texture_width": width,
                     "texture_height": height,
-                    "visible_bounds_width": width / 64,
-                    "visible_bounds_height": height / 64,
-                    "visible_bounds_offset": [0, height / 128, 0]
+                    "visible_bounds_width": 0,
+                    "visible_bounds_height": 0,
+                    "visible_bounds_offset": [0, 0, 0]
+                },
+                "item_display_transforms": {
+                    "firstperson_righthand": {
+                        "rotation": [ 0, 180, 0],
+                        "scale": [ 0.3, 0.3, 0.3],
+                        "translation": [ 0, 4, 0]
+                    },
+                    "firstperson_lefthand": {
+                        "rotation": [ 0, 180, 0],
+                        "scale": [ 0.3, 0.3, 0.3],
+                        "translation": [ 0, 4, 0]
+                    },
+                    "fixed": {
+                        "scale": [ 1.5, 1.5, 1.5]
+                    },
+                    "gui": {
+                        "rotation": [ 0, 180, 0]
+                    }
                 },
                 "bones": [
                     {
                         "name": "block",
-                        "pivot": [0, 0, 0],
-                        "rotation": [0, 180, 0],
                         "cubes": [
                             {
                                 "origin": [-width // 16, 0, 0],
                                 "size": [width // 8, height // 8, 0.1],
                                 "uv": {
                                     "north": {"uv": [0, 0], "uv_size": [width, height]},
-                                    "east": {"uv": [0, 0], "uv_size": [width, height]},
-                                    "south": {"uv": [0, 0], "uv_size": [width, height]},
-                                    "west": {"uv": [0, 0], "uv_size": [width, height]},
-                                    "up": {"uv": [width // 8, width // 8], "uv_size": [width, height]},
-                                    "down": {"uv": [width // 8, width // 8], "uv_size": [width, height]}
+                                    "south": {"uv": [0, 0], "uv_size": [width, height]}
                                 }
                             }
                         ]
@@ -200,19 +212,41 @@ def create_model_if_needed(width, height):
     print(f"✓ Utworzono model: {model_name}")
     return model_name
 
-def create_background_texture_if_needed(width, height):
+def create_background_texture_if_needed(width, height, shape):
     """Twórz teksturę tła jeśli nie istnieje"""
-    texture_name = f"rectangle_back_{width}x{height}"
+    texture_name = f"{shape}_{width}x{height}"
     texture_path = f"RP/textures/blocks/sign_backs/{texture_name}.png"
     
     if os.path.exists(texture_path):
         print(f"✓ Tekstura tła już istnieje: {texture_name}")
         return texture_name
     
-    # Twórz szarą teksturę tła w formacie RGB
+    # Twórz szarą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
     try:
-        subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:#808080', '-define', 'png:color-type=2', texture_path], check=True)
-        print(f"✓ Utworzono teksturę tła: {texture_name}")
+        if shape == 'triangle':
+            # Trójkąt - szary kolor w kształcie trójkąta
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon {width//2},0 0,{height} {width},{height}', '-define', 'png:color-type=6', texture_path], check=True)
+        elif shape == 'inverted_triangle':
+            # Odwrócony trójkąt - szary kolor w kształcie odwróconego trójkąta
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon 0,0 {width},0 {width//2},{height}', '-define', 'png:color-type=6', texture_path], check=True)
+        elif shape == 'circle':
+            # Koło - szary kolor w kształcie koła
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'circle {width//2},{height//2} {width//2},0', '-define', 'png:color-type=6', texture_path], check=True)
+        elif shape == 'square':
+            # Kwadrat - szary kolor w kształcie kwadratu
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
+        elif shape == 'diamond':
+            # Romb - szary kolor w kształcie rombu
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon {width//2},0 {width},{height//2} {width//2},{height} 0,{height//2}', '-define', 'png:color-type=6', texture_path], check=True)
+        elif shape == 'octagon':
+            # Ośmiokąt - szary kolor w kształcie ośmiokąta
+            margin = min(width, height) // 8
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon {margin},0 {width-margin},0 {width},{margin} {width},{height-margin} {width-margin},{height} {margin},{height} 0,{height-margin} 0,{margin}', '-define', 'png:color-type=6', texture_path], check=True)
+        else:
+            # Prostokąt - szary kolor w kształcie prostokąta
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
+        
+        print(f"✓ Utworzono teksturę tła: {texture_name} (kształt: {shape})")
     except subprocess.CalledProcessError as e:
         print(f"Błąd tworzenia tekstury tła {texture_name}: {e}")
         return None
@@ -227,12 +261,12 @@ def add_to_terrain_texture(texture_name):
         terrain = json.load(f)
     
     # Sprawdź czy już istnieje
-    if f"polish_road_sign:{texture_name}" in terrain["texture_data"]:
+    if f"polish_road_sign_back:{texture_name}" in terrain["texture_data"]:
         print(f"✓ Tekstura {texture_name} już istnieje w terrain_texture.json")
         return
     
     # Dodaj wpis tekstury
-    terrain["texture_data"][f"polish_road_sign:{texture_name}"] = {
+    terrain["texture_data"][f"polish_road_sign_back:{texture_name}"] = {
         "textures": f"textures/blocks/sign_backs/{texture_name}.png"
     }
     
@@ -325,6 +359,123 @@ def update_collision_and_selection_boxes(sign_id, model_name):
         print(f"Błąd aktualizacji collision/selection box dla {sign_id}: {e}")
         return False
 
+def create_block_if_needed(sign_id, model_name, background_name, shape):
+    """Twórz definicję bloku jeśli nie istnieje"""
+    category = sign_id.split('_')[0]
+    block_path = f"BP/blocks/{category}/{sign_id}.block.json"
+    
+    if os.path.exists(block_path):
+        print(f"✓ Blok już istnieje: {sign_id}")
+        return True
+    
+    # Utwórz katalog jeśli nie istnieje
+    os.makedirs(os.path.dirname(block_path), exist_ok=True)
+    
+    # Pobierz wymiary modelu
+    width, height = get_model_dimensions(model_name)
+    if width is None or height is None:
+        print(f"❌ Nie udało się pobrać wymiarów modelu dla {sign_id}")
+        return False
+    
+    # Oblicz origin (środek modelu)
+    origin_x = -width // 2
+    origin_y = 0
+    origin_z = 0
+    
+    # Pobierz dane z bazy danych (bez tłumaczeń w bloku)
+    with open("road_signs_full_database.json", 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    sign_data = find_sign_in_database(sign_id, data)
+    
+    # Szablon bloku
+    block_template = {
+        "format_version": "1.20.60",
+        "minecraft:block": {
+            "description": {
+                "identifier": f"polish_road_sign:{sign_id}",
+                "menu_category": {
+                    "category": "construction"
+                },
+                "traits": {
+                    "minecraft:placement_direction": {
+                        "enabled_states": [
+                            "minecraft:cardinal_direction"
+                        ]
+                    }
+                }
+            },
+            "components": {
+                "minecraft:collision_box": {
+                    "origin": [origin_x, origin_y, origin_z],
+                    "size": [width, height, 0.1]
+                },
+                "minecraft:selection_box": {
+                    "origin": [origin_x, origin_y, origin_z],
+                    "size": [width, height, 0.1]
+                },
+                "minecraft:destructible_by_mining": {
+                    "seconds_to_destroy": 1
+                },
+                "minecraft:destructible_by_explosion": {
+                    "explosion_resistance": 30
+                },
+                "minecraft:geometry": f"geometry.{model_name}",
+                "minecraft:material_instances": {
+                    "north": {
+                        "texture": f"polish_road_sign:{sign_id}",
+                        "render_method": "alpha_test_single_sided"
+                    },
+                    "south": {
+                        "texture": f"polish_road_sign_back:{background_name}",
+                        "render_method": "alpha_test_single_sided"
+                    }
+                }
+            },
+            "permutations": [
+                {
+                    "condition": "q.block_state('minecraft:cardinal_direction') == 'north' ",
+                    "components": {
+                        "minecraft:transformation": {
+                            "rotation": [0, 180, 0]
+                        }
+                    }
+                },
+                {
+                    "condition": "q.block_state('minecraft:cardinal_direction') == 'south' ",
+                    "components": {
+                        "minecraft:transformation": {
+                            "rotation": [0, 0, 0]
+                        }
+                    }
+                },
+                {
+                    "condition": "q.block_state('minecraft:cardinal_direction') == 'east' ",
+                    "components": {
+                        "minecraft:transformation": {
+                            "rotation": [0, 90, 0]
+                        }
+                    }
+                },
+                {
+                    "condition": "q.block_state('minecraft:cardinal_direction') == 'west' ",
+                    "components": {
+                        "minecraft:transformation": {
+                            "rotation": [0, 270, 0]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+    
+    # Zapisz blok
+    with open(block_path, 'w') as f:
+        json.dump(block_template, f, indent=2)
+    
+    print(f"✓ Utworzono blok: {sign_id}")
+    return True
+
 def update_block_definition(sign_id, model_name, background_name, shape):
     """Zaktualizuj definicję bloku z uwzględnieniem kształtu"""
     category = sign_id.split('_')[0]
@@ -337,15 +488,28 @@ def update_block_definition(sign_id, model_name, background_name, shape):
     with open(block_path, 'r') as f:
         block_data = json.load(f)
     
+    # Pobierz dane z bazy danych (bez tłumaczeń w bloku)
+    with open("road_signs_full_database.json", 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    sign_data = find_sign_in_database(sign_id, data)
+    
     # Zaktualizuj geometrię
     block_data["minecraft:block"]["components"]["minecraft:geometry"] = f"geometry.{model_name}"
     
-    # Zaktualizuj teksturę tła na podstawie kształtu
-    for face, material in block_data["minecraft:block"]["components"]["minecraft:material_instances"].items():
-        if face == "north":  # Tylna strona
-            material["texture"] = f"polish_road_sign:{background_name}"
-            material["render_method"] = "alpha_test_single_sided"  # Poprawne renderowanie przezroczystości
-            break
+    # Zaktualizuj material_instances z tylko przodem i tyłem
+    material_instances = {
+        "north": {
+            "texture": f"polish_road_sign:{sign_id}",
+            "render_method": "alpha_test_single_sided"
+        },
+        "south": {
+            "texture": f"polish_road_sign_back:{background_name}",
+            "render_method": "alpha_test_single_sided"
+        }
+    }
+    
+    block_data["minecraft:block"]["components"]["minecraft:material_instances"] = material_instances
     
     # Zaktualizuj collision_box i selection_box
     update_collision_and_selection_boxes(sign_id, model_name)
@@ -450,21 +614,30 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
     print(f"✓ Wymiary: {width}x{height}")
     
     # Automatycznie twórz model i teksturę tła
-    model_name = create_model_if_needed(width, height)
+    model_name = create_model_if_needed(width, height, shape)
     
     # Pobierz odpowiednią teksturę tła na podstawie kształtu
     background_name = get_background_texture_for_shape(shape, width, height)
     print(f"🎨 Tekstura tła: {background_name}")
     
-    # Jeśli to prostokąt, utwórz teksturę tła jeśli nie istnieje
-    if shape == 'rectangle':
-        background_name = create_background_texture_if_needed(width, height)
-        if background_name:
-            add_to_terrain_texture(background_name)
+    # Utwórz teksturę tła jeśli nie istnieje
+    background_name = create_background_texture_if_needed(width, height, shape)
+    if background_name:
+        add_to_terrain_texture(background_name)
     
-    # Zaktualizuj definicję bloku
-    if update_block_definition(sign_id, model_name, background_name, shape):
-        print(f"✓ Zaktualizowano definicję bloku {sign_id}")
+    # Utwórz lub zaktualizuj definicję bloku
+    if not os.path.exists(f"BP/blocks/{category.lower()}/{sign_id}.block.json"):
+        if create_block_if_needed(sign_id, model_name, background_name, shape):
+            print(f"✓ Utworzono definicję bloku {sign_id}")
+        else:
+            print(f"❌ Błąd tworzenia bloku {sign_id}")
+            return False
+    else:
+        if update_block_definition(sign_id, model_name, background_name, shape):
+            print(f"✓ Zaktualizowano definicję bloku {sign_id}")
+        else:
+            print(f"❌ Błąd aktualizacji bloku {sign_id}")
+            return False
     
     # Zaktualizuj bazę danych
     if update_database(database_path, sign_id, width, height):
