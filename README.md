@@ -20,7 +20,7 @@ Ten addon dodaje do Minecraft wszystkie polskie znaki drogowe zgodne z przepisam
 - ✅ Wszystkie znaki z oficjalnymi nazwami polskimi
 - ✅ Dokładne tłumaczenia angielskie
 - ✅ Pionowe ustawienie znaków
-- ✅ Realistyczne tekstury z szarymi tłem
+- ✅ Realistyczne tekstury z neutralnymi białymi tłem
 - ✅ Grupowanie w kreatywnym trybie
 - ✅ Kompatybilność z serwerami
 - ✅ Automatyczne usuwanie starych wersji przy instalacji
@@ -73,7 +73,7 @@ Po zainstalowaniu paczek, musisz je aktywować w Minecraft:
 5. **Przetestuj znaki**:
    - W grze otwórz swój ekwipunek
    - Znajdź polskie znaki drogowe w kreatywnym ekwipunku
-   - Powinny pojawić się jako niestandardowe bloki z szarymi tłem
+   - Powinny pojawić się jako niestandardowe bloki z neutralnymi białymi tłem
 
 ### Rozwiązywanie problemów
 

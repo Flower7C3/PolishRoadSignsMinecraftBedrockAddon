@@ -191,7 +191,7 @@ RP/
 - **Klucze**: `sign_code` (np. `a_1`, `b_20`)
 - **Format**: PNG z przezroczystością
 - **Rozmiar**: 128x128 pikseli (skalowane z zachowaniem proporcji)
-- **Tła**: Szare tło dla wszystkich znaków
+- **Tła**: Neutralne białe tło dla wszystkich znaków
 
 ## 🌐 System tłumaczeń
 
@@ -303,7 +303,7 @@ Aktualizuje katalog craftingowy:
 ### Tekstury
 - **Rozmiar**: 128x128 pikseli
 - **Format**: PNG z przezroczystością
-- **Tło**: Szare dla wszystkich znaków
+- **Tło**: Neutralne białe dla wszystkich znaków
 - **Źródło**: Wikipedia (automatyczne pobieranie)
 
 ## 🔍 Weryfikacja jakości

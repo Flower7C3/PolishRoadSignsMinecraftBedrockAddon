@@ -13,15 +13,15 @@
             "en": "Dangerous curve to the right (A-1)"
           },
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-1.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle"
         },
         "a_2": {
           "code": "A-2",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-2.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-2: niebezpieczny zakręt w lewo",
@@ -31,8 +31,8 @@
         "a_3": {
           "code": "A-3",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-3.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-3: niebezpieczne zakręty – pierwszy w prawo",
@@ -42,8 +42,8 @@
         "a_4": {
           "code": "A-4",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-4.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-4: niebezpieczne zakręty – pierwszy w lewo",
@@ -53,8 +53,8 @@
         "a_5": {
           "code": "A-5",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-5.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-5: skrzyżowanie dróg",
@@ -64,8 +64,8 @@
         "a_6a": {
           "code": "A-6A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-6a.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-6a: skrzyżowanie z drogą podporządkowaną występującą po obu stronach",
@@ -75,8 +75,8 @@
         "a_6b": {
           "code": "A-6B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-6b.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-6b: skrzyżowanie z drogą podporządkowaną występującą po prawej stronie",
@@ -86,8 +86,8 @@
         "a_6c": {
           "code": "A-6C",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-6c.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-6c: skrzyżowanie z drogą podporządkowaną występującą po lewej stronie",
@@ -97,8 +97,8 @@
         "a_6d": {
           "code": "A-6D",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-6d.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-6d: wlot drogi jednokierunkowej z prawej strony",
@@ -108,8 +108,8 @@
         "a_6e": {
           "code": "A-6E",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-6e.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-6e: wlot drogi jednokierunkowej z lewej strony",
@@ -119,8 +119,8 @@
         "a_7": {
           "code": "A-7",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-7.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "inverted_triangle",
           "translations": {
             "pl": "A-7: ustąp pierwszeństwa",
@@ -130,8 +130,8 @@
         "a_8": {
           "code": "A-8",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-8.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-8: skrzyżowanie o ruchu okrężnym",
@@ -141,8 +141,8 @@
         "a_9": {
           "code": "A-9",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-9.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-9: przejazd kolejowy z zaporami",
@@ -152,8 +152,8 @@
         "a_10": {
           "code": "A-10",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-10.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-10: przejazd kolejowy bez zapór",
@@ -163,8 +163,8 @@
         "a_11": {
           "code": "A-11",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-11.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-11: nierówna droga",
@@ -174,8 +174,8 @@
         "a_11a": {
           "code": "A-11A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-11a.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-11a: próg zwalniający",
@@ -185,8 +185,8 @@
         "a_12a": {
           "code": "A-12A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-12a.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-12a: zwężenie jezdni – dwustronne",
@@ -196,8 +196,8 @@
         "a_12b": {
           "code": "A-12B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-12b.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-12b: zwężenie jezdni – prawostronne",
@@ -207,8 +207,8 @@
         "a_12c": {
           "code": "A-12C",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-12c.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-12c: zwężenie jezdni – lewostronne",
@@ -218,8 +218,8 @@
         "a_13": {
           "code": "A-13",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-13.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-13: ruchomy most",
@@ -229,8 +229,8 @@
         "a_14": {
           "code": "A-14",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-14.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-14: roboty na drodze",
@@ -240,8 +240,8 @@
         "a_15": {
           "code": "A-15",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-15.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-15: śliska jezdnia",
@@ -251,8 +251,8 @@
         "a_16": {
           "code": "A-16",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-16.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-16: przejście dla pieszych",
@@ -262,8 +262,8 @@
         "a_17": {
           "code": "A-17",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-17.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-17: dzieci",
@@ -273,8 +273,8 @@
         "a_18a": {
           "code": "A-18A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-18a.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-18a: zwierzęta gospodarskie",
@@ -284,8 +284,8 @@
         "a_18b": {
           "code": "A-18B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-18b.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-18b: zwierzęta dzikie",
@@ -295,8 +295,8 @@
         "a_19": {
           "code": "A-19",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-19.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-19: boczny wiatr",
@@ -306,8 +306,8 @@
         "a_20": {
           "code": "A-20",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-20.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-20: odcinek jezdni o ruchu dwukierunkowym",
@@ -317,8 +317,8 @@
         "a_21": {
           "code": "A-21",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-21.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-21: tramwaj",
@@ -328,8 +328,8 @@
         "a_22": {
           "code": "A-22",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-22.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-22: niebezpieczny zjazd",
@@ -339,8 +339,8 @@
         "a_23": {
           "code": "A-23",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-23.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-23: stromy podjazd",
@@ -350,8 +350,8 @@
         "a_24": {
           "code": "A-24",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-24.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-24: rowerzyści",
@@ -361,8 +361,8 @@
         "a_25": {
           "code": "A-25",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-25.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-25: spadające odłamki skalne",
@@ -372,8 +372,8 @@
         "a_26": {
           "code": "A-26",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-26.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-26: lotnisko",
@@ -383,8 +383,8 @@
         "a_27": {
           "code": "A-27",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-27.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-27: nabrzeże lub brzeg rzeki",
@@ -394,8 +394,8 @@
         "a_28": {
           "code": "A-28",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-28.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-28: sypki żwir",
@@ -405,8 +405,8 @@
         "a_29": {
           "code": "A-29",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-29.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-29: sygnały świetlne",
@@ -416,8 +416,8 @@
         "a_30": {
           "code": "A-30",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-30.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-30: inne niebezpieczeństwo",
@@ -427,8 +427,8 @@
         "a_31": {
           "code": "A-31",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-31.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-31: niebezpieczne pobocze",
@@ -438,8 +438,8 @@
         "a_32": {
           "code": "A-32",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-32.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-32: oszronienie jezdni",
@@ -449,8 +449,8 @@
         "a_33": {
           "code": "A-33",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-33.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-33: zator drogowy",
@@ -460,8 +460,8 @@
         "a_34": {
           "code": "A-34",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-34.svg",
-          "image_width": "128",
-          "image_height": "113",
+          "image_width": "120",
+          "image_height": "106",
           "shape": "triangle",
           "translations": {
             "pl": "A-34: wypadek drogowy",
@@ -480,8 +480,8 @@
         "b_1": {
           "code": "B-1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-1.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-1: zakaz ruchu w obu kierunkach",
@@ -491,8 +491,8 @@
         "b_2": {
           "code": "B-2",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-2.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-2: zakaz wjazdu",
@@ -502,8 +502,8 @@
         "b_3": {
           "code": "B-3",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-3.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-3: zakaz wjazdu pojazdów silnikowych, z wyjątkiem motocykli jednośladowych",
@@ -513,8 +513,8 @@
         "b_3_4": {
           "code": "B-3-4",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-3-4.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-3/4: zakaz wjazdu wszelkich pojazdów silnikowych",
@@ -524,8 +524,8 @@
         "b_3_4_10": {
           "code": "B-3-4-10",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-3-4-10.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-3/4/10: zakaz wjazdu pojazdów silnikowych, motocykli i motorowerów",
@@ -535,8 +535,8 @@
         "b_3a": {
           "code": "B-3A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-3a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-3a: zakaz wjazdu autobusów",
@@ -546,8 +546,8 @@
         "b_4": {
           "code": "B-4",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-4.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-4: zakaz wjazdu motocykli",
@@ -557,8 +557,8 @@
         "b_5": {
           "code": "B-5",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-5.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-5: zakaz wjazdu samochodów ciężarowych",
@@ -568,8 +568,8 @@
         "b_6": {
           "code": "B-6",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-6.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-6: zakaz wjazdu ciągników rolniczych",
@@ -579,8 +579,8 @@
         "b_6_8": {
           "code": "B-6-8",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-6-8.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-6/8: zakaz wjazdu ciągników rolniczych i pojazdów zaprzęgowych",
@@ -590,8 +590,8 @@
         "b_6_8_9": {
           "code": "B-6-8-9",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-6-8-9.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-6/8/9: zakaz wjazdu pojazdów innych niż samochodowe",
@@ -601,8 +601,8 @@
         "b_7": {
           "code": "B-7",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-7.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-7: zakaz wjazdu pojazdów silnikowych z przyczepą",
@@ -612,8 +612,8 @@
         "b_8": {
           "code": "B-8",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-8.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-8: zakaz wjazdu pojazdów zaprzęgowych",
@@ -623,8 +623,8 @@
         "b_9": {
           "code": "B-9",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-9.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-9: zakaz wjazdu rowerów",
@@ -634,8 +634,8 @@
         "b_9_12": {
           "code": "B-9-12",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-9-12.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-9/12: zakaz wjazdu rowerów i wózków ręcznych",
@@ -645,8 +645,8 @@
         "b_10": {
           "code": "B-10",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-10.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-10: zakaz wjazdu motorowerów",
@@ -656,8 +656,8 @@
         "b_11": {
           "code": "B-11",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-11.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-11: zakaz wjazdu wózków rowerowych",
@@ -667,8 +667,8 @@
         "b_12": {
           "code": "B-12",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-12.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-12: zakaz wjazdu wózków ręcznych",
@@ -678,8 +678,8 @@
         "b_13": {
           "code": "B-13",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-13.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-13: zakaz wjazdu pojazdów z towarami wybuchowymi lub łatwo zapalnymi",
@@ -689,8 +689,8 @@
         "b_13_14": {
           "code": "B-13-14",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-13-14.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-13/14: zakaz wjazdu pojazdów z towarami wybuchowymi lub łatwo zapalnymi oraz towarami mogącymi skazić wodę",
@@ -700,8 +700,8 @@
         "b_13a": {
           "code": "B-13A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-13a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-13a: zakaz wjazdu pojazdów z towarami niebezpiecznymi",
@@ -711,8 +711,8 @@
         "b_14": {
           "code": "B-14",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-14.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-14: zakaz wjazdu pojazdów z towarami, które mogą skazić wodę",
@@ -722,8 +722,8 @@
         "b_15": {
           "code": "B-15",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-15-2.0m.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-15: zakaz wjazdu pojazdów o szerokości ponad ... m",
@@ -733,8 +733,8 @@
         "b_16": {
           "code": "B-16",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-16-3.5m.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-16: zakaz wjazdu pojazdów o wysokości ponad ... m",
@@ -744,8 +744,8 @@
         "b_17": {
           "code": "B-17",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-17-6m.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-17: zakaz wjazdu pojazdów o długości ponad ... m",
@@ -755,8 +755,8 @@
         "b_18": {
           "code": "B-18",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-18-7t.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-18: zakaz wjazdu pojazdów o rzeczywistej masie całkowitej ponad ... t",
@@ -766,8 +766,8 @@
         "b_19": {
           "code": "B-19",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-19-10t.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-19: zakaz wjazdu pojazdów o nacisku pojedynczej osi napędowej powyżej ... t",
@@ -777,8 +777,8 @@
         "b_20": {
           "code": "B-20",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-20.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "octagon",
           "translations": {
             "pl": "B-20: stop",
@@ -788,8 +788,8 @@
         "b_21": {
           "code": "B-21",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-21.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-21: zakaz skręcania w lewo",
@@ -799,8 +799,8 @@
         "b_22": {
           "code": "B-22",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-22.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-22: zakaz skręcania w prawo",
@@ -810,8 +810,8 @@
         "b_23": {
           "code": "B-23",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-23.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-23: zakaz zawracania",
@@ -821,8 +821,8 @@
         "b_24": {
           "code": "B-24",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-24.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-24: koniec zakazu zawracania",
@@ -832,8 +832,8 @@
         "b_25": {
           "code": "B-25",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-25.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-25: zakaz wyprzedzania",
@@ -843,8 +843,8 @@
         "b_26": {
           "code": "B-26",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-26.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-26: zakaz wyprzedzania przez samochody ciężarowe",
@@ -854,8 +854,8 @@
         "b_27": {
           "code": "B-27",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-27.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-27: koniec zakazu wyprzedzania",
@@ -865,8 +865,8 @@
         "b_28": {
           "code": "B-28",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-28.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-28: koniec zakazu wyprzedzania przez samochody ciężarowe",
@@ -876,8 +876,8 @@
         "b_29": {
           "code": "B-29",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-29.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-29: zakaz używania sygnałów dźwiękowych",
@@ -887,8 +887,8 @@
         "b_30": {
           "code": "B-30",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-30.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-30: koniec zakazu używania sygnałów dźwiękowych",
@@ -898,8 +898,8 @@
         "b_31": {
           "code": "B-31",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-31.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-31: pierwszeństwo dla nadjeżdżających z przeciwka",
@@ -909,8 +909,8 @@
         "b_32": {
           "code": "B-32",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-32.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-32: stój – kontrola celna",
@@ -920,8 +920,8 @@
         "b_32a": {
           "code": "B-32A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-32a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-32a stój – kontrola graniczna",
@@ -931,8 +931,8 @@
         "b_32b": {
           "code": "B-32B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-32b.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-32b stój – rogatka uszkodzona",
@@ -942,8 +942,8 @@
         "b_32c": {
           "code": "B-32C",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-32c.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-32c stój – sygnalizacja uszkodzona",
@@ -953,8 +953,8 @@
         "b_32d": {
           "code": "B-32D",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-32d.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-32d stój – wjazd na prom",
@@ -964,8 +964,8 @@
         "b_32e": {
           "code": "B-32E",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-32e.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-32e stój – kontrola drogowa",
@@ -975,8 +975,8 @@
         "b_32f": {
           "code": "B-32F",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-32f.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-32f stój – pobór opłat",
@@ -986,8 +986,8 @@
         "b_33": {
           "code": "B-33",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-33-50.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-33: ograniczenie prędkości",
@@ -997,8 +997,8 @@
         "b_34": {
           "code": "B-34",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-34-50.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-34: koniec ograniczenia prędkości",
@@ -1008,8 +1008,8 @@
         "b_35": {
           "code": "B-35",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-35.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-35: zakaz postoju",
@@ -1019,8 +1019,8 @@
         "b_35a": {
           "code": "B-35A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-35a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-35: Zakaz postoju z informacją o okresie obowiązywania zakazu",
@@ -1030,8 +1030,8 @@
         "b_35b": {
           "code": "B-35B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-35b.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-35: Zakaz postoju z informacją o czasie postoju",
@@ -1041,8 +1041,8 @@
         "b_35c": {
           "code": "B-35C",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-35c.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-35: Zakaz postoju z informacją o okresie oowiązywania zakazu i czasie postoju",
@@ -1052,8 +1052,8 @@
         "b_36": {
           "code": "B-36",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-36.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-36: zakaz zatrzymywania się",
@@ -1063,8 +1063,8 @@
         "b_37": {
           "code": "B-37",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-37.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-37: zakaz postoju w dni nieparzyste",
@@ -1074,8 +1074,8 @@
         "b_38": {
           "code": "B-38",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-38.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-38: zakaz postoju w dni parzyste",
@@ -1084,12 +1084,10 @@
         },
         "b_39": {
           "code": "B-39",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-39.svg",
-          "model": "geometry.road_sign_rectangle_120x171",
-          "image_width": "128",
-          "image_height": "185",
-          "shape": "circle",
+          "image_width": "120",
+          "image_height": "173",
+          "shape": "rectangle",
           "translations": {
             "pl": "B-39: strefa ograniczonego postoju",
             "en": "Limited parking zone (B-39)"
@@ -1098,8 +1096,8 @@
         "b_40": {
           "code": "B-40",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-40.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-40: koniec strefy ograniczonego postoju",
@@ -1109,8 +1107,8 @@
         "b_41": {
           "code": "B-41",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-41.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-41: zakaz ruchu pieszych",
@@ -1120,8 +1118,8 @@
         "b_42": {
           "code": "B-42",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-42.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-42: koniec zakazów",
@@ -1131,8 +1129,8 @@
         "b_43": {
           "code": "B-43",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-43-30.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-43: strefa ograniczonej prędkości",
@@ -1142,8 +1140,8 @@
         "b_44": {
           "code": "B-44",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-44-30.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "B-44: koniec strefy ograniczonej prędkości",
@@ -1162,8 +1160,8 @@
         "c_1": {
           "code": "C-1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-1.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-1: nakaz jazdy w prawo przed znakiem",
@@ -1173,8 +1171,8 @@
         "c_2": {
           "code": "C-2",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-2.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-2: nakaz jazdy w prawo za znakiem",
@@ -1184,8 +1182,8 @@
         "c_3": {
           "code": "C-3",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-3.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-3: nakaz jazdy w lewo przed znakiem",
@@ -1195,8 +1193,8 @@
         "c_4": {
           "code": "C-4",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-4.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-4: nakaz jazdy w lewo za znakiem",
@@ -1206,8 +1204,8 @@
         "c_5": {
           "code": "C-5",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-5.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-5: nakaz jazdy prosto",
@@ -1217,8 +1215,8 @@
         "c_6": {
           "code": "C-6",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-6.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-6: nakaz jazdy prosto lub w prawo",
@@ -1228,8 +1226,8 @@
         "c_7": {
           "code": "C-7",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-7.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-7: nakaz jazdy prosto lub w lewo",
@@ -1239,8 +1237,8 @@
         "c_8": {
           "code": "C-8",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-8.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-8: nakaz jazdy w prawo lub w lewo",
@@ -1250,8 +1248,8 @@
         "c_9": {
           "code": "C-9",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-9.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-9: nakaz jazdy z prawej strony znaku",
@@ -1261,8 +1259,8 @@
         "c_10": {
           "code": "C-10",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-10.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-10: nakaz jazdy z lewej strony znaku",
@@ -1272,8 +1270,8 @@
         "c_11": {
           "code": "C-11",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-11.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-11: nakaz jazdy z prawej lub z lewej strony znaku",
@@ -1283,8 +1281,8 @@
         "c_12": {
           "code": "C-12",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-12.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-12: ruch okrężny (rondo)",
@@ -1294,8 +1292,8 @@
         "c_13": {
           "code": "C-13",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-13.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-13: droga dla rowerów",
@@ -1305,8 +1303,8 @@
         "c_13_16_v1": {
           "code": "C-13-16-V1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-13-16.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-13/16: wskazujący ruch pieszych i rowerów na tej samej drodze",
@@ -1316,8 +1314,8 @@
         "c_13_16_v2": {
           "code": "C-13-16-V2",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-13-16a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-13/16: wskazujący ruch pieszych lewą stroną drogi i ruch rowerów prawą stroną drogi",
@@ -1327,8 +1325,8 @@
         "c_13_16_v3": {
           "code": "C-13-16-V3",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-13-16b.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-13/16: wskazujący ruch rowerów lewą stroną drogi i ruch pieszych prawą stroną drogi",
@@ -1338,8 +1336,8 @@
         "c_13a": {
           "code": "C-13A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-13a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-13a: koniec drogi dla rowerów",
@@ -1349,8 +1347,8 @@
         "c_14": {
           "code": "C-14",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-14-30.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-14: prędkość minimalna",
@@ -1360,8 +1358,8 @@
         "c_15": {
           "code": "C-15",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-15-30.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-15: koniec prędkości minimalnej",
@@ -1371,8 +1369,8 @@
         "c_16": {
           "code": "C-16",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-16.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-16: droga dla pieszych",
@@ -1382,8 +1380,8 @@
         "c_16a": {
           "code": "C-16A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-16a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-16a: koniec drogi dla pieszych",
@@ -1392,12 +1390,10 @@
         },
         "c_17": {
           "code": "C-17",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-17-2.svg",
-          "model": "geometry.road_sign_rectangle_120x159",
-          "image_width": "128",
-          "image_height": "171",
-          "shape": "circle",
+          "image_width": "120",
+          "image_height": "160",
+          "shape": "rectangle",
           "translations": {
             "pl": "C-17: nakazany kierunek jazdy dla pojazdów z towarami niebezpiecznymi",
             "en": "Mandatory direction for vehicles with dangerous goods (C-17)"
@@ -1406,8 +1402,8 @@
         "c_18": {
           "code": "C-18",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-18.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-18: nakaz używania łańcuchów przeciwpoślizgowych",
@@ -1417,8 +1413,8 @@
         "c_19": {
           "code": "C-19",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-19.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "circle",
           "translations": {
             "pl": "C-19: koniec nakazu używania łańcuchów przeciwpoślizgowych",
@@ -1437,8 +1433,8 @@
         "d_1": {
           "code": "D-1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-1.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "diamond",
           "translations": {
             "pl": "D-1: droga z pierwszeństwem",
@@ -1448,8 +1444,8 @@
         "d_2": {
           "code": "D-2",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-2.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "diamond",
           "translations": {
             "pl": "D-2: koniec drogi z pierwszeństwem",
@@ -1459,8 +1455,8 @@
         "d_3": {
           "code": "D-3",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-3.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-3: droga jednokierunkowa",
@@ -1470,8 +1466,8 @@
         "d_4a": {
           "code": "D-4A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-4a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-4a: droga bez przejazdu",
@@ -1481,8 +1477,8 @@
         "d_4b1": {
           "code": "D-4B(1)",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-4b.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-4b: wjazd na drogę bez przejazdu",
@@ -1492,8 +1488,8 @@
         "d_4b2": {
           "code": "D-4b(2)",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-4c.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-4b: wjazd na drogę bez przejazdu",
@@ -1503,8 +1499,8 @@
         "d_5": {
           "code": "D-5",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-5.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-5: pierwszeństwo na zwężonym odcinku jezdni",
@@ -1514,8 +1510,8 @@
         "d_6": {
           "code": "D-6",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-6.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-6: przejście dla pieszych",
@@ -1525,8 +1521,8 @@
         "d_6a": {
           "code": "D-6A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-6a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-6a: przejazd dla rowerzystów",
@@ -1536,8 +1532,8 @@
         "d_6b": {
           "code": "D-6B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-6b.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-6b: przejście dla pieszych i przejazd dla rowerzystów",
@@ -1546,11 +1542,9 @@
         },
         "d_7": {
           "code": "D-7",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-7.svg",
-          "model": "geometry.road_sign_rectangle_120x120",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-7: droga ekspresowa",
@@ -1559,11 +1553,9 @@
         },
         "d_8": {
           "code": "D-8",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-8.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-8: koniec drogi ekspresowej",
@@ -1572,11 +1564,9 @@
         },
         "d_9": {
           "code": "D-9",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-9.svg",
-          "model": "geometry.road_sign_rectangle_120x120",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-9: autostrada",
@@ -1585,11 +1575,9 @@
         },
         "d_10": {
           "code": "D-10",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-10.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-10: koniec autostrady",
@@ -1598,11 +1586,9 @@
         },
         "d_11": {
           "code": "D-11",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-11.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-11: początek pasa ruchu dla autobusów",
@@ -1611,11 +1597,9 @@
         },
         "d_12": {
           "code": "D-12",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-12.svg",
-          "model": "geometry.road_sign_rectangle_120x120",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-12: pas ruchu dla autobusów",
@@ -1624,11 +1608,9 @@
         },
         "d_13": {
           "code": "D-13",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-13.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-13: początek pasa ruchu powolnego",
@@ -1638,8 +1620,8 @@
         "d_13a": {
           "code": "D-13A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-13a.svg",
-          "image_width": "160",
-          "image_height": "150",
+          "image_width": "180",
+          "image_height": "169",
           "shape": "square",
           "translations": {
             "pl": "D-13a: początek pasa ruchu",
@@ -1649,8 +1631,8 @@
         "d_13b": {
           "code": "D-13B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-13b.svg",
-          "image_width": "128",
-          "image_height": "106",
+          "image_width": "180",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-13b: początek pasa ruchu na jezdni dwukierunkowej",
@@ -1659,11 +1641,9 @@
         },
         "d_14": {
           "code": "D-14",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-14.svg",
-          "model": "geometry.road_sign_rectangle_120x150",
-          "image_width": "128",
-          "image_height": "161",
+          "image_width": "120",
+          "image_height": "151",
           "shape": "rectangle",
           "translations": {
             "pl": "D-14: koniec pasa ruchu",
@@ -1672,11 +1652,9 @@
         },
         "d_15": {
           "code": "D-15",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-15.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-15: przystanek autobusowy",
@@ -1685,11 +1663,9 @@
         },
         "d_16": {
           "code": "D-16",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-16.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-16: przystanek trolejbusowy",
@@ -1698,11 +1674,9 @@
         },
         "d_17": {
           "code": "D-17",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-17.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-17: przystanek tramwajowy",
@@ -1712,8 +1686,8 @@
         "d_18": {
           "code": "D-18",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-18.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-18: parking",
@@ -1723,8 +1697,8 @@
         "d_18a": {
           "code": "D-18A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-18a.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-18a: parking – miejsce zastrzeżone",
@@ -1734,8 +1708,8 @@
         "d_18b": {
           "code": "D-18B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-18b.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-18b: parking zadaszony",
@@ -1744,11 +1718,9 @@
         },
         "d_19": {
           "code": "D-19",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-19.svg",
-          "model": "geometry.road_sign_rectangle_120x61",
-          "image_width": "128",
-          "image_height": "64",
+          "image_width": "80",
+          "image_height": "40",
           "shape": "rectangle",
           "translations": {
             "pl": "D-19: postój taksówek",
@@ -1757,11 +1729,9 @@
         },
         "d_20": {
           "code": "D-20",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-20.svg",
-          "model": "geometry.road_sign_rectangle_120x61",
-          "image_width": "128",
-          "image_height": "64",
+          "image_width": "80",
+          "image_height": "40",
           "shape": "rectangle",
           "translations": {
             "pl": "D-20: koniec postoju taksówek",
@@ -1771,8 +1741,8 @@
         "d_21": {
           "code": "D-21",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-21.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-21: szpital",
@@ -1782,8 +1752,8 @@
         "d_21a": {
           "code": "D-21A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-21a.svg",
-          "image_width": "128",
-          "image_height": "129",
+          "image_width": "120",
+          "image_height": "121",
           "shape": "square",
           "translations": {
             "pl": "D-21a: policja",
@@ -1792,11 +1762,9 @@
         },
         "d_22": {
           "code": "D-22",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-22.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-22: punkt opatrunkowy",
@@ -1806,8 +1774,8 @@
         "d_23": {
           "code": "D-23",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-23.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-23: stacja paliwowa",
@@ -1817,8 +1785,8 @@
         "d_23a": {
           "code": "D-23A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-23a.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-23a: stacja paliwowa tylko z gazem do napędu pojazdów",
@@ -1828,8 +1796,8 @@
         "d_23b": {
           "code": "D-23B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-23b.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-23b: stacja paliwowa z punktem ładowania pojazdów elektrycznych",
@@ -1839,8 +1807,8 @@
         "d_23c": {
           "code": "D-23C",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-23c.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-23c: punkt ładowania pojazdów elektrycznych",
@@ -1849,11 +1817,9 @@
         },
         "d_24": {
           "code": "D-24",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-24.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-24: telefon",
@@ -1862,11 +1828,9 @@
         },
         "d_25": {
           "code": "D-25",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-25.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-25: poczta",
@@ -1875,11 +1839,9 @@
         },
         "d_26": {
           "code": "D-26",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-26.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-26: stacja obsługi technicznej",
@@ -1889,8 +1851,8 @@
         "d_26a": {
           "code": "D-26A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-26a.svg",
-          "image_width": "128",
-          "image_height": "159",
+          "image_width": "120",
+          "image_height": "149",
           "shape": "square",
           "translations": {
             "pl": "D-26a: wulkanizacja",
@@ -1900,8 +1862,8 @@
         "d_26b": {
           "code": "D-26B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-26b.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-26b: myjnia",
@@ -1911,8 +1873,8 @@
         "d_26c": {
           "code": "D-26C",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-26c.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-26c: toaleta publiczna",
@@ -1922,8 +1884,8 @@
         "d_26d": {
           "code": "D-26D",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-26d.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-26d: natrysk",
@@ -1933,8 +1895,8 @@
         "d_27": {
           "code": "D-27",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-27.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-27: bufet lub kawiarnia",
@@ -1944,8 +1906,8 @@
         "d_28": {
           "code": "D-28",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-28.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-28: restauracja",
@@ -1955,8 +1917,8 @@
         "d_29": {
           "code": "D-29",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-29.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-29: Hotel (motel)",
@@ -1966,8 +1928,8 @@
         "d_30": {
           "code": "D-30",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-30.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-30: Obozowisko (camping)",
@@ -1977,8 +1939,8 @@
         "d_31": {
           "code": "D-31",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-31.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-31: obozowisko (camping) wyposażone w podłączenia elektryczne dla przyczep kempingowych",
@@ -1988,8 +1950,8 @@
         "d_32": {
           "code": "D-32",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-32.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-32: pole biwakowe",
@@ -1999,8 +1961,8 @@
         "d_33": {
           "code": "D-33",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-33.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-33: schronisko młodzieżowe",
@@ -2010,8 +1972,8 @@
         "d_34": {
           "code": "D-34",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-34.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-34: punkt informacji turystycznej",
@@ -2021,8 +1983,8 @@
         "d_34a": {
           "code": "D-34A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-34a.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-34a: informacja radiowa o ruchu drogowym",
@@ -2032,8 +1994,8 @@
         "d_34b": {
           "code": "D-34B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-34b.svg",
-          "image_width": "128",
-          "image_height": "144",
+          "image_width": "120",
+          "image_height": "135",
           "shape": "square",
           "translations": {
             "pl": "D-34b: zbiorcza tablica informacyjna",
@@ -2043,8 +2005,8 @@
         "d_35": {
           "code": "D-35",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-35.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "rectangle",
           "translations": {
             "pl": "D-35: przejście podziemne dla pieszych",
@@ -2054,8 +2016,8 @@
         "d_35a": {
           "code": "D-35A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-35a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-35a: schody ruchome w dół",
@@ -2065,8 +2027,8 @@
         "d_36": {
           "code": "D-36",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-36.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "rectangle",
           "translations": {
             "pl": "D-36: przejście nadziemne dla pieszych",
@@ -2076,8 +2038,8 @@
         "d_36a": {
           "code": "D-36A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-36a.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "square",
           "translations": {
             "pl": "D-36a: schody ruchome w górę",
@@ -2087,8 +2049,8 @@
         "d_37": {
           "code": "D-37",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-37.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-37: tunel",
@@ -2098,8 +2060,8 @@
         "d_38": {
           "code": "D-38",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-38.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-38: koniec tunelu",
@@ -2109,8 +2071,8 @@
         "d_39": {
           "code": "D-39",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:Znak_D-39_(wersja_2021).svg",
-          "image_width": "160",
-          "image_height": "184",
+          "image_width": "466",
+          "image_height": "536",
           "shape": "rectangle",
           "translations": {
             "pl": "D-39: dopuszczalne prędkości",
@@ -2120,8 +2082,8 @@
         "d_39a": {
           "code": "D-39A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-39a.svg",
-          "image_width": "256",
-          "image_height": "233",
+          "image_width": "120",
+          "image_height": "109",
           "shape": "square",
           "translations": {
             "pl": "D-39a: opłaty drogowe",
@@ -2130,11 +2092,9 @@
         },
         "d_40": {
           "code": "D-40",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-40.svg",
-          "model": "geometry.road_sign_rectangle_120x80",
-          "image_width": "128",
-          "image_height": "86",
+          "image_width": "120",
+          "image_height": "80",
           "shape": "rectangle",
           "translations": {
             "pl": "D-40: strefa zamieszkania",
@@ -2143,11 +2103,9 @@
         },
         "d_41": {
           "code": "D-41",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-41.svg",
-          "model": "geometry.road_sign_rectangle_120x80",
-          "image_width": "128",
-          "image_height": "86",
+          "image_width": "120",
+          "image_height": "80",
           "shape": "rectangle",
           "translations": {
             "pl": "D-41: koniec strefy zamieszkania",
@@ -2156,11 +2114,9 @@
         },
         "d_42": {
           "code": "D-42",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-42.svg",
-          "model": "geometry.road_sign_rectangle_120x75",
-          "image_width": "160",
-          "image_height": "99",
+          "image_width": "120",
+          "image_height": "74",
           "shape": "rectangle",
           "translations": {
             "pl": "D-42: obszar zabudowany",
@@ -2169,11 +2125,9 @@
         },
         "d_43": {
           "code": "D-43",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-43.svg",
-          "model": "geometry.road_sign_rectangle_120x75",
-          "image_width": "160",
-          "image_height": "99",
+          "image_width": "120",
+          "image_height": "74",
           "shape": "rectangle",
           "translations": {
             "pl": "D-43: koniec obszaru zabudowanego",
@@ -2182,11 +2136,9 @@
         },
         "d_44": {
           "code": "D-44",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-44.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "160",
-          "image_height": "199",
+          "image_width": "120",
+          "image_height": "149",
           "shape": "rectangle",
           "translations": {
             "pl": "D-44: strefa płatnego parkowania lub śródmiejska strefa płatnego parkowania",
@@ -2195,11 +2147,9 @@
         },
         "d_45": {
           "code": "D-45",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-45.svg",
-          "model": "geometry.road_sign_rectangle_128x160",
-          "image_width": "160",
-          "image_height": "199",
+          "image_width": "120",
+          "image_height": "149",
           "shape": "rectangle",
           "translations": {
             "pl": "D-45: koniec strefy płatnego parkowania lub śródmiejskiej strefy płatnego parkowania",
@@ -2208,11 +2158,9 @@
         },
         "d_46": {
           "code": "D-46",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-46.svg",
-          "model": "geometry.road_sign_rectangle_120x56",
-          "image_width": "128",
-          "image_height": "60",
+          "image_width": "120",
+          "image_height": "56",
           "shape": "rectangle",
           "translations": {
             "pl": "D-46: droga wewnętrzna",
@@ -2221,11 +2169,9 @@
         },
         "d_47": {
           "code": "D-47",
-          "dimensions": "rectangular",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-47.svg",
-          "model": "geometry.road_sign_rectangle_120x56",
-          "image_width": "128",
-          "image_height": "60",
+          "image_width": "120",
+          "image_height": "56",
           "shape": "rectangle",
           "translations": {
             "pl": "D-47: koniec drogi wewnętrznej",
@@ -2235,8 +2181,8 @@
         "d_48": {
           "code": "D-48",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-48.svg",
-          "image_width": "128",
-          "image_height": "170",
+          "image_width": "120",
+          "image_height": "160",
           "shape": "rectangle",
           "translations": {
             "pl": "D-48: zmiana pierwszeństwa",
@@ -2246,8 +2192,8 @@
         "d_48a": {
           "code": "D-48A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-48a.svg",
-          "image_width": "128",
-          "image_height": "170",
+          "image_width": "120",
+          "image_height": "160",
           "shape": "square",
           "translations": {
             "pl": "D-48a: zmiana pierwszeństwa z trójkątem wskazujący wlot podporządkowany",
@@ -2257,8 +2203,8 @@
         "d_49": {
           "code": "D-49",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-49.svg",
-          "image_width": "128",
-          "image_height": "192",
+          "image_width": "150",
+          "image_height": "225",
           "shape": "rectangle",
           "translations": {
             "pl": "D-49: pobór opłat",
@@ -2268,8 +2214,8 @@
         "d_50": {
           "code": "D-50",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-50.svg",
-          "image_width": "128",
-          "image_height": "148",
+          "image_width": "120",
+          "image_height": "139",
           "shape": "rectangle",
           "translations": {
             "pl": "D-50: zatoka",
@@ -2279,8 +2225,8 @@
         "d_51": {
           "code": "D-51",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-51.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "rectangle",
           "translations": {
             "pl": "D-51: automatyczna kontrola prędkości",
@@ -2290,8 +2236,8 @@
         "d_51a": {
           "code": "D-51A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-51aa.svg",
-          "image_width": "160",
-          "image_height": "200",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-51a: automatyczna kontrola średniej prędkości",
@@ -2301,8 +2247,8 @@
         "d_51b": {
           "code": "D-51B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-51b.svg",
-          "image_width": "128",
-          "image_height": "160",
+          "image_width": "120",
+          "image_height": "150",
           "shape": "square",
           "translations": {
             "pl": "D-51b: koniec automatycznej kontroli średniej prędkości",
@@ -2312,8 +2258,8 @@
         "d_52": {
           "code": "D-52",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-52.svg",
-          "image_width": "160",
-          "image_height": "75",
+          "image_width": "120",
+          "image_height": "56",
           "shape": "rectangle",
           "translations": {
             "pl": "D-52: strefa ruchu",
@@ -2323,8 +2269,8 @@
         "d_53": {
           "code": "D-53",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-53.svg",
-          "image_width": "160",
-          "image_height": "75",
+          "image_width": "120",
+          "image_height": "56",
           "shape": "rectangle",
           "translations": {
             "pl": "D-53: koniec strefy ruchu",
@@ -2334,8 +2280,8 @@
         "d_54": {
           "code": "D-54",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-54.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "rectangle",
           "translations": {
             "pl": "D-54: strefa czystego transportu",
@@ -2345,8 +2291,8 @@
         "d_55": {
           "code": "D-55",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-55.svg",
-          "image_width": "128",
-          "image_height": "128",
+          "image_width": "120",
+          "image_height": "120",
           "shape": "rectangle",
           "translations": {
             "pl": "D-55: koniec strefy czystego transportu",

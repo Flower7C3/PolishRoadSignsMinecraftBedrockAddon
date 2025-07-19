@@ -45,14 +45,14 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.road_sign_rectangle_128x160",
+      "minecraft:geometry": "geometry.road_sign_rectangle_120x150",
       "minecraft:material_instances": {
         "north": {
           "texture": "polish_road_sign:d_29",
           "render_method": "alpha_test_single_sided"
         },
         "south": {
-          "texture": "polish_road_sign_back:rectangle_128x160",
+          "texture": "polish_road_sign_back:rectangle_120x150",
           "render_method": "alpha_test_single_sided"
         }
       }

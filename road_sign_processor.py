@@ -79,7 +79,7 @@ def extract_svg_url(html_content):
             svg_url = 'https:' + svg_url
         elif svg_url.startswith('/'):
             svg_url = 'https://pl.wikipedia.org' + svg_url
-        print(f"✓ Znaleziono SVG (fullImageLink): {svg_url}")
+        print(f"🆒 Znaleziono SVG (fullImageLink): {svg_url}")
         return svg_url
     
     # Fallback: szukaj linku do pliku SVG w upload.wikimedia.org
@@ -87,7 +87,7 @@ def extract_svg_url(html_content):
     match = re.search(upload_pattern, html_content)
     if match:
         svg_url = "https:" + match.group().replace('href="', '').replace('"', '')
-        print(f"✓ Znaleziono SVG (fallback): {svg_url}")
+        print(f"🆒 Znaleziono SVG (fallback): {svg_url}")
         return svg_url
     
     # Dodatkowy fallback: szukaj bezpośrednich linków
@@ -95,7 +95,7 @@ def extract_svg_url(html_content):
     match = re.search(direct_pattern, html_content)
     if match:
         svg_url = match.group(0)
-        print(f"✓ Znaleziono SVG (direct): {svg_url}")
+        print(f"🆒 Znaleziono SVG (direct): {svg_url}")
         return svg_url
     
     return None
@@ -153,7 +153,7 @@ def create_model_if_needed(width, height, shape):
     model_path = f"RP/models/blocks/{model_name}.geo.json"
     
     if os.path.exists(model_path):
-        print(f"✓ Model już istnieje: {model_name}")
+        print(f"🆗 Model już istnieje: {model_name}")
         return model_name
     
     # Twórz model na podstawie szablonu
@@ -209,7 +209,7 @@ def create_model_if_needed(width, height, shape):
     with open(model_path, 'w') as f:
         json.dump(template, f, indent=2)
     
-    print(f"✓ Utworzono model: {model_name}")
+    print(f"🆕 Utworzono model: {model_name}")
     return model_name
 
 def create_background_texture_if_needed(width, height, shape):
@@ -218,35 +218,35 @@ def create_background_texture_if_needed(width, height, shape):
     texture_path = f"RP/textures/blocks/sign_backs/{texture_name}.png"
     
     if os.path.exists(texture_path):
-        print(f"✓ Tekstura tła już istnieje: {texture_name}")
+        print(f"🆗 Tekstura tła już istnieje: {texture_name}")
         return texture_name
     
-    # Twórz szarą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
+    # Twórz neutralną białą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
     try:
         if shape == 'triangle':
-            # Trójkąt - szary kolor w kształcie trójkąta
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon {width//2},0 0,{height} {width},{height}', '-define', 'png:color-type=6', texture_path], check=True)
+            # Trójkąt - biały kolor w kształcie trójkąta
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {width//2},0 0,{height} {width},{height}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'inverted_triangle':
-            # Odwrócony trójkąt - szary kolor w kształcie odwróconego trójkąta
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon 0,0 {width},0 {width//2},{height}', '-define', 'png:color-type=6', texture_path], check=True)
+            # Odwrócony trójkąt - biały kolor w kształcie odwróconego trójkąta
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon 0,0 {width},0 {width//2},{height}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'circle':
-            # Koło - szary kolor w kształcie koła
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'circle {width//2},{height//2} {width//2},0', '-define', 'png:color-type=6', texture_path], check=True)
+            # Koło - biały kolor w kształcie koła
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'circle {width//2},{height//2} {width//2},0', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'square':
-            # Kwadrat - szary kolor w kształcie kwadratu
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
+            # Kwadrat - biały kolor w kształcie kwadratu
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'diamond':
-            # Romb - szary kolor w kształcie rombu
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon {width//2},0 {width},{height//2} {width//2},{height} 0,{height//2}', '-define', 'png:color-type=6', texture_path], check=True)
+            # Romb - biały kolor w kształcie rombu
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {width//2},0 {width},{height//2} {width//2},{height} 0,{height//2}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'octagon':
-            # Ośmiokąt - szary kolor w kształcie ośmiokąta
-            margin = min(width, height) // 8
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'polygon {margin},0 {width-margin},0 {width},{margin} {width},{height-margin} {width-margin},{height} {margin},{height} 0,{height-margin} 0,{margin}', '-define', 'png:color-type=6', texture_path], check=True)
+            # Ośmiokąt - biały kolor w kształcie ośmiokąta
+            margin = min(width, height) // 4
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {margin},0 {width-margin},0 {width},{margin} {width},{height-margin} {width-margin},{height} {margin},{height} 0,{height-margin} 0,{margin}', '-define', 'png:color-type=6', texture_path], check=True)
         else:
-            # Prostokąt - szary kolor w kształcie prostokąta
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'gray', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
+            # Prostokąt - biały kolor w kształcie prostokąta
+            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
         
-        print(f"✓ Utworzono teksturę tła: {texture_name} (kształt: {shape})")
+        print(f"🆕 Utworzono teksturę tła: {texture_name} (kształt: {shape})")
     except subprocess.CalledProcessError as e:
         print(f"Błąd tworzenia tekstury tła {texture_name}: {e}")
         return None
@@ -262,7 +262,7 @@ def add_to_terrain_texture(texture_name):
     
     # Sprawdź czy już istnieje
     if f"polish_road_sign_back:{texture_name}" in terrain["texture_data"]:
-        print(f"✓ Tekstura {texture_name} już istnieje w terrain_texture.json")
+        print(f"🆗 Tekstura {texture_name} już istnieje w terrain_texture.json")
         return
     
     # Dodaj wpis tekstury
@@ -273,14 +273,14 @@ def add_to_terrain_texture(texture_name):
     with open(terrain_path, 'w') as f:
         json.dump(terrain, f, indent=2)
     
-    print(f"✓ Dodano {texture_name} do terrain_texture.json")
+    print(f"🆕 Dodano {texture_name} do terrain_texture.json")
 
 def get_model_dimensions(model_name):
     """Pobierz wymiary modelu z pliku geometry"""
     model_path = f"RP/models/blocks/{model_name}.geo.json"
     
     if not os.path.exists(model_path):
-        print(f"⚠️  Nie znaleziono modelu: {model_path}")
+        print(f"⚠️ Nie znaleziono modelu: {model_path}")
         return None, None
     
     try:
@@ -305,7 +305,7 @@ def get_model_dimensions(model_name):
             
             return width, height
         else:
-            print(f"⚠️  Nieprawidłowa struktura modelu: {model_path}")
+            print(f"⚠️ Nieprawidłowa struktura modelu: {model_path}")
             return None, None
             
     except Exception as e:
@@ -318,13 +318,13 @@ def update_collision_and_selection_boxes(sign_id, model_name):
     block_path = f"BP/blocks/{category}/{sign_id}.block.json"
     
     if not os.path.exists(block_path):
-        print(f"⚠️  Nie znaleziono pliku bloku: {block_path}")
+        print(f"⚠️ Nie znaleziono pliku bloku: {block_path}")
         return False
     
     # Pobierz wymiary modelu
     width, height = get_model_dimensions(model_name)
     if width is None or height is None:
-        print(f"⚠️  Nie udało się pobrać wymiarów modelu dla {sign_id}")
+        print(f"⚠️ Nie udało się pobrać wymiarów modelu dla {sign_id}")
         return False
     
     # Oblicz origin (środek modelu)
@@ -352,11 +352,11 @@ def update_collision_and_selection_boxes(sign_id, model_name):
         with open(block_path, 'w') as f:
             json.dump(block_data, f, indent=2)
         
-        print(f"✓ Zaktualizowano collision/selection box dla {sign_id}: {width}x{height}")
+        print(f"🆙 Zaktualizowano collision/selection box dla {sign_id}: {width}x{height}")
         return True
         
     except Exception as e:
-        print(f"Błąd aktualizacji collision/selection box dla {sign_id}: {e}")
+        print(f"❌ Błąd aktualizacji collision/selection box dla {sign_id}: {e}")
         return False
 
 def create_block_if_needed(sign_id, model_name, background_name, shape):
@@ -365,7 +365,7 @@ def create_block_if_needed(sign_id, model_name, background_name, shape):
     block_path = f"BP/blocks/{category}/{sign_id}.block.json"
     
     if os.path.exists(block_path):
-        print(f"✓ Blok już istnieje: {sign_id}")
+        print(f"🆗 Blok już istnieje: {sign_id}")
         return True
     
     # Utwórz katalog jeśli nie istnieje
@@ -473,7 +473,7 @@ def create_block_if_needed(sign_id, model_name, background_name, shape):
     with open(block_path, 'w') as f:
         json.dump(block_template, f, indent=2)
     
-    print(f"✓ Utworzono blok: {sign_id}")
+    print(f"🆕 Utworzono blok: {sign_id}")
     return True
 
 def update_block_definition(sign_id, model_name, background_name, shape):
@@ -482,7 +482,7 @@ def update_block_definition(sign_id, model_name, background_name, shape):
     block_path = f"BP/blocks/{category}/{sign_id}.block.json"
     
     if not os.path.exists(block_path):
-        print(f"⚠️  Nie znaleziono pliku bloku: {block_path}")
+        print(f"⚠️ Nie znaleziono pliku bloku: {block_path}")
         return False
     
     with open(block_path, 'r') as f:
@@ -518,7 +518,7 @@ def update_block_definition(sign_id, model_name, background_name, shape):
     with open(block_path, 'w') as f:
         json.dump(block_data, f, indent=2)
     
-    print(f"✓ Zaktualizowano blok {sign_id}: model={model_name}, tło={background_name} (kształt: {shape})")
+    print(f"🆙 Zaktualizowano blok {sign_id}: model={model_name}, tło={background_name} (kształt: {shape})")
     return True
 
 def update_database(database_path, sign_id, width, height):
@@ -542,10 +542,10 @@ def update_database(database_path, sign_id, width, height):
         with open(database_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         
-        print(f"✓ Zaktualizowano bazę dla {sign_id}: {width}x{height}")
+        print(f"🆙 Zaktualizowano bazę dla {sign_id}: {width}x{height}")
         return True
     except Exception as e:
-        print(f"Błąd aktualizacji bazy: {e}")
+        print(f"⚠️ Błąd aktualizacji bazy: {e}")
         return False
 
 def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
@@ -595,7 +595,7 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
         print(f"❌ Nie udało się pobrać SVG dla {sign_id}")
         return False
     
-    print(f"✓ Pobrano SVG: {svg_path}")
+    print(f"⏬️ Pobrano SVG: {svg_path}")
     
     # Konwertuj na PNG w tym samym katalogu
     png_path = f"{target_dir}/{sign_id}.png"
@@ -603,7 +603,7 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
         print(f"❌ Nie udało się skonwertować SVG dla {sign_id}")
         return False
     
-    print(f"✓ Skonwertowano na PNG: {png_path}")
+    print(f"🔀 Skonwertowano na PNG: {png_path}")
     
     # Pobierz rzeczywiste wymiary
     width, height = get_image_dimensions(png_path)
@@ -611,7 +611,7 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
         print(f"❌ Nie udało się pobrać wymiarów dla {sign_id}")
         return False
     
-    print(f"✓ Wymiary: {width}x{height}")
+    print(f"📐 Wymiary: {width}x{height}")
     
     # Automatycznie twórz model i teksturę tła
     model_name = create_model_if_needed(width, height, shape)
@@ -628,20 +628,20 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
     # Utwórz lub zaktualizuj definicję bloku
     if not os.path.exists(f"BP/blocks/{category.lower()}/{sign_id}.block.json"):
         if create_block_if_needed(sign_id, model_name, background_name, shape):
-            print(f"✓ Utworzono definicję bloku {sign_id}")
+            print(f"🆕 Utworzono definicję bloku {sign_id}")
         else:
             print(f"❌ Błąd tworzenia bloku {sign_id}")
             return False
     else:
         if update_block_definition(sign_id, model_name, background_name, shape):
-            print(f"✓ Zaktualizowano definicję bloku {sign_id}")
+            print(f"🆙 Zaktualizowano definicję bloku {sign_id}")
         else:
             print(f"❌ Błąd aktualizacji bloku {sign_id}")
             return False
     
     # Zaktualizuj bazę danych
     if update_database(database_path, sign_id, width, height):
-        print(f"✅ {sign_id} - gotowe!")
+        print(f" ✅ {sign_id} - gotowe!")
         return True
     else:
         print(f"❌ Błąd aktualizacji bazy dla {sign_id}")
@@ -690,7 +690,7 @@ def main():
                     
                     # Sprawdź czy znak ma link do pliku Wikipedii
                     if 'wikipedia_file_page' not in signs[sign_id]:
-                        print(f"⚠️  {sign_id}: brak linku do pliku Wikipedii")
+                        print(f"⚠️ {sign_id}: brak linku do pliku Wikipedii")
                         continue
                     
                     wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
@@ -721,7 +721,7 @@ def main():
             
             # Sprawdź czy znak ma link do pliku Wikipedii
             if 'wikipedia_file_page' not in sign_data:
-                print(f"⚠️  {sign_id}: brak linku do pliku Wikipedii")
+                print(f"⚠️ {sign_id}: brak linku do pliku Wikipedii")
                 errors.append(f"{sign_id}: brak linku do pliku Wikipedii")
                 continue
             
