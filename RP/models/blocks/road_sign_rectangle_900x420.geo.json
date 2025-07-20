@@ -4,8 +4,8 @@
     {
       "description": {
         "identifier": "geometry.road_sign_rectangle_900x420",
-        "texture_width": 90,
-        "texture_height": 42,
+        "texture_width": 180,
+        "texture_height": 84,
         "visible_bounds_width": 0,
         "visible_bounds_height": 0,
         "visible_bounds_offset": [
@@ -86,8 +86,8 @@
                     0
                   ],
                   "uv_size": [
-                    90,
-                    42
+                    180,
+                    84
                   ]
                 },
                 "south": {
@@ -96,8 +96,8 @@
                     0
                   ],
                   "uv_size": [
-                    90,
-                    42
+                    180,
+                    84
                   ]
                 }
               }

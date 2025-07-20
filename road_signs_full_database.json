@@ -10,7 +10,7 @@
           "code": "A-1",
           "translations": {
             "pl": "A-1: niebezpieczny zakręt w prawo",
-            "en": "Dangerous curve to the right (A-1)"
+            "en": "A-1: Dangerous curve to the right"
           },
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-1.svg",
           "sign_width": "1050",
@@ -25,7 +25,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-2: niebezpieczny zakręt w lewo",
-            "en": "Dangerous curve to the left (A-2)"
+            "en": "A-2: Dangerous curve to the left"
           }
         },
         "a_3": {
@@ -36,7 +36,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-3: niebezpieczne zakręty – pierwszy w prawo",
-            "en": "Dangerous curves - first to the right (A-3)"
+            "en": "A-3: Dangerous curves - first to the right"
           }
         },
         "a_4": {
@@ -47,7 +47,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-4: niebezpieczne zakręty – pierwszy w lewo",
-            "en": "Dangerous curves - first to the left (A-4)"
+            "en": "A-4: Dangerous curves - first to the left"
           }
         },
         "a_5": {
@@ -58,7 +58,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-5: skrzyżowanie dróg",
-            "en": "Road intersection (A-5)"
+            "en": "A-5: Road intersection"
           }
         },
         "a_6a": {
@@ -69,7 +69,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-6a: skrzyżowanie z drogą podporządkowaną występującą po obu stronach",
-            "en": "Intersection with subordinate road on both sides (A-6a)"
+            "en": "A-6a: Intersection with subordinate road on both sides"
           }
         },
         "a_6b": {
@@ -80,7 +80,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-6b: skrzyżowanie z drogą podporządkowaną występującą po prawej stronie",
-            "en": "Intersection with subordinate road on the right side (A-6b)"
+            "en": "A-6b: Intersection with subordinate road on the right side"
           }
         },
         "a_6c": {
@@ -91,7 +91,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-6c: skrzyżowanie z drogą podporządkowaną występującą po lewej stronie",
-            "en": "Intersection with subordinate road on the left side (A-6c)"
+            "en": "A-6c: Intersection with subordinate road on the left side"
           }
         },
         "a_6d": {
@@ -102,7 +102,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-6d: wlot drogi jednokierunkowej z prawej strony",
-            "en": "Entry to one-way road from the right side (A-6d)"
+            "en": "A-6d: Entry to one-way road from the right side"
           }
         },
         "a_6e": {
@@ -113,7 +113,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-6e: wlot drogi jednokierunkowej z lewej strony",
-            "en": "Entry to one-way road from the left side (A-6e)"
+            "en": "A-6e: Entry to one-way road from the left side"
           }
         },
         "a_7": {
@@ -124,7 +124,7 @@
           "sign_shape": "inverted_triangle",
           "translations": {
             "pl": "A-7: ustąp pierwszeństwa",
-            "en": "Yield (A-7)"
+            "en": "A-7: Yield"
           }
         },
         "a_8": {
@@ -135,7 +135,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-8: skrzyżowanie o ruchu okrężnym",
-            "en": "Roundabout intersection (A-8)"
+            "en": "A-8: Roundabout intersection"
           }
         },
         "a_9": {
@@ -146,7 +146,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-9: przejazd kolejowy z zaporami",
-            "en": "Railway crossing with barriers (A-9)"
+            "en": "A-9: Railway crossing with barriers"
           }
         },
         "a_10": {
@@ -157,7 +157,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-10: przejazd kolejowy bez zapór",
-            "en": "Railway crossing without barriers (A-10)"
+            "en": "A-10: Railway crossing without barriers"
           }
         },
         "a_11": {
@@ -168,7 +168,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-11: nierówna droga",
-            "en": "Uneven road (A-11)"
+            "en": "A-11: Uneven road"
           }
         },
         "a_11a": {
@@ -179,7 +179,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-11a: próg zwalniający",
-            "en": "Speed bump (A-11a)"
+            "en": "A-11a: Speed bump"
           }
         },
         "a_12a": {
@@ -190,7 +190,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-12a: zwężenie jezdni – dwustronne",
-            "en": "Road narrowing - bilateral (A-12a)"
+            "en": "A-12a: Road narrowing - bilateral"
           }
         },
         "a_12b": {
@@ -201,7 +201,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-12b: zwężenie jezdni – prawostronne",
-            "en": "Road narrowing - right side (A-12b)"
+            "en": "A-12b: Road narrowing - right side"
           }
         },
         "a_12c": {
@@ -212,7 +212,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-12c: zwężenie jezdni – lewostronne",
-            "en": "Road narrowing - left side (A-12c)"
+            "en": "A-12c: Road narrowing - left side"
           }
         },
         "a_13": {
@@ -223,7 +223,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-13: ruchomy most",
-            "en": "Movable bridge (A-13)"
+            "en": "A-13: Movable bridge"
           }
         },
         "a_14": {
@@ -234,7 +234,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-14: roboty na drodze",
-            "en": "Road works (A-14)"
+            "en": "A-14: Road works"
           }
         },
         "a_15": {
@@ -245,7 +245,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-15: śliska jezdnia",
-            "en": "Slippery road (A-15)"
+            "en": "A-15: Slippery road"
           }
         },
         "a_16": {
@@ -256,7 +256,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-16: przejście dla pieszych",
-            "en": "Pedestrian crossing (A-16)"
+            "en": "A-16: Pedestrian crossing"
           }
         },
         "a_17": {
@@ -267,7 +267,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-17: dzieci",
-            "en": "Children (A-17)"
+            "en": "A-17: Children"
           }
         },
         "a_18a": {
@@ -278,7 +278,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-18a: zwierzęta gospodarskie",
-            "en": "Farm animals (A-18a)"
+            "en": "A-18a: Farm animals"
           }
         },
         "a_18b": {
@@ -289,7 +289,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-18b: zwierzęta dzikie",
-            "en": "Wild animals (A-18b)"
+            "en": "A-18b: Wild animals"
           }
         },
         "a_19": {
@@ -300,7 +300,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-19: boczny wiatr",
-            "en": "Side wind (A-19)"
+            "en": "A-19: Side wind"
           }
         },
         "a_20": {
@@ -311,7 +311,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-20: odcinek jezdni o ruchu dwukierunkowym",
-            "en": "Two-way traffic section (A-20)"
+            "en": "A-20: Two-way traffic section"
           }
         },
         "a_21": {
@@ -322,7 +322,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-21: tramwaj",
-            "en": "Tram (A-21)"
+            "en": "A-21: Tram"
           }
         },
         "a_22": {
@@ -333,7 +333,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-22: niebezpieczny zjazd",
-            "en": "Dangerous descent (A-22)"
+            "en": "A-22: Dangerous descent"
           }
         },
         "a_23": {
@@ -344,7 +344,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-23: stromy podjazd",
-            "en": "Steep ascent (A-23)"
+            "en": "A-23: Steep ascent"
           }
         },
         "a_24": {
@@ -355,7 +355,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-24: rowerzyści",
-            "en": "Cyclists (A-24)"
+            "en": "A-24: Cyclists"
           }
         },
         "a_25": {
@@ -366,7 +366,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-25: spadające odłamki skalne",
-            "en": "Falling rock fragments (A-25)"
+            "en": "A-25: Falling rock fragments"
           }
         },
         "a_26": {
@@ -377,7 +377,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-26: lotnisko",
-            "en": "Airport (A-26)"
+            "en": "A-26: Airport"
           }
         },
         "a_27": {
@@ -388,7 +388,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-27: nabrzeże lub brzeg rzeki",
-            "en": "Quay or river bank (A-27)"
+            "en": "A-27: Quay or river bank"
           }
         },
         "a_28": {
@@ -399,7 +399,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-28: sypki żwir",
-            "en": "Loose gravel (A-28)"
+            "en": "A-28: Loose gravel"
           }
         },
         "a_29": {
@@ -410,7 +410,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-29: sygnały świetlne",
-            "en": "Traffic lights (A-29)"
+            "en": "A-29: Traffic lights"
           }
         },
         "a_30": {
@@ -421,7 +421,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-30: inne niebezpieczeństwo",
-            "en": "Other dangers (A-30)"
+            "en": "A-30: Other dangers"
           }
         },
         "a_31": {
@@ -432,7 +432,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-31: niebezpieczne pobocze",
-            "en": "Dangerous shoulder (A-31)"
+            "en": "A-31: Dangerous shoulder"
           }
         },
         "a_32": {
@@ -443,7 +443,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-32: oszronienie jezdni",
-            "en": "Frost on road (A-32)"
+            "en": "A-32: Frost on road"
           }
         },
         "a_33": {
@@ -454,7 +454,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-33: zator drogowy",
-            "en": "Traffic jam (A-33)"
+            "en": "A-33: Traffic jam"
           }
         },
         "a_34": {
@@ -465,7 +465,7 @@
           "sign_shape": "triangle",
           "translations": {
             "pl": "A-34: wypadek drogowy",
-            "en": "Road accident (A-34)"
+            "en": "A-34: Road accident"
           }
         }
       },
@@ -486,7 +486,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-1: zakaz ruchu w obu kierunkach",
-            "en": "No traffic in both directions (B-1)"
+            "en": "B-1: No traffic in both directions"
           }
         },
         "b_2": {
@@ -497,7 +497,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-2: zakaz wjazdu",
-            "en": "No entry (B-2)"
+            "en": "B-2: No entry"
           }
         },
         "b_3": {
@@ -508,7 +508,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-3: zakaz wjazdu pojazdów silnikowych, z wyjątkiem motocykli jednośladowych",
-            "en": "No motor vehicles except motorcycles (B-3)"
+            "en": "B-3: No motor vehicles except motorcycles"
           }
         },
         "b_3_4": {
@@ -519,7 +519,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-3/4: zakaz wjazdu wszelkich pojazdów silnikowych",
-            "en": "No motor vehicles and motorcycles (B-3/4)"
+            "en": "B-3/4: No motor vehicles and motorcycles"
           }
         },
         "b_3_4_10": {
@@ -530,7 +530,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-3/4/10: zakaz wjazdu pojazdów silnikowych, motocykli i motorowerów",
-            "en": "No motor vehicles, motorcycles and mopeds (B-3/4/10)"
+            "en": "B-3/4/10: No motor vehicles, motorcycles and mopeds"
           }
         },
         "b_3a": {
@@ -541,7 +541,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-3a: zakaz wjazdu autobusów",
-            "en": "No buses (B-3a)"
+            "en": "B-3a: No buses"
           }
         },
         "b_4": {
@@ -552,7 +552,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-4: zakaz wjazdu motocykli",
-            "en": "No motorcycles (B-4)"
+            "en": "B-4: No motorcycles"
           }
         },
         "b_5": {
@@ -563,7 +563,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-5: zakaz wjazdu samochodów ciężarowych",
-            "en": "No trucks (B-5)"
+            "en": "B-5: No trucks"
           }
         },
         "b_6": {
@@ -574,7 +574,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-6: zakaz wjazdu ciągników rolniczych",
-            "en": "No tractors (B-6)"
+            "en": "B-6: No tractors"
           }
         },
         "b_6_8": {
@@ -585,7 +585,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-6/8: zakaz wjazdu ciągników rolniczych i pojazdów zaprzęgowych",
-            "en": "No agricultural tractors and horse-drawn vehicles (B-6/8)"
+            "en": "B-6/8: No agricultural tractors and horse-drawn vehicles"
           }
         },
         "b_6_8_9": {
@@ -596,7 +596,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-6/8/9: zakaz wjazdu pojazdów innych niż samochodowe",
-            "en": "No vehicles other than motor vehicles (B-6/8/9)"
+            "en": "B-6/8/9: No vehicles other than motor vehicles"
           }
         },
         "b_7": {
@@ -607,7 +607,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-7: zakaz wjazdu pojazdów silnikowych z przyczepą",
-            "en": "No motor vehicles with trailers (B-7)"
+            "en": "B-7: No motor vehicles with trailers"
           }
         },
         "b_8": {
@@ -618,7 +618,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-8: zakaz wjazdu pojazdów zaprzęgowych",
-            "en": "No horse-drawn vehicles (B-8)"
+            "en": "B-8: No horse-drawn vehicles"
           }
         },
         "b_9": {
@@ -629,7 +629,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-9: zakaz wjazdu rowerów",
-            "en": "No bicycles (B-9)"
+            "en": "B-9: No bicycles"
           }
         },
         "b_9_12": {
@@ -640,7 +640,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-9/12: zakaz wjazdu rowerów i wózków ręcznych",
-            "en": "No bicycles and hand carts (B-9/12)"
+            "en": "B-9/12: No bicycles and hand carts"
           }
         },
         "b_10": {
@@ -651,7 +651,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-10: zakaz wjazdu motorowerów",
-            "en": "No mopeds (B-10)"
+            "en": "B-10: No mopeds"
           }
         },
         "b_11": {
@@ -662,7 +662,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-11: zakaz wjazdu wózków rowerowych",
-            "en": "No bicycle carts (B-11)"
+            "en": "B-11: No bicycle carts"
           }
         },
         "b_12": {
@@ -673,7 +673,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-12: zakaz wjazdu wózków ręcznych",
-            "en": "No hand carts (B-12)"
+            "en": "B-12: No hand carts"
           }
         },
         "b_13": {
@@ -684,7 +684,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-13: zakaz wjazdu pojazdów z towarami wybuchowymi lub łatwo zapalnymi",
-            "en": "No vehicles with explosives or flammable materials (B-13)"
+            "en": "B-13: No vehicles with explosives or flammable materials"
           }
         },
         "b_13_14": {
@@ -695,7 +695,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-13/14: zakaz wjazdu pojazdów z towarami wybuchowymi lub łatwo zapalnymi oraz towarami mogącymi skazić wodę",
-            "en": "No vehicles with explosives or flammable materials and materials that may pollute water (B-13/14)"
+            "en": "B-13/14: No vehicles with explosives or flammable materials and materials that may pollute water"
           }
         },
         "b_13a": {
@@ -706,7 +706,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-13a: zakaz wjazdu pojazdów z towarami niebezpiecznymi",
-            "en": "No vehicles with dangerous goods (B-13a)"
+            "en": "B-13a: No vehicles with dangerous goods"
           }
         },
         "b_14": {
@@ -717,7 +717,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-14: zakaz wjazdu pojazdów z towarami, które mogą skazić wodę",
-            "en": "No vehicles with materials that may pollute water (B-14)"
+            "en": "B-14: No vehicles with materials that may pollute water"
           }
         },
         "b_15": {
@@ -728,7 +728,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-15: zakaz wjazdu pojazdów o szerokości ponad ... m",
-            "en": "No vehicles wider than ... m (B-15)"
+            "en": "B-15: No vehicles wider than ... m"
           }
         },
         "b_16": {
@@ -739,7 +739,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-16: zakaz wjazdu pojazdów o wysokości ponad ... m",
-            "en": "No vehicles higher than ... m (B-16)"
+            "en": "B-16: No vehicles higher than ... m"
           }
         },
         "b_17": {
@@ -750,7 +750,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-17: zakaz wjazdu pojazdów o długości ponad ... m",
-            "en": "No vehicles longer than ... m (B-17)"
+            "en": "B-17: No vehicles longer than ... m"
           }
         },
         "b_18": {
@@ -761,7 +761,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-18: zakaz wjazdu pojazdów o rzeczywistej masie całkowitej ponad ... t",
-            "en": "No vehicles with actual total mass over ... t (B-18)"
+            "en": "B-18: No vehicles with actual total mass over ... t"
           }
         },
         "b_19": {
@@ -772,7 +772,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-19: zakaz wjazdu pojazdów o nacisku pojedynczej osi napędowej powyżej ... t",
-            "en": "No vehicles with single drive axle pressure above ... t (B-19)"
+            "en": "B-19: No vehicles with single drive axle pressure above ... t"
           }
         },
         "b_20": {
@@ -783,7 +783,7 @@
           "sign_shape": "octagon",
           "translations": {
             "pl": "B-20: stop",
-            "en": "Stop (B-20)"
+            "en": "B-20: Stop"
           }
         },
         "b_21": {
@@ -794,7 +794,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-21: zakaz skręcania w lewo",
-            "en": "No left turn (B-21)"
+            "en": "B-21: No left turn"
           }
         },
         "b_22": {
@@ -805,7 +805,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-22: zakaz skręcania w prawo",
-            "en": "No right turn (B-22)"
+            "en": "B-22: No right turn"
           }
         },
         "b_23": {
@@ -816,7 +816,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-23: zakaz zawracania",
-            "en": "No U-turn (B-23)"
+            "en": "B-23: No U-turn"
           }
         },
         "b_24": {
@@ -827,7 +827,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-24: koniec zakazu zawracania",
-            "en": "End of no U-turn (B-24)"
+            "en": "B-24: End of no U-turn"
           }
         },
         "b_25": {
@@ -838,7 +838,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-25: zakaz wyprzedzania",
-            "en": "No overtaking (B-25)"
+            "en": "B-25: No overtaking"
           }
         },
         "b_26": {
@@ -849,7 +849,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-26: zakaz wyprzedzania przez samochody ciężarowe",
-            "en": "No overtaking by trucks (B-26)"
+            "en": "B-26: No overtaking by trucks"
           }
         },
         "b_27": {
@@ -860,7 +860,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-27: koniec zakazu wyprzedzania",
-            "en": "End of no overtaking (B-27)"
+            "en": "B-27: End of no overtaking"
           }
         },
         "b_28": {
@@ -871,7 +871,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-28: koniec zakazu wyprzedzania przez samochody ciężarowe",
-            "en": "End of no overtaking by trucks (B-28)"
+            "en": "B-28: End of no overtaking by trucks"
           }
         },
         "b_29": {
@@ -882,7 +882,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-29: zakaz używania sygnałów dźwiękowych",
-            "en": "No horn use (B-29)"
+            "en": "B-29: No horn use"
           }
         },
         "b_30": {
@@ -893,7 +893,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-30: koniec zakazu używania sygnałów dźwiękowych",
-            "en": "End of no horn use (B-30)"
+            "en": "B-30: End of no horn use"
           }
         },
         "b_31": {
@@ -904,7 +904,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-31: pierwszeństwo dla nadjeżdżających z przeciwka",
-            "en": "Priority for oncoming traffic (B-31)"
+            "en": "B-31: Priority for oncoming traffic"
           }
         },
         "b_32": {
@@ -915,7 +915,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-32: stój – kontrola celna",
-            "en": "Stop - customs control (B-32)"
+            "en": "B-32: Stop - customs control"
           }
         },
         "b_32a": {
@@ -926,7 +926,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-32a stój – kontrola graniczna",
-            "en": "Stop - border control (B-32a)"
+            "en": "B-32a: Stop - border control"
           }
         },
         "b_32b": {
@@ -937,7 +937,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-32b stój – rogatka uszkodzona",
-            "en": "Stop - damaged barrier (B-32b)"
+            "en": "B-32b: Stop - damaged barrier"
           }
         },
         "b_32c": {
@@ -948,7 +948,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-32c stój – sygnalizacja uszkodzona",
-            "en": "Stop - damaged signaling (B-32c)"
+            "en": "B-32c: Stop - damaged signaling"
           }
         },
         "b_32d": {
@@ -959,7 +959,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-32d stój – wjazd na prom",
-            "en": "Stop - ferry entry (B-32d)"
+            "en": "B-32d: Stop - ferry entry"
           }
         },
         "b_32e": {
@@ -970,7 +970,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-32e stój – kontrola drogowa",
-            "en": "Stop - road control (B-32e)"
+            "en": "B-32e: Stop - road control"
           }
         },
         "b_32f": {
@@ -981,7 +981,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-32f stój – pobór opłat",
-            "en": "Stop - toll collection (B-32f)"
+            "en": "B-32f: Stop - toll collection"
           }
         },
         "b_33": {
@@ -992,7 +992,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-33: ograniczenie prędkości",
-            "en": "Speed limit (B-33)"
+            "en": "B-33: Speed limit"
           }
         },
         "b_34": {
@@ -1003,7 +1003,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-34: koniec ograniczenia prędkości",
-            "en": "End of speed limit (B-34)"
+            "en": "B-34: End of speed limit"
           }
         },
         "b_35": {
@@ -1014,7 +1014,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-35: zakaz postoju",
-            "en": "No parking (B-35)"
+            "en": "B-35: No parking"
           }
         },
         "b_35a": {
@@ -1025,7 +1025,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-35: Zakaz postoju z informacją o okresie obowiązywania zakazu",
-            "en": "No parking with information about the period of validity of the ban (B-35a)"
+            "en": "B-35a: No parking with information about the period of validity of the ban"
           }
         },
         "b_35b": {
@@ -1036,7 +1036,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-35: Zakaz postoju z informacją o czasie postoju",
-            "en": "No parking with information about parking time (B-35b)"
+            "en": "B-35b: No parking with information about parking time"
           }
         },
         "b_35c": {
@@ -1047,7 +1047,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-35: Zakaz postoju z informacją o okresie oowiązywania zakazu i czasie postoju",
-            "en": "No parking with information about the period of validity of the ban and parking time (B-35c)"
+            "en": "B-35c: No parking with information about the period of validity of the ban and parking time"
           }
         },
         "b_36": {
@@ -1058,7 +1058,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-36: zakaz zatrzymywania się",
-            "en": "No stopping (B-36)"
+            "en": "B-36: No stopping"
           }
         },
         "b_37": {
@@ -1069,7 +1069,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-37: zakaz postoju w dni nieparzyste",
-            "en": "No parking on odd days (B-37)"
+            "en": "B-37: No parking on odd days"
           }
         },
         "b_38": {
@@ -1080,7 +1080,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-38: zakaz postoju w dni parzyste",
-            "en": "No parking on even days (B-38)"
+            "en": "B-38: No parking on even days"
           }
         },
         "b_39": {
@@ -1091,7 +1091,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "B-39: strefa ograniczonego postoju",
-            "en": "Limited parking zone (B-39)"
+            "en": "B-39: Limited parking zone"
           }
         },
         "b_40": {
@@ -1102,7 +1102,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-40: koniec strefy ograniczonego postoju",
-            "en": "End of limited parking zone (B-40)"
+            "en": "B-40: End of limited parking zone"
           }
         },
         "b_41": {
@@ -1113,7 +1113,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-41: zakaz ruchu pieszych",
-            "en": "No pedestrians (B-41)"
+            "en": "B-41: No pedestrians"
           }
         },
         "b_42": {
@@ -1124,7 +1124,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-42: koniec zakazów",
-            "en": "End of prohibitions (B-42)"
+            "en": "B-42: End of prohibitions"
           }
         },
         "b_43": {
@@ -1135,7 +1135,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-43: strefa ograniczonej prędkości",
-            "en": "Limited speed zone (B-43)"
+            "en": "B-43: Limited speed zone"
           }
         },
         "b_44": {
@@ -1146,7 +1146,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "B-44: koniec strefy ograniczonej prędkości",
-            "en": "End of limited speed zone (B-44)"
+            "en": "B-44: End of limited speed zone"
           }
         }
       },
@@ -1167,7 +1167,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-1: nakaz jazdy w prawo przed znakiem",
-            "en": "Turn right before sign (C-1)"
+            "en": "C-1: Turn right before sign"
           }
         },
         "c_2": {
@@ -1178,7 +1178,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-2: nakaz jazdy w prawo za znakiem",
-            "en": "Turn right after sign (C-2)"
+            "en": "C-2: Turn right after sign"
           }
         },
         "c_3": {
@@ -1189,7 +1189,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-3: nakaz jazdy w lewo przed znakiem",
-            "en": "Turn left before sign (C-3)"
+            "en": "C-3: Turn left before sign"
           }
         },
         "c_4": {
@@ -1200,7 +1200,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-4: nakaz jazdy w lewo za znakiem",
-            "en": "Turn left after sign (C-4)"
+            "en": "C-4: Turn left after sign"
           }
         },
         "c_5": {
@@ -1211,7 +1211,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-5: nakaz jazdy prosto",
-            "en": "Go straight (C-5)"
+            "en": "C-5: Go straight"
           }
         },
         "c_6": {
@@ -1222,7 +1222,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-6: nakaz jazdy prosto lub w prawo",
-            "en": "Go straight or right (C-6)"
+            "en": "C-6: Go straight or right"
           }
         },
         "c_7": {
@@ -1233,7 +1233,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-7: nakaz jazdy prosto lub w lewo",
-            "en": "Go straight or left (C-7)"
+            "en": "C-7: Go straight or left"
           }
         },
         "c_8": {
@@ -1244,7 +1244,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-8: nakaz jazdy w prawo lub w lewo",
-            "en": "Turn right or left (C-8)"
+            "en": "C-8: Turn right or left"
           }
         },
         "c_9": {
@@ -1255,7 +1255,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-9: nakaz jazdy z prawej strony znaku",
-            "en": "Keep to the right of sign (C-9)"
+            "en": "C-9: Keep to the right of sign"
           }
         },
         "c_10": {
@@ -1266,7 +1266,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-10: nakaz jazdy z lewej strony znaku",
-            "en": "Keep to the left of sign (C-10)"
+            "en": "C-10: Keep to the left of sign"
           }
         },
         "c_11": {
@@ -1277,7 +1277,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-11: nakaz jazdy z prawej lub z lewej strony znaku",
-            "en": "Keep to the right and left of sign (C-11)"
+            "en": "C-11: Keep to the right and left of sign"
           }
         },
         "c_12": {
@@ -1288,7 +1288,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-12: ruch okrężny (rondo)",
-            "en": "Roundabout (C-12)"
+            "en": "C-12: Roundabout"
           }
         },
         "c_13": {
@@ -1299,7 +1299,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-13: droga dla rowerów",
-            "en": "Bicycle path (C-13)"
+            "en": "C-13: Bicycle path"
           }
         },
         "c_13_16_v1": {
@@ -1310,7 +1310,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-13/16: wskazujący ruch pieszych i rowerów na tej samej drodze",
-            "en": "Indicating pedestrian and bicycle traffic on the same road (C-13/16-v1)"
+            "en": "C-13/16-v1: Indicating pedestrian and bicycle traffic on the same road"
           }
         },
         "c_13_16_v2": {
@@ -1321,7 +1321,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-13/16: wskazujący ruch pieszych lewą stroną drogi i ruch rowerów prawą stroną drogi",
-            "en": "Indicating pedestrian traffic on the left side of the road and bicycle traffic on the right side of the road (C-13/16-v2)"
+            "en": "C-13/16-v2: Indicating pedestrian traffic on the left side of the road and bicycle traffic on the right side of the road"
           }
         },
         "c_13_16_v3": {
@@ -1332,7 +1332,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-13/16: wskazujący ruch rowerów lewą stroną drogi i ruch pieszych prawą stroną drogi",
-            "en": "Indicating bicycle traffic on the left side of the road and pedestrian traffic on the right side of the road (C-13/16-v3)"
+            "en": "C-13/16-v3: Indicating bicycle traffic on the left side of the road and pedestrian traffic on the right side of the road"
           }
         },
         "c_13a": {
@@ -1343,7 +1343,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-13a: koniec drogi dla rowerów",
-            "en": "End of bicycle path (C-13a)"
+            "en": "C-13a: End of bicycle path"
           }
         },
         "c_14": {
@@ -1354,7 +1354,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-14: prędkość minimalna",
-            "en": "Minimum speed (C-14)"
+            "en": "C-14: Minimum speed"
           }
         },
         "c_15": {
@@ -1365,7 +1365,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-15: koniec prędkości minimalnej",
-            "en": "End of minimum speed (C-15)"
+            "en": "C-15: End of minimum speed"
           }
         },
         "c_16": {
@@ -1376,7 +1376,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-16: droga dla pieszych",
-            "en": "Pedestrian path (C-16)"
+            "en": "C-16: Pedestrian path"
           }
         },
         "c_16a": {
@@ -1387,7 +1387,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-16a: koniec drogi dla pieszych",
-            "en": "End of pedestrian path (C-16a)"
+            "en": "C-16a: End of pedestrian path"
           }
         },
         "c_17": {
@@ -1398,7 +1398,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "C-17: nakazany kierunek jazdy dla pojazdów z towarami niebezpiecznymi",
-            "en": "Mandatory direction for vehicles with dangerous goods (C-17)"
+            "en": "C-17: Mandatory direction for vehicles with dangerous goods"
           }
         },
         "c_18": {
@@ -1409,7 +1409,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-18: nakaz używania łańcuchów przeciwpoślizgowych",
-            "en": "Mandatory use of anti-slip chains (C-18)"
+            "en": "C-18: Mandatory use of anti-slip chains"
           }
         },
         "c_19": {
@@ -1420,7 +1420,7 @@
           "sign_shape": "circle",
           "translations": {
             "pl": "C-19: koniec nakazu używania łańcuchów przeciwpoślizgowych",
-            "en": "End of mandatory use of anti-slip chains (C-19)"
+            "en": "C-19: End of mandatory use of anti-slip chains"
           }
         }
       },
@@ -1441,7 +1441,7 @@
           "sign_shape": "diamond",
           "translations": {
             "pl": "D-1: droga z pierwszeństwem",
-            "en": "Priority road (D-1)"
+            "en": "D-1: Priority road"
           }
         },
         "d_2": {
@@ -1452,7 +1452,7 @@
           "sign_shape": "diamond",
           "translations": {
             "pl": "D-2: koniec drogi z pierwszeństwem",
-            "en": "End of priority road (D-2)"
+            "en": "D-2: End of priority road"
           }
         },
         "d_3": {
@@ -1463,7 +1463,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-3: droga jednokierunkowa",
-            "en": "One-way road (D-3)"
+            "en": "D-3: One-way road"
           }
         },
         "d_4a": {
@@ -1474,7 +1474,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-4a: droga bez przejazdu",
-            "en": "Road with no through traffic (D-4a)"
+            "en": "D-4a: Road with no through traffic"
           }
         },
         "d_4b1": {
@@ -1485,7 +1485,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-4b: wjazd na drogę bez przejazdu",
-            "en": "Entry to road with no through traffic (D-4b)"
+            "en": "D-4b: Entry to road with no through traffic"
           }
         },
         "d_4b2": {
@@ -1496,7 +1496,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-4b: wjazd na drogę bez przejazdu",
-            "en": "Entry to road with no through traffic (D-4b)"
+            "en": "D-4b: Entry to road with no through traffic"
           }
         },
         "d_5": {
@@ -1507,7 +1507,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-5: pierwszeństwo na zwężonym odcinku jezdni",
-            "en": "Priority on narrowed road section (D-5)"
+            "en": "D-5: Priority on narrowed road section"
           }
         },
         "d_6": {
@@ -1518,7 +1518,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-6: przejście dla pieszych",
-            "en": "Pedestrian crossing (D-6)"
+            "en": "D-6: Pedestrian crossing"
           }
         },
         "d_6a": {
@@ -1529,7 +1529,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-6a: przejazd dla rowerzystów",
-            "en": "Pedestrian crossing - variant A (D-6a)"
+            "en": "D-6a: Pedestrian crossing - variant A"
           }
         },
         "d_6b": {
@@ -1540,7 +1540,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-6b: przejście dla pieszych i przejazd dla rowerzystów",
-            "en": "Pedestrian crossing and bicycle crossing (D-6b)"
+            "en": "D-6b: Pedestrian crossing and bicycle crossing"
           }
         },
         "d_7": {
@@ -1551,7 +1551,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-7: droga ekspresowa",
-            "en": "Expressway (D-7)"
+            "en": "D-7: Expressway"
           }
         },
         "d_8": {
@@ -1562,7 +1562,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-8: koniec drogi ekspresowej",
-            "en": "End of expressway (D-8)"
+            "en": "D-8: End of expressway"
           }
         },
         "d_9": {
@@ -1573,7 +1573,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-9: autostrada",
-            "en": "Motorway (D-9)"
+            "en": "D-9: Motorway"
           }
         },
         "d_10": {
@@ -1584,7 +1584,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-10: koniec autostrady",
-            "en": "End of motorway (D-10)"
+            "en": "D-10: End of motorway"
           }
         },
         "d_11": {
@@ -1595,7 +1595,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-11: początek pasa ruchu dla autobusów",
-            "en": "Bus lane begins (D-11)"
+            "en": "D-11: Bus lane begins"
           }
         },
         "d_12": {
@@ -1606,7 +1606,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-12: pas ruchu dla autobusów",
-            "en": "Bus lane (D-12)"
+            "en": "D-12: Bus lane"
           }
         },
         "d_13": {
@@ -1617,7 +1617,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-13: początek pasa ruchu powolnego",
-            "en": "Slow lane begins (D-13)"
+            "en": "D-13: Slow lane begins"
           }
         },
         "d_13a": {
@@ -1628,7 +1628,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-13a: początek pasa ruchu",
-            "en": "Lane begins (D-13a)"
+            "en": "D-13a: Lane begins"
           }
         },
         "d_13b": {
@@ -1639,7 +1639,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-13b: początek pasa ruchu na jezdni dwukierunkowej",
-            "en": "Lane begins on two-way road (D-13b)"
+            "en": "D-13b: Lane begins on two-way road"
           }
         },
         "d_14": {
@@ -1650,7 +1650,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-14: koniec pasa ruchu",
-            "en": "End of lane (D-14)"
+            "en": "D-14: End of lane"
           }
         },
         "d_15": {
@@ -1661,7 +1661,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-15: przystanek autobusowy",
-            "en": "Bus stop (D-15)"
+            "en": "D-15: Bus stop"
           }
         },
         "d_16": {
@@ -1672,7 +1672,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-16: przystanek trolejbusowy",
-            "en": "Trolleybus stop (D-16)"
+            "en": "D-16: Trolleybus stop"
           }
         },
         "d_17": {
@@ -1683,7 +1683,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-17: przystanek tramwajowy",
-            "en": "Tram stop (D-17)"
+            "en": "D-17: Tram stop"
           }
         },
         "d_18": {
@@ -1694,7 +1694,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-18: parking",
-            "en": "Parking (D-18)"
+            "en": "D-18: Parking"
           }
         },
         "d_18a": {
@@ -1705,7 +1705,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-18a: parking – miejsce zastrzeżone",
-            "en": "Parking - reserved space (D-18a)"
+            "en": "D-18a: Parking - reserved space"
           }
         },
         "d_18b": {
@@ -1716,7 +1716,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-18b: parking zadaszony",
-            "en": "Covered parking (D-18b)"
+            "en": "D-18b: Covered parking"
           }
         },
         "d_19": {
@@ -1727,7 +1727,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-19: postój taksówek",
-            "en": "Taxi stand (D-19)"
+            "en": "D-19: Taxi stand"
           }
         },
         "d_20": {
@@ -1738,7 +1738,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-20: koniec postoju taksówek",
-            "en": "End of taxi stand (D-20)"
+            "en": "D-20: End of taxi stand"
           }
         },
         "d_21": {
@@ -1749,7 +1749,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-21: szpital",
-            "en": "Hospital (D-21)"
+            "en": "D-21: Hospital"
           }
         },
         "d_21a": {
@@ -1760,7 +1760,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-21a: policja",
-            "en": "Police (D-21a)"
+            "en": "D-21a: Police"
           }
         },
         "d_22": {
@@ -1771,7 +1771,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-22: punkt opatrunkowy",
-            "en": "First aid post (D-22)"
+            "en": "D-22: First aid post"
           }
         },
         "d_23": {
@@ -1782,7 +1782,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-23: stacja paliwowa",
-            "en": "Petrol station (D-23)"
+            "en": "D-23: Petrol station"
           }
         },
         "d_23a": {
@@ -1793,7 +1793,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-23a: stacja paliwowa tylko z gazem do napędu pojazdów",
-            "en": "Petrol station with gas for vehicle propulsion only (D-23a)"
+            "en": "D-23a: Petrol station with gas for vehicle propulsion only"
           }
         },
         "d_23b": {
@@ -1804,7 +1804,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-23b: stacja paliwowa z punktem ładowania pojazdów elektrycznych",
-            "en": "Petrol station with electric vehicle charging point (D-23b)"
+            "en": "D-23b: Petrol station with electric vehicle charging point"
           }
         },
         "d_23c": {
@@ -1815,7 +1815,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-23c: punkt ładowania pojazdów elektrycznych",
-            "en": "Electric vehicle charging point (D-23c)"
+            "en": "D-23c: Electric vehicle charging point"
           }
         },
         "d_24": {
@@ -1826,7 +1826,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-24: telefon",
-            "en": "Telephone (D-24)"
+            "en": "D-24: Telephone"
           }
         },
         "d_25": {
@@ -1837,7 +1837,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-25: poczta",
-            "en": "Post office (D-25)"
+            "en": "D-25: Post office"
           }
         },
         "d_26": {
@@ -1848,7 +1848,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-26: stacja obsługi technicznej",
-            "en": "Service station (D-26)"
+            "en": "D-26: Service station"
           }
         },
         "d_26a": {
@@ -1859,7 +1859,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-26a: wulkanizacja",
-            "en": "Vulcanization (D-26a)"
+            "en": "D-26a: Vulcanization"
           }
         },
         "d_26b": {
@@ -1870,7 +1870,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-26b: myjnia",
-            "en": "Car wash (D-26b)"
+            "en": "D-26b: Car wash"
           }
         },
         "d_26c": {
@@ -1881,7 +1881,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-26c: toaleta publiczna",
-            "en": "Public toilet (D-26c)"
+            "en": "D-26c: Public toilet"
           }
         },
         "d_26d": {
@@ -1892,7 +1892,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-26d: natrysk",
-            "en": "Shower (D-26d)"
+            "en": "D-26d: Shower"
           }
         },
         "d_27": {
@@ -1903,7 +1903,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-27: bufet lub kawiarnia",
-            "en": "Cafe or coffee shop (D-27)"
+            "en": "D-27: Cafe or coffee shop"
           }
         },
         "d_28": {
@@ -1914,7 +1914,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-28: restauracja",
-            "en": "Restaurant (D-28)"
+            "en": "D-28: Restaurant"
           }
         },
         "d_29": {
@@ -1925,7 +1925,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-29: Hotel (motel)",
-            "en": "Hotel (motel) (D-29)"
+            "en": "D-29: Hotel (motel)"
           }
         },
         "d_30": {
@@ -1936,7 +1936,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-30: Obozowisko (camping)",
-            "en": "Camping site (D-30)"
+            "en": "D-30: Camping site"
           }
         },
         "d_31": {
@@ -1947,7 +1947,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-31: obozowisko (camping) wyposażone w podłączenia elektryczne dla przyczep kempingowych",
-            "en": "Camping site equipped with electrical connections for camping trailers (D-31)"
+            "en": "D-31: Camping site equipped with electrical connections for camping trailers"
           }
         },
         "d_32": {
@@ -1958,7 +1958,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-32: pole biwakowe",
-            "en": "Camping ground (D-32)"
+            "en": "D-32: Camping ground"
           }
         },
         "d_33": {
@@ -1969,7 +1969,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-33: schronisko młodzieżowe",
-            "en": "Youth hostel (D-33)"
+            "en": "D-33: Youth hostel"
           }
         },
         "d_34": {
@@ -1980,7 +1980,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-34: punkt informacji turystycznej",
-            "en": "Tourist information point (D-34)"
+            "en": "D-34: Tourist information point"
           }
         },
         "d_34a": {
@@ -1991,7 +1991,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-34a: informacja radiowa o ruchu drogowym",
-            "en": "Radio information about road traffic (D-34a)"
+            "en": "D-34a: Radio information about road traffic"
           }
         },
         "d_34b": {
@@ -2002,7 +2002,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-34b: zbiorcza tablica informacyjna",
-            "en": "Collective information board (D-34b)"
+            "en": "D-34b: Collective information board"
           }
         },
         "d_35": {
@@ -2013,7 +2013,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-35: przejście podziemne dla pieszych",
-            "en": "Underground pedestrian crossing (D-35)"
+            "en": "D-35: Underground pedestrian crossing"
           }
         },
         "d_35a": {
@@ -2024,7 +2024,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-35a: schody ruchome w dół",
-            "en": "Escalator down (D-35a)"
+            "en": "D-35a: Escalator down"
           }
         },
         "d_36": {
@@ -2035,7 +2035,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-36: przejście nadziemne dla pieszych",
-            "en": "Overground pedestrian crossing (D-36)"
+            "en": "D-36: Overground pedestrian crossing"
           }
         },
         "d_36a": {
@@ -2046,7 +2046,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-36a: schody ruchome w górę",
-            "en": "Escalator up (D-36a)"
+            "en": "D-36a: Escalator up"
           }
         },
         "d_37": {
@@ -2057,7 +2057,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-37: tunel",
-            "en": "Tunnel (D-37)"
+            "en": "D-37: Tunnel"
           }
         },
         "d_38": {
@@ -2068,29 +2068,29 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-38: koniec tunelu",
-            "en": "End of tunnel (D-38)"
+            "en": "D-38: End of tunnel"
           }
         },
         "d_39": {
           "code": "D-39",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:Znak_D-39_(wersja_2021).svg",
-          "sign_width": "3500",
-          "sign_height": "4000",
+          "sign_width": "1312",
+          "sign_height": "1500",
           "sign_shape": "rectangle",
           "translations": {
-            "pl": "D-39: dopuszczalne prędkości",
-            "en": "Permitted speeds (D-39)"
+            "pl": "D-39: dopuszczalne prędkości (skala 37,5%)",
+            "en": "D-39: Permitted speeds (scale 37,5%)"
           }
         },
         "d_39a": {
           "code": "D-39A",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-39a.svg",
-          "sign_width": "3500",
-          "sign_height": "4000",
+          "sign_width": "1312",
+          "sign_height": "1500",
           "sign_shape": "rectangle",
           "translations": {
-            "pl": "D-39a: opłaty drogowe",
-            "en": "Road tolls (D-39a)"
+            "pl": "D-39a: opłaty drogowe (skala 37,5%)",
+            "en": "D-39a: Road tolls (scale 37,5%)"
           }
         },
         "d_40": {
@@ -2101,7 +2101,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-40: strefa zamieszkania",
-            "en": "Residential area (D-40)"
+            "en": "D-40: Residential area"
           }
         },
         "d_41": {
@@ -2112,7 +2112,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-41: koniec strefy zamieszkania",
-            "en": "End of residential area (D-41)"
+            "en": "D-41: End of residential area"
           }
         },
         "d_42": {
@@ -2123,7 +2123,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-42: obszar zabudowany",
-            "en": "Built-up area (D-42)"
+            "en": "D-42: Built-up area"
           }
         },
         "d_43": {
@@ -2134,7 +2134,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-43: koniec obszaru zabudowanego",
-            "en": "End of built-up area (D-43)"
+            "en": "D-43: End of built-up area"
           }
         },
         "d_44": {
@@ -2145,7 +2145,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-44: strefa płatnego parkowania lub śródmiejska strefa płatnego parkowania",
-            "en": "Paid parking zone or downtown paid parking zone (D-44)"
+            "en": "D-44: Paid parking zone or downtown paid parking zone"
           }
         },
         "d_45": {
@@ -2156,7 +2156,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-45: koniec strefy płatnego parkowania lub śródmiejskiej strefy płatnego parkowania",
-            "en": "End of paid parking zone or downtown paid parking zone (D-45)"
+            "en": "D-45: End of paid parking zone or downtown paid parking zone"
           }
         },
         "d_46": {
@@ -2167,7 +2167,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-46: droga wewnętrzna",
-            "en": "Internal road (D-46)"
+            "en": "D-46: Internal road"
           }
         },
         "d_47": {
@@ -2178,7 +2178,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-47: koniec drogi wewnętrznej",
-            "en": "End of internal road (D-47)"
+            "en": "D-47: End of internal road"
           }
         },
         "d_48": {
@@ -2189,7 +2189,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-48: zmiana pierwszeństwa",
-            "en": "Change of priority (D-48)"
+            "en": "D-48: Change of priority"
           }
         },
         "d_48a": {
@@ -2200,7 +2200,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-48a: zmiana pierwszeństwa z trójkątem wskazujący wlot podporządkowany",
-            "en": "Change of priority with triangle indicating subordinate entry (D-48a)"
+            "en": "D-48a: Change of priority with triangle indicating subordinate entry"
           }
         },
         "d_49": {
@@ -2211,7 +2211,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-49: pobór opłat",
-            "en": "Toll collection (D-49)"
+            "en": "D-49: Toll collection"
           }
         },
         "d_50": {
@@ -2222,7 +2222,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-50: zatoka",
-            "en": "Bay (D-50)"
+            "en": "D-50: Bay"
           }
         },
         "d_51": {
@@ -2233,7 +2233,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-51: automatyczna kontrola prędkości",
-            "en": "Automatic speed control (D-51)"
+            "en": "D-51: Automatic speed control"
           }
         },
         "d_51a": {
@@ -2244,7 +2244,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-51a: automatyczna kontrola średniej prędkości",
-            "en": "Automatic average speed control (D-51a)"
+            "en": "D-51a: Automatic average speed control"
           }
         },
         "d_51b": {
@@ -2255,7 +2255,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-51b: koniec automatycznej kontroli średniej prędkości",
-            "en": "End of automatic average speed control (D-51b)"
+            "en": "D-51b: End of automatic average speed control"
           }
         },
         "d_52": {
@@ -2266,7 +2266,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-52: strefa ruchu",
-            "en": "Traffic zone (D-52)"
+            "en": "D-52: Traffic zone"
           }
         },
         "d_53": {
@@ -2277,7 +2277,7 @@
           "sign_shape": "rectangle",
           "translations": {
             "pl": "D-53: koniec strefy ruchu",
-            "en": "End of traffic zone (D-53)"
+            "en": "D-53: End of traffic zone"
           }
         },
         "d_54": {
@@ -2288,7 +2288,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-54: strefa czystego transportu",
-            "en": "Clean transport zone (D-54)"
+            "en": "D-54: Clean transport zone"
           }
         },
         "d_55": {
@@ -2299,7 +2299,7 @@
           "sign_shape": "square",
           "translations": {
             "pl": "D-55: koniec strefy czystego transportu",
-            "en": "End of clean transport zone (D-55)"
+            "en": "D-55: End of clean transport zone"
           }
         }
       },

@@ -2,14 +2,15 @@
 import os
 import json
 import re
-from collections import defaultdict
 
 try:
     from PIL import Image
+
     PIL_AVAILABLE = True
 except ImportError:
     PIL_AVAILABLE = False
     print("⚠️  PIL not available - texture dimension checks will be skipped")
+
 
 def get_categories_from_blocks():
     """Pobierz kategorie dynamicznie z katalogów bloków"""
@@ -22,6 +23,7 @@ def get_categories_from_blocks():
                 categories.append(item)
     return sorted(categories)
 
+
 def get_categories_from_textures():
     """Pobierz kategorie dynamicznie z katalogów tekstur"""
     categories = []
@@ -33,6 +35,7 @@ def get_categories_from_textures():
                 categories.append(item)
     return sorted(categories)
 
+
 def get_all_categories():
     """Pobierz wszystkie kategorie (duże litery z bazy + małe litery z katalogów)"""
     # Pobierz z bazy danych (duże litery)
@@ -42,16 +45,17 @@ def get_all_categories():
         db_categories = list(data['road_signs'].keys())
     except:
         db_categories = []
-    
+
     # Pobierz z katalogów bloków (małe litery)
     block_categories = get_categories_from_blocks()
-    
+
     # Pobierz z katalogów tekstur (małe litery)
     texture_categories = get_categories_from_textures()
-    
+
     # Połącz wszystkie i usuń duplikaty
     all_categories = list(set(db_categories + block_categories + texture_categories))
     return sorted(all_categories)
+
 
 def get_db_categories():
     """Pobierz kategorie z bazy danych (duże litery)"""
@@ -62,20 +66,22 @@ def get_db_categories():
     except:
         return []
 
+
 def get_file_categories():
     """Pobierz kategorie z katalogów plików (małe litery) - wykluczając sign_backs"""
     # Pobierz z katalogów bloków
     block_categories = get_categories_from_blocks()
-    
+
     # Pobierz z katalogów tekstur
     texture_categories = get_categories_from_textures()
-    
+
     # Połącz wszystkie i usuń duplikaty, ale wyklucz sign_backs
     all_categories = list(set(block_categories + texture_categories))
     # Usuń sign_backs z listy kategorii
     if 'sign_backs' in all_categories:
         all_categories.remove('sign_backs')
     return sorted(all_categories)
+
 
 def get_texture_dimensions(texture_path):
     """Pobierz wymiary tekstury"""
@@ -87,6 +93,7 @@ def get_texture_dimensions(texture_path):
     except Exception as e:
         return None, None
 
+
 def get_model_dimensions(model_path):
     """Pobierz wymiary modelu z pliku .geo.json"""
     try:
@@ -94,7 +101,8 @@ def get_model_dimensions(model_path):
             model_data = json.load(f)
 
         # Sprawdź wymiary UV w modelu
-        if 'minecraft:geometry' in model_data and isinstance(model_data['minecraft:geometry'], list) and len(model_data['minecraft:geometry']) > 0:
+        if 'minecraft:geometry' in model_data and isinstance(model_data['minecraft:geometry'], list) and len(
+                model_data['minecraft:geometry']) > 0:
             geometry = model_data['minecraft:geometry'][0]
             if 'description' in geometry:
                 description = geometry['description']
@@ -105,8 +113,9 @@ def get_model_dimensions(model_path):
     except Exception as e:
         return None, None
 
+
 def find_similar_model(model_name, available_models):
-    """Znajdź podobny model jeśli dokładny nie istnieje"""
+    """Znajdź podobny model, jeśli dokładny nie istnieje"""
     if model_name in available_models:
         return model_name
 
@@ -117,6 +126,7 @@ def find_similar_model(model_name, available_models):
             return available_model
 
     return None
+
 
 def verify_geometry_texture_compatibility():
     """Weryfikuj kompatybilność geometrii z wymiarami tekstur"""
@@ -140,7 +150,7 @@ def verify_geometry_texture_compatibility():
                 model_dimensions[model_name] = (width, height)
 
     print(f"📐 Models loaded: {len(model_dimensions)}")
-    print(f"  Model dimensions: {', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}")
+    print(f"  Model dimensions: \n{', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}")
 
     # Sprawdź wszystkie bloki
     compatibility_issues = []
@@ -170,7 +180,8 @@ def verify_geometry_texture_compatibility():
                         # Sprawdź teksturę (ignoruj tekstury tła)
                         texture_name = None
                         if 'minecraft:material_instances' in block_data['minecraft:block']['components']:
-                            material_instances = block_data['minecraft:block']['components']['minecraft:material_instances']
+                            material_instances = block_data['minecraft:block']['components'][
+                                'minecraft:material_instances']
                             for face, material in material_instances.items():
                                 if 'texture' in material:
                                     texture_name = material['texture']
@@ -189,7 +200,7 @@ def verify_geometry_texture_compatibility():
                         # Sprawdź wymiary modelu
                         model_width, model_height = None, None
                         if model_name:
-                            # Sprawdź czy model istnieje lub znajdź podobny
+                            # Sprawdź, czy model istnieje lub znajdź podobny
                             actual_model_name = find_similar_model(model_name, model_dimensions.keys())
                             if actual_model_name:
                                 model_width, model_height = model_dimensions[actual_model_name]
@@ -200,8 +211,8 @@ def verify_geometry_texture_compatibility():
 
                         # Sprawdź kompatybilność
                         if (texture_width and texture_height and
-                            model_width and model_height and
-                            (texture_width != model_width or texture_height != model_height)):
+                                model_width and model_height and
+                                (texture_width != model_width or texture_height != model_height)):
                             texture_model_mismatches.append({
                                 'sign_id': sign_id,
                                 'texture': f"{texture_width}x{texture_height}",
@@ -209,7 +220,7 @@ def verify_geometry_texture_compatibility():
                                 'model_name': model_name
                             })
 
-                        # Sprawdź czy blok ma geometrię
+                        # Sprawdź, czy blok ma geometrię
                         if not geometry_name:
                             compatibility_issues.append(f"{sign_id} (no geometry)")
 
@@ -217,12 +228,14 @@ def verify_geometry_texture_compatibility():
                         compatibility_issues.append(f"{sign_id} (error: {str(e)})")
 
     # Wyświetl wyniki
-    print(f"📋 Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
+    print(
+        f"📋 Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
 
     if texture_model_mismatches:
         print(f"  ⚠️  Texture-model mismatches: {len(texture_model_mismatches)}")
         for mismatch in texture_model_mismatches[:10]:  # Pokaż pierwsze 10
-            print(f"    {mismatch['sign_id']}: texture {mismatch['texture']} vs model {mismatch['model']} ({mismatch['model_name']})")
+            print(
+                f"    {mismatch['sign_id']}: texture {mismatch['texture']} vs model {mismatch['model']} ({mismatch['model_name']})")
         if len(texture_model_mismatches) > 10:
             print(f"    ... and {len(texture_model_mismatches) - 10} more")
 
@@ -270,7 +283,7 @@ def verify_block_definitions():
         signs = data['road_signs'][category]['signs']
 
         for sign_id in signs.keys():
-            # Sprawdź czy plik bloku istnieje
+            # Sprawdź, czy plik bloku istnieje
             block_path = f"BP/blocks/{category.lower()}/{sign_id}.block.json"
             if os.path.exists(block_path):
                 total_found += 1
@@ -280,6 +293,7 @@ def verify_block_definitions():
     print(f"📋 Found: {total_found}, Missing: {total_missing}")
 
     return total_found, total_missing
+
 
 def verify_database():
     """Weryfikuj kategorie w bazie danych"""
@@ -323,14 +337,19 @@ def verify_database():
 
     return total_signs, signs_with_dimensions, signs_with_wikipedia_file, signs_with_translations
 
+
 def verify_project_structure():
     """Weryfikuj strukturę projektu"""
     print("\n🔍 PROJECT STRUCTURE")
     print("=" * 30)
 
     required_dirs = [
-        'RP/textures/blocks/a', 'RP/textures/blocks/b', 'RP/textures/blocks/c', 'RP/textures/blocks/d',
-        'RP/models/blocks', 'BP/blocks/a', 'BP/blocks/b', 'BP/blocks/c', 'BP/blocks/d'
+        'BP/blocks/',
+        'BP/item_catalog/',
+        'RP/models/blocks/',
+        'RP/texts/',
+        'RP/textures/blocks/',
+        'RP/textures/blocks/sign_backs/',
     ]
 
     found_dirs = 0
@@ -342,12 +361,13 @@ def verify_project_structure():
         else:
             missing_dirs.append(dir_path)
 
-    print(f"📋 Found: {found_dirs}, Missing: {len(missing_dirs)}")
+    print(f"✓ Found: {found_dirs}")
 
     if missing_dirs:
-        print(f"  Missing: {', '.join(missing_dirs)}")
+        print(f" ✗ Missing: \n{', '.join(missing_dirs)}")
 
     return found_dirs, len(missing_dirs)
+
 
 def verify_translations():
     """Weryfikuj tłumaczenia"""
@@ -359,57 +379,48 @@ def verify_translations():
         data = json.load(f)
 
     # Wczytaj pliki języków
-    with open('RP/texts/pl_PL.lang', 'r', encoding='utf-8') as f:
-        pl_content = f.read()
+    from glob import glob
 
-    with open('RP/texts/en_US.lang', 'r', encoding='utf-8') as f:
-        en_content = f.read()
+    lang_files = glob('RP/texts/*.lang')
+    translations_missing = 0;
+    for lang_file in lang_files:
+        with open(lang_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+            lang_name = os.path.basename(lang_file).split('.')[0];
 
-    # Zbierz wszystkie znaki z bazy danych
-    database_signs = set()
-    for category in get_db_categories():
-        database_signs.update(data['road_signs'][category]['signs'].keys())
+        # Zbierz wszystkie znaki z bazy danych
+        database_signs = set()
+        for category in get_db_categories():
+            database_signs.update(data['road_signs'][category]['signs'].keys())
 
-    # Znajdź tłumaczenia w plikach języków
-    file_pl_translations = set()
-    file_en_translations = set()
+        # Znajdź tłumaczenia w plikach języków
+        file_translations = set()
 
-    for match in re.finditer(r'tile\.polish_road_sign:([^.]+)\.name=', pl_content):
-        file_pl_translations.add(match.group(1))
+        for match in re.finditer(r'tile\.polish_road_sign:([^.]+)\.name=', content):
+            file_translations.add(match.group(1))
 
-    for match in re.finditer(r'tile\.polish_road_sign:([^.]+)\.name=', en_content):
-        file_en_translations.add(match.group(1))
+        # Porównaj bezpośrednio, ponieważ pliki tłumaczeń używają już podkreślników
+        database_missing = database_signs - file_translations
+        file_extra = file_translations - database_signs
 
-    # Porównaj bezpośrednio, ponieważ pliki tłumaczeń używają już podkreślników
-    database_missing_pl = database_signs - file_pl_translations
-    database_missing_en = database_signs - file_en_translations
-    file_extra_pl = file_pl_translations - database_signs
-    file_extra_en = file_en_translations - database_signs
+        # Dodaj zmienne dla bazy danych
+        missing_db = database_signs - file_translations
+        translations_missing += len(missing_db)
 
-    # Dodaj zmienne dla bazy danych
-    missing_db_pl = database_signs - file_pl_translations
-    missing_db_en = database_signs - file_en_translations
+        print(f"✓ {lang_name}")
+        print(f"  ✓ In lang file: {len(file_translations)}")
+        if database_missing:
+            print(f"  ✗ Missing in lang file {len(database_missing)}:")
+            for name in database_missing: print(f"    - {name}")
+        if file_extra:
+            print(f"  ✗ Extra in lang file {len(file_extra)}:")
+            for name in file_extra: print(f"    - {name}")
+        print(f"  ✓ In json database: {len(database_signs)}")
+        if missing_db:
+            print(f"  ✗ Missing in database: {len(missing_db)}")
 
-    print(f"🇵🇱 Polish: {len(file_pl_translations)}/{len(database_signs)}")
-    if missing_db_pl:
-        print(f"  ✗ Missing in database: {len(missing_db_pl)}")
-    if database_missing_pl:
-        print(f"  ✗ Missing in lang file {len(database_missing_pl)}:")
-        for name in database_missing_pl: print(f"    - {name}")
-    if file_extra_pl :
-        print(f"  ✗ Extra in lang file {len(file_extra_pl)}:")
-        for name in file_extra_pl: print(f"    - {name}")
-    print(f"🇬🇧 English: {len(file_en_translations)}/{len(database_signs)}")
-    if missing_db_en:
-        print(f"  ✗ Missing in database: {len(missing_db_en)}")
-    if database_missing_en:
-        print(f"  ✗ Missing in lang file {len(database_missing_en)}:")
-        for name in database_missing_en: print(f"    - {name}")
-    if file_extra_en:
-        print(f"✗ Extra {len(file_extra_en)}:")
-        for name in file_extra_en: print(f"    - {name}")
+    return translations_missing
 
-    return len(file_pl_translations), len(file_en_translations), len(database_missing_pl), len(database_missing_en)
 
 def verify_shape_field():
     """Weryfikuj pola shape w bazie danych"""
@@ -445,16 +456,15 @@ def verify_shape_field():
             shapes.update([shape])
             if shape not in shape_examples:
                 shape_examples[shape] = sign_id
-
-    print("📏 ROZMIARY ZNAKÓW:")
+    print("📏 SIGN DIMENSIONS:")
     for size, count in sorted(sizes.items(), key=lambda x: (int(x[0].split('x')[0]), int(x[0].split('x')[1]))):
-        print(f"  {size}: {count} znaków (przykład: {size_examples[size]})")
+        print(f"  {size}: {count} signs (example: {size_examples[size]})")
 
-    print("\n📐 KSZTAŁTY ZNAKÓW:")
+    print("\n📐 SIGN SHAPES:")
     for shape, count in sorted(shapes.items()):
-        print(f"  {shape}: {count} znaków (przykład: {shape_examples[shape]})")
+        print(f"  {shape}: {count} signs (example: {shape_examples[shape]})")
 
-    # Analiza połączenia kształtów i wymiarów
+    # Analysis of shape and dimension combinations
     shape_size_combinations = Counter()
     shape_size_examples = {}
     for category in data['road_signs'].values():
@@ -467,23 +477,24 @@ def verify_shape_field():
             shape_size_combinations.update([combination_key])
             if combination_key not in shape_size_examples:
                 shape_size_examples[combination_key] = sign_id
-    print(f"\n🔗 POŁĄCZENIE KSZTAŁTÓW I WYMIARÓW ({len(shape_size_combinations)})")
+    print(f"\n🔗 SHAPE AND DIMENSION COMBINATIONS ({len(shape_size_combinations)})")
     example_combinations = set()
     for combination, count in shape_size_combinations.items():
         shape, size = combination.split('_', 1)
         example_combinations.add(shape_size_examples[combination])
-        print(f"  - {shape} {size}: {count} znaków (przykład: {shape_size_examples[combination]})")
+        print(f"  - {shape} {size}: {count} signs (example: {shape_size_examples[combination]})")
 
-    print(f"\n🖥️ WYGENERUJ PRZYKŁADOWE")
-    print(f"python road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} --skip-download --force-rebuild && python build_mcaddon.py && python unpack_and_install_mcaddon.py dist/PolishRoadSigns_*.mcaddon")
+    print(f"\n🖥️ GENERATE EXAMPLES")
+    print(
+        f"python road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} --skip-download --force-rebuild && python build_mcaddon.py && python unpack_and_install_mcaddon.py dist/PolishRoadSigns_*.mcaddon")
 
-    print(f"\n📊 PODSUMOWANIE:")
-    print(f"  Liczba unikalnych rozmiarów: {len(sizes)}")
-    print(f"  Liczba unikalnych kształtów: {len(shapes)}")
-    print(f"  Łączna liczba znaków: {sum(sizes.values())}")
+    print(f"\n📊 SUMMARY:")
+    print(f"  Unique sizes: {len(sizes)}")
+    print(f"  Unique shapes: {len(shapes)}")
+    print(f"  Total number of signs: {sum(sizes.values())}")
 
-    # Analiza paddingu
-    print(f"\n🎯 ANALIZA PADDINGU:")
+    # Padding analysis
+    print(f"\n🎯 PADDING ANALYSIS:")
     padding_examples = []
     no_padding_examples = []
 
@@ -491,31 +502,19 @@ def verify_shape_field():
         for sign_id, sign in category['signs'].items():
             width = sign.get('sign_width', 900)
             height = sign.get('sign_height', 900)
-            
+
             if width < height:
                 padding_examples.append(f"{sign_id} ({width}x{height} → {height}x{height})")
             else:
                 no_padding_examples.append(f"{sign_id} ({width}x{height})")
 
-    print(f"  width < height → dodaje padding: {len(padding_examples)} znaków")
-    print(f"  width >= height → bez zmian: {len(no_padding_examples)} znaków")
-
     if padding_examples:
-        print(f"  Przykłady z paddingiem:")
-        for example in padding_examples[:3]:
-            print(f"    {example}")
-        if len(padding_examples) > 3:
-            print(f"    ... i {len(padding_examples) - 3} więcej")
-
+        print(f"✓ Found {len(padding_examples)} signs 'width < height' → adds padding: \n{', '.join(padding_examples)}")
     if no_padding_examples:
-        print(f"  Przykłady bez paddingu:")
-        for example in no_padding_examples[:3]:
-            print(f"    {example}")
-        if len(no_padding_examples) > 3:
-            print(f"    ... i {len(no_padding_examples) - 3} więcej")
+        print(f"✓ Found {len(no_padding_examples)} signs 'width >= height' → no changes: \n{', '.join(no_padding_examples)}")
 
-    # Analiza rozkładu kształtów w różnych rozmiarach
-    print(f"\n📊 ROZKŁAD KSZTAŁTÓW W ROZMIARACH:")
+    # Analysis of shape distribution in different sizes
+    print(f"\n📊 SHAPE DISTRIBUTION IN SIZES:")
     for size, size_count in sizes.most_common():
         shape_counts = Counter()
         for category in data['road_signs'].values():
@@ -523,13 +522,15 @@ def verify_shape_field():
                 width = sign.get('sign_width', 900)
                 height = sign.get('sign_height', 900)
                 shape = sign.get('sign_shape', 'rectangle')
-                
+
                 if f"{width}x{height}" == size:
                     shape_counts.update([shape])
 
-        print(f"  - {size} ({size_count} znaków): {', '.join([f'{shape}({count})' for shape, count in shape_counts.items()])}")
+        print(
+            f"  - {size} ({size_count} signs): {', '.join([f'{shape}({count})' for shape, count in shape_counts.items()])}")
 
     return sizes, shapes, len(padding_examples), len(no_padding_examples)
+
 
 def verify_blocks_comprehensive():
     """Kompleksowa weryfikacja bloków: definicje, tekstury, modele i kompatybilność"""
@@ -580,19 +581,23 @@ def verify_blocks_comprehensive():
 
     print(f"✓ Loaded: {file_blocks_found}")
     if len(file_blocks_missing) > 0:
-        print(f"  ✗ Missing {len(file_blocks_missing)} blocks: {', '.join([f'{name}' for name in sorted(file_blocks_missing)])}")
+        print(
+            f"  ✗ Missing {len(file_blocks_missing)} blocks: \n{', '.join([f'{name}' for name in sorted(file_blocks_missing)])}")
     if file_extra_blocks:
-        print(f"  ✗ Extra {len(file_extra_blocks)} blocks: {', '.join([f'{name}' for name in sorted(file_extra_blocks)])}")
+        print(
+            f"  ✗ Extra {len(file_extra_blocks)} blocks: \n{', '.join([f'{name}' for name in sorted(file_extra_blocks)])}")
     if len(database_missing_blocks) > 0:
-        print(f"  ✗ Missing {len(database_missing_blocks)} blocks in database: {', '.join([f'{name}' for name in sorted(database_missing_blocks)])}")
+        print(
+            f"  ✗ Missing {len(database_missing_blocks)} blocks in database: \n{', '.join([f'{name}' for name in sorted(database_missing_blocks)])}")
     if len(database_extra_blocks) > 0:
-        print(f"  ✗ Extra: {len(database_extra_blocks)} blocks in database: {', '.join([f'{name}' for name in sorted(database_extra_blocks)])}")
+        print(
+            f"  ✗ Extra: {len(database_extra_blocks)} blocks in database: \n{', '.join([f'{name}' for name in sorted(database_extra_blocks)])}")
 
     # 2. SPRAWDŹ TEKSTURY I PLIKI PNG
     print("\n🎨 TEXTURES & PNG FILES")
     print("-" * 30)
 
-    # Sprawdź czy wszystkie tekstury z terrain_texture.json istnieją
+    # Sprawdź, czy wszystkie tekstury z terrain_texture.json istnieją
     terrain_textures_found = 0
     missing_png_textures = set()
 
@@ -605,13 +610,14 @@ def verify_blocks_comprehensive():
         else:
             missing_png_textures.add(texture_id)
 
-    # Test 1: Sprawdź czy wszystkie zdefiniowane tekstury mają pliki PNG
+    # Test 1: Sprawdź, czy wszystkie zdefiniowane tekstury mają pliki PNG
     print(f"✓ Textures from blocks: {len(terrain_data['texture_data'])}")
     print(f"✓ Textures by terrain_texture.json (with existing PNG files): {terrain_textures_found}")
     if len(missing_png_textures) > 0:
-        print(f"✗ Missing {len(missing_png_textures)} files: {', '.join([f'{name}' for name in sorted(missing_png_textures)])}")
+        print(
+            f"✗ Missing {len(missing_png_textures)} files: \n{', '.join([f'{name}' for name in sorted(missing_png_textures)])}")
 
-    # Test 2: Sprawdź czy są pliki PNG bez definicji
+    # Test 2: Sprawdź, czy są pliki PNG bez definicji
     all_png_files = set()
 
     for category in get_file_categories():
@@ -646,9 +652,10 @@ def verify_blocks_comprehensive():
 
     print(f"✓ Textures by PNG files (with definition in terrain_texture.json): {len(all_png_files)}")
     if len(extra_png_files) > 0:
-        print(f"  ✗ Missing {len(extra_png_files)} definitions terrain_texture.json: {', '.join([f'{name}' for name in sorted(extra_png_files)])}")
+        print(
+            f"  ✗ Missing {len(extra_png_files)} definitions terrain_texture.json: \n{', '.join([f'{name}' for name in sorted(extra_png_files)])}")
 
-    # Sprawdź PNG w bazie danych vs pliki
+    # Sprawdź PNG w bazie danych kontra pliki
     # Znajdź wszystkie tekstury PNG w plikach
     file_png_signs = set()
     for category in get_file_categories():
@@ -664,11 +671,13 @@ def verify_blocks_comprehensive():
 
     print(f"✓ In database: {len(database_signs)}")
     if len(database_missing_pngs) > 0:
-        print(f"  ✗ Missing {len(database_missing_pngs)} db PNGs: {', '.join([f'{name}' for name in sorted(database_missing_pngs)])}")
+        print(
+            f"  ✗ Missing {len(database_missing_pngs)} db PNGs: \n{', '.join([f'{name}' for name in sorted(database_missing_pngs)])}")
     if len(file_extra_pngs) > 0:
-        print(f"  ✗ Extra {len(file_extra_pngs)} file PNGs: {', '.join([f'{name}' for name in sorted(file_extra_pngs)])}")
+        print(
+            f"  ✗ Extra {len(file_extra_pngs)} file PNGs: \n{', '.join([f'{name}' for name in sorted(file_extra_pngs)])}")
 
-    # Test 3: Sprawdź czy wszystkie używane tekstury z bloków są zdefiniowane
+    # Test 3: Sprawdź, czy wszystkie używane tekstury z bloków są zdefiniowane
     print("\n🔗 BLOCK TEXTURES IN TERRAIN")
     print("-" * 30)
 
@@ -684,7 +693,8 @@ def verify_blocks_comprehensive():
 
                         # Sprawdź wszystkie tekstury w material_instances
                         if 'minecraft:material_instances' in block_data['minecraft:block']['components']:
-                            material_instances = block_data['minecraft:block']['components']['minecraft:material_instances']
+                            material_instances = block_data['minecraft:block']['components'][
+                                'minecraft:material_instances']
                             for face, material in material_instances.items():
                                 if 'texture' in material:
                                     block_textures.add(material['texture'])
@@ -701,12 +711,12 @@ def verify_blocks_comprehensive():
     if len(missing_in_terrain) > 0:
         print(f"  ✗ Missing {len(missing_in_terrain)} items from terrain_texture.json:")
         for name in sorted(missing_in_terrain): print(f"    - {name}")
-    
+
     if len(unused_textures) > 0:
         print(f"  ✗ Unused {len(unused_textures)} items in terrain_texture.json:")
         for name in sorted(unused_textures): print(f"    - {name}")
 
-  # 2. SPRAWDŹ POLE SHAPE W BAZIE DANYCH
+    # 2. SPRAWDŹ POLE SHAPE W BAZIE DANYCH
     print("\n📐 SHAPE FIELD VERIFICATION")
     print("-" * 30)
 
@@ -728,14 +738,14 @@ def verify_blocks_comprehensive():
 
     print(f"✓ Signs with shape field: {signs_with_shape}")
     if len(signs_without_shape) > 0:
-        print(f"  ✗ Signs without shape field: {len(signs_without_shape)}: {', '.join([f'{name}' for name in sorted(signs_without_shape)])}")
+        print(
+            f"  ✗ Signs without shape field: {len(signs_without_shape)}: \n{', '.join([f'{name}' for name in sorted(signs_without_shape)])}")
 
-    print(f"➤ Shape types: {', '.join([f'{shape}({count})' for shape, count in shape_types.items()])}")
+    print(f"➤ Shape types: \n{', '.join([f'{shape}({count})' for shape, count in shape_types.items()])}")
 
     # 4. SPRAWDŹ MODELE 3D
     print("\n📐 3D MODELS")
     print("-" * 30)
-
 
     models_dir = "RP/models/blocks"
     used_models = set()
@@ -781,7 +791,7 @@ def verify_blocks_comprehensive():
         print(f"  ✗ Unused: {len(unused_models)}")
         for name in sorted(unused_models): print(f"    - {name}")
 
-    print(f"➤ Model dimensions: {', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}")
+    print(f"➤ Model dimensions: \n{', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}")
 
     # Sprawdź kompatybilność
     print("\n📐 MODELS COMPATIBILITY")
@@ -813,7 +823,8 @@ def verify_blocks_comprehensive():
                         # Sprawdź teksturę
                         texture_name = None
                         if 'minecraft:material_instances' in block_data['minecraft:block']['components']:
-                            material_instances = block_data['minecraft:block']['components']['minecraft:material_instances']
+                            material_instances = block_data['minecraft:block']['components'][
+                                'minecraft:material_instances']
                             for face, material in material_instances.items():
                                 if 'texture' in material:
                                     texture_name = material['texture']
@@ -832,7 +843,7 @@ def verify_blocks_comprehensive():
                         # Sprawdź wymiary modelu
                         model_width, model_height = None, None
                         if model_name:
-                            # Sprawdź czy model istnieje lub znajdź podobny
+                            # Sprawdź, czy model istnieje lub znajdź podobny
                             actual_model_name = find_similar_model(model_name, model_dimensions.keys())
                             if actual_model_name:
                                 model_width, model_height = model_dimensions[actual_model_name]
@@ -843,8 +854,8 @@ def verify_blocks_comprehensive():
 
                         # Sprawdź kompatybilność
                         if (texture_width and texture_height and
-                            model_width and model_height and
-                            (texture_width != model_width or texture_height != model_height)):
+                                model_width and model_height and
+                                (texture_width != model_width or texture_height != model_height)):
                             texture_model_mismatches.append({
                                 'sign_id': sign_id,
                                 'texture': f"{texture_width}x{texture_height}",
@@ -852,19 +863,21 @@ def verify_blocks_comprehensive():
                                 'model_name': model_name
                             })
 
-                        # Sprawdź czy blok ma geometrię
+                        # Sprawdź, czy blok ma geometrię
                         if not geometry_name:
                             compatibility_issues.append(f"{sign_id} (no geometry)")
 
                     except Exception as e:
                         compatibility_issues.append(f"{sign_id} (error: {str(e)})")
 
-    print(f"✓ Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
+    print(
+        f"✓ Blocks checked: {len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}")
 
     if texture_model_mismatches:
         print(f"✗ Texture-model mismatches: {len(texture_model_mismatches)}")
         for mismatch in texture_model_mismatches[:5]:
-            print(f"    {mismatch['sign_id']}: texture {mismatch['texture']} vs model {mismatch['model']} ({mismatch['model_name']})")
+            print(
+                f"    {mismatch['sign_id']}: texture {mismatch['texture']} vs model {mismatch['model']} ({mismatch['model_name']})")
         if len(texture_model_mismatches) > 5:
             print(f"    ... and {len(texture_model_mismatches) - 5} more")
 
@@ -895,6 +908,7 @@ def verify_blocks_comprehensive():
             len(missing_models), len(missing_textures), len(compatibility_issues),
             signs_with_shape, len(signs_without_shape), unused_textures)
 
+
 def main():
     """Główna funkcja weryfikacji"""
 
@@ -906,10 +920,7 @@ def main():
      signs_with_shape, signs_without_shape, unused_textures) = verify_blocks_comprehensive()
 
     # 2. WERYFIKACJA TŁUMACZEŃ
-    pl_trans, en_trans, pl_missing, en_missing = verify_translations()
-
-    # 3. WERYFIKACJA BAZY DANYCH
-    db_total, db_dim, db_wiki, db_trans = verify_database()
+    translations_missing = verify_translations()
 
     # 4. WERYFIKACJA STRUKTURY PROJEKTU
     structure_found, structure_missing = verify_project_structure()
@@ -917,7 +928,7 @@ def main():
     # 5. WERYFIKACJA PÓL SHAPE
     sizes, shapes, padding_count, no_padding_count = verify_shape_field()
 
-    # Sprawdź czy wszystko jest w porządku
+    # Sprawdź, czy wszystko jest w porządku
     all_good = True
 
     if terrain_textures_missing > 0:
@@ -952,8 +963,8 @@ def main():
             print(f"  ❌ Missing block definitions: {file_blocks_missing}")
         if structure_missing > 0:
             print(f"  ❌ Missing directories: {structure_missing}")
-        if pl_missing > 0 or en_missing > 0:
-            print(f"  ❌ Missing translations: PL {pl_missing}, EN {en_missing}")
+        if translations_missing > 0:
+            print(f"  ❌ Missing translations: {translations_missing}")
         if len(extra_png_files) > 0:
             print(f"  ❌ Extra PNG files: {len(extra_png_files)}")
         if len(missing_in_terrain) > 0:
@@ -970,6 +981,7 @@ def main():
             print(f"  ❌ Signs without shape field: {signs_without_shape}")
         if len(unused_textures) > 0:
             print(f"  ❌ Unused textures in terrain_texture.json: {len(unused_textures)}")
+
 
 if __name__ == "__main__":
     main()

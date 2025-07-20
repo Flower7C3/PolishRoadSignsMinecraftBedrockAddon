@@ -3,9 +3,9 @@
   "minecraft:geometry": [
     {
       "description": {
-        "identifier": "geometry.road_sign_rectangle_3500x4000",
-        "texture_width": 400,
-        "texture_height": 400,
+        "identifier": "geometry.road_sign_rectangle_1312x1500",
+        "texture_width": 300,
+        "texture_height": 300,
         "visible_bounds_width": 0,
         "visible_bounds_height": 0,
         "visible_bounds_offset": [
@@ -70,13 +70,13 @@
           "cubes": [
             {
               "origin": [
-                -32.0,
+                -12.0,
                 0,
                 6.9
               ],
               "size": [
-                64.0,
-                64.0,
+                24.0,
+                24.0,
                 0
               ],
               "uv": {
@@ -86,8 +86,8 @@
                     0
                   ],
                   "uv_size": [
-                    400,
-                    400
+                    300,
+                    300
                   ]
                 },
                 "south": {
@@ -96,8 +96,8 @@
                     0
                   ],
                   "uv_size": [
-                    400,
-                    400
+                    300,
+                    300
                   ]
                 }
               }

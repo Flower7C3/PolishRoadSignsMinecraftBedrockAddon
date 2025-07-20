@@ -3,11 +3,11 @@
   "padding": 8,
   "resource_pack_name": "polish_road_sign",
   "texture_data": {
-    "polish_road_sign_back:triangle_1050x927": {
-      "textures": "textures/blocks/sign_backs/triangle_1050x927.png"
-    },
     "polish_road_sign:a_1": {
       "textures": "textures/blocks/a/a_1.png"
+    },
+    "polish_road_sign_back:triangle_1050x927": {
+      "textures": "textures/blocks/sign_backs/triangle_1050x927.png"
     },
     "polish_road_sign:a_2": {
       "textures": "textures/blocks/a/a_2.png"
@@ -36,11 +36,11 @@
     "polish_road_sign:a_6e": {
       "textures": "textures/blocks/a/a_6e.png"
     },
-    "polish_road_sign_back:inverted_triangle_1050x927": {
-      "textures": "textures/blocks/sign_backs/inverted_triangle_1050x927.png"
-    },
     "polish_road_sign:a_7": {
       "textures": "textures/blocks/a/a_7.png"
+    },
+    "polish_road_sign_back:inverted_triangle_1050x927": {
+      "textures": "textures/blocks/sign_backs/inverted_triangle_1050x927.png"
     },
     "polish_road_sign:a_8": {
       "textures": "textures/blocks/a/a_8.png"
@@ -135,11 +135,11 @@
     "polish_road_sign:a_34": {
       "textures": "textures/blocks/a/a_34.png"
     },
-    "polish_road_sign_back:circle_900x900": {
-      "textures": "textures/blocks/sign_backs/circle_900x900.png"
-    },
     "polish_road_sign:b_1": {
       "textures": "textures/blocks/b/b_1.png"
+    },
+    "polish_road_sign_back:circle_900x900": {
+      "textures": "textures/blocks/sign_backs/circle_900x900.png"
     },
     "polish_road_sign:b_2": {
       "textures": "textures/blocks/b/b_2.png"
@@ -219,11 +219,11 @@
     "polish_road_sign:b_19": {
       "textures": "textures/blocks/b/b_19.png"
     },
-    "polish_road_sign_back:octagon_900x900": {
-      "textures": "textures/blocks/sign_backs/octagon_900x900.png"
-    },
     "polish_road_sign:b_20": {
       "textures": "textures/blocks/b/b_20.png"
+    },
+    "polish_road_sign_back:octagon_900x900": {
+      "textures": "textures/blocks/sign_backs/octagon_900x900.png"
     },
     "polish_road_sign:b_21": {
       "textures": "textures/blocks/b/b_21.png"
@@ -306,11 +306,11 @@
     "polish_road_sign:b_38": {
       "textures": "textures/blocks/b/b_38.png"
     },
-    "polish_road_sign_back:rectangle_900x1200": {
-      "textures": "textures/blocks/sign_backs/rectangle_900x1200.png"
-    },
     "polish_road_sign:b_39": {
       "textures": "textures/blocks/b/b_39.png"
+    },
+    "polish_road_sign_back:rectangle_900x1200": {
+      "textures": "textures/blocks/sign_backs/rectangle_900x1200.png"
     },
     "polish_road_sign:b_40": {
       "textures": "textures/blocks/b/b_40.png"
@@ -399,20 +399,20 @@
     "polish_road_sign:c_19": {
       "textures": "textures/blocks/c/c_19.png"
     },
-    "polish_road_sign_back:diamond_900x900": {
-      "textures": "textures/blocks/sign_backs/diamond_900x900.png"
-    },
     "polish_road_sign:d_1": {
       "textures": "textures/blocks/d/d_1.png"
+    },
+    "polish_road_sign_back:diamond_900x900": {
+      "textures": "textures/blocks/sign_backs/diamond_900x900.png"
     },
     "polish_road_sign:d_2": {
       "textures": "textures/blocks/d/d_2.png"
     },
-    "polish_road_sign_back:square_900x900": {
-      "textures": "textures/blocks/sign_backs/square_900x900.png"
-    },
     "polish_road_sign:d_3": {
       "textures": "textures/blocks/d/d_3.png"
+    },
+    "polish_road_sign_back:square_900x900": {
+      "textures": "textures/blocks/sign_backs/square_900x900.png"
     },
     "polish_road_sign:d_4a": {
       "textures": "textures/blocks/d/d_4a.png"
@@ -435,11 +435,11 @@
     "polish_road_sign:d_6b": {
       "textures": "textures/blocks/d/d_6b.png"
     },
-    "polish_road_sign_back:rectangle_900x1125": {
-      "textures": "textures/blocks/sign_backs/rectangle_900x1125.png"
-    },
     "polish_road_sign:d_7": {
       "textures": "textures/blocks/d/d_7.png"
+    },
+    "polish_road_sign_back:rectangle_900x1125": {
+      "textures": "textures/blocks/sign_backs/rectangle_900x1125.png"
     },
     "polish_road_sign:d_8": {
       "textures": "textures/blocks/d/d_8.png"
@@ -459,11 +459,11 @@
     "polish_road_sign:d_13": {
       "textures": "textures/blocks/d/d_13.png"
     },
-    "polish_road_sign_back:rectangle_1350x1125": {
-      "textures": "textures/blocks/sign_backs/rectangle_1350x1125.png"
-    },
     "polish_road_sign:d_13a": {
       "textures": "textures/blocks/d/d_13a.png"
+    },
+    "polish_road_sign_back:rectangle_1350x1125": {
+      "textures": "textures/blocks/sign_backs/rectangle_1350x1125.png"
     },
     "polish_road_sign:d_13b": {
       "textures": "textures/blocks/d/d_13b.png"
@@ -489,11 +489,11 @@
     "polish_road_sign:d_18b": {
       "textures": "textures/blocks/d/d_18b.png"
     },
-    "polish_road_sign_back:rectangle_600x300": {
-      "textures": "textures/blocks/sign_backs/rectangle_600x300.png"
-    },
     "polish_road_sign:d_19": {
       "textures": "textures/blocks/d/d_19.png"
+    },
+    "polish_road_sign_back:rectangle_600x300": {
+      "textures": "textures/blocks/sign_backs/rectangle_600x300.png"
     },
     "polish_road_sign:d_20": {
       "textures": "textures/blocks/d/d_20.png"
@@ -588,29 +588,26 @@
     "polish_road_sign:d_38": {
       "textures": "textures/blocks/d/d_38.png"
     },
-    "polish_road_sign_back:rectangle_3500x4000": {
-      "textures": "textures/blocks/sign_backs/rectangle_3500x4000.png"
-    },
     "polish_road_sign:d_39": {
       "textures": "textures/blocks/d/d_39.png"
     },
     "polish_road_sign:d_39a": {
       "textures": "textures/blocks/d/d_39a.png"
     },
-    "polish_road_sign_back:rectangle_900x600": {
-      "textures": "textures/blocks/sign_backs/rectangle_900x600.png"
-    },
     "polish_road_sign:d_40": {
       "textures": "textures/blocks/d/d_40.png"
+    },
+    "polish_road_sign_back:rectangle_900x600": {
+      "textures": "textures/blocks/sign_backs/rectangle_900x600.png"
     },
     "polish_road_sign:d_41": {
       "textures": "textures/blocks/d/d_41.png"
     },
-    "polish_road_sign_back:rectangle_1200x700": {
-      "textures": "textures/blocks/sign_backs/rectangle_1200x700.png"
-    },
     "polish_road_sign:d_42": {
       "textures": "textures/blocks/d/d_42.png"
+    },
+    "polish_road_sign_back:rectangle_1200x700": {
+      "textures": "textures/blocks/sign_backs/rectangle_1200x700.png"
     },
     "polish_road_sign:d_43": {
       "textures": "textures/blocks/d/d_43.png"
@@ -621,11 +618,11 @@
     "polish_road_sign:d_45": {
       "textures": "textures/blocks/d/d_45.png"
     },
-    "polish_road_sign_back:rectangle_900x420": {
-      "textures": "textures/blocks/sign_backs/rectangle_900x420.png"
-    },
     "polish_road_sign:d_46": {
       "textures": "textures/blocks/d/d_46.png"
+    },
+    "polish_road_sign_back:rectangle_900x420": {
+      "textures": "textures/blocks/sign_backs/rectangle_900x420.png"
     },
     "polish_road_sign:d_47": {
       "textures": "textures/blocks/d/d_47.png"
@@ -636,11 +633,11 @@
     "polish_road_sign:d_48a": {
       "textures": "textures/blocks/d/d_48a.png"
     },
-    "polish_road_sign_back:rectangle_1200x1800": {
-      "textures": "textures/blocks/sign_backs/rectangle_1200x1800.png"
-    },
     "polish_road_sign:d_49": {
       "textures": "textures/blocks/d/d_49.png"
+    },
+    "polish_road_sign_back:rectangle_1200x1800": {
+      "textures": "textures/blocks/sign_backs/rectangle_1200x1800.png"
     },
     "polish_road_sign:d_50": {
       "textures": "textures/blocks/d/d_50.png"
@@ -665,6 +662,9 @@
     },
     "polish_road_sign:d_55": {
       "textures": "textures/blocks/d/d_55.png"
+    },
+    "polish_road_sign_back:rectangle_1312x1500": {
+      "textures": "textures/blocks/sign_backs/rectangle_1312x1500.png"
     }
   },
   "texture_name": "atlas.terrain"
