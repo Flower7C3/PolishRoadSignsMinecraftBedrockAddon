@@ -17,25 +17,25 @@
     "components": {
       "minecraft:collision_box": {
         "origin": [
-          -8.654,
+          -10.8,
           0,
-          0
+          6.9
         ],
         "size": [
-          17.308,
-          14.359,
+          21.6,
+          18.0,
           0.1
         ]
       },
       "minecraft:selection_box": {
         "origin": [
-          -8.654,
+          -10.8,
           0,
-          0
+          6.9
         ],
         "size": [
-          17.308,
-          14.359,
+          21.6,
+          18.0,
           0.1
         ]
       },

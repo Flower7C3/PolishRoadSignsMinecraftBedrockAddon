@@ -4,7 +4,7 @@
     {
       "description": {
         "identifier": "geometry.road_sign_rectangle_3500x4000",
-        "texture_width": 350,
+        "texture_width": 400,
         "texture_height": 400,
         "visible_bounds_width": 0,
         "visible_bounds_height": 0,
@@ -70,14 +70,14 @@
           "cubes": [
             {
               "origin": [
-                -23.333,
+                -32.0,
                 0,
-                0
+                6.9
               ],
               "size": [
-                44.872,
-                51.282,
-                0.1
+                64.0,
+                64.0,
+                0
               ],
               "uv": {
                 "north": {
@@ -86,7 +86,7 @@
                     0
                   ],
                   "uv_size": [
-                    350,
+                    400,
                     400
                   ]
                 },
@@ -96,7 +96,7 @@
                     0
                   ],
                   "uv_size": [
-                    350,
+                    400,
                     400
                   ]
                 }

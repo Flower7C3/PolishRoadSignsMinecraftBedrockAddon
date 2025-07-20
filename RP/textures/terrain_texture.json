@@ -567,9 +567,6 @@
     "polish_road_sign:d_34a": {
       "textures": "textures/blocks/d/d_34a.png"
     },
-    "polish_road_sign_back:square_900x1350": {
-      "textures": "textures/blocks/sign_backs/square_900x1350.png"
-    },
     "polish_road_sign:d_34b": {
       "textures": "textures/blocks/d/d_34b.png"
     },

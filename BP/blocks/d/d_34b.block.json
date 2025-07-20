@@ -17,25 +17,25 @@
     "components": {
       "minecraft:collision_box": {
         "origin": [
-          -5.769,
+          -9.0,
           0,
-          0
+          6.9
         ],
         "size": [
-          11.538,
-          17.308,
+          18.0,
+          18.0,
           0.1
         ]
       },
       "minecraft:selection_box": {
         "origin": [
-          -5.769,
+          -9.0,
           0,
-          0
+          6.9
         ],
         "size": [
-          11.538,
-          17.308,
+          18.0,
+          18.0,
           0.1
         ]
       },
@@ -45,14 +45,14 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.road_sign_square_900x1350",
+      "minecraft:geometry": "geometry.road_sign_rectangle_900x1125",
       "minecraft:material_instances": {
         "north": {
           "texture": "polish_road_sign:d_34b",
           "render_method": "alpha_test_single_sided"
         },
         "south": {
-          "texture": "polish_road_sign_back:square_900x1350",
+          "texture": "polish_road_sign_back:rectangle_900x1125",
           "render_method": "alpha_test_single_sided"
         }
       }

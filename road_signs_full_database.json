@@ -1998,8 +1998,8 @@
           "code": "D-34B",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-34b.svg",
           "sign_width": "900",
-          "sign_height": "1350",
-          "sign_shape": "square",
+          "sign_height": "1125",
+          "sign_shape": "rectangle",
           "translations": {
             "pl": "D-34b: zbiorcza tablica informacyjna",
             "en": "Collective information board (D-34b)"

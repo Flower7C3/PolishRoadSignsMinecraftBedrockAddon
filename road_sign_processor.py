@@ -6,6 +6,7 @@ import re
 import sys
 import time
 from pathlib import Path
+import tempfile
 
 def normalize_sign_id(sign_code):
     """Normalizuj kod znaku do formatu używanych w bazie danych"""
@@ -46,19 +47,19 @@ def get_category_for_sign(sign_id, data):
             return category
     return None
 
-def get_background_texture_for_shape(shape, width, height):
+def get_background_texture_for_shape(sign_shape, sign_width, sign_height):
     """Pobierz nazwę tekstury tła na podstawie kształtu znaku"""
     shape_to_background = {
-        'triangle': f'triangle_{width}x{height}',
-        'inverted_triangle': f'inverted_triangle_{width}x{height}',
-        'circle': f'circle_{width}x{height}',
-        'square': f'square_{width}x{height}',
-        'diamond': f'diamond_{width}x{height}',
-        'octagon': f'octagon_{width}x{height}',
-        'rectangle': f'rectangle_{width}x{height}'
+        'triangle': f'triangle_{sign_width}x{sign_height}',
+        'inverted_triangle': f'inverted_triangle_{sign_width}x{sign_height}',
+        'circle': f'circle_{sign_width}x{sign_height}',
+        'square': f'square_{sign_width}x{sign_height}',
+        'diamond': f'diamond_{sign_width}x{sign_height}',
+        'octagon': f'octagon_{sign_width}x{sign_height}',
+        'rectangle': f'rectangle_{sign_width}x{sign_height}'
     }
     
-    return shape_to_background.get(shape, f'rectangle_{width}x{height}')
+    return shape_to_background.get(sign_shape, f'rectangle_{sign_width}x{sign_height}')
 
 def download_wikipedia_page(url):
     """Pobierz stronę Wikipedii"""
@@ -112,20 +113,61 @@ def download_svg(svg_url, output_path):
         print(f"Błąd pobierania SVG: {e}")
         return False
 
-def convert_svg_to_png(svg_path, png_path, width, height, target_width, target_height):
+def convert_svg_to_png(svg_path, png_path, target_width, target_height):
     """Konwertuj SVG na PNG z określoną szerokością"""
     try:
-        result = subprocess.run([
-            'inkscape', 
-            '--export-type=png', 
-            f'--export-width={target_width}',
-            f'--export-height={target_height}',
-            f'--export-filename={png_path}',
-            svg_path
-        ], capture_output=True, timeout=30)
-        return result.returncode == 0
-    except Exception as e:
-        print(f"Błąd konwersji SVG: {e}")
+        # Sprawdź czy trzeba dodać padding (width < height)
+        if target_width < target_height:
+            # Dodaj padding wokół obrazka
+            padding = (target_height - target_width) // 2
+            new_width = target_height
+            new_height = target_height
+            print(f"📐 Dodaję padding wokół obrazka: {new_width}x{new_height} (padding: {padding}px)")
+            
+            # Najpierw konwertuj SVG do oryginalnych wymiarów
+            with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+                temp_png = temp_file.name
+                
+            result = subprocess.run([
+                'inkscape', '--export-type=png', '--export-filename=' + temp_png,
+                '--export-width=' + str(target_width), '--export-height=' + str(target_height),
+                '--export-background-opacity=0', '--export-background=transparent',
+                '--export-png-color-mode=RGBA_8', svg_path
+            ], capture_output=True, text=True)
+
+            if result.returncode == 0:
+                # Dodaj padding z jawnie ustawioną przezroczystością
+                subprocess.run([
+                    'magick', temp_png, '-gravity', 'center', '-background', 'none',
+                    '-extent', f'{new_width}x{new_height}',
+                    '-alpha', 'on', png_path
+                ], check=True)
+
+                # Usuń plik tymczasowy
+                os.remove(temp_png)
+
+                return True
+            else:
+                print(f"❌ Błąd konwersji SVG: {result.stderr}")
+                return False
+        else:
+            # Użyj oryginalnych wymiarów
+            print(f"📐 Używam oryginalnych wymiarów {target_width}x{target_height}")
+            result = subprocess.run([
+                'inkscape', '--export-type=png', '--export-filename=' + png_path,
+                '--export-width=' + str(target_width), '--export-height=' + str(target_height),
+                '--export-background-opacity=0', '--export-background=transparent',
+                '--export-png-color-mode=RGBA_8', svg_path
+            ], capture_output=True, text=True)
+            
+            if result.returncode == 0:
+                return True
+            else:
+                print(f"❌ Błąd konwersji SVG: {result.stderr}")
+                return False
+                
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Błąd konwersji SVG: {e}")
         return False
 
 def get_image_dimensions(png_path):
@@ -136,8 +178,8 @@ def get_image_dimensions(png_path):
                               capture_output=True, text=True, timeout=10)
         if result.returncode == 0:
             dimensions = result.stdout.strip()
-            width, height = map(int, dimensions.split('x'))
-            return width, height
+            model_width, model_height = map(int, dimensions.split('x'))
+            return model_width, model_height
     except:
         pass
     
@@ -150,23 +192,17 @@ def get_image_dimensions(png_path):
         print(f"Błąd pobierania wymiarów: {e}")
     return None, None
 
-def create_model_if_needed(shape, width, height, target_width, target_height):
-    """Twórz model 3D jeśli nie istnieje"""
-    model_name = f"road_sign_{shape}_{width}x{height}"
-    model_path = f"RP/models/blocks/{model_name}.geo.json"
-    
-    if os.path.exists(model_path):
-        print(f"🆗 Model już istnieje: {model_name}")
-        return model_name
-    
-    # Twórz model na podstawie szablonu
-    template = {
+def create_model_template(model_name, sign_width, sign_height, target_width, target_height):
+    """Twórz szablon modelu 3D"""
+    cube_width = scale_size_from_mm_to_msu(sign_width)
+    cube_height = scale_size_from_mm_to_msu(sign_height)
+    return {
         "format_version": "1.21.90",
         "minecraft:geometry": [
             {
                 "description": {
                     "identifier": f"geometry.{model_name}",
-                    "texture_width": target_width,
+                    "texture_width": target_height if target_width<target_height else target_width,
                     "texture_height": target_height,
                     "visible_bounds_width": 0,
                     "visible_bounds_height": 0,
@@ -195,11 +231,24 @@ def create_model_if_needed(shape, width, height, target_width, target_height):
                         "name": "block",
                         "cubes": [
                             {
-                                "origin": [round(-target_width / 15, 3), 0, 0],
-                                "size": [round(target_width / 7.8, 3), round(target_height / 7.8, 3), 0.1],
+                                "origin": [
+                                    round((cube_height if cube_width<cube_height else cube_width) / -2, 3),
+                                     0,
+                                     6.9
+                                 ],
+                                "size": [
+                                    cube_height if cube_width<cube_height else cube_width,
+                                    cube_height,
+                                    0],
                                 "uv": {
-                                    "north": {"uv": [0, 0], "uv_size": [target_width, target_height]},
-                                    "south": {"uv": [0, 0], "uv_size": [target_width, target_height]}
+                                    "north": {"uv": [0, 0], "uv_size": [
+                                        target_height if target_width<target_height else target_width,
+                                        target_height
+                                    ]},
+                                    "south": {"uv": [0, 0], "uv_size": [
+                                        target_height if target_width<target_height else target_width,
+                                        target_height
+                                    ]}
                                 }
                             }
                         ]
@@ -208,6 +257,18 @@ def create_model_if_needed(shape, width, height, target_width, target_height):
             }
         ]
     }
+
+def create_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height):
+    """Twórz model 3D jeśli nie istnieje"""
+    model_name = f"road_sign_{sign_shape}_{sign_width}x{sign_height}"
+    model_path = f"RP/models/blocks/{model_name}.geo.json"
+    
+    if os.path.exists(model_path):
+        print(f"🆗 Model już istnieje: {model_name}")
+        return model_name
+    
+    # Twórz model na podstawie szablonu
+    template = create_model_template(model_name, sign_width, sign_height, target_width, target_height)
     
     with open(model_path, 'w') as f:
         json.dump(template, f, indent=2)
@@ -215,47 +276,156 @@ def create_model_if_needed(shape, width, height, target_width, target_height):
     print(f"🆕 Utworzono model: {model_name}")
     return model_name
 
-def scale_dimensions(width, height):
-    return [width//10, height//10]
+def update_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height):
+    """Zaktualizuj model 3D jeśli wymiary się zmieniły"""
+    model_name = f"road_sign_{sign_shape}_{sign_width}x{sign_height}"
+    model_path = f"RP/models/blocks/{model_name}.geo.json"
+    
+    if not os.path.exists(model_path):
+        print(f"🆕 Model nie istnieje, tworzę nowy: {model_name}")
+        return create_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height)
+    
+    # Sprawdź czy wymiary modelu są aktualne
+    try:
+        with open(model_path, 'r') as f:
+            model_data = json.load(f)
+        
+        # Pobierz aktualne wymiary z modelu
+        if (model_data.get("minecraft:geometry") and 
+            len(model_data["minecraft:geometry"]) > 0 and
+            model_data["minecraft:geometry"][0].get("description") and
+            "texture_width" in model_data["minecraft:geometry"][0]["description"] and
+            "texture_height" in model_data["minecraft:geometry"][0]["description"]):
+            
+            current_width = model_data["minecraft:geometry"][0]["description"]["texture_width"]
+            current_height = model_data["minecraft:geometry"][0]["description"]["texture_height"]
+            
+            # Sprawdź czy wymiary się zmieniły
+            if current_width == target_width and current_height == target_height:
+                print(f"🆗 Model ma aktualne wymiary: {model_name}")
+                return model_name
+            else:
+                print(f"🔄 Aktualizuję model {model_name} z wymiarów {current_width}x{current_height} na {target_width}x{target_height}")
+        else:
+            print(f"⚠️ Nieprawidłowa struktura modelu, tworzę nowy: {model_name}")
+            return create_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height)
+            
+    except Exception as e:
+        print(f"Błąd odczytu modelu {model_name}: {e}")
+        return create_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height)
+    
+    # Aktualizuj model z nowymi wymiarami
+    template = create_model_template(model_name, sign_width, sign_height, target_width, target_height)
+    
+    with open(model_path, 'w') as f:
+        json.dump(template, f, indent=2)
+    
+    print(f"🆙 Zaktualizowano model: {model_name}")
+    return model_name
 
-def create_background_texture_if_needed(shape, width, height, target_width, target_height):
+def scale_size_from_mm_to_px(value):
+    return value//10
+def scale_size_from_mm_to_msu(value):
+    return round(value*16/1000, 3)
+
+def create_background_texture_if_needed(sign_shape, sign_width, sign_height, texture_width, texture_height, force_rebuild=False):
     """Twórz teksturę tła jeśli nie istnieje"""
-    texture_name = f"{shape}_{width}x{height}"
+    texture_name = f"{sign_shape}_{sign_width}x{sign_height}"
     texture_path = f"RP/textures/blocks/sign_backs/{texture_name}.png"
-
-    if os.path.exists(texture_path):
-        print(f"🆗 Tekstura tła już istnieje: {texture_name}")
+    
+    if os.path.exists(texture_path) and not force_rebuild:
+        print(f"✅ Tekstura tła już istnieje: {texture_name}")
         return texture_name
     
-    # Twórz neutralną białą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
-    try:
-        if shape == 'triangle':
-            # Trójkąt - biały kolor w kształcie trójkąta
-            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {target_width//2},0 0,{target_height} {target_width},{target_height}', '-define', 'png:color-type=6', texture_path], check=True)
-        elif shape == 'inverted_triangle':
-            # Odwrócony trójkąt - biały kolor w kształcie odwróconego trójkąta
-            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon 0,0 {target_width},0 {target_width//2},{target_height}', '-define', 'png:color-type=6', texture_path], check=True)
-        elif shape == 'circle':
-            # Koło - biały kolor w kształcie koła
-            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'circle {target_width//2},{target_height//2} {target_width//2},0', '-define', 'png:color-type=6', texture_path], check=True)
-        elif shape == 'square':
-            # Kwadrat - biały kolor w kształcie kwadratu
-            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {target_width-1},{target_height-1}', '-define', 'png:color-type=6', texture_path], check=True)
-        elif shape == 'diamond':
-            # Romb - biały kolor w kształcie rombu
-            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {target_width//2},0 {target_width},{target_height//2} {target_width//2},{target_height} 0,{target_height//2}', '-define', 'png:color-type=6', texture_path], check=True)
-        elif shape == 'octagon':
-            # Ośmiokąt - biały kolor w kształcie ośmiokąta
-            margin = min(target_width, target_height) // 4
-            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {margin},0 {target_width-margin},0 {target_width},{margin} {target_width},{target_height-margin} {target_width-margin},{target_height} {margin},{target_height} 0,{target_height-margin} 0,{margin}', '-define', 'png:color-type=6', texture_path], check=True)
-        else:
-            # Prostokąt - biały kolor w kształcie prostokąta
-            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {target_width-1},{target_height-1}', '-define', 'png:color-type=6', texture_path], check=True)
+    # Sprawdź czy trzeba zrobić kwadrat (width < height)
+    if texture_width < texture_height:
+        # Użyj większego wymiaru jako kwadrat
+        square_size = texture_height
+        print(f"📐 Tworzę kwadratową teksturę tła {square_size}x{square_size} z wycentrowanym kształtem {texture_width}x{texture_height}")
         
-        print(f"🆕 Utworzono teksturę tła: {texture_name} (kształt: {shape})")
-    except subprocess.CalledProcessError as e:
-        print(f"Błąd tworzenia tekstury tła {texture_name}: {e}")
-        return None
+        # Twórz neutralną białą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
+        try:
+            if sign_shape == 'triangle':
+                # Trójkąt - szary kolor w kształcie trójkąta wycentrowany w kwadracie
+                subprocess.run(['magick', '-size', f'{square_size}x{square_size}', 'xc:transparent', 
+                              '-fill', '#808080', '-gravity', 'center',
+                              '-draw', f'polygon {square_size//2},{square_size//2-texture_height//2} {square_size//2-texture_width//2},{square_size//2+texture_height//2} {square_size//2+texture_width//2},{square_size//2+texture_height//2}', 
+                              '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'inverted_triangle':
+                # Odwrócony trójkąt - szary kolor w kształcie odwróconego trójkąta wycentrowany w kwadracie
+                subprocess.run(['magick', '-size', f'{square_size}x{square_size}', 'xc:transparent', 
+                              '-fill', '#808080', '-gravity', 'center',
+                              '-draw', f'polygon {square_size//2-texture_width//2},{square_size//2-texture_height//2} {square_size//2+texture_width//2},{square_size//2-texture_height//2} {square_size//2},{square_size//2+texture_height//2}', 
+                              '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'circle':
+                # Koło - szary kolor w kształcie koła wycentrowany w kwadracie
+                subprocess.run(['magick', '-size', f'{square_size}x{square_size}', 'xc:transparent', 
+                              '-fill', '#808080', '-gravity', 'center',
+                              '-draw', f'circle {square_size//2},{square_size//2} {square_size//2},{square_size//2-min(texture_width,texture_height)//2}', 
+                              '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'square':
+                # Kwadrat - szary kolor w kształcie kwadratu wycentrowany w kwadracie
+                subprocess.run(['magick', '-size', f'{square_size}x{square_size}', 'xc:transparent', 
+                              '-fill', '#808080', '-gravity', 'center',
+                              '-draw', f'rectangle {square_size//2-texture_width//2},{square_size//2-texture_height//2} {square_size//2+texture_width//2},{square_size//2+texture_height//2}', 
+                              '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'diamond':
+                # Romb - szary kolor w kształcie rombu wycentrowany w kwadracie
+                subprocess.run(['magick', '-size', f'{square_size}x{square_size}', 'xc:transparent', 
+                              '-fill', '#808080', '-gravity', 'center',
+                              '-draw', f'polygon {square_size//2},{square_size//2-texture_height//2} {square_size//2+texture_width//2},{square_size//2} {square_size//2},{square_size//2+texture_height//2} {square_size//2-texture_width//2},{square_size//2}', 
+                              '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'octagon':
+                # Ośmiokąt - szary kolor w kształcie ośmiokąta wycentrowany w kwadracie
+                margin = min(texture_width, texture_height) // 4
+                subprocess.run(['magick', '-size', f'{square_size}x{square_size}', 'xc:transparent', 
+                              '-fill', '#808080', '-gravity', 'center',
+                              '-draw', f'polygon {square_size//2-texture_width//2+margin},{square_size//2-texture_height//2} {square_size//2+texture_width//2-margin},{square_size//2-texture_height//2} {square_size//2+texture_width//2},{square_size//2-texture_height//2+margin} {square_size//2+texture_width//2},{square_size//2+texture_height//2-margin} {square_size//2+texture_width//2-margin},{square_size//2+texture_height//2} {square_size//2-texture_width//2+margin},{square_size//2+texture_height//2} {square_size//2-texture_width//2},{square_size//2+texture_height//2-margin} {square_size//2-texture_width//2},{square_size//2-texture_height//2+margin}', 
+                              '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            else:
+                # Domyślnie prostokąt wycentrowany w kwadracie
+                subprocess.run(['magick', '-size', f'{square_size}x{square_size}', 'xc:transparent', 
+                              '-fill', '#808080', '-gravity', 'center',
+                              '-draw', f'rectangle {square_size//2-texture_width//2},{square_size//2-texture_height//2} {square_size//2+texture_width//2},{square_size//2+texture_height//2}', 
+                              '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            
+            print(f"🆕 Utworzono kwadratową teksturę tła: {texture_name} (kształt: {sign_shape})")
+        except subprocess.CalledProcessError as e:
+            print(f"Błąd tworzenia tekstury tła {texture_name}: {e}")
+            return None
+    else:
+        # Użyj oryginalnych wymiarów
+        print(f"📐 Używam oryginalnych wymiarów tekstury tła {texture_width}x{texture_height}")
+        
+        # Twórz neutralną szarą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
+        try:
+            if sign_shape == 'triangle':
+                # Trójkąt - szary kolor w kształcie trójkąta
+                subprocess.run(['magick', '-size', f'{texture_width}x{texture_height}', 'xc:transparent', '-fill', '#808080', '-draw', f'polygon {texture_width//2},0 0,{texture_height} {texture_width},{texture_height}', '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'inverted_triangle':
+                # Odwrócony trójkąt - szary kolor w kształcie odwróconego trójkąta
+                subprocess.run(['magick', '-size', f'{texture_width}x{texture_height}', 'xc:transparent', '-fill', '#808080', '-draw', f'polygon 0,0 {texture_width},0 {texture_width//2},{texture_height}', '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'circle':
+                # Koło - szary kolor w kształcie koła
+                subprocess.run(['magick', '-size', f'{texture_width}x{texture_height}', 'xc:transparent', '-fill', '#808080', '-draw', f'circle {texture_width//2},{texture_height//2} {texture_width//2},0', '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'square':
+                # Kwadrat - szary kolor w kształcie kwadratu
+                subprocess.run(['magick', '-size', f'{texture_width}x{texture_height}', 'xc:transparent', '-fill', '#808080', '-draw', f'rectangle 0,0 {texture_width-1},{texture_height-1}', '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'diamond':
+                # Romb - szary kolor w kształcie rombu
+                subprocess.run(['magick', '-size', f'{texture_width}x{texture_height}', 'xc:transparent', '-fill', '#808080', '-draw', f'polygon {texture_width//2},0 {texture_width},{texture_height//2} {texture_width//2},{texture_height} 0,{texture_height//2}', '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            elif sign_shape == 'octagon':
+                # Ośmiokąt - szary kolor w kształcie ośmiokąta
+                margin = min(texture_width, texture_height) // 4
+                subprocess.run(['magick', '-size', f'{texture_width}x{texture_height}', 'xc:transparent', '-fill', '#808080', '-draw', f'polygon {margin},0 {texture_width-margin},0 {texture_width},{margin} {texture_width},{texture_height-margin} {texture_width-margin},{texture_height} {margin},{texture_height} 0,{texture_height-margin} 0,{margin}', '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            else:
+                # Domyślnie prostokąt
+                subprocess.run(['magick', '-size', f'{texture_width}x{texture_height}', 'xc:transparent', '-fill', '#808080', '-draw', f'rectangle 0,0 {texture_width-1},{texture_height-1}', '-alpha', 'on', '-define', 'png:color-type=6', texture_path], check=True)
+            
+            print(f"🆕 Utworzono teksturę tła: {texture_name} (kształt: {sign_shape})")
+        except subprocess.CalledProcessError as e:
+            print(f"Błąd tworzenia tekstury tła {texture_name}: {e}")
+            return None
     
     return texture_name
 
@@ -328,10 +498,10 @@ def get_model_dimensions(model_name):
             size = cube["size"]
             
             # Oblicz wymiary
-            width = size[0]
-            height = size[1]
+            model_width = size[0]
+            model_height = size[1]
             
-            return width, height
+            return model_width, model_height
         else:
             print(f"⚠️ Nieprawidłowa struktura modelu: {model_path}")
             return None, None
@@ -350,15 +520,15 @@ def update_collision_and_selection_boxes(sign_id, model_name):
         return False
     
     # Pobierz wymiary modelu
-    width, height = get_model_dimensions(model_name)
-    if width is None or height is None:
+    model_width, model_height = get_model_dimensions(model_name)
+    if model_width is None or model_height is None:
         print(f"⚠️ Nie udało się pobrać wymiarów modelu dla {sign_id}")
         return False
     
     # Oblicz origin (środek modelu)
-    origin_x = round(-width / 2, 3)
+    origin_x = round(-model_width / 2, 3)
     origin_y = 0
-    origin_z = 0
+    origin_z = 6.9
     
     try:
         with open(block_path, 'r') as f:
@@ -367,57 +537,42 @@ def update_collision_and_selection_boxes(sign_id, model_name):
         # Zaktualizuj collision_box
         block_data["minecraft:block"]["components"]["minecraft:collision_box"] = {
             "origin": [origin_x, origin_y, origin_z],
-            "size": [width, height, 0.1]
+            "size": [
+                model_height if model_width<model_height else model_width,
+                model_height,
+                0.1
+            ]
         }
         
         # Zaktualizuj selection_box
         block_data["minecraft:block"]["components"]["minecraft:selection_box"] = {
             "origin": [origin_x, origin_y, origin_z],
-            "size": [width, height, 0.1]
+            "size": [
+                model_height if model_width<model_height else model_width,
+                model_height,
+                0.1
+            ]
         }
         
         # Zapisz zaktualizowany blok
         with open(block_path, 'w') as f:
             json.dump(block_data, f, indent=2)
         
-        print(f"🆙 Zaktualizowano collision/selection box dla {sign_id}: {width}x{height}")
+        print(f"🆙 Zaktualizowano collision/selection box dla {sign_id}: {model_width}x{model_height}")
         return True
         
     except Exception as e:
         print(f"❌ Błąd aktualizacji collision/selection box dla {sign_id}: {e}")
         return False
 
-def create_block_if_needed(sign_id, model_name, background_name, shape):
-    """Twórz definicję bloku jeśli nie istnieje"""
-    category = sign_id.split('_')[0]
-    block_path = f"BP/blocks/{category}/{sign_id}.block.json"
-    
-    if os.path.exists(block_path):
-        print(f"🆗 Blok już istnieje: {sign_id}")
-        return True
-    
-    # Utwórz katalog jeśli nie istnieje
-    os.makedirs(os.path.dirname(block_path), exist_ok=True)
-    
-    # Pobierz wymiary modelu
-    width, height = get_model_dimensions(model_name)
-    if width is None or height is None:
-        print(f"❌ Nie udało się pobrać wymiarów modelu dla {sign_id}")
-        return False
-    
+def create_block_template(sign_id, model_name, background_name, model_width, model_height):
+    """Twórz szablon bloku"""
     # Oblicz origin (środek modelu)
-    origin_x = round(-width / 2, 3)
+    origin_x = round(-model_width / 2, 3)
     origin_y = 0
-    origin_z = 0
+    origin_z = 6.9
     
-    # Pobierz dane z bazy danych (bez tłumaczeń w bloku)
-    with open("road_signs_full_database.json", 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    sign_data = find_sign_in_database(sign_id, data)
-    
-    # Szablon bloku
-    block_template = {
+    return {
         "format_version": "1.20.60",
         "minecraft:block": {
             "description": {
@@ -436,11 +591,19 @@ def create_block_if_needed(sign_id, model_name, background_name, shape):
             "components": {
                 "minecraft:collision_box": {
                     "origin": [origin_x, origin_y, origin_z],
-                    "size": [width, height, 0.1]
+                    "size": [
+                        model_height if model_width<model_height else model_width,
+                        model_height,
+                        0.1
+                    ]
                 },
                 "minecraft:selection_box": {
                     "origin": [origin_x, origin_y, origin_z],
-                    "size": [width, height, 0.1]
+                    "size": [
+                        model_height if model_width<model_height else model_width,
+                        model_height,
+                        0.1
+                    ]
                 },
                 "minecraft:destructible_by_mining": {
                     "seconds_to_destroy": 1
@@ -496,15 +659,36 @@ def create_block_if_needed(sign_id, model_name, background_name, shape):
             ]
         }
     }
+
+def create_block_if_needed(sign_id, model_name, background_name, sign_shape):
+    """Twórz definicję bloku jeśli nie istnieje"""
+    category = sign_id.split('_')[0]
+    block_path = f"BP/blocks/{category}/{sign_id}.block.json"
+    
+    if os.path.exists(block_path):
+        print(f"🆗 Blok już istnieje: {sign_id}")
+        return True
+    
+    # Utwórz katalog jeśli nie istnieje
+    os.makedirs(os.path.dirname(block_path), exist_ok=True)
+
+    # Pobierz wymiary modelu
+    model_width, model_height = get_model_dimensions(model_name)
+    if model_width is None or model_height is None:
+        print(f"❌ Nie udało się pobrać wymiarów modelu dla {sign_id}")
+        return False
+    
+    # Twórz blok na podstawie szablonu
+    block_template = create_block_template(sign_id, model_name, background_name, model_width, model_height)
     
     # Zapisz blok
     with open(block_path, 'w') as f:
         json.dump(block_template, f, indent=2)
     
-    print(f"🆕 Utworzono blok: {sign_id} {width}x{height}")
+    print(f"🆕 Utworzono blok: {sign_id} {model_width}x{model_height}")
     return True
 
-def update_block_definition(sign_id, model_name, background_name, shape):
+def update_block_definition(sign_id, model_name, background_name, sign_shape):
     """Zaktualizuj definicję bloku z uwzględnieniem kształtu"""
     category = sign_id.split('_')[0]
     block_path = f"BP/blocks/{category}/{sign_id}.block.json"
@@ -513,43 +697,23 @@ def update_block_definition(sign_id, model_name, background_name, shape):
         print(f"⚠️ Nie znaleziono pliku bloku: {block_path}")
         return False
     
-    with open(block_path, 'r') as f:
-        block_data = json.load(f)
-    
-    # Pobierz dane z bazy danych (bez tłumaczeń w bloku)
-    with open("road_signs_full_database.json", 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    sign_data = find_sign_in_database(sign_id, data)
-    
-    # Zaktualizuj geometrię
-    block_data["minecraft:block"]["components"]["minecraft:geometry"] = f"geometry.{model_name}"
-    
-    # Zaktualizuj material_instances z tylko przodem i tyłem
-    material_instances = {
-        "north": {
-            "texture": f"polish_road_sign:{sign_id}",
-            "render_method": "alpha_test_single_sided"
-        },
-        "south": {
-            "texture": f"polish_road_sign_back:{background_name}",
-            "render_method": "alpha_test_single_sided"
-        }
-    }
-    
-    block_data["minecraft:block"]["components"]["minecraft:material_instances"] = material_instances
-    
-    # Zaktualizuj collision_box i selection_box
-    update_collision_and_selection_boxes(sign_id, model_name)
+    # Pobierz wymiary modelu
+    model_width, model_height = get_model_dimensions(model_name)
+    if model_width is None or model_height is None:
+        print(f"❌ Nie udało się pobrać wymiarów modelu dla {sign_id}")
+        return False
+
+    # Twórz nowy blok na podstawie szablonu
+    block_template = create_block_template(sign_id, model_name, background_name, model_width, model_height)
     
     # Zapisz zaktualizowany blok
     with open(block_path, 'w') as f:
-        json.dump(block_data, f, indent=2)
+        json.dump(block_template, f, indent=2)
     
-    print(f"🆙 Zaktualizowano blok {sign_id}: model={model_name}, tło={background_name} (kształt: {shape})")
+    print(f"🆙 Zaktualizowano blok {sign_id}: model={model_name}, tło={background_name} (kształt: {sign_shape})")
     return True
 
-def process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download=False):
+def process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database_path, skip_download=False, force_rebuild=False):
     """Przetwórz pojedynczy znak z automatycznym tworzeniem modeli i tekstur"""
     print(f"\n🔍 Przetwarzanie {sign_id}...")
     
@@ -571,10 +735,10 @@ def process_sign(sign_id, wikipedia_file_page, width, height, database_path, ski
     print(f"📂 Kategoria: {category}")
     
     # Pobierz kształt znaku z bazy danych
-    shape = sign_data.get('sign_shape', 'rectangle')
-    print(f"📐 Kształt znaku: {shape}")
-    print(f"📏 Wymiary znaku: {width}x{height}")
-
+    sign_shape = sign_data.get('sign_shape', 'rectangle')
+    print(f"📐 Kształt znaku: {sign_shape}")
+    print(f"📏 Wymiary znaku: {sign_width}x{sign_height}")
+    
     # Przygotuj katalogi
     target_dir = f"RP/textures/blocks/{category.lower()}"
     os.makedirs(target_dir, exist_ok=True)
@@ -605,29 +769,35 @@ def process_sign(sign_id, wikipedia_file_page, width, height, database_path, ski
         if not download_svg(svg_url, svg_path):
             print(f"❌ Nie udało się pobrać SVG dla {sign_id}")
             return False
-        
+    
         print(f"⏬️ Pobrano SVG: {svg_path}")
     
-    target_width, target_height = scale_dimensions(width, height)
+    target_width = scale_size_from_mm_to_px(sign_width)
+    target_height = scale_size_from_mm_to_px(sign_height)
     print(f"📏 Wymiary obrazka: {target_width}x{target_height}")
-
+    
     # Konwertuj na PNG w tym samym katalogu
     png_path = f"{target_dir}/{sign_id}.png"
-    if not convert_svg_to_png(svg_path, png_path, width, height, target_width, target_height):
+    
+    # Usuń istniejącą teksturę jeśli force_rebuild=True
+    if force_rebuild and os.path.exists(png_path):
+        os.remove(png_path)
+        print(f"🗑️ Usunięto istniejącą teksturę: {png_path}")
+    
+    if not convert_svg_to_png(svg_path, png_path, target_width, target_height):
         print(f"❌ Nie udało się skonwertować SVG dla {sign_id}")
         return False
-
     print(f"🔀 Skonwertowano na PNG: {png_path}")
 
-    # Automatycznie twórz model i teksturę tła
-    model_name = create_model_if_needed(shape, width, height, target_width, target_height)
+    # Automatycznie twórz lub aktualizuj model i teksturę tła
+    model_name = update_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height)
     
     # Pobierz odpowiednią teksturę tła na podstawie kształtu
-    background_name = get_background_texture_for_shape(shape, width, height)
+    background_name = get_background_texture_for_shape(sign_shape, sign_width, sign_height)
     print(f"🎨 Tekstura tła: {background_name}")
     
     # Utwórz teksturę tła jeśli nie istnieje
-    background_name = create_background_texture_if_needed(shape, width, height, target_width, target_height)
+    background_name = create_background_texture_if_needed(sign_shape, sign_width, sign_height, target_width, target_height, force_rebuild)
     if background_name:
         add_to_terrain_texture(background_name)
     
@@ -636,7 +806,7 @@ def process_sign(sign_id, wikipedia_file_page, width, height, database_path, ski
     
     # Utwórz lub zaktualizuj definicję bloku
     if not os.path.exists(f"BP/blocks/{category.lower()}/{sign_id}.block.json"):
-        if create_block_if_needed(sign_id, model_name, background_name, shape):
+        if create_block_if_needed(sign_id, model_name, background_name, sign_shape):
             print(f"🆕 Utworzono definicję bloku {sign_id}")
             # Zaktualizuj collision i selection box
             update_collision_and_selection_boxes(sign_id, model_name)
@@ -645,7 +815,7 @@ def process_sign(sign_id, wikipedia_file_page, width, height, database_path, ski
             print(f"❌ Błąd tworzenia bloku {sign_id}")
             return False
     else:
-        if update_block_definition(sign_id, model_name, background_name, shape):
+        if update_block_definition(sign_id, model_name, background_name, sign_shape):
             print(f"🆙 Zaktualizowano definicję bloku {sign_id}")
             # Zaktualizuj collision i selection box
             update_collision_and_selection_boxes(sign_id, model_name)
@@ -778,7 +948,7 @@ def main():
     
     # Sprawdź argumenty
     if len(sys.argv) < 2:
-        print("❌ Użycie: python road_sign_processor.py <kod_znaku1> [kod_znaku2] [kod_znaku3] ... [--skip-download]")
+        print("❌ Użycie: python road_sign_processor.py <kod_znaku1> [kod_znaku2] [kod_znaku3] ... [--skip-download] [--force-rebuild]")
         print("   Przykłady:")
         print("     python road_sign_processor.py a-1")
         print("     python road_sign_processor.py B_5 c-10 d_25")
@@ -787,6 +957,8 @@ def main():
         print("     python road_sign_processor.py category:A  # przetwórz kategorię A")
         print("     python road_sign_processor.py category:B --skip-download  # przetwórz kategorię B offline")
         print("     python road_sign_processor.py a_1 --skip-download  # użyj lokalnych plików SVG")
+        print("     python road_sign_processor.py a_1 --force-rebuild  # wymuś przebudowanie tekstur")
+        print("     python road_sign_processor.py all --force-rebuild  # wymuś przebudowanie wszystkich tekstur")
         return
     
     # Sprawdź flagę --skip-download
@@ -795,6 +967,13 @@ def main():
         sys.argv.remove("--skip-download")
         print("🚫 Tryb offline: pomijam pobieranie plików SVG z internetu")
         print("📁 Używam lokalnych plików SVG")
+        print()
+    
+    # Sprawdź flagę --force-rebuild
+    force_rebuild = "--force-rebuild" in sys.argv
+    if force_rebuild:
+        sys.argv.remove("--force-rebuild")
+        print("🔄 Tryb wymuszenia przebudowania: usuwam istniejące tekstury przed przetwarzaniem")
         print()
     
     # Wczytaj bazę danych
@@ -831,10 +1010,10 @@ def main():
                         continue
                     
                     wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
-                    width = int(signs[sign_id].get('sign_width', 900))
-                    height = int(signs[sign_id].get('sign_height', 900))
-
-                    if process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download):
+                    sign_width = int(signs[sign_id].get('sign_width', 900))
+                    sign_height = int(signs[sign_id].get('sign_height', 900))
+                    
+                    if process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database_path, skip_download, force_rebuild):
                         success_count += 1
                     else:
                         errors.append(f"{sign_id}: błąd przetwarzania")
@@ -870,17 +1049,17 @@ def main():
                 continue
             
             wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
-            width = int(signs[sign_id].get('sign_width', 900))
-            height = int(signs[sign_id].get('sign_height', 900))
+            sign_width = int(signs[sign_id].get('sign_width', 900))
+            sign_height = int(signs[sign_id].get('sign_height', 900))
 
-            if process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download):
+            if process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database_path, skip_download, force_rebuild):
                 success_count += 1
             else:
                 errors.append(f"{sign_id}: błąd przetwarzania")
             
             # Dodaj delay między requestami (tylko jeśli nie pomijamy pobierania)
             if not skip_download:
-                time.sleep(1)
+                    time.sleep(1)
     else:
         # Przetwórz podane znaki
         for sign_code in sys.argv[1:]:
@@ -904,12 +1083,12 @@ def main():
                 continue
             
             wikipedia_file_page = sign_data['wikipedia_file_page']
-            width = int(sign_data.get('sign_width', 900))
-            height = int(sign_data.get('sign_height', 900))
-
-            print(f"📏 Docelowe wymiary: {width}x{height}")
+            sign_width = int(sign_data.get('sign_width', 900))
+            sign_height = int(sign_data.get('sign_height', 900))
             
-            if process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download):
+            print(f"📏 Docelowe wymiary: {sign_width}x{sign_height}")
+            
+            if process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database_path, skip_download, force_rebuild):
                 success_count += 1
             else:
                 errors.append(f"{sign_id}: błąd przetwarzania")
