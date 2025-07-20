@@ -160,16 +160,26 @@ python3 road_sign_processor.py a_1
 # Pobierz i przeskaluj wszystkie znaki
 python3 road_sign_processor.py all
 
+# Przetwórz konkretną kategorię
+python3 road_sign_processor.py category:A
+python3 road_sign_processor.py category:B --skip-download
+
+# Użyj lokalnych plików SVG (tryb offline)
+python3 road_sign_processor.py a_1 --skip-download
+python3 road_sign_processor.py all --skip-download
+
 # Funkcje skryptu:
-# - Pobiera SVG z Wikipedii przez .fullImageLink a
+# - Pobiera SVG z Wikipedii przez .fullImageLink
 # - Skaluje z zachowaniem proporcji do 128px szerokości
 # - Konwertuje SVG→PNG używając Inkscape
 # - Zapisuje SVG jako cache obok PNG plików
 # - Automatycznie tworzy modele 3D dla nowych wymiarów
-# - Automatycznie tworzy tekstury tła dla nowych wymiarów
+# - Automatycznie tworzy neutralne białe tekstury tła
 # - Automatycznie dostosowuje collision_box i selection_box
 # - Aktualizuje bazę danych z wymiarami obrazków
 # - Podsumowuje błędy na końcu
+# - Tryb offline z flagą --skip-download
+# - Przetwarzanie kategorii z automatycznym czyszczeniem
 ```
 
 ### Synchronizacja wymiarów bloków
@@ -208,6 +218,9 @@ python3 update_crafting_catalog.py
 
 # Pobieranie i skalowanie obrazków
 python3 road_sign_processor.py [sign_id]
+
+# Pobieranie w trybie offline (użyj lokalnych plików SVG)
+python3 road_sign_processor.py [sign_id] --skip-download
 
 # Synchronizacja wymiarów bloków
 python3 sync_block_dimensions.py

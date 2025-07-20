@@ -1,0 +1,110 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.road_sign_octagon_900x900",
+        "texture_width": 90,
+        "texture_height": 90,
+        "visible_bounds_width": 0,
+        "visible_bounds_height": 0,
+        "visible_bounds_offset": [
+          0,
+          0,
+          0
+        ]
+      },
+      "item_display_transforms": {
+        "firstperson_righthand": {
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "scale": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "translation": [
+            0,
+            4,
+            0
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "scale": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "translation": [
+            0,
+            4,
+            0
+          ]
+        },
+        "fixed": {
+          "scale": [
+            1.5,
+            1.5,
+            1.5
+          ]
+        },
+        "gui": {
+          "rotation": [
+            0,
+            180,
+            0
+          ]
+        }
+      },
+      "bones": [
+        {
+          "name": "block",
+          "cubes": [
+            {
+              "origin": [
+                -6.0,
+                0,
+                0
+              ],
+              "size": [
+                11.538,
+                11.538,
+                0.1
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    90,
+                    90
+                  ]
+                },
+                "south": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    90,
+                    90
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

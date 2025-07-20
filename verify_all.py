@@ -606,9 +606,9 @@ def verify_blocks_comprehensive():
     for category in get_db_categories():
         signs = data['road_signs'][category]['signs']
         for sign_id, sign_data in signs.items():
-            if 'shape' in sign_data:
+            if 'sign_shape' in sign_data:
                 signs_with_shape += 1
-                shape_type = sign_data['shape']
+                shape_type = sign_data['sign_shape']
                 if shape_type not in shape_types:
                     shape_types[shape_type] = 0
                 shape_types[shape_type] += 1

@@ -32,14 +32,16 @@ def normalize_sign_id(sign_code):
 
 def find_sign_in_database(sign_id, data):
     """Znajdź znak w bazie danych"""
-    for category in ['A', 'B', 'C', 'D']:
+    categories = list(data['road_signs'].keys())
+    for category in categories:
         if sign_id in data['road_signs'][category]['signs']:
             return data['road_signs'][category]['signs'][sign_id]
     return None
 
 def get_category_for_sign(sign_id, data):
     """Pobierz kategorię dla znaku"""
-    for category in ['A', 'B', 'C', 'D']:
+    categories = list(data['road_signs'].keys())
+    for category in categories:
         if sign_id in data['road_signs'][category]['signs']:
             return category
     return None
@@ -110,13 +112,14 @@ def download_svg(svg_url, output_path):
         print(f"Błąd pobierania SVG: {e}")
         return False
 
-def convert_svg_to_png(svg_path, png_path, target_width):
+def convert_svg_to_png(svg_path, png_path, width, height, target_width, target_height):
     """Konwertuj SVG na PNG z określoną szerokością"""
     try:
         result = subprocess.run([
             'inkscape', 
             '--export-type=png', 
             f'--export-width={target_width}',
+            f'--export-height={target_height}',
             f'--export-filename={png_path}',
             svg_path
         ], capture_output=True, timeout=30)
@@ -147,7 +150,7 @@ def get_image_dimensions(png_path):
         print(f"Błąd pobierania wymiarów: {e}")
     return None, None
 
-def create_model_if_needed(width, height, shape):
+def create_model_if_needed(shape, width, height, target_width, target_height):
     """Twórz model 3D jeśli nie istnieje"""
     model_name = f"road_sign_{shape}_{width}x{height}"
     model_path = f"RP/models/blocks/{model_name}.geo.json"
@@ -163,8 +166,8 @@ def create_model_if_needed(width, height, shape):
             {
                 "description": {
                     "identifier": f"geometry.{model_name}",
-                    "texture_width": width,
-                    "texture_height": height,
+                    "texture_width": target_width,
+                    "texture_height": target_height,
                     "visible_bounds_width": 0,
                     "visible_bounds_height": 0,
                     "visible_bounds_offset": [0, 0, 0]
@@ -192,11 +195,11 @@ def create_model_if_needed(width, height, shape):
                         "name": "block",
                         "cubes": [
                             {
-                                "origin": [-width // 16, 0, 0],
-                                "size": [width // 8, height // 8, 0.1],
+                                "origin": [round(-target_width / 15, 3), 0, 0],
+                                "size": [round(target_width / 7.8, 3), round(target_height / 7.8, 3), 0.1],
                                 "uv": {
-                                    "north": {"uv": [0, 0], "uv_size": [width, height]},
-                                    "south": {"uv": [0, 0], "uv_size": [width, height]}
+                                    "north": {"uv": [0, 0], "uv_size": [target_width, target_height]},
+                                    "south": {"uv": [0, 0], "uv_size": [target_width, target_height]}
                                 }
                             }
                         ]
@@ -212,11 +215,14 @@ def create_model_if_needed(width, height, shape):
     print(f"🆕 Utworzono model: {model_name}")
     return model_name
 
-def create_background_texture_if_needed(width, height, shape):
+def scale_dimensions(width, height):
+    return [width//10, height//10]
+
+def create_background_texture_if_needed(shape, width, height, target_width, target_height):
     """Twórz teksturę tła jeśli nie istnieje"""
     texture_name = f"{shape}_{width}x{height}"
     texture_path = f"RP/textures/blocks/sign_backs/{texture_name}.png"
-    
+
     if os.path.exists(texture_path):
         print(f"🆗 Tekstura tła już istnieje: {texture_name}")
         return texture_name
@@ -225,26 +231,26 @@ def create_background_texture_if_needed(width, height, shape):
     try:
         if shape == 'triangle':
             # Trójkąt - biały kolor w kształcie trójkąta
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {width//2},0 0,{height} {width},{height}', '-define', 'png:color-type=6', texture_path], check=True)
+            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {target_width//2},0 0,{target_height} {target_width},{target_height}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'inverted_triangle':
             # Odwrócony trójkąt - biały kolor w kształcie odwróconego trójkąta
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon 0,0 {width},0 {width//2},{height}', '-define', 'png:color-type=6', texture_path], check=True)
+            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon 0,0 {target_width},0 {target_width//2},{target_height}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'circle':
             # Koło - biały kolor w kształcie koła
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'circle {width//2},{height//2} {width//2},0', '-define', 'png:color-type=6', texture_path], check=True)
+            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'circle {target_width//2},{target_height//2} {target_width//2},0', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'square':
             # Kwadrat - biały kolor w kształcie kwadratu
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
+            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {target_width-1},{target_height-1}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'diamond':
             # Romb - biały kolor w kształcie rombu
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {width//2},0 {width},{height//2} {width//2},{height} 0,{height//2}', '-define', 'png:color-type=6', texture_path], check=True)
+            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {target_width//2},0 {target_width},{target_height//2} {target_width//2},{target_height} 0,{target_height//2}', '-define', 'png:color-type=6', texture_path], check=True)
         elif shape == 'octagon':
             # Ośmiokąt - biały kolor w kształcie ośmiokąta
-            margin = min(width, height) // 4
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {margin},0 {width-margin},0 {width},{margin} {width},{height-margin} {width-margin},{height} {margin},{height} 0,{height-margin} 0,{margin}', '-define', 'png:color-type=6', texture_path], check=True)
+            margin = min(target_width, target_height) // 4
+            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'polygon {margin},0 {target_width-margin},0 {target_width},{margin} {target_width},{target_height-margin} {target_width-margin},{target_height} {margin},{target_height} 0,{target_height-margin} 0,{margin}', '-define', 'png:color-type=6', texture_path], check=True)
         else:
             # Prostokąt - biały kolor w kształcie prostokąta
-            subprocess.run(['magick', '-size', f'{width}x{height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {width-1},{height-1}', '-define', 'png:color-type=6', texture_path], check=True)
+            subprocess.run(['magick', '-size', f'{target_width}x{target_height}', 'xc:transparent', '-fill', 'white', '-draw', f'rectangle 0,0 {target_width-1},{target_height-1}', '-define', 'png:color-type=6', texture_path], check=True)
         
         print(f"🆕 Utworzono teksturę tła: {texture_name} (kształt: {shape})")
     except subprocess.CalledProcessError as e:
@@ -254,7 +260,7 @@ def create_background_texture_if_needed(width, height, shape):
     return texture_name
 
 def add_to_terrain_texture(texture_name):
-    """Dodaj teksturę do terrain_texture.json"""
+    """Dodaj teksturę tła do terrain_texture.json"""
     terrain_path = "RP/textures/terrain_texture.json"
     
     with open(terrain_path, 'r') as f:
@@ -262,10 +268,10 @@ def add_to_terrain_texture(texture_name):
     
     # Sprawdź czy już istnieje
     if f"polish_road_sign_back:{texture_name}" in terrain["texture_data"]:
-        print(f"🆗 Tekstura {texture_name} już istnieje w terrain_texture.json")
+        print(f"🆗 Tekstura tła {texture_name} już istnieje w terrain_texture.json")
         return
     
-    # Dodaj wpis tekstury
+    # Dodaj wpis tekstury tła
     terrain["texture_data"][f"polish_road_sign_back:{texture_name}"] = {
         "textures": f"textures/blocks/sign_backs/{texture_name}.png"
     }
@@ -273,7 +279,29 @@ def add_to_terrain_texture(texture_name):
     with open(terrain_path, 'w') as f:
         json.dump(terrain, f, indent=2)
     
-    print(f"🆕 Dodano {texture_name} do terrain_texture.json")
+    print(f"🆕 Dodano teksturę tła {texture_name} do terrain_texture.json")
+
+def add_sign_texture_to_terrain(sign_id, category):
+    """Dodaj teksturę znaku do terrain_texture.json"""
+    terrain_path = "RP/textures/terrain_texture.json"
+    
+    with open(terrain_path, 'r') as f:
+        terrain = json.load(f)
+    
+    # Sprawdź czy już istnieje
+    if f"polish_road_sign:{sign_id}" in terrain["texture_data"]:
+        print(f"🆗 Tekstura znaku {sign_id} już istnieje w terrain_texture.json")
+        return
+    
+    # Dodaj wpis tekstury znaku
+    terrain["texture_data"][f"polish_road_sign:{sign_id}"] = {
+        "textures": f"textures/blocks/{category.lower()}/{sign_id}.png"
+    }
+    
+    with open(terrain_path, 'w') as f:
+        json.dump(terrain, f, indent=2)
+    
+    print(f"🆕 Dodano teksturę znaku {sign_id} do terrain_texture.json")
 
 def get_model_dimensions(model_name):
     """Pobierz wymiary modelu z pliku geometry"""
@@ -328,7 +356,7 @@ def update_collision_and_selection_boxes(sign_id, model_name):
         return False
     
     # Oblicz origin (środek modelu)
-    origin_x = -width // 2
+    origin_x = round(-width / 2, 3)
     origin_y = 0
     origin_z = 0
     
@@ -378,7 +406,7 @@ def create_block_if_needed(sign_id, model_name, background_name, shape):
         return False
     
     # Oblicz origin (środek modelu)
-    origin_x = -width // 2
+    origin_x = round(-width / 2, 3)
     origin_y = 0
     origin_z = 0
     
@@ -473,7 +501,7 @@ def create_block_if_needed(sign_id, model_name, background_name, shape):
     with open(block_path, 'w') as f:
         json.dump(block_template, f, indent=2)
     
-    print(f"🆕 Utworzono blok: {sign_id}")
+    print(f"🆕 Utworzono blok: {sign_id} {width}x{height}")
     return True
 
 def update_block_definition(sign_id, model_name, background_name, shape):
@@ -521,34 +549,7 @@ def update_block_definition(sign_id, model_name, background_name, shape):
     print(f"🆙 Zaktualizowano blok {sign_id}: model={model_name}, tło={background_name} (kształt: {shape})")
     return True
 
-def update_database(database_path, sign_id, width, height):
-    """Zaktualizuj bazę danych z nowymi wymiarami"""
-    try:
-        with open(database_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        # Znajdź znak w bazie
-        for category in ['A', 'B', 'C', 'D']:
-            if sign_id in data['road_signs'][category]['signs']:
-                data['road_signs'][category]['signs'][sign_id]['image_width'] = str(width)
-                data['road_signs'][category]['signs'][sign_id]['image_height'] = str(height)
-                
-                # Dodaj image_dimensions jeśli istnieje
-                if 'image_dimensions' in data['road_signs'][category]['signs'][sign_id]:
-                    data['road_signs'][category]['signs'][sign_id]['image_dimensions'] = f"{width}x{height}"
-                break
-        
-        # Zapisz zaktualizowaną bazę
-        with open(database_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
-        
-        print(f"🆙 Zaktualizowano bazę dla {sign_id}: {width}x{height}")
-        return True
-    except Exception as e:
-        print(f"⚠️ Błąd aktualizacji bazy: {e}")
-        return False
-
-def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
+def process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download=False):
     """Przetwórz pojedynczy znak z automatycznym tworzeniem modeli i tekstur"""
     print(f"\n🔍 Przetwarzanie {sign_id}...")
     
@@ -570,82 +571,202 @@ def process_sign(sign_id, wikipedia_file_page, target_width, database_path):
     print(f"📂 Kategoria: {category}")
     
     # Pobierz kształt znaku z bazy danych
-    shape = sign_data.get('shape', 'rectangle')
+    shape = sign_data.get('sign_shape', 'rectangle')
     print(f"📐 Kształt znaku: {shape}")
-    
-    # Pobierz stronę Wikipedii (użyj bezpośredniego linku do pliku)
-    html_content = download_wikipedia_page(wikipedia_file_page)
-    if not html_content:
-        print(f"❌ Nie udało się pobrać strony dla {sign_id}")
-        return False
-    
-    # Wyciągnij link do SVG z pliku
-    svg_url = extract_svg_url(html_content)
-    if not svg_url:
-        print(f"❌ Nie znaleziono linku SVG dla {sign_id}")
-        return False
-    
+    print(f"📏 Wymiary znaku: {width}x{height}")
+
     # Przygotuj katalogi
     target_dir = f"RP/textures/blocks/{category.lower()}"
     os.makedirs(target_dir, exist_ok=True)
     
-    # Pobierz SVG do katalogu cache obok PNG
+    # Ścieżka do lokalnego pliku SVG
     svg_path = f"{target_dir}/{sign_id}.svg"
-    if not download_svg(svg_url, svg_path):
-        print(f"❌ Nie udało się pobrać SVG dla {sign_id}")
-        return False
     
-    print(f"⏬️ Pobrano SVG: {svg_path}")
+    if skip_download:
+        # Sprawdź czy lokalny plik SVG istnieje
+        if not os.path.exists(svg_path):
+            print(f"❌ Nie znaleziono lokalnego pliku SVG: {svg_path}")
+            return False
+        print(f"📁 Używam lokalnego SVG: {svg_path}")
+    else:
+        # Pobierz stronę Wikipedii (użyj bezpośredniego linku do pliku)
+        html_content = download_wikipedia_page(wikipedia_file_page)
+        if not html_content:
+            print(f"❌ Nie udało się pobrać strony dla {sign_id}")
+            return False
+        
+        # Wyciągnij link do SVG z pliku
+        svg_url = extract_svg_url(html_content)
+        if not svg_url:
+            print(f"❌ Nie znaleziono linku SVG dla {sign_id}")
+            return False
+        
+        # Pobierz SVG do katalogu cache obok PNG
+        if not download_svg(svg_url, svg_path):
+            print(f"❌ Nie udało się pobrać SVG dla {sign_id}")
+            return False
+        
+        print(f"⏬️ Pobrano SVG: {svg_path}")
     
+    target_width, target_height = scale_dimensions(width, height)
+    print(f"📏 Wymiary obrazka: {target_width}x{target_height}")
+
     # Konwertuj na PNG w tym samym katalogu
     png_path = f"{target_dir}/{sign_id}.png"
-    if not convert_svg_to_png(svg_path, png_path, target_width):
+    if not convert_svg_to_png(svg_path, png_path, width, height, target_width, target_height):
         print(f"❌ Nie udało się skonwertować SVG dla {sign_id}")
         return False
-    
+
     print(f"🔀 Skonwertowano na PNG: {png_path}")
-    
-    # Pobierz rzeczywiste wymiary
-    width, height = get_image_dimensions(png_path)
-    if width is None or height is None:
-        print(f"❌ Nie udało się pobrać wymiarów dla {sign_id}")
-        return False
-    
-    print(f"📐 Wymiary: {width}x{height}")
-    
+
     # Automatycznie twórz model i teksturę tła
-    model_name = create_model_if_needed(width, height, shape)
+    model_name = create_model_if_needed(shape, width, height, target_width, target_height)
     
     # Pobierz odpowiednią teksturę tła na podstawie kształtu
     background_name = get_background_texture_for_shape(shape, width, height)
     print(f"🎨 Tekstura tła: {background_name}")
     
     # Utwórz teksturę tła jeśli nie istnieje
-    background_name = create_background_texture_if_needed(width, height, shape)
+    background_name = create_background_texture_if_needed(shape, width, height, target_width, target_height)
     if background_name:
         add_to_terrain_texture(background_name)
+    
+    # Dodaj teksturę znaku do terrain_texture.json
+    add_sign_texture_to_terrain(sign_id, category)
     
     # Utwórz lub zaktualizuj definicję bloku
     if not os.path.exists(f"BP/blocks/{category.lower()}/{sign_id}.block.json"):
         if create_block_if_needed(sign_id, model_name, background_name, shape):
             print(f"🆕 Utworzono definicję bloku {sign_id}")
+            # Zaktualizuj collision i selection box
+            update_collision_and_selection_boxes(sign_id, model_name)
+            return True
         else:
             print(f"❌ Błąd tworzenia bloku {sign_id}")
             return False
     else:
         if update_block_definition(sign_id, model_name, background_name, shape):
             print(f"🆙 Zaktualizowano definicję bloku {sign_id}")
+            # Zaktualizuj collision i selection box
+            update_collision_and_selection_boxes(sign_id, model_name)
+            return True
         else:
             print(f"❌ Błąd aktualizacji bloku {sign_id}")
             return False
+
+def cleanup_category_files(data, category):
+    """Usuń pliki dla konkretnej kategorii"""
+    print(f"🧹 CZYSZCZENIE KATEGORII {category}...")
+    print("=" * 50)
     
-    # Zaktualizuj bazę danych
-    if update_database(database_path, sign_id, width, height):
-        print(f" ✅ {sign_id} - gotowe!")
-        return True
-    else:
-        print(f"❌ Błąd aktualizacji bazy dla {sign_id}")
-        return False
+    category_lower = category.lower()
+    
+    # Usuń bloki dla kategorii
+    block_dir = f"BP/blocks/{category_lower}"
+    if os.path.exists(block_dir):
+        for file in os.listdir(block_dir):
+            if file.endswith('.block.json'):
+                os.remove(os.path.join(block_dir, file))
+                print(f"🗑️ Usunięto blok: {category_lower}/{file}")
+    
+    # Usuń tekstury PNG dla kategorii (zachowaj SVG)
+    texture_dir = f"RP/textures/blocks/{category_lower}"
+    if os.path.exists(texture_dir):
+        for file in os.listdir(texture_dir):
+            if file.endswith('.png'):
+                os.remove(os.path.join(texture_dir, file))
+                print(f"🗑️ Usunięto teksturę: {category_lower}/{file}")
+    
+    # Usuń wpisy z terrain_texture.json dla znaków z tej kategorii
+    terrain_path = "RP/textures/terrain_texture.json"
+    if os.path.exists(terrain_path):
+        with open(terrain_path, 'r') as f:
+            terrain_data = json.load(f)
+        
+        # Usuń wpisy dla znaków z tej kategorii
+        keys_to_remove = []
+        for key in terrain_data['texture_data']:
+            if key.startswith(f'polish_road_sign:{category_lower}_'):
+                keys_to_remove.append(key)
+        
+        for key in keys_to_remove:
+            del terrain_data['texture_data'][key]
+            print(f"🗑️ Usunięto z terrain_texture.json: {key}")
+        
+        with open(terrain_path, 'w') as f:
+            json.dump(terrain_data, f, indent=2)
+    
+    print(f"✅ Czyszczenie kategorii {category} zakończone!")
+    print("=" * 50)
+    print()
+
+def cleanup_all_files(data):
+    """Usuń wszystkie istniejące bloki, modele, tekstury PNG i ich definicje"""
+    print("🧹 CZYSZCZENIE WSZYSTKICH PLIKÓW...")
+    print("=" * 50)
+    
+    # Pobierz kategorie z bazy danych
+    categories = list(data['road_signs'].keys())
+    print(f"📋 Znalezione kategorie: {', '.join(categories)}")
+    
+    # Usuń wszystkie bloki
+    for category in categories:
+        category_lower = category.lower()
+        block_dir = f"BP/blocks/{category_lower}"
+        if os.path.exists(block_dir):
+            for file in os.listdir(block_dir):
+                if file.endswith('.block.json'):
+                    os.remove(os.path.join(block_dir, file))
+                    print(f"🗑️ Usunięto blok: {category_lower}/{file}")
+    
+    # Usuń wszystkie modele 3D
+    models_dir = "RP/models/blocks"
+    if os.path.exists(models_dir):
+        for file in os.listdir(models_dir):
+            if file.startswith('road_sign_') and file.endswith('.geo.json'):
+                os.remove(os.path.join(models_dir, file))
+                print(f"🗑️ Usunięto model: {file}")
+    
+    # Usuń wszystkie tekstury PNG (zachowaj SVG)
+    for category in categories:
+        category_lower = category.lower()
+        texture_dir = f"RP/textures/blocks/{category_lower}"
+        if os.path.exists(texture_dir):
+            for file in os.listdir(texture_dir):
+                if file.endswith('.png'):
+                    os.remove(os.path.join(texture_dir, file))
+                    print(f"🗑️ Usunięto teksturę: {category_lower}/{file}")
+    
+    # Usuń tekstury tła
+    sign_backs_dir = "RP/textures/blocks/sign_backs"
+    if os.path.exists(sign_backs_dir):
+        for file in os.listdir(sign_backs_dir):
+            if file.endswith('.png'):
+                os.remove(os.path.join(sign_backs_dir, file))
+                print(f"🗑️ Usunięto teksturę tła: {file}")
+    
+    # Wyczyść terrain_texture.json (zachowaj tylko nie-polish_road_sign wpisy)
+    terrain_path = "RP/textures/terrain_texture.json"
+    if os.path.exists(terrain_path):
+        with open(terrain_path, 'r') as f:
+            terrain_data = json.load(f)
+        
+        # Usuń wszystkie polish_road_sign wpisy
+        keys_to_remove = []
+        for key in terrain_data['texture_data']:
+            if key.startswith('polish_road_sign'):
+                keys_to_remove.append(key)
+        
+        for key in keys_to_remove:
+            del terrain_data['texture_data'][key]
+            print(f"🗑️ Usunięto z terrain_texture.json: {key}")
+        
+        with open(terrain_path, 'w') as f:
+            json.dump(terrain_data, f, indent=2)
+    
+    print("✅ Czyszczenie zakończone!")
+    print("=" * 50)
+    print()
 
 def main():
     """Główna funkcja"""
@@ -657,13 +778,24 @@ def main():
     
     # Sprawdź argumenty
     if len(sys.argv) < 2:
-        print("❌ Użycie: python road_sign_processor.py <kod_znaku1> [kod_znaku2] [kod_znaku3] ...")
+        print("❌ Użycie: python road_sign_processor.py <kod_znaku1> [kod_znaku2] [kod_znaku3] ... [--skip-download]")
         print("   Przykłady:")
         print("     python road_sign_processor.py a-1")
         print("     python road_sign_processor.py B_5 c-10 d_25")
         print("     python road_sign_processor.py A1 B2 C3 D4")
         print("     python road_sign_processor.py all  # przetwórz wszystkie znaki")
+        print("     python road_sign_processor.py category:A  # przetwórz kategorię A")
+        print("     python road_sign_processor.py category:B --skip-download  # przetwórz kategorię B offline")
+        print("     python road_sign_processor.py a_1 --skip-download  # użyj lokalnych plików SVG")
         return
+    
+    # Sprawdź flagę --skip-download
+    skip_download = "--skip-download" in sys.argv
+    if skip_download:
+        sys.argv.remove("--skip-download")
+        print("🚫 Tryb offline: pomijam pobieranie plików SVG z internetu")
+        print("📁 Używam lokalnych plików SVG")
+        print()
     
     # Wczytaj bazę danych
     with open(database_path, 'r', encoding='utf-8') as f:
@@ -680,7 +812,12 @@ def main():
     if len(sys.argv) == 2 and sys.argv[1].lower() == 'all':
         print("📋 Przetwarzanie wszystkich znaków z bazy danych...")
         
-        for category in ['A', 'B', 'C', 'D']:
+        # Wyczyść wszystkie pliki przed przetwarzaniem
+        cleanup_all_files(data)
+        
+        # Pobierz kategorie z bazy danych
+        categories = list(data['road_signs'].keys())
+        for category in categories:
             if category in data['road_signs']:
                 print(f"\n📁 Kategoria {category}...")
                 signs = data['road_signs'][category]['signs']
@@ -694,15 +831,56 @@ def main():
                         continue
                     
                     wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
-                    target_width = int(signs[sign_id].get('image_width', 128))
-                    
-                    if process_sign(sign_id, wikipedia_file_page, target_width, database_path):
+                    width = int(signs[sign_id].get('sign_width', 900))
+                    height = int(signs[sign_id].get('sign_height', 900))
+
+                    if process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download):
                         success_count += 1
                     else:
                         errors.append(f"{sign_id}: błąd przetwarzania")
                     
-                    # Dodaj delay między requestami (szanuj serwery)
-                    time.sleep(1)
+                    # Dodaj delay między requestami (tylko jeśli nie pomijamy pobierania)
+                    if not skip_download:
+                        time.sleep(1)
+    
+    # Sprawdź czy przetwarzamy konkretną kategorię
+    elif len(sys.argv) == 2 and sys.argv[1].lower().startswith('category:'):
+        category_param = sys.argv[1].lower().replace('category:', '')
+        category = category_param.upper()
+        
+        if category not in data['road_signs']:
+            print(f"❌ Nie znaleziono kategorii {category} w bazie danych")
+            print(f"📋 Dostępne kategorie: {', '.join(list(data['road_signs'].keys()))}")
+            return
+        
+        print(f"📋 Przetwarzanie kategorii {category}...")
+        
+        # Wyczyść pliki dla tej kategorii przed przetwarzaniem
+        cleanup_category_files(data, category)
+        
+        signs = data['road_signs'][category]['signs']
+        print(f"📊 Znaleziono {len(signs)} znaków w kategorii {category}")
+        
+        for sign_id in signs:
+            total_count += 1
+            
+            # Sprawdź czy znak ma link do pliku Wikipedii
+            if 'wikipedia_file_page' not in signs[sign_id]:
+                print(f"⚠️ {sign_id}: brak linku do pliku Wikipedii")
+                continue
+            
+            wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
+            width = int(signs[sign_id].get('sign_width', 900))
+            height = int(signs[sign_id].get('sign_height', 900))
+
+            if process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download):
+                success_count += 1
+            else:
+                errors.append(f"{sign_id}: błąd przetwarzania")
+            
+            # Dodaj delay między requestami (tylko jeśli nie pomijamy pobierania)
+            if not skip_download:
+                time.sleep(1)
     else:
         # Przetwórz podane znaki
         for sign_code in sys.argv[1:]:
@@ -726,11 +904,12 @@ def main():
                 continue
             
             wikipedia_file_page = sign_data['wikipedia_file_page']
-            target_width = int(sign_data.get('image_width', 128))
+            width = int(sign_data.get('sign_width', 900))
+            height = int(sign_data.get('sign_height', 900))
+
+            print(f"📏 Docelowe wymiary: {width}x{height}")
             
-            print(f"📏 Docelowa szerokość: {target_width}px")
-            
-            if process_sign(sign_id, wikipedia_file_page, target_width, database_path):
+            if process_sign(sign_id, wikipedia_file_page, width, height, database_path, skip_download):
                 success_count += 1
             else:
                 errors.append(f"{sign_id}: błąd przetwarzania")

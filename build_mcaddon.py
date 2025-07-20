@@ -21,7 +21,18 @@ def update_version(file_path, new_version):
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
+    # Update header version
     data['header']['version'] = new_version
+    
+    # Update all module versions
+    for module in data.get('modules', []):
+        if 'version' in module:
+            module['version'] = new_version
+    
+    # Update all dependency versions
+    for dependency in data.get('dependencies', []):
+        if 'version' in dependency:
+            dependency['version'] = new_version
     
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)

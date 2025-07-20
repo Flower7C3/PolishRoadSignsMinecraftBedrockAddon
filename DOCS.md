@@ -191,7 +191,22 @@ RP/
 - **Klucze**: `sign_code` (np. `a_1`, `b_20`)
 - **Format**: PNG z przezroczystością
 - **Rozmiar**: 128x128 pikseli (skalowane z zachowaniem proporcji)
-- **Tła**: Neutralne białe tło dla wszystkich znaków
+- **Tła**: Neutralne białe tło dla wszystkich znaków (automatycznie generowane)
+
+### Tekstury tła
+
+Tekstury tła są automatycznie generowane dla każdego kształtu znaku:
+- **Trójkąt**: Biały trójkąt na przezroczystym tle
+- **Odwrócony trójkąt**: Biały odwrócony trójkąt
+- **Koło**: Białe koło
+- **Kwadrat**: Biały kwadrat
+- **Prostokąt**: Biały prostokąt
+- **Ośmiokąt**: Biały ośmiokąt
+- **Diament**: Biały diament
+
+**Lokalizacja**: `RP/textures/blocks/sign_backs/`
+**Format**: PNG z kanałem alpha
+**Kolor**: Neutralny biały (#FFFFFF)
 
 ## 🌐 System tłumaczeń
 
@@ -213,21 +228,63 @@ tile.polish_road_sign:d_1.name=D-1: droga z pierwszeństwem
 
 ## 🔄 Automatyzacja
 
-### Skrypt resize_simple.py
+### Przetwarzanie kategorii
+
+Skrypt obsługuje przetwarzanie całych kategorii z automatycznym czyszczeniem:
+
+```bash
+# Przetwórz kategorię A (ostrzegawcze)
+python3 road_sign_processor.py category:A
+
+# Przetwórz kategorię B (zakazu) w trybie offline
+python3 road_sign_processor.py category:B --skip-download
+
+# Przetwórz kategorię C (nakazu)
+python3 road_sign_processor.py category:C
+
+# Przetwórz kategorię D (informacyjne)
+python3 road_sign_processor.py category:D
+```
+
+**Funkcje czyszczenia kategorii:**
+- Usuwa wszystkie bloki z danej kategorii
+- Usuwa wszystkie tekstury PNG z kategorii
+- Usuwa wpisy z terrain_texture.json dla znaków z kategorii
+- Zachowuje pliki SVG i inne kategorie
+- Automatycznie wywoływane przed przetwarzaniem
+
+### Dynamiczne kategorie
+
+Skrypt pobiera kategorie dynamicznie z bazy danych:
+- Nie używa statycznych list kategorii
+- Działa z dowolną liczbą kategorii
+- Automatycznie wykrywa nowe kategorie
+- Waliduje istnienie kategorii przed przetwarzaniem
+
+### Skrypt road_sign_processor.py
 
 Skrypt automatycznie pobiera i przetwarza obrazki znaków:
 
 ```python
 # Funkcje:
-# - Pobiera SVG z Wikipedii przez .fullImageLink a
+# - Pobiera SVG z Wikipedii przez .fullImageLink
 # - Skaluje z zachowaniem proporcji do 128px szerokości
 # - Konwertuje SVG→PNG używając Inkscape
+# - Tworzy neutralne białe tekstury tła automatycznie
+# - Aktualizuje collision_box i selection_box
 # - Aktualizuje bazę danych z wymiarami obrazków
 # - Podsumowuje błędy na końcu
+# - Tryb offline z flagą --skip-download
+# - Przetwarzanie kategorii z automatycznym czyszczeniem
+# - Dynamiczne pobieranie kategorii z bazy danych
 
 # Użycie:
-python3 resize_simple.py a_1    # Pojedynczy znak
-python3 resize_simple.py         # Wszystkie znaki
+python3 road_sign_processor.py a_1    # Pojedynczy znak
+python3 road_sign_processor.py all    # Wszystkie znaki
+python3 road_sign_processor.py category:A    # Przetwórz kategorię A
+python3 road_sign_processor.py category:B --skip-download    # Kategoria B offline
+python3 road_sign_processor.py a_1 --skip-download    # Tryb offline
+python3 road_sign_processor.py all --skip-download    # Wszystkie w trybie offline
 ```
 
 ### Baza danych road_signs_full_database.json
