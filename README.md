@@ -152,7 +152,7 @@ python3 verify_all.py
 
 ### Pobieranie i skalowanie obrazków
 
-Skrypt `road_sign_processor.py` automatycznie pobiera obrazki znaków z Wikipedii:
+Skrypt `road_sign_processor.py` automatycznie pobiera obrazki znaków z Wikipedii i zarządza plikami:
 
 ```bash
 # Pobierz i przeskaluj pojedynczy znak
@@ -168,6 +168,11 @@ python3 road_sign_processor.py category:B --skip-download
 # Użyj lokalnych plików SVG (tryb offline)
 python3 road_sign_processor.py a_1 --skip-download
 python3 road_sign_processor.py all --skip-download
+
+**💡 Funkcje zarządzania plikami:**
+- Automatyczne usuwanie plików dla znaków usuniętych z bazy danych
+- Dynamiczne aktualizowanie plików językowych i katalogu crafting
+- Naturalne sortowanie znaków w menu crafting
 
 # Funkcje skryptu:
 # - Pobiera SVG z Wikipedii przez .fullImageLink

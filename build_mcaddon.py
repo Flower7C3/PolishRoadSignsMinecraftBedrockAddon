@@ -4,6 +4,7 @@ import json
 import shutil
 import zipfile
 from datetime import datetime
+from console_utils import ConsoleStyle, print_build_info, print_header
 
 
 def read_manifest(file_path):
@@ -43,18 +44,18 @@ def update_version(file_path, new_version):
 
 def build_mcaddon():
     """Build the .mcaddon package"""
+    print_header("BUDOWANIE PAKIETU MCADDON")
 
     # Read current versions and names
     bp_name, bp_version = read_manifest('BP/manifest.json')
     rp_name, rp_version = read_manifest('RP/manifest.json')
 
-    print(f"Current BP version: {bp_version}")
-    print(f"Current RP version: {rp_version}")
+    print(ConsoleStyle.info(f"Obecna wersja BP: {bp_version}"))
+    print(ConsoleStyle.info(f"Obecna wersja RP: {rp_version}"))
 
     # Use the same version for both BP and RP
     new_version = bump_version(bp_version.copy())
-
-    print(f"New version (both BP and RP): {new_version}")
+    print(ConsoleStyle.info(f"Nowa wersja (BP i RP): {new_version}"))
 
     # Update manifests with same version
     update_version('BP/manifest.json', new_version)
@@ -62,7 +63,7 @@ def build_mcaddon():
 
     # Extract plugin name from BP manifest (remove " BP" suffix and spaces)
     plugin_name = bp_name.replace(" BP", "").replace(" ", "")
-    print(f"Plugin name: {plugin_name}")
+    print(ConsoleStyle.info(f"Nazwa pluginu: {plugin_name}"))
 
     # Create output directory
     output_dir = 'dist'
@@ -75,8 +76,9 @@ def build_mcaddon():
     mcaddon_name = f"{plugin_name}_v{new_version[0]}.{new_version[1]}.{new_version[2]}_{timestamp}.mcaddon"
     mcaddon_path = os.path.join(output_dir, mcaddon_name)
 
-    print(f"Creating {mcaddon_path}...")
+    print(ConsoleStyle.process(f"Tworzenie {mcaddon_path}..."))
 
+    file_count = 0
     with zipfile.ZipFile(mcaddon_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         # Add BP files
         for root, dirs, files in os.walk('BP'):
@@ -86,7 +88,7 @@ def build_mcaddon():
                 file_path = os.path.join(root, file)
                 arc_name = file_path
                 zipf.write(file_path, arc_name)
-                print(f"  Added: {arc_name}")
+                file_count += 1
 
         # Add RP files
         for root, dirs, files in os.walk('RP'):
@@ -96,10 +98,11 @@ def build_mcaddon():
                 file_path = os.path.join(root, file)
                 arc_name = file_path
                 zipf.write(file_path, arc_name)
-                print(f"  Added: {arc_name}")
+                file_count += 1
 
-    print(f"\nPackage created successfully: {mcaddon_path}")
-    print(f"File size: {os.path.getsize(mcaddon_path) / 1024 / 1024:.2f} MB")
+    file_size = os.path.getsize(mcaddon_path) / 1024 / 1024
+    print_build_info("MCADDON", mcaddon_path, f"{file_size:.2f} MB")
+    print(ConsoleStyle.info(f"Liczba plików: {file_count}"))
 
     return mcaddon_path
 

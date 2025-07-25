@@ -5,11 +5,14 @@ import re
 
 try:
     from PIL import Image
-
     PIL_AVAILABLE = True
 except ImportError:
     PIL_AVAILABLE = False
-    print("⚠️  PIL not available - texture dimension checks will be skipped")
+
+from console_utils import ConsoleStyle, print_verification_results, print_header
+
+if not PIL_AVAILABLE:
+    print(ConsoleStyle.warning("PIL not available - texture dimension checks will be skipped"))
 
 
 def get_categories_from_blocks():
@@ -487,7 +490,7 @@ def verify_shape_field():
 
     print(f"\n🖥️ GENERATE EXAMPLES")
     print(
-        f"python road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} --skip-download --force-rebuild && python build_mcaddon.py && python unpack_and_install_mcaddon.py dist/PolishRoadSigns_*.mcaddon")
+        f"python3 road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} --skip-download --force-rebuild && python3 build_mcaddon.py && python3 unpack_and_install_mcaddon.py dist/PolishRoadSigns_*.mcaddon")
 
     print(f"\n📊 SUMMARY:")
     print(f"  Unique sizes: {len(sizes)}")
@@ -912,6 +915,7 @@ def verify_blocks_comprehensive():
 
 def main():
     """Główna funkcja weryfikacji"""
+    print_header("WERYFIKACJA PROJEKTU POLISH ROAD SIGNS")
 
     # 1. KOMPLEKSOWA WERYFIKACJA BLOKÓW (definicje, tekstury, modele, kompatybilność)
     (file_blocks_found, file_blocks_missing, terrain_textures_found, terrain_textures_missing,
@@ -923,65 +927,54 @@ def main():
     # 2. WERYFIKACJA TŁUMACZEŃ
     translations_missing = verify_translations()
 
-    # 4. WERYFIKACJA STRUKTURY PROJEKTU
+    # 3. WERYFIKACJA STRUKTURY PROJEKTU
     structure_found, structure_missing = verify_project_structure()
 
-    # 5. WERYFIKACJA PÓL SHAPE
+    # 4. WERYFIKACJA PÓL SHAPE
     sizes, shapes, padding_count, no_padding_count = verify_shape_field()
 
-    # Sprawdź, czy wszystko jest w porządku
-    all_good = True
-
+    # Przygotuj wyniki
+    results = {
+        'total_signs': signs_with_shape + signs_without_shape,
+        'categories': len(get_all_categories()),
+        'block_files': file_blocks_found,
+        'textures': len(all_png_files),
+        'models': models_used,
+        'translations': translations_missing
+    }
+    
+    issues = {}
     if terrain_textures_missing > 0:
-        all_good = False
+        issues['Brakujące tekstury terrain'] = terrain_textures_missing
     if len(extra_png_files) > 0:
-        all_good = False
+        issues['Nadmiarowe pliki PNG'] = len(extra_png_files)
     if len(missing_in_terrain) > 0:
-        all_good = False
+        issues['Tekstury bloków brakujące w terrain'] = len(missing_in_terrain)
     if len(unused_textures) > 0:
-        all_good = False
+        issues['Nieużywane tekstury w terrain_texture.json'] = len(unused_textures)
     if models_unused > 0:
-        all_good = False
+        issues['Nieużywane modele'] = models_unused
     if file_blocks_missing > 0:
-        all_good = False
+        issues['Brakujące definicje bloków'] = file_blocks_missing
     if structure_missing > 0:
-        all_good = False
-
-    if all_good:
-        print("\n" + "=" * 50)
-        print(f"🎉 ALL VERIFICATIONS PASSED!")
-        print("=" * 50)
-        print(f"  ✅ Project is complete and consistent")
-    else:
-        print("\n" + "=" * 50)
-        print(f"⚠️ ISSUES DETECTED")
-        print("=" * 50)
-        if terrain_textures_missing > 0:
-            print(f"  ❌ Missing terrain textures: {terrain_textures_missing}")
-        if models_unused > 0:
-            print(f"  ❌ Unused models: {models_unused}")
-        if file_blocks_missing > 0:
-            print(f"  ❌ Missing block definitions: {file_blocks_missing}")
-        if structure_missing > 0:
-            print(f"  ❌ Missing directories: {structure_missing}")
-        if translations_missing > 0:
-            print(f"  ❌ Missing translations: {translations_missing}")
-        if len(extra_png_files) > 0:
-            print(f"  ❌ Extra PNG files: {len(extra_png_files)}")
-        if len(missing_in_terrain) > 0:
-            print(f"  ❌ Block textures missing in terrain: {len(missing_in_terrain)}")
-        if len(texture_model_mismatches) > 0:
-            print(f"  ❌ Texture-model mismatches: {len(texture_model_mismatches)}")
-        if missing_models > 0:
-            print(f"  ❌ Missing models: {missing_models}")
-        if missing_textures > 0:
-            print(f"  ❌ Missing textures: {missing_textures}")
-        if compatibility_issues > 0:
-            print(f"  ❌ Compatibility issues: {compatibility_issues}")
-        if signs_without_shape > 0:
-            print(f"  ❌ Signs without shape field: {signs_without_shape}")
-        if len(unused_textures) > 0:
-            print(f"  ❌ Unused textures in terrain_texture.json: {len(unused_textures)}")
+        issues['Brakujące katalogi'] = structure_missing
+    if translations_missing > 0:
+        issues['Brakujące tłumaczenia'] = translations_missing
+    if len(texture_model_mismatches) > 0:
+        issues['Niezgodności tekstur i modeli'] = len(texture_model_mismatches)
+    if missing_models > 0:
+        issues['Brakujące modele'] = missing_models
+    if missing_textures > 0:
+        issues['Brakujące tekstury'] = missing_textures
+    if compatibility_issues > 0:
+        issues['Problemy kompatybilności'] = compatibility_issues
+    if signs_without_shape > 0:
+        issues['Znaki bez pola shape'] = signs_without_shape
+    
+    results['issues'] = issues
+    
+    # Wyświetl wyniki
+    print_verification_results(results)
 
 
 if __name__ == "__main__":

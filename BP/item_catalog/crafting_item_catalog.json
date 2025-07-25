@@ -143,10 +143,10 @@
               "polish_road_sign:c_11",
               "polish_road_sign:c_12",
               "polish_road_sign:c_13",
-              "polish_road_sign:c_13a",
               "polish_road_sign:c_13_16_v1",
               "polish_road_sign:c_13_16_v2",
               "polish_road_sign:c_13_16_v3",
+              "polish_road_sign:c_13a",
               "polish_road_sign:c_14",
               "polish_road_sign:c_15",
               "polish_road_sign:c_16",
@@ -246,7 +246,7 @@
           {
             "group_identifier": {
               "icon": "polish_road_sign:f_2a",
-              "name": "polish_road_sign:supplementary_signs"
+              "name": "polish_road_sign:additional_signs"
             },
             "items": [
               "polish_road_sign:f_2a"
@@ -255,7 +255,7 @@
           {
             "group_identifier": {
               "icon": "polish_road_sign:t_13",
-              "name": "polish_road_sign:addon_signs"
+              "name": "polish_road_sign:road_sign_plates"
             },
             "items": [
               "polish_road_sign:t_1",
@@ -303,7 +303,7 @@
           {
             "group_identifier": {
               "icon": "polish_road_sign:g_3",
-              "name": "polish_road_sign:railway_crossing_signs"
+              "name": "polish_road_sign:road_railway_crossing_signs"
             },
             "items": [
               "polish_road_sign:g_1a",

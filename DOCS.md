@@ -211,6 +211,7 @@ Skrypt automatycznie pobiera i przetwarza obrazki znaków:
 # - Tryb offline z flagą --skip-download
 # - Przetwarzanie kategorii z automatycznym czyszczeniem
 # - Dynamiczne pobieranie kategorii z bazy danych
+# - Automatyczne czyszczenie plików dla usuniętych znaków
 
 # Użycie:
 python3 road_sign_processor.py a_1    # Pojedynczy znak
