@@ -15,10 +15,7 @@ Addon składa się z dwóch głównych komponentów:
 BP/
 ├── manifest.json              # Konfiguracja BP
 ├── blocks/                    # Definicje bloków
-│   ├── a/                    # Znaki ostrzegawcze (34)
-│   ├── b/                    # Znaki zakazu (44)
-│   ├── c/                    # Znaki nakazu (19)
-│   └── d/                    # Znaki informacyjne (55)
+│   └── [kategorie]/          # Definicje bloków według kategorii
 └── item_catalog/             # Katalog przedmiotów
     └── crafting_item_catalog.json
 
@@ -27,83 +24,20 @@ RP/
 ├── textures/                  # Tekstury
 │   ├── terrain_texture.json   # Mapowanie tekstur
 │   └── blocks/               # Tekstury bloków
-│       ├── a/               # Tekstury znaków A
-│       ├── b/               # Tekstury znaków B
-│       ├── c/               # Tekstury znaków C
-│       ├── d/               # Tekstury znaków D
-│       └── sign_backs/      # Tła znaków
+│       ├── averse/           # Tekstury przodu znaków
+│       │   └── [kategorie]/  # Podkatalogi kategorii znaków
+│       └── reverse/          # Tekstury tyłu znaków
 ├── texts/                     # Tłumaczenia
 │   ├── pl_PL.lang           # Polski
 │   └── en_US.lang           # Angielski
 ├── models/                    # Modele 3D
-│   └── blocks/
-│       ├── road_sign_triangle.geo.json
-│       ├── road_sign_circle.geo.json
-│       ├── road_sign_square.geo.json
-│       ├── road_sign_diamond.geo.json
-│       ├── road_sign_octagon.geo.json
-│       ├── road_sign_rectangle_128x160.geo.json
-│       ├── road_sign_rectangle_160x128.geo.json
-│       ├── road_sign_rectangle_128x128.geo.json
-│       ├── road_sign_rectangle_160x160.geo.json
-│       ├── road_sign_rectangle_192x128.geo.json
-│       ├── road_sign_rectangle_128x192.geo.json
-│       └── road_sign_inverted_triangle.geo.json
+│   └── blocks/               # Modele geometryczne
 └── blocks.json               # Konfiguracja bloków
 ```
 
 ## 🔧 Konfiguracja manifestów
 
-### BP/manifest.json
 
-```json
-{
-  "format_version": 2,
-  "header": {
-    "name": "Polish Road Signs BP",
-    "description": "Behavior Pack for Polish Road Signs addon",
-    "uuid": "b8c7d9e0-f1a2-3456-7890-abcdef123456",
-    "version": [1, 0, 46],
-    "min_engine_version": [1, 16, 0]
-  },
-  "modules": [
-    {
-      "description": "Behavior",
-      "type": "data",
-      "version": [1, 0, 46],
-      "uuid": "c9d8e7f6-2345-6789-0123-456789abcdef"
-    }
-  ],
-  "dependencies": [
-    {
-      "uuid": "d0e9f8a7-3456-7890-1234-567890bcdef1",
-      "version": [1, 0, 46]
-    }
-  ]
-}
-```
-
-### RP/manifest.json
-
-```json
-{
-  "format_version": 2,
-  "header": {
-    "name": "Polish Road Signs RP",
-    "description": "Resource Pack for Polish Road Signs addon",
-    "uuid": "d0e9f8a7-3456-7890-1234-567890bcdef1",
-    "version": [1, 0, 46],
-    "min_engine_version": [1, 16, 0]
-  },
-  "modules": [
-    {
-      "type": "resources",
-      "version": [1, 0, 46],
-      "uuid": "e1f0a9b8-4567-8901-2345-678901cdef12"
-    }
-  ]
-}
-```
 
 ## 📦 Definicje bloków
 
@@ -233,16 +167,16 @@ tile.polish_road_sign:d_1.name=D-1: droga z pierwszeństwem
 Skrypt obsługuje przetwarzanie całych kategorii z automatycznym czyszczeniem:
 
 ```bash
-# Przetwórz kategorię A (ostrzegawcze)
+# Przetwórz przykładową kategorię
 python3 road_sign_processor.py category:A
 
-# Przetwórz kategorię B (zakazu) w trybie offline
+# Przetwórz kategorię w trybie offline
 python3 road_sign_processor.py category:B --skip-download
 
-# Przetwórz kategorię C (nakazu)
+# Przetwórz inną kategorię
 python3 road_sign_processor.py category:C
 
-# Przetwórz kategorię D (informacyjne)
+# Przetwórz kategorię informacyjną
 python3 road_sign_processor.py category:D
 ```
 
@@ -340,46 +274,11 @@ Aktualizuje katalog craftingowy:
 - Synchronizuje z definicjami bloków
 - Dodaje nowe znaki automatycznie
 
-## 📊 Statystyki projektu
 
-### Liczba znaków
-- **A (Ostrzegawcze)**: 34 znaki
-- **B (Zakazu)**: 44 znaki  
-- **C (Nakazu)**: 19 znaków
-- **D (Informacyjne)**: 55 znaków
-- **Łącznie**: 152 znaki
-
-### Modele 3D
-- **Trójkąt**: Znaki ostrzegawcze (A)
-- **Koło**: Znaki zakazu (B)
-- **Kwadrat**: Znaki nakazu (C)
-- **Prostokąt**: Znaki informacyjne (D)
-- **Ośmiokąt**: Stop (B-20)
-- **Odwrócony trójkąt**: Ustąp pierwszeństwa (A-7)
-
-### Tekstury
-- **Rozmiar**: 128x128 pikseli
-- **Format**: PNG z przezroczystością
-- **Tło**: Neutralne białe dla wszystkich znaków
-- **Źródło**: Wikipedia (automatyczne pobieranie)
 
 ## 🔍 Weryfikacja jakości
 
-### verify_all.py - Raport
 
-```
-📊 VERIFICATION SUMMARY
-==================================================
-✅ Block definitions: 206 found
-✅ Terrain textures: 212 found
-✅ Block textures: 225 total (14 missing in terrain)
-✅ 3D models: 6 used
-✅ Texture-model matches: 8 mismatches
-✅ Missing models: 28 (some replaced by similar existing models)
-✅ Translations: 100% complete
-✅ Missing blocks: 0
-✅ Missing PNGs: 0
-```
 
 ## 🚀 Deployment
 

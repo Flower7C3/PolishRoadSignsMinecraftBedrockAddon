@@ -239,7 +239,7 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
 
     # Pobierz odpowiednią teksturę tła na podstawie kształtu
     reverse_texture_name = get_reverse_texture_for_shape(sign_shape, sign_width, sign_height)
-    reverse_texture_path = f"RP/textures/blocks/sign_backs/{reverse_texture_name}.png"
+    reverse_texture_path = f"RP/textures/blocks/reverse/{reverse_texture_name}.png"
 
     if os.path.exists(reverse_texture_path) and not force_rebuild:
         print(f"  🆗 Tekstura tła już istnieje: {reverse_texture_name}")
@@ -378,7 +378,7 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
 
     # Dodaj wpis tekstury tła
     terrain["texture_data"][f"polish_road_sign_back:{reverse_texture_name}"] = {
-        "textures": f"textures/blocks/sign_backs/{reverse_texture_name}.png"
+        "textures": f"textures/blocks/reverse/{reverse_texture_name}.png"
     }
 
     with open(terrain_path, 'w') as f:
@@ -404,7 +404,7 @@ def add_averse_texture_to_terrain(sign_id):
 
     # Dodaj wpis tekstury znaku
     terrain["texture_data"][f"polish_road_sign:{sign_id}"] = {
-        "textures": f"textures/blocks/{category.lower()}/{sign_id}.png"
+        "textures": f"textures/blocks/averse/{category.lower()}/{sign_id}.png"
     }
 
     with open(terrain_path, 'w') as f:
@@ -590,7 +590,7 @@ def create_averse_texture_if_needed(sign_id, target_width, target_height, wikipe
     category = sign_id.split('_')[0]
 
     # Przygotuj katalogi
-    target_dir = f"RP/textures/blocks/{category.lower()}"
+    target_dir = f"RP/textures/blocks/averse/{category.lower()}"
     os.makedirs(target_dir, exist_ok=True)
 
     # Konwertuj na PNG w tym samym katalogu
@@ -732,7 +732,7 @@ def convert_svg_to_png(svg_path, png_path, target_width, target_height):
             ], capture_output=True, text=True)
 
             if result.returncode == 0:
-                # Dodaj padding z jawnie ustawioną przezroczystością
+                # Dodaj padding z jawnie ustawioną przeroczystością
                 subprocess.run([
                     'magick', temp_png, '-gravity', 'center', '-background', 'none',
                     '-extent', f'{new_width}x{new_height}',
@@ -815,7 +815,7 @@ def cleanup_category_files(data, category):
                 print(f"  🗑️ Usunięto blok: {category_lower}/{file}")
 
     # Usuń tekstury PNG dla kategorii (zachowaj SVG)
-    texture_dir = f"RP/textures/blocks/{category_lower}"
+    texture_dir = f"RP/textures/blocks/averse/{category_lower}"
     if os.path.exists(texture_dir):
         for file in os.listdir(texture_dir):
             if file.endswith('.png'):
@@ -876,7 +876,7 @@ def cleanup_all_files(data):
     # Usuń wszystkie tekstury PNG (zachowaj SVG)
     for category in categories:
         category_lower = category.lower()
-        texture_dir = f"RP/textures/blocks/{category_lower}"
+        texture_dir = f"RP/textures/blocks/averse/{category_lower}"
         if os.path.exists(texture_dir):
             for file in os.listdir(texture_dir):
                 if file.endswith('.png'):
@@ -884,7 +884,7 @@ def cleanup_all_files(data):
                     print(f"  🗑️ Usunięto teksturę: {category_lower}/{file}")
 
     # Usuń tekstury tła
-    sign_backs_dir = "RP/textures/blocks/sign_backs"
+    sign_backs_dir = "RP/textures/blocks/reverse"
     if os.path.exists(sign_backs_dir):
         for file in os.listdir(sign_backs_dir):
             if file.endswith('.png'):

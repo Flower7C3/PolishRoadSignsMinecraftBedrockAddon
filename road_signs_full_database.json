@@ -10,7 +10,7 @@
           "code": "A-1",
           "translations": {
             "pl": "A-1: niebezpieczny zakręt w prawo",
-            "en": "A-1: Dangerous curve to the right"
+            "en": "A-1: dangerous curve to the right"
           },
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_A-1.svg",
           "sign_width": "1050",
@@ -2305,6 +2305,635 @@
       },
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-informacyjne.html"
+    },
+    "F": {
+      "signs": {
+        "f_2a": {
+          "code": "F-2a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_F-2a.svg",
+          "sign_width": "1000",
+          "sign_height": "750",
+          "sign_shape": "square",
+          "translations": {
+            "pl": "F-2a: granica państwa",
+            "en": "F-2a: country border"
+          }
+        }
+      },
+      "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_uzupe%C5%82niaj%C4%85ce",
+      "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-uzupelniajace.html"
+    },
+    "T": {
+      "signs": {
+        "t_1": {
+          "code": "T-1",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-1.svg",
+          "sign_width": "750",
+          "sign_height": "350",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-1: tabliczka wskazująca odległość znaku ostrzegawczego od miejsca niebezpiecznego",
+            "en": "T-1: sign indicating the distance of the warning sign from a dangerous place"
+          }
+        },
+        "t_3a": {
+          "code": "T-3a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-3a.svg",
+          "sign_width": "880",
+          "sign_height": "350",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-3a: tabliczka wskazująca koniec miejsca przeznaczonego na postój",
+            "en": "T-3a: sign indicating the end of a parking space"
+          }
+        },
+        "t_13": {
+          "code": "T-13",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-13.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-13: tabliczka wskazująca odcinek drogi, na którym występują deformacje nawierzchni w postaci kolein",
+            "en": "T-13: a sign indicating a section of the road where there are surface deformations in the form of ruts"
+          }
+        },
+        "t_14": {
+          "code": "T-14",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-14.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-14: tabliczka wskazująca miejsce częstych wypadków o charakterze wskazanym na tabliczce",
+            "en": "T-14: sign indicating the location of frequent accidents of the type indicated on the sign"
+          }
+        },
+        "t_14a": {
+          "code": "T-14a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-14a.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-14a: tabliczka wskazująca miejsce częstych zderzeń z poprzedzającymi pojazdami",
+            "en": "T-14a: sign indicating the location of frequent collisions with vehicles ahead"
+          }
+        },
+        "t_14b": {
+          "code": "T-14b",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-14b.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-14b: tabliczka wskazująca miejsce częstych zderzeń czołowych",
+            "en": "T-14b: sign indicating the location of frequent head-on collisions"
+          }
+        },
+        "t_14c": {
+          "code": "T-14c",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-14c.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-14c: tabliczka wskazująca miejsce częstych zderzeń z tramwajami",
+            "en": "T-14c: sign indicating the location of frequent collisions with trams"
+          }
+        },
+        "t_14d": {
+          "code": "T-14d",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-14d.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-14d: tabliczka wskazująca przejazd kolejowo–drogowy, na którym warunki powodują szczególne niebezpieczeństwo powstania wypadków",
+            "en": "T-14d: sign indicating a rail-road crossing where conditions create a particular risk of accidents"
+          }
+        },
+        "t_15": {
+          "code": "T-15",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-15.svg",
+          "sign_width": "600",
+          "sign_height": "900",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-15: tabliczka wskazująca miejsce częstych wypadków spowodowanych śliską nawierzchnią jezdni ze względu na opady deszczu",
+            "en": "T-15: sign indicating a location where accidents are common due to slippery road surfaces due to rainfall"
+          }
+        },
+        "t_16": {
+          "code": "T-16",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-16.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-16: tabliczka wskazująca miejsce wyjazdu wozów strażackich",
+            "en": "T-16: sign indicating the departure point for fire engines"
+          }
+        },
+        "t_16a": {
+          "code": "T-16a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-16a.svg",
+          "sign_width": "600",
+          "sign_height": "750",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-16a: tabliczka wskazująca miejsce wyjazdu karetek pogotowia",
+            "en": "T-16a: sign indicating the departure point for ambulances"
+          }
+        },
+        "t_17": {
+          "code": "T-17",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-17.svg",
+          "sign_width": "900",
+          "sign_height": "450",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-17: tabliczka wskazująca granicę państwa",
+            "en": "T-17: sign indicating the state border"
+          }
+        },
+        "t_23a": {
+          "code": "T-23a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23a.svg",
+          "sign_width": "720",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23a: tabliczka wskazująca motocykle",
+            "en": "T-23a: sign indicating motorcycles"
+          }
+        },
+        "t_23b": {
+          "code": "T-23b",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23b.svg",
+          "sign_width": "720",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23b: tabliczka wskazująca samochody ciężarowe, pojazdy specjalne, pojazdy używane do celów specjalnych, o dopuszczalnej masie całkowitej przekraczającej 3,5 t, oraz ciągniki samochodowe",
+            "en": "T-23b: sign indicating trucks, special vehicles, vehicles used for special purposes, with a permissible total weight exceeding 3.5 tonnes, and Truck tractors"
+          }
+        },
+        "t_23c": {
+          "code": "T-23c",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23c.svg",
+          "sign_width": "720",
+          "sign_height": "460",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23c: tabliczka wskazująca ciągniki rolnicze i pojazdy wolnobieżne",
+            "en": "T-23c: Plate indicating agricultural tractors and slow-moving vehicles"
+          }
+        },
+        "t_23d": {
+          "code": "T-23d",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23d.svg",
+          "sign_width": "720",
+          "sign_height": "380",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23d: tabliczka wskazująca pojazdy silnikowe z przyczepą, z wyjątkiem pojazdów z przyczepą jednoosiową lub naczepą",
+            "en": "T-23d: Plate indicating motor vehicles with trailers, except vehicles with a single-axle trailer or semi-trailer"
+          }
+        },
+        "t_23e": {
+          "code": "T-23e",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23e.svg",
+          "sign_width": "720",
+          "sign_height": "430",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23e: tabliczka wskazująca pojazdy z przyczepą kempingową",
+            "en": "T-23e: Plate indicating vehicles with caravans"
+          }
+        },
+        "t_23f": {
+          "code": "T-23f",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23f.svg",
+          "sign_width": "720",
+          "sign_height": "360",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23f: tabliczka wskazująca autobusy",
+            "en": "T-23f: Plate indicating buses"
+          }
+        },
+        "t_23g": {
+          "code": "T-23g",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23g.svg",
+          "sign_width": "720",
+          "sign_height": "430",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23g: tabliczka wskazująca trolejbusy",
+            "en": "T-23g: Plate indicating trolleybuses"
+          }
+        },
+        "t_23h": {
+          "code": "T-23h",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23h.svg",
+          "sign_width": "720",
+          "sign_height": "500",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23h: tabliczka wskazująca pojazdy z towarami niebezpiecznymi",
+            "en": "T-23h: Plate indicating vehicles carrying dangerous goods"
+          }
+        },
+        "t_23i": {
+          "code": "T-23i",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23i.svg",
+          "sign_width": "720",
+          "sign_height": "580",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23i: tabliczka wskazująca pojazdy z towarami wybuchowymi lub łatwopalnymi",
+            "en": "T-23i: Plate indicating vehicles with explosive or flammable goods"
+          }
+        },
+        "t_23j": {
+          "code": "T-23j",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-23j.svg",
+          "sign_width": "720",
+          "sign_height": "500",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-23j: tabliczka wskazująca pojazdy z towarami, które mogą skazić wodę",
+            "en": "T-23j: Sign indicating vehicles with goods that may contaminate water"
+          }
+        },
+        "t_24": {
+          "code": "T-24",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-24.svg",
+          "sign_width": "720",
+          "sign_height": "430",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-24: tabliczka wskazująca, że pozostawiony pojazd zostanie usunięty na koszt właściciela",
+            "en": "T-24: Sign indicating that an abandoned vehicle will be removed at the owner's expense"
+          }
+        },
+        "t_25a": {
+          "code": "T-25a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:Znak_T-25a.svg",
+          "sign_width": "240",
+          "sign_height": "600",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-25a: tabliczka wskazująca początek zakazu postoju lub zatrzymywania",
+            "en": "T-25a: Sign indicating the beginning of a parking or stopping ban"
+          }
+        },
+        "t_25b": {
+          "code": "T-25b",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-25b.svg",
+          "sign_width": "240",
+          "sign_height": "600",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-25b: tabliczka wskazująca kontynuację zakazu postoju lub zatrzymywania",
+            "en": "T-25b: Sign indicating the continuation of a parking or stopping ban"
+          }
+        },
+        "t_25c": {
+          "code": "T-25c",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-25c.svg",
+          "sign_width": "240",
+          "sign_height": "600",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-25c: tabliczka wskazująca odwołanie zakazu postoju lub zatrzymywania",
+            "en": "T-25c: Sign indicating the revocation of a parking or stopping ban"
+          }
+        },
+        "t_26": {
+          "code": "T-26",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-26.svg",
+          "sign_width": "800",
+          "sign_height": "320",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-26: tabliczka wskazująca, że zakaz postoju lub zatrzymywania dotyczy strony placu",
+            "en": "T-26: Sign indicating that a parking or stopping ban applies to the side square"
+          }
+        },
+        "t_27": {
+          "code": "T-27",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-27.svg",
+          "sign_width": "600",
+          "sign_height": "600",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-27: tabliczka wskazująca, że przejście dla pieszych jest szczególnie uczęszczane przez dzieci",
+            "en": "T-27: Sign indicating that the pedestrian crossing is particularly frequented by children"
+          }
+        },
+        "t_28": {
+          "code": "T-28",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-28.svg",
+          "sign_width": "900",
+          "sign_height": "350",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-28: tabliczka wskazująca, że za przejazd drogą pobierana jest opłata",
+            "en": "T-28: Sign indicating that a toll is charged for using the road"
+          }
+        },
+        "t_28a": {
+          "code": "T-28a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-28a.svg",
+          "sign_width": "900",
+          "sign_height": "350",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-28a: tabliczka wskazująca koniec odcinka drogi, za przejazd którym pobierana jest opłata",
+            "en": "T-28a: Sign indicating the end of the road section for which a toll is charged"
+          }
+        },
+        "t_29": {
+          "code": "T-29",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-29.svg",
+          "sign_width": "720",
+          "sign_height": "430",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-29: tabliczka informująca o miejscu przeznaczonym dla pojazdu samochodowego uprawnionej osoby niepełnosprawnej o obniżonej sprawności ruchowej",
+            "en": "T-29: Sign indicating a space designated for a motor vehicle of an authorized disabled person with reduced mobility"
+          }
+        },
+        "t_30a": {
+          "code": "T-30a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30a.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30a: tabliczka wskazująca postój całego pojazdu na chodniku równolegle do krawężnika",
+            "en": "T-30a: Sign indicating parking of the entire vehicle on the sidewalk parallel to the curb"
+          }
+        },
+        "t_30b": {
+          "code": "T-30b",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30b.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30b: tabliczka wskazująca postój całego pojazdu na chodniku prostopadle do krawężnika",
+            "en": "T-30b: Sign indicating parking of the entire vehicle on the sidewalk perpendicular to the curb curb"
+          }
+        },
+        "t_30c": {
+          "code": "T-30c",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30c.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30c: tabliczka wskazująca postój całego pojazdu na chodniku skośnie do krawężnika",
+            "en": "T-30c: Sign indicating parking of the entire vehicle on the sidewalk diagonally to the curb"
+          }
+        },
+        "t_30d": {
+          "code": "T-30d",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30d.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30d: tabliczka wskazująca postój na chodniku kołami przedniej osi pojazdu prostopadle do krawężnika",
+            "en": "T-30d: Sign indicating parking of the entire vehicle on the sidewalk with the front axle wheels perpendicular to the curb"
+          }
+        },
+        "t_30e": {
+          "code": "T-30e",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30e.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30e: tabliczka wskazująca postój na chodniku kołami przedniej osi pojazdu skośnie do krawężnika",
+            "en": "T-30e: Sign indicating parking of the entire vehicle on the sidewalk with the front axle wheels diagonally to the curb"
+          }
+        },
+        "t_30f": {
+          "code": "T-30f",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30f.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30f: tabliczka wskazująca postój całego pojazdu na jezdni prostopadle do krawężnika",
+            "en": "T-30f: Sign indicating parking of the entire vehicle on the roadway perpendicular to the curb"
+          }
+        },
+        "t_30g": {
+          "code": "T-30g",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30g.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30g: tabliczka wskazująca postój całego pojazdu na jezdni skośnie do krawężnika",
+            "en": "T-30g: Sign indicating parking of the entire vehicle on the roadway diagonally to the curb"
+          }
+        },
+        "t_30h": {
+          "code": "T-30h",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30h.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30h: tabliczka wskazująca postój na chodniku kołami jednego boku pojazdu równolegle do krawężnika",
+            "en": "T-30h: Sign indicating a stop on the sidewalk with the wheels of one side of the vehicle parallel to the curb"
+          }
+        },
+        "t_30i": {
+          "code": "T-30i",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-30i.svg",
+          "sign_width": "800",
+          "sign_height": "400",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "T-30i: tabliczka wskazująca postój całego pojazdu na jezdni równolegle do krawężnika",
+            "en": "T-30i: sign indicating a stop on the roadway with the entire vehicle parallel to the curb"
+          }
+        }
+      },
+      "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Tabliczki_do_znaków_drogowych",
+      "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/tabliczki.html"
+    },
+    "G": {
+      "signs": {
+        "g_1a": {
+          "code": "G-1a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-1a.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-1a: słupek wskaźnikowy z trzema kreskami umieszczany po prawej stronie jezdni",
+            "en": "G-1a: Indicator post with three lines placed on the right side of the road"
+          }
+        },
+        "g_1b": {
+          "code": "G-1b",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-1b.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-1b: słupek wskaźnikowy z dwiema kreskami umieszczany po prawej stronie jezdni",
+            "en": "G-1b: Indicator post with two lines placed on the right side of the road"
+          }
+        },
+        "g_1c": {
+          "code": "G-1c",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-1c.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-1c: słupek wskaźnikowy z jedną kreską umieszczany po prawej stronie jezdni",
+            "en": "G-1c: Indicator post with one line placed on the right side of the road"
+          }
+        },
+        "g_1d": {
+          "code": "G-1d",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-1d.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-1d: słupek wskaźnikowy z trzema kreskami umieszczany po lewej stronie jezdni",
+            "en": "G-1d: Indicator post with three lines placed on the left side of the road"
+          }
+        },
+        "g_1e": {
+          "code": "G-1e",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-1e.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-1e: słupek wskaźnikowy z dwiema kreskami umieszczany po lewej stronie jezdni",
+            "en": "G-1e: Indicator post with two lines placed on the left side of the road"
+          }
+        },
+        "g_1f": {
+          "code": "G-1f",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-1f.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-1f: słupek wskaźnikowy z jedną kreską umieszczany po lewej stronie jezdni",
+            "en": "G-1f: Indicator post with one line placed on the left side of the road"
+          }
+        },
+        "g_2": {
+          "code": "G-2",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-2.svg",
+          "sign_width": "440",
+          "sign_height": "600",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-2: sieć pod napięciem",
+            "en": "G-2: Network under voltage"
+          }
+        },
+        "g_3": {
+          "code": "G-3",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-3.svg",
+          "sign_width": "1400",
+          "sign_height": "783",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-3: krzyż św. Andrzeja przed przejazdem kolejowo-drogowym jednotorowym",
+            "en": "G-3: St. Andrew's cross in front of a single-track rail-road crossing"
+          }
+        },
+        "g_4": {
+          "code": "G-4",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-4.svg",
+          "sign_width": "1400",
+          "sign_height": "1154",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "G-4: krzyż św. Andrzeja przed przejazdem kolejowo-drogowym wielotorowym",
+            "en": "G-4: St. Andrew's cross in front of a multi-track rail-road crossing"
+          }
+        }
+      },
+      "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_dodatkowe#Dodatkowe_znaki_przed_przejazdami_kolejowo-drogowymi",
+      "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-informacyjne.html"
+    },
+    "U": {
+      "signs": {
+        "u_3a": {
+          "code": "U-3a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:U-3a.svg",
+          "sign_width": "600",
+          "sign_height": "600",
+          "sign_shape": "square",
+          "translations": {
+            "pl": "U-3a: tablica pojedyncza prowadząca w prawo",
+            "en": "U-3a: single board leading to the right"
+          }
+        },
+        "u_3b": {
+          "code": "U-3b",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:U-3b.svg",
+          "sign_width": "600",
+          "sign_height": "600",
+          "sign_shape": "square",
+          "translations": {
+            "pl": "U-3b: tablica pojedyncza prowadząca w lewo",
+            "en": "U-3b: single board leading to the left"
+          }
+        },
+        "u_4a": {
+          "code": "U-4a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:U-4a.svg",
+          "sign_width": "600",
+          "sign_height": "1200",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "U-4a: tablica rozdzielająca stosowana na autostradach i drogach ekspresowych",
+            "en": "U-4a: Separating sign used on motorways and expressways"
+          }
+        },
+        "u_9a": {
+          "code": "U-9a",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_urz%C4%85dzenie_U-9a.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "U-9a: tablica ograniczenia skrajni poziomej drogi (lewa)",
+            "en": "U-9a: horizontal road clearance limit sign (left)"
+          }
+        },
+        "u_9b": {
+          "code": "U-9b",
+          "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_urz%C4%85dzenie_U-9b.svg",
+          "sign_width": "300",
+          "sign_height": "1000",
+          "sign_shape": "rectangle",
+          "translations": {
+            "pl": "U-9b: tablica ograniczenia skrajni poziomej drogi (prawa)",
+            "en": "U-9b: horizontal road clearance limit sign (right)"
+          }
+        }
+      },
+      "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Tabliczki_do_znaków_drogowych",
+      "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/tabliczki.html"
     }
   },
   "metadata": {

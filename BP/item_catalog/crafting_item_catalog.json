@@ -242,6 +242,93 @@
               "polish_road_sign:d_54",
               "polish_road_sign:d_55"
             ]
+          },
+          {
+            "group_identifier": {
+              "icon": "polish_road_sign:f_2a",
+              "name": "polish_road_sign:supplementary_signs"
+            },
+            "items": [
+              "polish_road_sign:f_2a"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "polish_road_sign:t_13",
+              "name": "polish_road_sign:addon_signs"
+            },
+            "items": [
+              "polish_road_sign:t_1",
+              "polish_road_sign:t_3a",
+              "polish_road_sign:t_13",
+              "polish_road_sign:t_14",
+              "polish_road_sign:t_14a",
+              "polish_road_sign:t_14b",
+              "polish_road_sign:t_14c",
+              "polish_road_sign:t_14d",
+              "polish_road_sign:t_15",
+              "polish_road_sign:t_16",
+              "polish_road_sign:t_16a",
+              "polish_road_sign:t_17",
+              "polish_road_sign:t_23a",
+              "polish_road_sign:t_23b",
+              "polish_road_sign:t_23c",
+              "polish_road_sign:t_23d",
+              "polish_road_sign:t_23e",
+              "polish_road_sign:t_23f",
+              "polish_road_sign:t_23g",
+              "polish_road_sign:t_23h",
+              "polish_road_sign:t_23i",
+              "polish_road_sign:t_23j",
+              "polish_road_sign:t_24",
+              "polish_road_sign:t_25a",
+              "polish_road_sign:t_25b",
+              "polish_road_sign:t_25c",
+              "polish_road_sign:t_26",
+              "polish_road_sign:t_27",
+              "polish_road_sign:t_28",
+              "polish_road_sign:t_28a",
+              "polish_road_sign:t_29",
+              "polish_road_sign:t_30a",
+              "polish_road_sign:t_30b",
+              "polish_road_sign:t_30c",
+              "polish_road_sign:t_30d",
+              "polish_road_sign:t_30e",
+              "polish_road_sign:t_30f",
+              "polish_road_sign:t_30g",
+              "polish_road_sign:t_30h",
+              "polish_road_sign:t_30i"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "polish_road_sign:g_3",
+              "name": "polish_road_sign:railway_crossing_signs"
+            },
+            "items": [
+              "polish_road_sign:g_1a",
+              "polish_road_sign:g_1b",
+              "polish_road_sign:g_1c",
+              "polish_road_sign:g_1d",
+              "polish_road_sign:g_1e",
+              "polish_road_sign:g_1f",
+              "polish_road_sign:g_2",
+              "polish_road_sign:g_3",
+              "polish_road_sign:g_4"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "polish_road_sign:u_4a",
+              "name": "polish_road_sign:traffic_safety_devices"
+            },
+            "items": [
+              "polish_road_sign:u_3a",
+              "polish_road_sign:u_3b",
+              "polish_road_sign:u_4a",
+              "polish_road_sign:u_9a",
+              "polish_road_sign:u_9b"
+            ]
           }
         ]
       }

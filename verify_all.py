@@ -349,7 +349,8 @@ def verify_project_structure():
         'RP/models/blocks/',
         'RP/texts/',
         'RP/textures/blocks/',
-        'RP/textures/blocks/sign_backs/',
+        'RP/textures/blocks/averse/',
+        'RP/textures/blocks/reverse/',
     ]
 
     found_dirs = 0
