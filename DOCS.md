@@ -253,27 +253,29 @@ Sprawdza integralność całego projektu:
 - Waliduje bazę danych i tłumaczenia
 - Wykrywa nadmiarowe/brakujące pliki
 
-### build_mcaddon.py
-Buduje paczkę .mcaddon:
-- Automatycznie zwiększa wersję
+### build.py
+Buduje pakiety Minecraft (.mcaddon i/lub .mcpack):
+- **--mcaddon** - Buduje tylko pakiet .mcaddon
+- **--mcpack** - Buduje tylko pakiety .mcpack (BP i RP)
+- **--all** - Buduje wszystkie formaty
+- **--no-bump** - Nie zwiększa wersji (używa obecnej)
+- Automatycznie zwiększa wersję (chyba że użyto --no-bump)
 - Tworzy strukturę BP i RP
-- Pakuje do pliku .mcaddon
+- Pakuje do odpowiednich formatów
 
-### build_mcpack.py
-Buduje paczki .mcpack dla serwerów:
-- Tworzy osobne pliki BP i RP
-- Optymalizuje dla serwerów
+### generate_examples.py
+Generuje przykładowe komendy testowe i deweloperskie:
+- **--test** - Generuje komendy testowe dla różnych kombinacji kształtów/wymiarów
+- **--dev** - Generuje komendy deweloperskie (weryfikacja, budowanie, testowanie)
+- Automatycznie wykrywa kombinacje kształtów i wymiarów z bazy danych
+- Generuje komendy z `--test-on-local` dla automatycznego testowania
 
-### unpack_and_install_mcaddon.py
-Instaluje paczkę lokalnie:
-- Automatycznie usuwa stare wersje
-- Instaluje w katalogu Minecraft
-- Obsługuje flagę --no-clean
-
-### update_crafting_catalog.py
-Aktualizuje katalog craftingowy:
-- Synchronizuje z definicjami bloków
-- Dodaje nowe znaki automatycznie
+### Aktualizacja katalogu crafting
+Funkcjonalność wbudowana w `road_sign_processor.py`:
+- Dynamiczne tworzenie grup na podstawie bazy danych
+- Konfigurowalne ikony kategorii przez `icon` w bazie danych
+- Naturalne sortowanie elementów (`natsorted`)
+- Automatyczne wywołanie po przetworzeniu znaków
 
 
 

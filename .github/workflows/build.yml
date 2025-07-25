@@ -33,8 +33,7 @@ jobs:
 
       - name: Build all packages (.mcaddon and .mcpack)
         run: |
-          python3 build_mcaddon.py
-          python3 build_mcpack.py
+          python3 build.py --all
 
       - name: Commit and push version bump
         run: |
@@ -82,8 +81,7 @@ jobs:
       - name: Validate project structure
         run: |
           echo "Checking project structure..."
-          test -f build_mcaddon.py || exit 1
-          test -f build_mcpack.py || exit 1
+          test -f build.py || exit 1
           test -d BP || exit 1
           test -d RP || exit 1
           test -f BP/manifest.json || exit 1

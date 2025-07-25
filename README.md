@@ -34,7 +34,7 @@ Znaki są podzielone na kategorie zgodnie z polskimi przepisami ruchu drogowego 
    sekcji [Releases](https://github.com/Flower7C3/PolishRoadSignsMinecraftBedrockAddon/releases)
 2. Uruchom skrypt instalacji:
    ```bash
-   python3 unpack_and_install_mcaddon.py dist/PolishRoadSigns_v*.mcaddon
+   python3 build.py --mcaddon --test-on-local
    ```
 3. Uruchom Minecraft i włącz paczki (patrz sekcja "Aktywacja w grze")
 
@@ -133,7 +133,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Uruchom skrypty
-python3 build_mcaddon.py
+python3 build.py --mcaddon
 ```
 
 ### Weryfikacja projektu
@@ -191,20 +191,21 @@ python3 road_sign_processor.py all --skip-download
 ### Skrypty
 
 ```bash
-# Budowanie paczki .mcaddon (lokalnie)
-python3 build_mcaddon.py
+# Budowanie paczek
+python3 build.py --mcaddon                    # Buduje tylko .mcaddon
+python3 build.py --mcpack                     # Buduje tylko .mcpack
+python3 build.py --all                        # Buduje oba formaty
+python3 build.py --all --no-bump              # Buduje bez zwiększania wersji
+python3 build.py --mcaddon --test-on-local    # Buduj i przetestuj lokalnie
+python3 build.py --all --test-on-local        # Buduj wszystko i przetestuj
 
-# Budowanie paczek .mcpack (serwery)
-python3 build_mcpack.py
-
-# Instalacja lokalna (z automatycznym usuwaniem starych wersji)
-python3 unpack_and_install_mcaddon.py dist/PolishRoadSigns_v*.mcaddon
-
-# Instalacja bez usuwania starych wersji
-python3 unpack_and_install_mcaddon.py dist/PolishRoadSigns_v*.mcaddon --no-clean
+# Generowanie komend testowych
+python3 generate_examples.py              # Generuje wszystkie komendy
+python3 generate_examples.py --test       # Tylko komendy testowe
+python3 generate_examples.py --dev        # Tylko komendy deweloperskie
 
 # Aktualizacja katalogu craftingowego
-python3 update_crafting_catalog.py
+# (skrypt usunięty - funkcjonalność wbudowana w road_sign_processor.py)
 
 # Pobieranie i skalowanie obrazków
 python3 road_sign_processor.py [sign_id]

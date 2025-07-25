@@ -32,10 +32,14 @@ def get_categories_from_textures():
     categories = []
     textures_dir = 'RP/textures/blocks'
     if os.path.exists(textures_dir):
-        for item in os.listdir(textures_dir):
-            item_path = os.path.join(textures_dir, item)
-            if os.path.isdir(item_path) and not item.startswith('.'):
-                categories.append(item)
+        # Sprawdź podkatalogi averse i reverse
+        for subdir in ['averse', 'reverse']:
+            subdir_path = os.path.join(textures_dir, subdir)
+            if os.path.exists(subdir_path):
+                for item in os.listdir(subdir_path):
+                    item_path = os.path.join(subdir_path, item)
+                    if os.path.isdir(item_path) and not item.startswith('.'):
+                        categories.append(item)
     return sorted(categories)
 
 
@@ -386,7 +390,9 @@ def verify_translations():
     from glob import glob
 
     lang_files = glob('RP/texts/*.lang')
-    translations_missing = 0;
+    translations_missing = 0
+    translations_extra = 0
+    total_translations = 0
     for lang_file in lang_files:
         with open(lang_file, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -410,6 +416,8 @@ def verify_translations():
         # Dodaj zmienne dla bazy danych
         missing_db = database_signs - file_translations
         translations_missing += len(missing_db)
+        translations_extra += len(file_extra)
+        total_translations += len(file_translations)
 
         print(f"✓ {lang_name}")
         print(f"  ✓ In lang file: {len(file_translations)}")
@@ -423,7 +431,7 @@ def verify_translations():
         if missing_db:
             print(f"  ✗ Missing in database: {len(missing_db)}")
 
-    return translations_missing
+    return translations_missing, translations_extra, total_translations
 
 
 def verify_shape_field():
@@ -488,9 +496,7 @@ def verify_shape_field():
         example_combinations.add(shape_size_examples[combination])
         print(f"  - {shape} {size}: {count} signs (example: {shape_size_examples[combination]})")
 
-    print(f"\n🖥️ GENERATE EXAMPLES")
-    print(
-        f"python3 road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} --skip-download --force-rebuild && python3 build_mcaddon.py && python3 unpack_and_install_mcaddon.py dist/PolishRoadSigns_*.mcaddon")
+    print(f"\n💡 Użyj 'python3 generate_examples.py' aby wygenerować komendy testowe")
 
     print(f"\n📊 SUMMARY:")
     print(f"  Unique sizes: {len(sizes)}")
@@ -624,26 +630,21 @@ def verify_blocks_comprehensive():
     # Test 2: Sprawdź, czy są pliki PNG bez definicji
     all_png_files = set()
 
+    # Sprawdź tekstury znaków w katalogu averse
     for category in get_file_categories():
-        texture_dir = f'RP/textures/blocks/{category}'
+        texture_dir = f'RP/textures/blocks/averse/{category}'
         if os.path.exists(texture_dir):
             for filename in os.listdir(texture_dir):
                 if filename.endswith('.png'):
-                    relative_path = f"textures/blocks/{category}/{filename}"
+                    relative_path = f"textures/blocks/averse/{category}/{filename}"
                     all_png_files.add(relative_path)
 
-    sign_backs_dir = 'RP/textures/blocks/sign_backs'
-    if os.path.exists(sign_backs_dir):
-        for filename in os.listdir(sign_backs_dir):
+    # Sprawdź tekstury tła w katalogu reverse
+    reverse_dir = 'RP/textures/blocks/reverse'
+    if os.path.exists(reverse_dir):
+        for filename in os.listdir(reverse_dir):
             if filename.endswith('.png'):
-                relative_path = f"textures/blocks/sign_backs/{filename}"
-                all_png_files.add(relative_path)
-
-    main_texture_dir = 'RP/textures/blocks'
-    if os.path.exists(main_texture_dir):
-        for filename in os.listdir(main_texture_dir):
-            if filename.endswith('.png'):
-                relative_path = f"textures/blocks/{filename}"
+                relative_path = f"textures/blocks/reverse/{filename}"
                 all_png_files.add(relative_path)
 
     # Znajdź ścieżki tekstur z terrain_texture.json
@@ -663,7 +664,7 @@ def verify_blocks_comprehensive():
     # Znajdź wszystkie tekstury PNG w plikach
     file_png_signs = set()
     for category in get_file_categories():
-        texture_dir = f'RP/textures/blocks/{category}'
+        texture_dir = f'RP/textures/blocks/averse/{category}'
         if os.path.exists(texture_dir):
             for filename in os.listdir(texture_dir):
                 if filename.endswith('.png'):
@@ -925,7 +926,7 @@ def main():
      signs_with_shape, signs_without_shape, unused_textures) = verify_blocks_comprehensive()
 
     # 2. WERYFIKACJA TŁUMACZEŃ
-    translations_missing = verify_translations()
+    translations_missing, translations_extra, total_translations = verify_translations()
 
     # 3. WERYFIKACJA STRUKTURY PROJEKTU
     structure_found, structure_missing = verify_project_structure()
@@ -936,11 +937,11 @@ def main():
     # Przygotuj wyniki
     results = {
         'total_signs': signs_with_shape + signs_without_shape,
-        'categories': len(get_all_categories()),
+        'categories': len(get_db_categories()),
         'block_files': file_blocks_found,
         'textures': len(all_png_files),
         'models': models_used,
-        'translations': translations_missing
+        'translations': total_translations
     }
     
     issues = {}
@@ -960,6 +961,8 @@ def main():
         issues['Brakujące katalogi'] = structure_missing
     if translations_missing > 0:
         issues['Brakujące tłumaczenia'] = translations_missing
+    if translations_extra > 0:
+        issues['Nadmiarowe tłumaczenia'] = translations_extra
     if len(texture_model_mismatches) > 0:
         issues['Niezgodności tekstur i modeli'] = len(texture_model_mismatches)
     if missing_models > 0:

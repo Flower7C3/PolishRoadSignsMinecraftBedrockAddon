@@ -1092,6 +1092,24 @@ def main():
     """Główna funkcja"""
     database_path = "road_signs_full_database.json"
 
+    # Sprawdź flagę --help
+    if "--help" in sys.argv or "-h" in sys.argv:
+        examples = [
+            "python3 road_sign_processor.py a-1",
+            "python3 road_sign_processor.py B_5 c-10 d_25",
+            "python3 road_sign_processor.py A1 B2 C3 D4",
+            "python3 road_sign_processor.py all  # przetwórz wszystkie znaki",
+            "python3 road_sign_processor.py category:A  # przetwórz kategorię A",
+            "python3 road_sign_processor.py category:B --skip-download  # przetwórz kategorię B offline",
+            "python3 road_sign_processor.py a_1 --skip-download  # użyj lokalnych plików SVG",
+            "python3 road_sign_processor.py a_1 --force-rebuild  # wymuś przebudowanie tekstur",
+            "python3 road_sign_processor.py all --force-rebuild  # wymuś przebudowanie wszystkich tekstur",
+            "python3 road_sign_processor.py a_1 --quiet  # tryb cichy (tylko błędy)"
+        ]
+        print_usage("python3 road_sign_processor.py", examples, 
+                   "Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danych")
+        return
+
     if not os.path.exists(database_path):
         print(ConsoleStyle.error(f"Nie znaleziono bazy danych: {database_path}"))
         return
