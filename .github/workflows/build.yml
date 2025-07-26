@@ -55,11 +55,37 @@ jobs:
             dist/*.mcpack
           retention-days: 30
 
-      - name: Get version for release
+      - name: Get version and statistics for release
         id: get_version
         run: |
           VERSION=$(python3 -c "import json; print('.'.join(map(str, json.load(open('BP/manifest.json'))['header']['version'])))")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+          # Get statistics from database
+          STATS=$(python3 -c "
+          import json
+          with open('road_signs_full_database.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          
+          categories = len(data['road_signs'])
+          total_signs = sum(len(cat['signs']) for cat in data['road_signs'].values())
+          
+          # Count unique shape/size combinations
+          combinations = set()
+          for category in data['road_signs'].values():
+              for sign in category['signs'].values():
+                  width = sign.get('sign_width', 900)
+                  height = sign.get('sign_height', 900)
+                  shape = sign.get('sign_shape', 'rectangle')
+                  combinations.add(f'{shape}_{width}x{height}')
+          
+          print(f'{categories},{total_signs},{len(combinations)}')
+          ")
+          
+          IFS=',' read -r CATEGORIES TOTAL_SIGNS COMBINATIONS <<< "$STATS"
+          echo "categories=$CATEGORIES" >> $GITHUB_OUTPUT
+          echo "total_signs=$TOTAL_SIGNS" >> $GITHUB_OUTPUT
+          echo "combinations=$COMBINATIONS" >> $GITHUB_OUTPUT
 
   test:
     needs: build
@@ -139,22 +165,58 @@ jobs:
           tag_name: v${{ needs.build.outputs.version }}
           name: Release v${{ needs.build.outputs.version }}
           body: |
-            ## Polish Road Signs Addon ${{ github.sha }}
+            ## Polish Road Signs Addon v${{ needs.build.outputs.version }}
 
             ### 📦 Zawartość:
-            - PolishRoadSigns.mcaddon (lokalna instalacja)
-            - PolishRoadSigns_BP.mcpack (serwery - Behavior Pack)
-            - PolishRoadSigns_RP.mcpack (serwery - Resource Pack)
+            - **PolishRoadSigns.mcaddon** - Kompletny pakiet (lokalna instalacja)
+            - **PolishRoadSigns_BP.mcpack** - Behavior Pack (serwery)
+            - **PolishRoadSigns_RP.mcpack** - Resource Pack (serwery)
 
             ### 🚦 Funkcje:
-            - Wszystkie polskie znaki drogowe (A, B, C, D)
-            - Oficjalne nazwy i tłumaczenia
-            - Kompatybilność z Minecraft Bedrock 1.16.0+
-            - Wsparcie dla serwerów Aternos
+            - **Kompletne polskie znaki drogowe** (kategorie A, B, C, D, F, G, T, U)
+            - **Oficjalne nazwy i tłumaczenia** (PL/EN)
+            - **Automatyczne generowanie** tekstur i modeli 3D
+            - **Kompatybilność** z Minecraft Bedrock 1.16.0+
+            - **Wsparcie dla serwerów** (Aternos, Realms, własne)
 
             ### 📋 Instalacja:
-            1. **Lokalnie**: Otwórz plik .mcaddon w Minecraft
-            2. **Serwer**: Wgraj oba pliki .mcpack na serwer
+            #### 🏠 **Lokalnie:**
+            1. Otwórz plik `.mcaddon` w Minecraft
+            2. Aktywuj pakiety w ustawieniach świata
+
+            #### 🌐 **Serwer:**
+            1. Wgraj oba pliki `.mcpack` na serwer
+            2. Aktywuj pakiety w ustawieniach świata
+
+            ### 🛠️ Deweloperskie:
+            - **Automatyczne testowanie** z `--test-on-local`
+            - **Generowanie komend** z `generate_examples.py`
+            - **Weryfikacja integralności** z `verify_all.py`
+            - **Dynamiczne kategorie** i tłumaczenia
+            - **Zintegrowane budowanie** z `build.py`
+
+            ### 🔄 Zmiany w tej wersji:
+            - Zintegrowano funkcjonalność instalacji z `build.py`
+            - Dodano opcje `--test-on-local` i `--no-clean`
+            - Utworzono `generate_examples.py` dla komend testowych
+            - Usunięto redundantne skrypty budowania
+            - Ulepszono stylizację konsoli i obsługę błędów
+
+            ### 📊 Statystyki:
+            - **${{ needs.build.outputs.categories }} kategorii** znaków drogowych
+            - **${{ needs.build.outputs.total_signs }} znaków** z oficjalnymi teksturami
+            - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów
+            - **Automatyczne czyszczenie** nieużywanych plików
+
+            ### 🔗 Linki:
+            - **GitHub**: ${{ github.server_url }}/${{ github.repository }}
+            - **Issues**: ${{ github.server_url }}/${{ github.repository }}/issues
+            - **Releases**: ${{ github.server_url }}/${{ github.repository }}/releases
+
+            ### ⚠️ Wymagania:
+            - **Minecraft Bedrock** 1.16.0 lub nowszy
+            - **Platformy**: Windows 10/11, macOS, Android, iOS, Xbox
+            - **Serwery**: Aternos, Realms, własne serwery Bedrock
 
           files: |
             dist/*.mcaddon
