@@ -173,53 +173,20 @@ jobs:
             - **PolishRoadSigns_RP.mcpack** - Resource Pack (serwery)
 
             ### 🚦 Funkcje:
-            - **Kompletne polskie znaki drogowe** (kategorie A, B, C, D, F, G, T, U)
-            - **Oficjalne nazwy i tłumaczenia** (PL/EN)
-            - **Automatyczne generowanie** tekstur i modeli 3D
-            - **Kompatybilność** z Minecraft Bedrock 1.16.0+
-            - **Wsparcie dla serwerów** (Aternos, Realms, własne)
+            - Polskie znaki drogowe z oficjalnymi teksturami
+            - Automatyczne generowanie tekstur i modeli 3D
+            - Kompatybilność z Minecraft Bedrock 1.16.0+
 
             ### 📋 Instalacja:
-            #### 🏠 **Lokalnie:**
+            **Lokalnie:**
             1. Otwórz plik `.mcaddon` w Minecraft
             2. Aktywuj pakiety w ustawieniach świata
 
-            #### 🌐 **Serwer:**
+            **Serwer:**
             1. Wgraj oba pliki `.mcpack` na serwer
             2. Aktywuj pakiety w ustawieniach świata
-
-            ### 🛠️ Deweloperskie:
-            - **Automatyczne testowanie** z `--test-on-local`
-            - **Generowanie komend** z `generate_examples.py`
-            - **Weryfikacja integralności** z `verify_all.py`
-            - **Dynamiczne kategorie** i tłumaczenia
-            - **Zintegrowane budowanie** z `build.py`
-
-            ### 🔄 Zmiany w tej wersji:
-            - Zintegrowano funkcjonalność instalacji z `build.py`
-            - Dodano opcje `--test-on-local` i `--no-clean`
-            - Utworzono `generate_examples.py` dla komend testowych
-            - Usunięto redundantne skrypty budowania
-            - Ulepszono stylizację konsoli i obsługę błędów
 
             ### 📊 Statystyki:
             - **${{ needs.build.outputs.categories }} kategorii** znaków drogowych
             - **${{ needs.build.outputs.total_signs }} znaków** z oficjalnymi teksturami
-            - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów
-            - **Automatyczne czyszczenie** nieużywanych plików
-
-            ### 🔗 Linki:
-            - **GitHub**: ${{ github.server_url }}/${{ github.repository }}
-            - **Issues**: ${{ github.server_url }}/${{ github.repository }}/issues
-            - **Releases**: ${{ github.server_url }}/${{ github.repository }}/releases
-
-            ### ⚠️ Wymagania:
-            - **Minecraft Bedrock** 1.16.0 lub nowszy
-            - **Platformy**: Windows 10/11, macOS, Android, iOS, Xbox
-            - **Serwery**: Aternos, Realms, własne serwery Bedrock
-
-          files: |
-            dist/*.mcaddon
-            dist/*.mcpack
-          draft: false
-          prerelease: false 
+            - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
