@@ -161,7 +161,7 @@ def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp
     """Build separate .mcpack files for BP and RP"""
     # Build BP .mcpack
     bp_plugin_name = bp_name.replace(" BP", "").replace(" ", "")
-    bp_mcpack_name = f"{bp_plugin_name}_BP_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcpack"
+    bp_mcpack_name = f"{bp_plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcpack"
     bp_mcpack_path = os.path.join(output_dir, bp_mcpack_name)
 
     print(ConsoleStyle.process(f"Building {bp_mcpack_path}..."))
@@ -180,7 +180,7 @@ def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp
 
     # Build RP .mcpack
     rp_plugin_name = rp_name.replace(" RP", "").replace(" ", "")
-    rp_mcpack_name = f"{rp_plugin_name}_RP_v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}_{timestamp}.mcpack"
+    rp_mcpack_name = f"{rp_plugin_name}_v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}_{timestamp}.mcpack"
     rp_mcpack_path = os.path.join(output_dir, rp_mcpack_name)
 
     print(ConsoleStyle.process(f"Building {rp_mcpack_path}..."))
