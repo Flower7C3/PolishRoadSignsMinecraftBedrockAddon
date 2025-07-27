@@ -186,6 +186,17 @@ jobs:
             exit 1
           fi
           echo "✅ Build artifacts present"
+      - name: Test package integrity
+        run: |
+          echo "🧪 Testing package integrity..."
+          for file in dist/*.mcaddon dist/*.mcpack; do
+            if [ -f "$file" ]; then
+              echo "🔍 Testing: $(basename "$file")"
+              unzip -t "$file" > /dev/null
+              echo "✅ Package integrity verified: $(basename "$file")"
+            fi
+          done
+          echo "🎯 All packages integrity verified successfully!"
 
   release:
     needs: [ build, test ]
@@ -236,4 +247,7 @@ jobs:
             ### 📊 Statystyki:
             - **${{ needs.build.outputs.categories }} kategorii** znaków drogowych
             - **${{ needs.build.outputs.total_signs }} znaków** z oficjalnymi teksturami
-            - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
+            - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów
+
+            ### 🚀 Ostatnie zmiany:
+            ${{ github.event.head_commit.message }} 
