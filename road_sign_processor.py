@@ -16,7 +16,17 @@ def scale_size_from_mm_to_px(value):
 
 
 def scale_size_from_mm_to_msu(value):
-    return round(value * 16 / 1000, 3)
+    # Konwertuj z milimetrów na jednostki Minecrafta
+    msu_value = round(value * 16 / 1000, 3)
+    
+    # Ogranicz do limitów Minecrafta (maksymalnie 16 jednostek)
+    # Zachowaj proporcje, ale nie przekraczaj limitów
+    if msu_value > 16:
+        # Skaluj proporcjonalnie do maksymalnego rozmiaru
+        msu_value = 16.0
+        print_if_not_quiet(ConsoleStyle.warning(f"Ograniczono rozmiar z {value}mm ({round(value * 16 / 1000, 3)}) do 16.0 MSU"))
+    
+    return msu_value
 
 
 def normalize_sign_id(sign_code):
