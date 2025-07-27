@@ -288,7 +288,7 @@ Plik `road_signs_full_database.json` zawiera:
 
 ## 📝 Licencja
 
-MIT License - zobacz plik [LICENSE](LICENSE) dla szczegółów.
+Ten projekt jest udostępniany na licencji MIT. Zobacz plik [LICENSE](LICENSE) dla szczegółów.
 
 ## 👥 Autorzy
 

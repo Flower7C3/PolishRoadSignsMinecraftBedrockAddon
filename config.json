@@ -1,7 +1,7 @@
 {
 	"type": "minecraftBedrock",
 	"name": "PolishRoadSigns",
-	"namespace": "polishroadsigns",
+	"namespace": "polish_road_sign",
 	"authors": [
 		"Flower7C3"
 	],

@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+Build Script for Minecraft Bedrock Addon
+"""
+
 import os
 import json
 import shutil
@@ -9,9 +13,8 @@ from datetime import datetime
 from pathlib import Path
 from console_utils import ConsoleStyle, print_build_info, print_header, print_usage, print_installation_info
 
-
-# Pack name constant
-PACK_NAME = "PolishRoadSigns"
+# Pack name from directory name
+PACK_NAME = os.path.basename(os.getcwd())
 
 
 def get_minecraft_dir():
@@ -35,16 +38,16 @@ def get_minecraft_dir():
 
 
 def remove_existing_packs(mc_dir):
-    """Remove existing PolishRoadSigns packs from the Minecraft directory"""
+    """Remove existing packs from the Minecraft directory"""
     bp_dir = os.path.join(mc_dir, 'behavior_packs', PACK_NAME)
     rp_dir = os.path.join(mc_dir, 'resource_packs', PACK_NAME)
 
     if os.path.exists(bp_dir):
-        print(ConsoleStyle.warning(f"Usuwanie istniejącego behavior pack: {bp_dir}"))
+        print(ConsoleStyle.warning(f"Removing existing behavior pack: {bp_dir}"))
         shutil.rmtree(bp_dir)
 
     if os.path.exists(rp_dir):
-        print(ConsoleStyle.warning(f"Usuwanie istniejącego resource pack: {rp_dir}"))
+        print(ConsoleStyle.warning(f"Removing existing resource pack: {rp_dir}"))
         shutil.rmtree(rp_dir)
 
 
@@ -52,19 +55,19 @@ def install_mcaddon(mcaddon_path, clean_existing=True):
     """Install .mcaddon file to local Minecraft directory"""
     mc_dir = get_minecraft_dir()
     if not mc_dir:
-        print(ConsoleStyle.error("Nie można automatycznie wykryć katalogu Minecraft com.mojang. Instalacja nie powiodła się."))
+        print(ConsoleStyle.error("Cannot auto-detect Minecraft com.mojang directory. Installation failed."))
         return False
 
-    print(ConsoleStyle.info(f"Katalog Minecraft: {mc_dir}"))
+    print(ConsoleStyle.info(f"Minecraft directory: {mc_dir}"))
 
     # Remove existing packs if requested
     if clean_existing:
         remove_existing_packs(mc_dir)
 
     # Install new packs
-    print(ConsoleStyle.process("Instalowanie nowych pakietów..."))
+    print(ConsoleStyle.process("Installing new packs..."))
     file_count = 0
-    
+
     with zipfile.ZipFile(mcaddon_path, 'r') as zf:
         for member in zf.namelist():
             if member.startswith('BP/'):
@@ -81,7 +84,7 @@ def install_mcaddon(mcaddon_path, clean_existing=True):
                 shutil.copyfileobj(src, dst)
             file_count += 1
 
-    print(ConsoleStyle.success(f"Zainstalowano {file_count} plików"))
+    print(ConsoleStyle.success(f"Installed {file_count} files"))
     print_installation_info(PACK_NAME, mc_dir)
     return True
 
@@ -126,9 +129,8 @@ def build_mcaddon(bp_version, rp_version, plugin_name, output_dir, timestamp):
     mcaddon_name = f"{plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcaddon"
     mcaddon_path = os.path.join(output_dir, mcaddon_name)
 
-    print(ConsoleStyle.process(f"Tworzenie {mcaddon_path}..."))
+    print(ConsoleStyle.process(f"Building {mcaddon_path}..."))
 
-    file_count = 0
     with zipfile.ZipFile(mcaddon_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         # Add BP files
         for root, dirs, files in os.walk('BP'):
@@ -138,7 +140,6 @@ def build_mcaddon(bp_version, rp_version, plugin_name, output_dir, timestamp):
                 file_path = os.path.join(root, file)
                 arc_name = file_path
                 zipf.write(file_path, arc_name)
-                file_count += 1
 
         # Add RP files
         for root, dirs, files in os.walk('RP'):
@@ -148,13 +149,12 @@ def build_mcaddon(bp_version, rp_version, plugin_name, output_dir, timestamp):
                 file_path = os.path.join(root, file)
                 arc_name = file_path
                 zipf.write(file_path, arc_name)
-                file_count += 1
 
     file_size = os.path.getsize(mcaddon_path) / 1024 / 1024
-    print_build_info("MCADDON", mcaddon_path, f"{file_size:.2f} MB")
-    print(ConsoleStyle.info(f"Liczba plików: {file_count}"))
+    print(ConsoleStyle.success(f"Created: {mcaddon_path}"))
+    print(ConsoleStyle.info(f"Size: {file_size:.2f} MB"))
 
-    return mcaddon_path
+    return mcaddon_path, file_size
 
 
 def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp):
@@ -164,7 +164,7 @@ def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp
     bp_mcpack_name = f"{bp_plugin_name}_BP_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcpack"
     bp_mcpack_path = os.path.join(output_dir, bp_mcpack_name)
 
-    print(ConsoleStyle.process(f"Tworzenie BP: {bp_mcpack_path}..."))
+    print(ConsoleStyle.process(f"Building {bp_mcpack_path}..."))
 
     with zipfile.ZipFile(bp_mcpack_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, dirs, files in os.walk('BP'):
@@ -183,7 +183,7 @@ def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp
     rp_mcpack_name = f"{rp_plugin_name}_RP_v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}_{timestamp}.mcpack"
     rp_mcpack_path = os.path.join(output_dir, rp_mcpack_name)
 
-    print(ConsoleStyle.process(f"Tworzenie RP: {rp_mcpack_path}..."))
+    print(ConsoleStyle.process(f"Building {rp_mcpack_path}..."))
 
     with zipfile.ZipFile(rp_mcpack_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, dirs, files in os.walk('RP'):
@@ -194,80 +194,74 @@ def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp
                 arc_name = file_path
                 zipf.write(file_path, arc_name)
 
-    print(ConsoleStyle.success(f"RP utworzony: {rp_mcpack_path}"))
-    print(ConsoleStyle.info(f"Rozmiar RP: {os.path.getsize(rp_mcpack_path) / 1024:.2f} KB"))
+    # Calculate sizes after both files are created
+    bp_size = os.path.getsize(bp_mcpack_path) / 1024 / 1024
+    rp_size = os.path.getsize(rp_mcpack_path) / 1024 / 1024
 
-    return bp_mcpack_path, rp_mcpack_path
+    print(ConsoleStyle.success(f"Created {bp_mcpack_path} ({bp_size:.2f} MB)"))
+    print(ConsoleStyle.success(f"Created {rp_mcpack_path} ({rp_size:.2f} MB)"))
+
+    return bp_mcpack_path, rp_mcpack_path, bp_size, rp_size
+
+
+def count_files():
+    """Count total files in BP and RP directories"""
+    file_count = 0
+    for root, dirs, files in os.walk("BP"):
+        file_count += len(files)
+    for root, dirs, files in os.walk("RP"):
+        file_count += len(files)
+    return file_count
 
 
 def main():
     """Main build function"""
-    parser = argparse.ArgumentParser(
-        description="Buduje pakiety Minecraft (.mcaddon i/lub .mcpack)",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Przykłady użycia:
-  python3 build.py --mcaddon                    # Buduje tylko .mcaddon
-  python3 build.py -m                          # Buduje tylko .mcaddon (skrót)
-  python3 build.py --mcpack                     # Buduje tylko .mcpack
-  python3 build.py -p                          # Buduje tylko .mcpack (skrót)
-  python3 build.py --all                        # Buduje oba formaty
-  python3 build.py -a                          # Buduje oba formaty (skrót)
-  python3 build.py --all --no-bump              # Buduje bez zwiększania wersji
-  python3 build.py -a -n                       # Buduje bez zwiększania wersji (skrót)
-  python3 build.py --mcaddon --test-on-local    # Buduj i przetestuj lokalnie
-  python3 build.py -m -t                       # Buduj i przetestuj lokalnie (skrót)
-  python3 build.py --all --test-on-local        # Buduj wszystko i przetestuj
-  python3 build.py -a -t                       # Buduj wszystko i przetestuj (skrót)
-  python3 build.py --help                       # Wyświetla pomoc
-  python3 build.py -h                          # Wyświetla pomoc (skrót)
-        """
-    )
-    
-    parser.add_argument('--mcaddon', '-m', action='store_true', 
-                       help='Buduj pakiet .mcaddon')
-    parser.add_argument('--mcpack', '-p', action='store_true', 
-                       help='Buduj pakiety .mcpack (BP i RP)')
-    parser.add_argument('--all', '-a', action='store_true', 
-                       help='Buduj wszystkie formaty')
-    parser.add_argument('--no-bump', '-n', action='store_true', 
-                       help='Nie zwiększaj wersji (użyj obecnej)')
-    parser.add_argument('--test-on-local', '-t', action='store_true',
-                       help='Automatycznie zainstaluj i przetestuj lokalnie')
+    parser = argparse.ArgumentParser(description=f"Build {PACK_NAME} Minecraft Addon",
+                                     formatter_class=argparse.RawDescriptionHelpFormatter,
+                                     epilog="""
+examples:
+  python3 build.py --mcaddon
+  python3 build.py --all --test-on-local
+  python3 build.py --mcpack --no-bump
+                                     """
+                                     )
+    parser.add_argument("--mcaddon", '-a', action="store_true", help="build .mcaddon package")
+    parser.add_argument("--mcpack", '-p', action="store_true", help="build separate .mcpack packages")
+    parser.add_argument("--all", action="store_true", help="build all package types")
+    parser.add_argument("--no-bump", '-n', action="store_true", help="don't bump version")
+    parser.add_argument("--test-on-local", '-t', action="store_true", help="install to local Minecraft after building")
     parser.add_argument('--no-clean', '-c', action='store_true',
-                       help='Nie usuwaj starych pakietów przed instalacją (tylko z --test-on-local)')
-    
+                        help='do not clean old packages before installation (only with --test-on-local)')
+    parser.add_argument("--output", '-o', default="dist", help="output directory")
+
     args = parser.parse_args()
-    
-    # Sprawdź, czy podano jakąś opcję
+
     if not any([args.mcaddon, args.mcpack, args.all]):
         parser.print_help()
         return
 
-    print_header("BUDOWANIE PAKIETÓW MINECRAFT")
+    print("🏗️ BUILDING MINECRAFT PACKAGES")
+    print("=" * 60)
 
     # Read current versions and names
     bp_name, bp_version = read_manifest('BP/manifest.json')
     rp_name, rp_version = read_manifest('RP/manifest.json')
 
-    print(ConsoleStyle.info(f"Obecna wersja BP: {bp_version}"))
-    print(ConsoleStyle.info(f"Obecna wersja RP: {rp_version}"))
+    print(f"📦 BP: {bp_name} v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}")
+    print(f"📦 RP: {rp_name} v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}")
 
-    # Determine new version
-    if args.no_bump:
-        new_version = bp_version.copy()
-        print(ConsoleStyle.info(f"Używam obecnej wersji: {new_version}"))
-    else:
-        new_version = bump_version(bp_version.copy())
-        print(ConsoleStyle.info(f"Nowa wersja: {new_version}"))
-        
-        # Update manifests with new version
-        update_version('BP/manifest.json', new_version)
-        update_version('RP/manifest.json', new_version)
+    # Bump version if requested
+    if not args.no_bump:
+        print(ConsoleStyle.process("Bumping version..."))
+        new_bp_version = bump_version(bp_version.copy())
+        new_rp_version = bump_version(rp_version.copy())
 
-    # Extract plugin name
-    plugin_name = bp_name.replace(" BP", "").replace(" ", "")
-    print(ConsoleStyle.info(f"Nazwa pluginu: {plugin_name}"))
+        update_version("BP/manifest.json", new_bp_version)
+        update_version("RP/manifest.json", new_rp_version)
+
+        bp_version = new_bp_version
+        rp_version = new_rp_version
+        print(ConsoleStyle.success(f"Version bumped to {bp_version[0]}.{bp_version[1]}.{bp_version[2]}"))
 
     # Create output directory
     output_dir = 'dist'
@@ -275,31 +269,46 @@ Przykłady użycia:
         shutil.rmtree(output_dir)
     os.makedirs(output_dir)
 
+    # Create timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # Build requested formats
     mcaddon_path = None
+    bp_mcpack_path = None
+    rp_mcpack_path = None
+
     if args.mcaddon or args.all:
-        mcaddon_path = build_mcaddon(new_version, new_version, plugin_name, output_dir, timestamp)
+        mcaddon_path, mcaddon_size = build_mcaddon(bp_version, rp_version, PACK_NAME, args.output, timestamp)
 
     if args.mcpack or args.all:
-        build_mcpack(new_version, new_version, bp_name, rp_name, output_dir, timestamp)
+        bp_mcpack_path, rp_mcpack_path, bp_size, rp_size = build_mcpack(
+            bp_version, rp_version, f"{PACK_NAME}_BP", f"{PACK_NAME}_RP", args.output, timestamp
+        )
 
-    # Install for local testing if requested
+    # Count files
+    file_count = count_files()
+
+    print("=" * 60)
+    print(ConsoleStyle.info("BUILD SUMMARY"))
+    print(f"📦 Total files: {file_count}")
+    if mcaddon_path:
+        print(f"📦 .mcaddon: {os.path.basename(mcaddon_path)}")
+    if bp_mcpack_path and rp_mcpack_path:
+        print(f"📦 .mcpack: {os.path.basename(bp_mcpack_path)}, {os.path.basename(rp_mcpack_path)}")
+
+    # Install to local Minecraft if requested
     if args.test_on_local and mcaddon_path:
-        print(ConsoleStyle.divider())
-        print(ConsoleStyle.section("TESTOWANIE LOKALNE"))
-        
+        print("=" * 60)
+        print(ConsoleStyle.process("Installing to local Minecraft..."))
         clean_existing = not args.no_clean
         if install_mcaddon(mcaddon_path, clean_existing):
-            print(ConsoleStyle.success("✅ Pakiet zainstalowany i gotowy do testowania!"))
-            print(ConsoleStyle.info("Uruchom Minecraft i sprawdź nowe znaki drogowe"))
+            print(ConsoleStyle.success("Installation completed successfully!"))
         else:
-            print(ConsoleStyle.error("❌ Instalacja nie powiodła się"))
+            print(ConsoleStyle.error("Installation failed!"))
 
-    print(ConsoleStyle.divider())
-    print(ConsoleStyle.success("Budowanie zakończone pomyślnie!"))
+    print("=" * 60)
+    print(ConsoleStyle.success("Build completed successfully!"))
 
 
 if __name__ == "__main__":
-    main() 
+    main()
