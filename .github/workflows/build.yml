@@ -205,6 +205,9 @@ jobs:
         with:
           tag_name: v${{ needs.build.outputs.version }}
           name: Release v${{ needs.build.outputs.version }}
+          files: |
+            dist/*.mcaddon
+            dist/*.mcpack
           body: |
             ## Polish Road Signs Addon v${{ needs.build.outputs.version }}
 
