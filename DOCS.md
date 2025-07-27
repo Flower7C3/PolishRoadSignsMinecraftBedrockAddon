@@ -218,8 +218,15 @@ python3 road_sign_processor.py a_1    # Pojedynczy znak
 python3 road_sign_processor.py all    # Wszystkie znaki
 python3 road_sign_processor.py category:A    # Przetwórz kategorię A
 python3 road_sign_processor.py category:B --skip-download    # Kategoria B offline
+python3 road_sign_processor.py category:B -s    # Kategoria B offline (skrót)
 python3 road_sign_processor.py a_1 --skip-download    # Tryb offline
+python3 road_sign_processor.py a_1 -s    # Tryb offline (skrót)
 python3 road_sign_processor.py all --skip-download    # Wszystkie w trybie offline
+python3 road_sign_processor.py all -s    # Wszystkie w trybie offline (skrót)
+python3 road_sign_processor.py a_1 --force-rebuild    # Wymuś przebudowanie
+python3 road_sign_processor.py a_1 -f    # Wymuś przebudowanie (skrót)
+python3 road_sign_processor.py a_1 --quiet    # Tryb cichy
+python3 road_sign_processor.py a_1 -q    # Tryb cichy (skrót)
 ```
 
 ### Baza danych road_signs_full_database.json
@@ -255,20 +262,36 @@ Sprawdza integralność całego projektu:
 
 ### build.py
 Buduje pakiety Minecraft (.mcaddon i/lub .mcpack):
-- **--mcaddon** - Buduje tylko pakiet .mcaddon
-- **--mcpack** - Buduje tylko pakiety .mcpack (BP i RP)
-- **--all** - Buduje wszystkie formaty
-- **--no-bump** - Nie zwiększa wersji (używa obecnej)
+- **--mcaddon** / **-m** - Buduje tylko pakiet .mcaddon
+- **--mcpack** / **-p** - Buduje tylko pakiety .mcpack (BP i RP)
+- **--all** / **-a** - Buduje wszystkie formaty
+- **--no-bump** / **-n** - Nie zwiększa wersji (używa obecnej)
+- **--test-on-local** / **-t** - Automatycznie zainstaluj i przetestuj lokalnie
+- **--no-clean** / **-c** - Nie usuwaj starych pakietów przed instalacją
 - Automatycznie zwiększa wersję (chyba że użyto --no-bump)
 - Tworzy strukturę BP i RP
 - Pakuje do odpowiednich formatów
 
 ### generate_examples.py
 Generuje przykładowe komendy testowe i deweloperskie:
-- **--test** - Generuje komendy testowe dla różnych kombinacji kształtów/wymiarów
-- **--dev** - Generuje komendy deweloperskie (weryfikacja, budowanie, testowanie)
+- **--test** / **-t** - Generuje komendy testowe dla różnych kombinacji kształtów/wymiarów
+- **--dev** / **-d** - Generuje komendy deweloperskie (weryfikacja, budowanie, testowanie)
 - Automatycznie wykrywa kombinacje kształtów i wymiarów z bazy danych
 - Generuje komendy z `--test-on-local` dla automatycznego testowania
+
+### road_sign_processor.py
+Przetwarza znaki drogowe:
+- **--skip-download** / **-s** - Tryb offline (użyj lokalnych plików SVG)
+- **--force-rebuild** / **-f** - Wymuś przebudowanie tekstur
+- **--quiet** / **-q** - Tryb cichy (tylko błędy)
+- Pobiera SVG z Wikipedii przez .fullImageLink
+- Skaluje z zachowaniem proporcji
+- Konwertuje SVG→PNG używając Inkscape
+- Tworzy neutralne białe tekstury tła automatycznie
+- Aktualizuje collision_box i selection_box
+- Aktualizuje bazę danych z wymiarami obrazków
+- Dynamiczne pobieranie kategorii z bazy danych
+- Automatyczne czyszczenie plików dla usuniętych znaków
 
 ### Aktualizacja katalogu crafting
 Funkcjonalność wbudowana w `road_sign_processor.py`:

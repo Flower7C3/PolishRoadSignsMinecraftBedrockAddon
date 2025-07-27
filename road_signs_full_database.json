@@ -1733,6 +1733,7 @@
           "sign_width": "600",
           "sign_height": "300",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "D-19: postój taksówek",
             "en_US": "D-19: Taxi stand"
@@ -1744,6 +1745,7 @@
           "sign_width": "600",
           "sign_height": "300",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "D-20: koniec postoju taksówek",
             "en_US": "D-20: End of taxi stand"
@@ -2129,6 +2131,7 @@
           "sign_width": "1200",
           "sign_height": "700",
           "sign_shape": "rectangle",
+          "vertical_alignment": "center",
           "translations": {
             "pl_PL": "D-42: obszar zabudowany",
             "en_US": "D-42: Built-up area"
@@ -2140,6 +2143,7 @@
           "sign_width": "1200",
           "sign_height": "700",
           "sign_shape": "rectangle",
+          "vertical_alignment": "center",
           "translations": {
             "pl_PL": "D-43: koniec obszaru zabudowanego",
             "en_US": "D-43: End of built-up area"
@@ -2173,6 +2177,7 @@
           "sign_width": "900",
           "sign_height": "420",
           "sign_shape": "rectangle",
+          "vertical_alignment": "center",
           "translations": {
             "pl_PL": "D-46: droga wewnętrzna",
             "en_US": "D-46: Internal road"
@@ -2184,6 +2189,7 @@
           "sign_width": "900",
           "sign_height": "420",
           "sign_shape": "rectangle",
+          "vertical_alignment": "center",
           "translations": {
             "pl_PL": "D-47: koniec drogi wewnętrznej",
             "en_US": "D-47: End of internal road"
@@ -2272,6 +2278,7 @@
           "sign_width": "900",
           "sign_height": "420",
           "sign_shape": "rectangle",
+          "vertical_alignment": "center",
           "translations": {
             "pl_PL": "D-52: strefa ruchu",
             "en_US": "D-52: Traffic zone"
@@ -2283,6 +2290,7 @@
           "sign_width": "900",
           "sign_height": "420",
           "sign_shape": "rectangle",
+          "vertical_alignment": "center",
           "translations": {
             "pl_PL": "D-53: koniec strefy ruchu",
             "en_US": "D-53: End of traffic zone"
@@ -2351,6 +2359,7 @@
           "sign_width": "750",
           "sign_height": "350",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-1: tabliczka wskazująca odległość znaku ostrzegawczego od miejsca niebezpiecznego",
             "en_US": "T-1: sign indicating the distance of the warning sign from a dangerous place"
@@ -2362,6 +2371,7 @@
           "sign_width": "880",
           "sign_height": "350",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-3a: tabliczka wskazująca koniec miejsca przeznaczonego na postój",
             "en_US": "T-3a: sign indicating the end of a parking space"
@@ -2472,6 +2482,7 @@
           "sign_width": "900",
           "sign_height": "450",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-17: tabliczka wskazująca granicę państwa",
             "en_US": "T-17: sign indicating the state border"
@@ -2483,6 +2494,7 @@
           "sign_width": "720",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23a: tabliczka wskazująca motocykle",
             "en_US": "T-23a: sign indicating motorcycles"
@@ -2494,6 +2506,7 @@
           "sign_width": "720",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23b: tabliczka wskazująca samochody ciężarowe, pojazdy specjalne, pojazdy używane do celów specjalnych, o dopuszczalnej masie całkowitej przekraczającej 3,5 t, oraz ciągniki samochodowe",
             "en_US": "T-23b: sign indicating trucks, special vehicles, vehicles used for special purposes, with a permissible total weight exceeding 3.5 tonnes, and Truck tractors"
@@ -2505,6 +2518,7 @@
           "sign_width": "720",
           "sign_height": "460",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23c: tabliczka wskazująca ciągniki rolnicze i pojazdy wolnobieżne",
             "en_US": "T-23c: Plate indicating agricultural tractors and slow-moving vehicles"
@@ -2516,6 +2530,7 @@
           "sign_width": "720",
           "sign_height": "380",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23d: tabliczka wskazująca pojazdy silnikowe z przyczepą, z wyjątkiem pojazdów z przyczepą jednoosiową lub naczepą",
             "en_US": "T-23d: Plate indicating motor vehicles with trailers, except vehicles with a single-axle trailer or semi-trailer"
@@ -2527,6 +2542,7 @@
           "sign_width": "720",
           "sign_height": "430",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23e: tabliczka wskazująca pojazdy z przyczepą kempingową",
             "en_US": "T-23e: Plate indicating vehicles with caravans"
@@ -2538,6 +2554,7 @@
           "sign_width": "720",
           "sign_height": "360",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23f: tabliczka wskazująca autobusy",
             "en_US": "T-23f: Plate indicating buses"
@@ -2549,6 +2566,7 @@
           "sign_width": "720",
           "sign_height": "430",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23g: tabliczka wskazująca trolejbusy",
             "en_US": "T-23g: Plate indicating trolleybuses"
@@ -2560,6 +2578,7 @@
           "sign_width": "720",
           "sign_height": "500",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23h: tabliczka wskazująca pojazdy z towarami niebezpiecznymi",
             "en_US": "T-23h: Plate indicating vehicles carrying dangerous goods"
@@ -2571,6 +2590,7 @@
           "sign_width": "720",
           "sign_height": "580",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23i: tabliczka wskazująca pojazdy z towarami wybuchowymi lub łatwopalnymi",
             "en_US": "T-23i: Plate indicating vehicles with explosive or flammable goods"
@@ -2582,6 +2602,7 @@
           "sign_width": "720",
           "sign_height": "500",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-23j: tabliczka wskazująca pojazdy z towarami, które mogą skazić wodę",
             "en_US": "T-23j: Sign indicating vehicles with goods that may contaminate water"
@@ -2637,6 +2658,7 @@
           "sign_width": "800",
           "sign_height": "320",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-26: tabliczka wskazująca, że zakaz postoju lub zatrzymywania dotyczy strony placu",
             "en_US": "T-26: Sign indicating that a parking or stopping ban applies to the side square"
@@ -2659,6 +2681,7 @@
           "sign_width": "900",
           "sign_height": "350",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-28: tabliczka wskazująca, że za przejazd drogą pobierana jest opłata",
             "en_US": "T-28: Sign indicating that a toll is charged for using the road"
@@ -2670,6 +2693,7 @@
           "sign_width": "900",
           "sign_height": "350",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-28a: tabliczka wskazująca koniec odcinka drogi, za przejazd którym pobierana jest opłata",
             "en_US": "T-28a: Sign indicating the end of the road section for which a toll is charged"
@@ -2681,6 +2705,7 @@
           "sign_width": "720",
           "sign_height": "430",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-29: tabliczka informująca o miejscu przeznaczonym dla pojazdu samochodowego uprawnionej osoby niepełnosprawnej o obniżonej sprawności ruchowej",
             "en_US": "T-29: Sign indicating a space designated for a motor vehicle of an authorized disabled person with reduced mobility"
@@ -2692,6 +2717,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30a: tabliczka wskazująca postój całego pojazdu na chodniku równolegle do krawężnika",
             "en_US": "T-30a: Sign indicating parking of the entire vehicle on the sidewalk parallel to the curb"
@@ -2703,6 +2729,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30b: tabliczka wskazująca postój całego pojazdu na chodniku prostopadle do krawężnika",
             "en_US": "T-30b: Sign indicating parking of the entire vehicle on the sidewalk perpendicular to the curb curb"
@@ -2714,6 +2741,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30c: tabliczka wskazująca postój całego pojazdu na chodniku skośnie do krawężnika",
             "en_US": "T-30c: Sign indicating parking of the entire vehicle on the sidewalk diagonally to the curb"
@@ -2725,6 +2753,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30d: tabliczka wskazująca postój na chodniku kołami przedniej osi pojazdu prostopadle do krawężnika",
             "en_US": "T-30d: Sign indicating parking of the entire vehicle on the sidewalk with the front axle wheels perpendicular to the curb"
@@ -2736,6 +2765,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30e: tabliczka wskazująca postój na chodniku kołami przedniej osi pojazdu skośnie do krawężnika",
             "en_US": "T-30e: Sign indicating parking of the entire vehicle on the sidewalk with the front axle wheels diagonally to the curb"
@@ -2747,6 +2777,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30f: tabliczka wskazująca postój całego pojazdu na jezdni prostopadle do krawężnika",
             "en_US": "T-30f: Sign indicating parking of the entire vehicle on the roadway perpendicular to the curb"
@@ -2758,6 +2789,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30g: tabliczka wskazująca postój całego pojazdu na jezdni skośnie do krawężnika",
             "en_US": "T-30g: Sign indicating parking of the entire vehicle on the roadway diagonally to the curb"
@@ -2769,6 +2801,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30h: tabliczka wskazująca postój na chodniku kołami jednego boku pojazdu równolegle do krawężnika",
             "en_US": "T-30h: Sign indicating a stop on the sidewalk with the wheels of one side of the vehicle parallel to the curb"
@@ -2780,6 +2813,7 @@
           "sign_width": "800",
           "sign_height": "400",
           "sign_shape": "rectangle",
+          "vertical_alignment": "top",
           "translations": {
             "pl_PL": "T-30i: tabliczka wskazująca postój całego pojazdu na jezdni równolegle do krawężnika",
             "en_US": "T-30i: sign indicating a stop on the roadway with the entire vehicle parallel to the curb"

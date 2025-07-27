@@ -45,7 +45,7 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 30
       },
-      "minecraft:geometry": "geometry.road_sign_triangle_1050x927",
+      "minecraft:geometry": "geometry.road_sign_triangle_1050x927_bottom",
       "minecraft:material_instances": {
         "north": {
           "texture": "polish_road_sign:a_17",

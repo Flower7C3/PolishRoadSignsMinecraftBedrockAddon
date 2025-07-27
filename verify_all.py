@@ -302,6 +302,50 @@ def verify_block_definitions():
     return total_found, total_missing
 
 
+def verify_vertical_alignment():
+    """Weryfikuj wyrównanie w pionie w bazie danych"""
+    print("\n🔍 VERTICAL ALIGNMENT")
+    print("=" * 30)
+
+    # Wczytaj bazę danych
+    with open('road_signs_full_database.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    valid_alignments = ['bottom', 'top', 'center']
+    total_signs = 0
+    signs_with_alignment = 0
+    signs_with_invalid_alignment = 0
+    alignment_stats = {'bottom': 0, 'top': 0, 'center': 0}
+
+    for category in data['road_signs'].values():
+        for sign_id, sign_data in category['signs'].items():
+            total_signs += 1
+            
+            if 'vertical_alignment' in sign_data:
+                signs_with_alignment += 1
+                alignment = sign_data['vertical_alignment']
+                
+                if alignment in valid_alignments:
+                    alignment_stats[alignment] += 1
+                else:
+                    signs_with_invalid_alignment += 1
+                    print(f"  ❌ Invalid alignment '{alignment}' for sign {sign_id}")
+
+    print(f"📊 Total signs: {total_signs}")
+    print(f"  Signs with alignment: {signs_with_alignment}")
+    print(f"  Signs without alignment: {total_signs - signs_with_alignment}")
+    print(f"  Invalid alignments: {signs_with_invalid_alignment}")
+    
+    if alignment_stats['bottom'] > 0:
+        print(f"  Bottom alignment: {alignment_stats['bottom']}")
+    if alignment_stats['top'] > 0:
+        print(f"  Top alignment: {alignment_stats['top']}")
+    if alignment_stats['center'] > 0:
+        print(f"  Center alignment: {alignment_stats['center']}")
+
+    return total_signs, signs_with_alignment, signs_with_invalid_alignment
+
+
 def verify_database():
     """Weryfikuj kategorie w bazie danych"""
     print("\n🔍 CATEGORIES")
@@ -934,6 +978,9 @@ def main():
     # 4. WERYFIKACJA PÓL SHAPE
     sizes, shapes, padding_count, no_padding_count = verify_shape_field()
 
+    # 5. WERYFIKACJA WYRÓWNANIA W PIONIE
+    alignment_total, alignment_with_alignment, alignment_invalid = verify_vertical_alignment()
+
     # Przygotuj wyniki
     results = {
         'total_signs': signs_with_shape + signs_without_shape,
@@ -973,6 +1020,8 @@ def main():
         issues['Problemy kompatybilności'] = compatibility_issues
     if signs_without_shape > 0:
         issues['Znaki bez pola shape'] = signs_without_shape
+    if alignment_invalid > 0:
+        issues['Nieprawidłowe wyrównania w pionie'] = alignment_invalid
     
     results['issues'] = issues
     

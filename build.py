@@ -208,26 +208,33 @@ def main():
         epilog="""
 Przykłady użycia:
   python3 build.py --mcaddon                    # Buduje tylko .mcaddon
+  python3 build.py -m                          # Buduje tylko .mcaddon (skrót)
   python3 build.py --mcpack                     # Buduje tylko .mcpack
+  python3 build.py -p                          # Buduje tylko .mcpack (skrót)
   python3 build.py --all                        # Buduje oba formaty
+  python3 build.py -a                          # Buduje oba formaty (skrót)
   python3 build.py --all --no-bump              # Buduje bez zwiększania wersji
+  python3 build.py -a -n                       # Buduje bez zwiększania wersji (skrót)
   python3 build.py --mcaddon --test-on-local    # Buduj i przetestuj lokalnie
+  python3 build.py -m -t                       # Buduj i przetestuj lokalnie (skrót)
   python3 build.py --all --test-on-local        # Buduj wszystko i przetestuj
+  python3 build.py -a -t                       # Buduj wszystko i przetestuj (skrót)
   python3 build.py --help                       # Wyświetla pomoc
+  python3 build.py -h                          # Wyświetla pomoc (skrót)
         """
     )
     
-    parser.add_argument('--mcaddon', action='store_true', 
+    parser.add_argument('--mcaddon', '-m', action='store_true', 
                        help='Buduj pakiet .mcaddon')
-    parser.add_argument('--mcpack', action='store_true', 
+    parser.add_argument('--mcpack', '-p', action='store_true', 
                        help='Buduj pakiety .mcpack (BP i RP)')
-    parser.add_argument('--all', action='store_true', 
+    parser.add_argument('--all', '-a', action='store_true', 
                        help='Buduj wszystkie formaty')
-    parser.add_argument('--no-bump', action='store_true', 
+    parser.add_argument('--no-bump', '-n', action='store_true', 
                        help='Nie zwiększaj wersji (użyj obecnej)')
-    parser.add_argument('--test-on-local', action='store_true',
+    parser.add_argument('--test-on-local', '-t', action='store_true',
                        help='Automatycznie zainstaluj i przetestuj lokalnie')
-    parser.add_argument('--no-clean', action='store_true',
+    parser.add_argument('--no-clean', '-c', action='store_true',
                        help='Nie usuwaj starych pakietów przed instalacją (tylko z --test-on-local)')
     
     args = parser.parse_args()

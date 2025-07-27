@@ -8,6 +8,12 @@ import os
 from typing import Dict, Any, Optional
 
 
+def print_if_not_quiet(text):
+    """Wyświetl tekst tylko jeśli nie jest None (tryb cichy)"""
+    if text is not None:
+        print(text)
+
+
 class ConsoleStyle:
     """Klasa do stylizacji komunikatów w konsoli"""
     
@@ -73,7 +79,7 @@ class ConsoleStyle:
     def colorize(text: str, color: str) -> str:
         """Dodaj kolor do tekstu (tylko jeśli terminal wspiera kolory)"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         if sys.stdout.isatty():
             return f"{color}{text}{ConsoleStyle.RESET}"
         return text
@@ -82,14 +88,14 @@ class ConsoleStyle:
     def header(text: str) -> str:
         """Stylizuj nagłówek sekcji"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         return ConsoleStyle.colorize(f"\n{text}", ConsoleStyle.HEADER)
     
     @staticmethod
     def success(text: str) -> str:
         """Stylizuj komunikat sukcesu"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         return ConsoleStyle.colorize(f"{ConsoleStyle.SUCCESS} {text}", ConsoleStyle.SUCCESS_MSG)
     
     @staticmethod
@@ -101,35 +107,35 @@ class ConsoleStyle:
     def warning(text: str) -> str:
         """Stylizuj komunikat ostrzeżenia"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         return ConsoleStyle.colorize(f"{ConsoleStyle.WARNING} {text}", ConsoleStyle.WARNING_MSG)
     
     @staticmethod
     def info(text: str) -> str:
         """Stylizuj komunikat informacyjny"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         return ConsoleStyle.colorize(f"{ConsoleStyle.INFO} {text}", ConsoleStyle.INFO_MSG)
     
     @staticmethod
     def process(text: str) -> str:
         """Stylizuj komunikat procesu"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         return ConsoleStyle.colorize(f"{ConsoleStyle.PROCESSING} {text}", ConsoleStyle.PROCESS_MSG)
     
     @staticmethod
     def section(title: str) -> str:
         """Stylizuj tytuł sekcji"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         return ConsoleStyle.colorize(f"\n{title}", ConsoleStyle.HEADER + ConsoleStyle.BOLD)
     
     @staticmethod
     def divider(char: str = "=", length: int = 50) -> str:
         """Utwórz separator"""
         if ConsoleStyle.QUIET_MODE:
-            return ""
+            return None
         return char * length
     
     @staticmethod

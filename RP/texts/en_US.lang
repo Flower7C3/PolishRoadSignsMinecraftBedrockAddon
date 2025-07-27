@@ -262,7 +262,6 @@ tile.polish_road_sign:t_30f.name=T-30f: Sign indicating parking of the entire ve
 tile.polish_road_sign:t_30g.name=T-30g: Sign indicating parking of the entire vehicle on the roadway diagonally to the curb
 tile.polish_road_sign:t_30h.name=T-30h: Sign indicating a stop on the sidewalk with the wheels of one side of the vehicle parallel to the curb
 tile.polish_road_sign:t_30i.name=T-30i: sign indicating a stop on the roadway with the entire vehicle parallel to the curb
-tile.polish_road_sign:test.name=U-9b: horizontal road clearance limit sign (right)
 tile.polish_road_sign:u_3a.name=U-3a: single board leading to the right
 tile.polish_road_sign:u_3b.name=U-3b: single board leading to the left
 tile.polish_road_sign:u_4a.name=U-4a: Separating sign used on motorways and expressways

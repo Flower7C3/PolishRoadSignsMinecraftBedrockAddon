@@ -193,27 +193,38 @@ python3 road_sign_processor.py all --skip-download
 ```bash
 # Budowanie paczek
 python3 build.py --mcaddon                    # Buduje tylko .mcaddon
+python3 build.py -m                          # Buduje tylko .mcaddon (skrót)
 python3 build.py --mcpack                     # Buduje tylko .mcpack
+python3 build.py -p                          # Buduje tylko .mcpack (skrót)
 python3 build.py --all                        # Buduje oba formaty
+python3 build.py -a                          # Buduje oba formaty (skrót)
 python3 build.py --all --no-bump              # Buduje bez zwiększania wersji
+python3 build.py -a -n                       # Buduje bez zwiększania wersji (skrót)
 python3 build.py --mcaddon --test-on-local    # Buduj i przetestuj lokalnie
+python3 build.py -m -t                       # Buduj i przetestuj lokalnie (skrót)
 python3 build.py --all --test-on-local        # Buduj wszystko i przetestuj
+python3 build.py -a -t                       # Buduj wszystko i przetestuj (skrót)
 
-# Generowanie komend testowych
-python3 generate_examples.py              # Generuje wszystkie komendy
-python3 generate_examples.py --test       # Tylko komendy testowe
-python3 generate_examples.py --dev        # Tylko komendy deweloperskie
+# Przetwarzanie znaków
+python3 road_sign_processor.py a_1           # Przetwórz pojedynczy znak
+python3 road_sign_processor.py all           # Przetwórz wszystkie znaki
+python3 road_sign_processor.py category:A    # Przetwórz kategorię A
+python3 road_sign_processor.py a_1 --skip-download  # Tryb offline
+python3 road_sign_processor.py a_1 -s        # Tryb offline (skrót)
+python3 road_sign_processor.py a_1 --force-rebuild  # Wymuś przebudowanie
+python3 road_sign_processor.py a_1 -f        # Wymuś przebudowanie (skrót)
+python3 road_sign_processor.py a_1 --quiet   # Tryb cichy
+python3 road_sign_processor.py a_1 -q        # Tryb cichy (skrót)
 
-# Aktualizacja katalogu craftingowego
-# (skrypt usunięty - funkcjonalność wbudowana w road_sign_processor.py)
+# Generowanie komend
+python3 generate_examples.py                 # Generuj wszystkie komendy
+python3 generate_examples.py --test          # Tylko komendy testowe
+python3 generate_examples.py -t              # Tylko komendy testowe (skrót)
+python3 generate_examples.py --dev           # Tylko komendy deweloperskie
+python3 generate_examples.py -d              # Tylko komendy deweloperskie (skrót)
 
-# Pobieranie i skalowanie obrazków
-python3 road_sign_processor.py [sign_id]
-
-# Pobieranie w trybie offline (użyj lokalnych plików SVG)
-python3 road_sign_processor.py [sign_id] --skip-download
-
-
+# Weryfikacja
+python3 verify_all.py                        # Pełna weryfikacja projektu
 ```
 
 ## 🎮 Użycie

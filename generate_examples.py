@@ -49,12 +49,12 @@ def generate_test_commands():
     print(ConsoleStyle.divider())
     
     # Basic test command
-    basic_command = f"python3 road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} --skip-download --force-rebuild"
+    basic_command = f"python3 road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} -s -f"
     print(f"📋 Test wszystkich kombinacji:")
     print(f"  {basic_command}")
     
     # Build and test command
-    build_test_command = f"{basic_command} && python3 build.py --mcaddon --test-on-local"
+    build_test_command = f"{basic_command} && python3 build.py -m -t"
     print(f"\n🚀 Test z budowaniem i instalacją:")
     print(f"  {build_test_command}")
     
@@ -62,12 +62,12 @@ def generate_test_commands():
     print(f"\n📂 Testy pojedynczych kategorii:")
     categories = ['A', 'B', 'C', 'D', 'F', 'G', 'T', 'U']
     for category in categories:
-        category_command = f"python3 road_sign_processor.py category:{category} --skip-download --force-rebuild && python3 build.py --mcaddon --test-on-local"
+        category_command = f"python3 road_sign_processor.py category:{category} -s -f && python3 build.py -m -t"
         print(f"  Kategoria {category}: {category_command}")
     
     # Quick test with few examples
     quick_examples = list(example_combinations)[:5]  # First 5 examples
-    quick_command = f"python3 road_sign_processor.py {' '.join(quick_examples)} --skip-download --force-rebuild && python3 build.py --mcaddon --test-on-local"
+    quick_command = f"python3 road_sign_processor.py {' '.join(quick_examples)} -s -f && python3 build.py -m -t"
     print(f"\n⚡ Szybki test (5 przykładów):")
     print(f"  {quick_command}")
     
@@ -81,11 +81,11 @@ def generate_development_commands():
     
     commands = [
         ("🔍 Weryfikacja projektu", "python3 verify_all.py"),
-        ("📦 Budowanie wszystkich formatów", "python3 build.py --all"),
-        ("🧪 Test lokalny", "python3 build.py --mcaddon --test-on-local"),
-        ("🔄 Pełny cykl testowy", "python3 road_sign_processor.py all --skip-download --force-rebuild && python3 build.py --all --test-on-local"),
+        ("📦 Budowanie wszystkich formatów", "python3 build.py -a"),
+        ("🧪 Test lokalny", "python3 build.py -m -t"),
+        ("🔄 Pełny cykl testowy", "python3 road_sign_processor.py all -s -f && python3 build.py -a -t"),
         ("📊 Analiza statystyk", "python3 verify_all.py | grep -E '(STATYSTYKI|PROBLEMY)'"),
-        ("🧹 Czyszczenie", "rm -rf dist/ && python3 road_sign_processor.py all --skip-download --force-rebuild"),
+        ("🧹 Czyszczenie", "rm -rf dist/ && python3 road_sign_processor.py all -s -f"),
     ]
     
     for description, command in commands:
@@ -103,14 +103,17 @@ def main():
 Przykłady użycia:
   python3 generate_examples.py              # Generuje wszystkie komendy
   python3 generate_examples.py --test       # Tylko komendy testowe
+  python3 generate_examples.py -t           # Tylko komendy testowe (skrót)
   python3 generate_examples.py --dev        # Tylko komendy deweloperskie
+  python3 generate_examples.py -d           # Tylko komendy deweloperskie (skrót)
   python3 generate_examples.py --help       # Wyświetla pomoc
+  python3 generate_examples.py -h           # Wyświetla pomoc (skrót)
         """
     )
     
-    parser.add_argument('--test', action='store_true', 
+    parser.add_argument('--test', '-t', action='store_true', 
                        help='Generuj tylko komendy testowe')
-    parser.add_argument('--dev', action='store_true', 
+    parser.add_argument('--dev', '-d', action='store_true', 
                        help='Generuj tylko komendy deweloperskie')
     
     args = parser.parse_args()
