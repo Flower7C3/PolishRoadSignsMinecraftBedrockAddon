@@ -18,6 +18,9 @@ jobs:
       bp_files: ${{ steps.count_files.outputs.bp_files }}
       rp_files: ${{ steps.count_files.outputs.rp_files }}
       total_blocks: ${{ steps.count_blocks.outputs.total_blocks }}
+      categories: ${{ steps.get_version_stats.outputs.categories }}
+      total_signs: ${{ steps.get_version_stats.outputs.total_signs }}
+      combinations: ${{ steps.get_version_stats.outputs.combinations }}
     steps:
       - uses: actions/checkout@v4
         with:
