@@ -96,33 +96,40 @@ class ConsoleStyle:
         """Stylizuj komunikat sukcesu"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.SUCCESS} {text}", ConsoleStyle.SUCCESS_MSG)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.SUCCESS}  {text}", ConsoleStyle.SUCCESS_MSG)
     
     @staticmethod
     def error(text: str) -> str:
         """Stylizuj komunikat błędu"""
-        return ConsoleStyle.colorize(f"{ConsoleStyle.ERROR} {text}", ConsoleStyle.ERROR_MSG)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.ERROR}  {text}", ConsoleStyle.ERROR_MSG)
     
     @staticmethod
     def warning(text: str) -> str:
         """Stylizuj komunikat ostrzeżenia"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.WARNING} {text}", ConsoleStyle.WARNING_MSG)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.WARNING}  {text}", ConsoleStyle.WARNING_MSG)
     
+    @staticmethod
+    def delete(text: str) -> str:
+        """Stylizuj komunikat usuwania"""
+        if ConsoleStyle.QUIET_MODE:
+            return None
+        return ConsoleStyle.colorize(f"{ConsoleStyle.DELETE}  {text}", ConsoleStyle.WARNING_MSG)
+
     @staticmethod
     def info(text: str) -> str:
         """Stylizuj komunikat informacyjny"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.INFO} {text}", ConsoleStyle.INFO_MSG)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.INFO}  {text}", ConsoleStyle.INFO_MSG)
     
     @staticmethod
     def process(text: str) -> str:
         """Stylizuj komunikat procesu"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.PROCESSING} {text}", ConsoleStyle.PROCESS_MSG)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.PROCESSING}  {text}", ConsoleStyle.PROCESS_MSG)
     
     @staticmethod
     def section(title: str) -> str:
