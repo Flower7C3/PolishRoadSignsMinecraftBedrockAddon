@@ -31,7 +31,7 @@ Znaki są podzielone na kategorie zgodnie z polskimi przepisami ruchu drogowego 
 #### Metoda 1: Automatyczna instalacja (zalecana)
 
 1. Pobierz plik `.mcaddon` z
-   sekcji [Releases](https://github.com/Flower7C3/PolishRoadSignsMinecraftBedrockAddon/releases)
+   sekcji [Releases](https://github.com/Flower7C3/polish-road-signs-minecraft-bedrock-addon/releases)
 2. Uruchom skrypt instalacji:
    ```bash
    python3 build.py --mcaddon --test-on-local

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Biblioteka z funkcjami stylizacji konsoli dla skryptów PolishRoadSigns
+Biblioteka z funkcjami stylizacji konsoli dla skryptów
 """
 
 import sys

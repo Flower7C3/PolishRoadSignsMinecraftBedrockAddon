@@ -247,7 +247,7 @@ jobs:
             ### 📊 Statystyki:
             - **${{ needs.build.outputs.categories }} kategorii** znaków drogowych
             - **${{ needs.build.outputs.total_signs }} znaków** z oficjalnymi teksturami
-            - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów
+            - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
 
             ### 🚀 Ostatnie zmiany:
             ${{ github.event.head_commit.message }} 
