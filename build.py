@@ -11,7 +11,7 @@ import sys
 import argparse
 from datetime import datetime
 from pathlib import Path
-from console_utils import ConsoleStyle, print_header
+from console_utils import ConsoleStyle, print_header, print_installation_info
 
 # Pack name from directory name
 PACK_NAME = os.path.basename(os.getcwd())
@@ -58,7 +58,7 @@ def install_mcaddon(mcaddon_path, clean_existing=True):
         print(ConsoleStyle.error("Cannot auto-detect Minecraft com.mojang directory. Installation failed."))
         return False
 
-    print(ConsoleStyle.info(f"Minecraft directory: {mc_dir}"))
+    print(ConsoleStyle.info(f"Minecraft directory [{mc_dir}]"))
 
     # Remove existing packs if requested
     if clean_existing:
@@ -84,7 +84,7 @@ def install_mcaddon(mcaddon_path, clean_existing=True):
                 shutil.copyfileobj(src, dst)
             file_count += 1
 
-    print(ConsoleStyle.success(f"Installed {file_count} files"))
+    print(ConsoleStyle.success(f"Installed [{file_count}] files"))
     print_installation_info(PACK_NAME, mc_dir)
     return True
 
@@ -263,9 +263,9 @@ examples:
 
         bp_version = new_bp_version
         rp_version = new_rp_version
-        print(ConsoleStyle.success(f"Version bumped to {bp_version[0]}.{bp_version[1]}.{bp_version[2]}"))
+        print(ConsoleStyle.success(f"Version bumped to [{bp_version[0]}.{bp_version[1]}.{bp_version[2]}]"))
 
-    # Create output directory
+    # Create an output directory
     output_dir = 'dist'
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
@@ -297,7 +297,7 @@ examples:
         print(f"📦 .mcpack: {os.path.basename(bp_mcpack_path)}, {os.path.basename(rp_mcpack_path)}")
 
     # Install to local Minecraft if requested
-    if args.test_on_local and mcaddon_path:
+    if args.test_on_local:
         ConsoleStyle.print_section("INSTALLATION", "")
         print(ConsoleStyle.process("Installing to local Minecraft..."))
         clean_existing = not args.no_clean
@@ -306,7 +306,6 @@ examples:
         else:
             print(ConsoleStyle.error("Installation failed!"))
 
-    ConsoleStyle.print_section("COMPLETION", "")
     print(ConsoleStyle.success("Build completed successfully!"))
 
 
