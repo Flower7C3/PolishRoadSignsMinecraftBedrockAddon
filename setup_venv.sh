@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Polish Road Signs - Virtual Environment Setup Script
+# Python Virtual Environment Setup Script
 # For macOS development
 
-echo "🚦 Setting up virtual environment for Polish Road Signs..."
+echo "🖥️ Setting up Python virtual environment..."
 
 # Check if Python 3 is installed
 if ! command -v python3 &> /dev/null; then
@@ -51,17 +51,4 @@ echo "  source venv/bin/activate"
 echo ""
 echo "To deactivate, run:"
 echo "  deactivate"
-echo ""
-echo "Verify project scripts:"
-echo "  python3 verify_all.py"
-echo ""
-echo "Local test scripts:"
-echo "  python3 build.py --mcaddon --test-on-local"
-echo "  python3 build.py -m -t"
-echo ""
-echo "To run build scripts:"
-echo "  python3 build.py --mcaddon"
-echo "  python3 build.py -m"
-echo "  python3 build.py --mcpack"
-echo "  python3 build.py -p"
 echo ""

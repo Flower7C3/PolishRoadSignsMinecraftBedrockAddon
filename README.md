@@ -1,4 +1,4 @@
-# Polish Road Signs - Minecraft Bedrock Addon
+# Polish Road Signs — Minecraft Bedrock Addon
 
 Polskie znaki drogowe dla Minecraft Bedrock Edition.
 
@@ -11,7 +11,8 @@ podzielone na kategorie zgodnie z polskimi przepisami.
 
 ### Kategorie znaków
 
-Znaki są podzielone na kategorie zgodnie z polskimi przepisami ruchu drogowego i znajdują się w odpowiednich katalogach w strukturze projektu.
+Znaki są podzielone na kategorie zgodnie z polskimi przepisami ruchu drogowego i znajdują się w odpowiednich katalogach
+w strukturze projektu.
 
 ### Funkcje
 
@@ -23,6 +24,47 @@ Znaki są podzielone na kategorie zgodnie z polskimi przepisami ruchu drogowego 
 - ✅ Kompatybilność z serwerami
 - ✅ Automatyczne usuwanie starych wersji przy instalacji
 - ✅ Automatyczne pobieranie i skalowanie obrazków z Wikipedii
+
+## 🏗️ Budowanie
+
+### GitHub Actions (Automatyczne)
+
+Projekt używa GitHub Actions do automatycznego budowania i wydawania wersji.
+
+- **Weryfikacja projektu** — sprawdza integralność przed budowaniem
+- **Automatyczne budowanie** przy każdym push do main/master
+- **Testowanie** struktury projektu i manifestów
+- **Automatyczne releases** z auto-version bump
+- **Integracja** - jeden workflow dla build, test i release
+
+### Wymagania
+
+- **Minecraft Bedrock** — z eksperymentalnymi funkcjami
+- **Python** 3.7+ – do budowania paczek
+- **Inkscape** – do konwersji SVG→PNG
+- **curl** – do pobierania obrazków
+
+### Środowisko wirtualne (venv) - macOS
+
+Przed uruchomieniem skryptów na macOS, zalecane jest utworzenie środowiska wirtualnego:
+
+- Automatyczna konfiguracja (zalecane)
+```bash
+./setup_venv.sh
+```
+
+- Aktywuj środowisko
+```bash
+source venv/bin/activate
+```
+
+### Weryfikacja projektu
+
+Przed budowaniem, możesz uruchomić pełną weryfikację projektu:
+
+```bash
+python3 verify_all.py
+```
 
 ## 🛠️ Instalacja
 
@@ -41,7 +83,7 @@ Znaki są podzielone na kategorie zgodnie z polskimi przepisami ruchu drogowego 
 #### Metoda 2: Ręczna instalacja
 
 1. Pobierz plik `.mcaddon` z
-   sekcji [Releases](https://github.com/Flower7C3/PolishRoadSignsMinecraftBedrockAddon/releases)
+   sekcji [Releases](https://github.com/Flower7C3/polish-road-signs-minecraft-bedrock-addon/releases)
 2. Otwórz plik w Minecraft Bedrock
 3. Aktywuj paczkę w ustawieniach → Global Resources
 
@@ -53,7 +95,7 @@ Znaki są podzielone na kategorie zgodnie z polskimi przepisami ruchu drogowego 
 
 ### Aktywacja w grze
 
-Po zainstalowaniu paczek, musisz je aktywować w Minecraft:
+Po zainstalowaniu paczek musisz je aktywować w Minecraft:
 
 1. **Zamknij Minecraft** (jeśli jest uruchomiony)
 
@@ -75,11 +117,11 @@ Po zainstalowaniu paczek, musisz je aktywować w Minecraft:
     - Znajdź polskie znaki drogowe w kreatywnym ekwipunku
     - Powinny pojawić się jako niestandardowe bloki z neutralnymi białymi tłem
 
-### Rozwiązywanie problemów
+## Rozwiązywanie problemów
 
 Jeśli nie widzisz znaków w grze:
 
-1. **Sprawdź czy używasz właściwego launcher'a Minecraft**: Paczki są zainstalowane dla mcpelauncher. Upewnij się, że
+1. **Sprawdź, czy używasz właściwego launcher'a Minecraft**: Paczki są zainstalowane dla mcpelauncher. Upewnij się, że
    używasz tego launcher'a, a nie oficjalnego launcher'a Minecraft.
 
 2. **Spróbuj świeżego świata**: Utwórz całkowicie nowy świat z włączonymi "Holiday Creator Features".
@@ -88,67 +130,14 @@ Jeśli nie widzisz znaków w grze:
 
 4. **Uruchom ponownie Minecraft**: Czasami musisz całkowicie uruchomić ponownie Minecraft po zainstalowaniu paczek.
 
-5. **Sprawdź czy paczki są zainstalowane**:
+5. **Sprawdź, czy paczki są zainstalowane**:
    ```bash
    # Sprawdź czy paczki są w odpowiednim katalogu
    ls "/Users/bartlomiej.kwiatek/Library/Application Support/mcpelauncher/games/com.mojang/behavior_packs/PolishRoadSigns"
    ls "/Users/bartlomiej.kwiatek/Library/Application Support/mcpelauncher/games/com.mojang/resource_packs/PolishRoadSigns"
    ```
 
-## 🏗️ Budowanie
-
-### GitHub Actions (Automatyczne)
-
-Projekt używa GitHub Actions do automatycznego budowania:
-
-- **Weryfikacja projektu** - sprawdza integralność przed budowaniem
-- **Automatyczne budowanie** przy każdym push do main/master
-- **Testowanie** struktury projektu i manifestów
-- **Automatyczne releases** z auto-version bump
-- **Integracja** - jeden workflow dla build, test i release
-
-### Wymagania
-
-- Python 3.7+
-- Minecraft Bedrock Edition
-- Inkscape (do konwersji SVG→PNG)
-- curl (do pobierania obrazków)
-
-### Środowisko wirtualne (venv) - macOS
-
-Przed uruchomieniem skryptów na macOS, zalecane jest utworzenie środowiska wirtualnego:
-
-```bash
-# Automatyczna konfiguracja (zalecane)
-./setup_venv.sh
-
-# Lub ręcznie:
-# Utwórz środowisko wirtualne
-python3 -m venv venv
-
-# Aktywuj środowisko
-source venv/bin/activate
-
-# Zainstaluj zależności
-pip install -r requirements.txt
-
-# Uruchom skrypty
-python3 build.py --mcaddon
-```
-
-### Weryfikacja projektu
-
-Przed budowaniem, możesz uruchomić pełną weryfikację projektu:
-
-```bash
-# Sprawdź integralność projektu
-python3 verify_all.py
-
-# Sprawdź czy wszystko jest w porządku
-# - Tekstury, modele 3D, definicje bloków
-# - Baza danych, tłumaczenia, struktura
-# - Nadmiarowe/brakujące pliki
-```
+## 🤝 Współpraca
 
 ### Pobieranie i skalowanie obrazków
 
@@ -238,44 +227,15 @@ python3 verify_all.py                        # Pełna weryfikacja projektu
 
 ### Właściwości bloków
 
-- **Pionowe ustawienie** - znaki są automatycznie ustawione pionowo
-- **Obrót** - możesz obracać znaki w 4 kierunkach
-- **Trwałość** - znaki można zniszczyć młotkiem
-- **Dźwięk** - znaki wydają dźwięk kamienia
-- **Szare tło** - wszystkie znaki mają realistyczne szare tło
+- **Pionowe ustawienie** — znaki są automatycznie ustawione pionowo
+- **Obrót** — możesz obracać znaki w 4 kierunkach
+- **Trwałość** — znaki można zniszczyć młotkiem
+- **Dźwięk** — znaki wydają dźwięk kamienia
+- **Szare tło** — wszystkie znaki mają realistyczne szare tło
 - **Dokładne collision boxy** - collision_box i selection_box odpowiadają rzeczywistym wymiarom modeli
-- **Precyzyjne klikanie** - gracze mogą dokładnie kliknąć na znaki bez problemów z niewidocznymi obszarami
-
-## 🌐 Tłumaczenia
-
-Addon zawiera dokładne tłumaczenia w:
-
-- 🇵🇱 **Polski** - oficjalne nazwy znaków zgodne z przepisami
-- 🇬🇧 **Angielski** - precyzyjne tłumaczenia nazw
-
-### Przykłady tłumaczeń
-
-| Polski                                 | Angielski                         |
-|----------------------------------------|-----------------------------------|
-| A-1: niebezpieczny zakręt w prawo      | A-1: Dangerous curve to the right |
-| B-20: stop                             | B-20: Stop                        |
-| C-1: nakaz jazdy w prawo przed znakiem | C-1: Turn right before sign       |
-| D-1: droga z pierwszeństwem            | D-1: Priority road                |
+- **Precyzyjne klikanie** — gracze mogą dokładnie kliknąć znaki bez problemów z niewidocznymi obszarami
 
 ## 🔧 Konfiguracja
-
-### Manifesty
-
-- **Wersja**: Automatycznie zwiększana przy budowaniu
-- **UUID**: Unikalne identyfikatory dla BP i RP
-- **min_engine_version**: 1.16.0 (kompatybilne z 1.21+)
-
-### Nazewnictwo
-
-- Wszystkie nazwy plików w małych literach
-- Identyfikatory bloków: `polish_road_sign:sign_code`
-- Tekstury: `textures/blocks/category/sign_code.png`
-- Tłumaczenia: `tile.polish_road_sign:sign_code.name`
 
 ### Baza danych
 
@@ -293,4 +253,9 @@ Ten projekt jest udostępniany na licencji MIT. Zobacz plik [LICENSE](LICENSE) d
 ## 👥 Autorzy
 
 - **Flower7C3** - główny developer
-- **Współpraca** - poprawki i sugestie
+- **Współpraca** — poprawki i sugestie
+
+
+---
+
+**Polish Road Signs** Dodatek zgodny z polskimi przepisami ruchu drogowego i może być używany do edukacji o znakach drogowych.
