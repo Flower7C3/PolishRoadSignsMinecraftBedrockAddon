@@ -183,7 +183,7 @@ def create_model_if_needed(sign_shape, sign_width, sign_height, target_width, ta
     model_path = f"RP/models/blocks/{model_name}.geo.json"
 
     if os.path.exists(model_path):
-        print_if_not_quiet(ConsoleStyle.success(f"Model już istnieje: {model_name}"))
+        print_if_not_quiet(ConsoleStyle.success(f"Model [{model_name}] już istnieje!"))
         return model_name
 
     # Twórz model na podstawie szablonu
@@ -192,7 +192,7 @@ def create_model_if_needed(sign_shape, sign_width, sign_height, target_width, ta
     with open(model_path, 'w') as f:
         json.dump(template, f, indent=2)
 
-    print_if_not_quiet(ConsoleStyle.success(f"Utworzono model: {model_name}"))
+    print_if_not_quiet(ConsoleStyle.success(f"Utworzono model [{model_name}]"))
     return model_name
 
 
@@ -204,7 +204,7 @@ def update_model_if_needed(sign_shape, sign_width, sign_height, target_width, ta
     model_path = f"RP/models/blocks/{model_name}.geo.json"
 
     if not os.path.exists(model_path):
-        print_if_not_quiet(ConsoleStyle.info(f"Model nie istnieje, tworzę nowy: {model_name}"))
+        print_if_not_quiet(ConsoleStyle.info(f"Model nie istnieje, tworzę nowy [{model_name}]"))
         return create_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height, vertical_alignment)
 
     # Sprawdź, czy wymiary modelu są aktualne
@@ -224,16 +224,16 @@ def update_model_if_needed(sign_shape, sign_width, sign_height, target_width, ta
 
             # Sprawdź, czy wymiary się zmieniły
             if current_width == target_width and current_height == target_height:
-                print_if_not_quiet(ConsoleStyle.success(f"Model ma aktualne wymiary: {model_name}"))
+                print_if_not_quiet(ConsoleStyle.success(f"Model ma aktualne wymiary [{model_name}]"))
                 return model_name
             else:
-                print_if_not_quiet(ConsoleStyle.info(f"Aktualizuję model {model_name} z wymiarów {current_width}x{current_height} na {target_width}x{target_height}"))
+                print_if_not_quiet(ConsoleStyle.info(f"Aktualizuję model [{model_name}] z wymiarów [{current_width}x{current_height}] na [{target_width}x{target_height}]"))
         else:
-            print_if_not_quiet(ConsoleStyle.warning(f"Nieprawidłowa struktura modelu, tworzę nowy: {model_name}"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Nieprawidłowa struktura modelu, tworzę nowy [{model_name}]"))
             return create_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height, vertical_alignment)
 
     except Exception as e:
-        print_if_not_quiet(ConsoleStyle.warning(f"Błąd odczytu modelu {model_name}: {e}"))
+        print_if_not_quiet(ConsoleStyle.warning(f"Błąd odczytu modelu [{model_name}]: {e}"))
         return create_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height, vertical_alignment)
 
     # Aktualizuj model z nowymi wymiarami
@@ -242,7 +242,7 @@ def update_model_if_needed(sign_shape, sign_width, sign_height, target_width, ta
     with open(model_path, 'w') as f:
         json.dump(template, f, indent=2)
 
-    print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano model: {model_name}"))
+    print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano model [{model_name}]"))
     return model_name
 
 
@@ -256,7 +256,7 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
     reverse_texture_path = f"RP/textures/blocks/reverse/{reverse_texture_name}.png"
 
     if os.path.exists(reverse_texture_path) and not force_rebuild:
-        print_if_not_quiet(ConsoleStyle.success(f"Tekstura tła już istnieje: {reverse_texture_name}"))
+        print_if_not_quiet(ConsoleStyle.success(f"Tekstura tła już istnieje [{reverse_texture_name}]"))
         return reverse_texture_name
 
     # Sprawdź, czy trzeba zrobić kwadrat (width < height)
@@ -264,7 +264,7 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
         # Użyj większego wymiaru jako kwadrat
         square_size = texture_height
         print_if_not_quiet(
-            f"  📐 Tworzę kwadratową teksturę tła {square_size}x{square_size} z wycentrowanym kształtem {texture_width}x{texture_height}")
+            f"  📐 Tworzę kwadratową teksturę tła [{square_size}x{square_size}] z wycentrowanym kształtem [{texture_width}x{texture_height}]")
 
         # Twórz neutralną białą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
         try:
@@ -319,13 +319,13 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
                                 f'rectangle {square_size // 2 - texture_width // 2},{square_size // 2 - texture_height // 2} {square_size // 2 + texture_width // 2},{square_size // 2 + texture_height // 2}',
                                 '-alpha', 'on', '-define', 'png:color-type=6', reverse_texture_path], check=True)
 
-            print_if_not_quiet(ConsoleStyle.success(f"Utworzono kwadratową teksturę tła: {reverse_texture_name} (kształt: {sign_shape})"))
+            print_if_not_quiet(ConsoleStyle.success(f"Utworzono kwadratową teksturę tła [{reverse_texture_name}] (kształt: {sign_shape})"))
         except subprocess.CalledProcessError as e:
-            print_if_not_quiet(ConsoleStyle.warning(f"Błąd tworzenia tekstury tła {reverse_texture_name}: {e}"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Błąd tworzenia tekstury tła [{reverse_texture_name}]: {e}"))
             return None
     else:
         # Użyj oryginalnych wymiarów
-        print_if_not_quiet(ConsoleStyle.info(f"Używam oryginalnych wymiarów tekstury tła {texture_width}x{texture_height}"))
+        print_if_not_quiet(ConsoleStyle.info(f"Używam oryginalnych wymiarów tekstury tła [{texture_width}x{texture_height}]"))
 
         # Twórz neutralną szarą teksturę tła w formacie sRGB z kanałem alpha zgodnie z kształtem
         try:
@@ -375,9 +375,9 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
                      '-draw', f'rectangle 0,0 {texture_width - 1},{texture_height - 1}', '-alpha', 'on', '-define',
                      'png:color-type=6', reverse_texture_path], check=True)
 
-            print_if_not_quiet(ConsoleStyle.success(f"Utworzono teksturę tła: {reverse_texture_name} (kształt: {sign_shape})"))
+            print_if_not_quiet(ConsoleStyle.success(f"Utworzono teksturę tła [{reverse_texture_name}] (kształt: {sign_shape})"))
         except subprocess.CalledProcessError as e:
-            print_if_not_quiet(ConsoleStyle.warning(f"Błąd tworzenia tekstury tła {reverse_texture_name}: {e}"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Błąd tworzenia tekstury tła [{reverse_texture_name}]: {e}"))
             return None
 
     terrain_path = "RP/textures/terrain_texture.json"
@@ -387,7 +387,7 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
 
     # Sprawdź, czy już istnieje
     if f"polish_road_sign_back:{reverse_texture_name}" in terrain["texture_data"]:
-        print_if_not_quiet(ConsoleStyle.success(f"Tekstura tła {reverse_texture_name} już istnieje w terrain_texture.json"))
+        print_if_not_quiet(ConsoleStyle.success(f"Tekstura tła [{reverse_texture_name}] już istnieje w terrain_texture.json"))
         return reverse_texture_name
 
     # Dodaj wpis tekstury tła
@@ -398,7 +398,7 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
     with open(terrain_path, 'w') as f:
         json.dump(terrain, f, indent=2)
 
-    print_if_not_quiet(ConsoleStyle.success(f"Dodano teksturę tła {reverse_texture_name} do terrain_texture.json"))
+    print_if_not_quiet(ConsoleStyle.success(f"Dodano teksturę tła [{reverse_texture_name}] do terrain_texture.json"))
 
     return reverse_texture_name
 
@@ -413,7 +413,7 @@ def add_averse_texture_to_terrain(sign_id):
 
     # Sprawdź, czy już istnieje
     if f"polish_road_sign:{sign_id}" in terrain["texture_data"]:
-        print_if_not_quiet(ConsoleStyle.success(f"Tekstura znaku {sign_id} już istnieje w terrain_texture.json"))
+        print_if_not_quiet(ConsoleStyle.success(f"Tekstura znaku [{sign_id}] już istnieje w terrain_texture.json"))
         return
 
     # Dodaj wpis tekstury znaku
@@ -424,7 +424,7 @@ def add_averse_texture_to_terrain(sign_id):
     with open(terrain_path, 'w') as f:
         json.dump(terrain, f, indent=2)
 
-    print_if_not_quiet(ConsoleStyle.success(f"Dodano teksturę znaku {sign_id} do terrain_texture.json"))
+    print_if_not_quiet(ConsoleStyle.success(f"Dodano teksturę znaku [{sign_id}] do terrain_texture.json"))
 
 
 def get_model_dimensions(model_name):
@@ -432,7 +432,7 @@ def get_model_dimensions(model_name):
     model_path = f"RP/models/blocks/{model_name}.geo.json"
 
     if not os.path.exists(model_path):
-        print_if_not_quiet(ConsoleStyle.warning(f"Nie znaleziono modelu: {model_path}"))
+        print_if_not_quiet(ConsoleStyle.warning(f"Nie znaleziono modelu [{model_path}]"))
         return None, None
 
     try:
@@ -456,11 +456,11 @@ def get_model_dimensions(model_name):
 
             return model_width, model_height
         else:
-            print_if_not_quiet(ConsoleStyle.warning(f"Nieprawidłowa struktura modelu: {model_path}"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Nieprawidłowa struktura modelu [{model_path}]"))
             return None, None
 
     except Exception as e:
-        print_if_not_quiet(ConsoleStyle.warning(f"Błąd odczytu modelu {model_name}: {e}"))
+        print_if_not_quiet(ConsoleStyle.warning(f"Błąd odczytu modelu [{model_name}]: {e}"))
         return None, None
 
 
@@ -570,13 +570,13 @@ def process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database
 
     sign_data = find_sign_in_database(sign_id, data)
     if not sign_data:
-        print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono znaku {sign_id} w bazie danych"))
+        print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono znaku [{sign_id}] w bazie danych"))
         return False
 
     # Pobierz kategorię
     category = get_category_for_sign(sign_id, data)
     if not category:
-        print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono kategorii dla znaku {sign_id}"))
+        print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono kategorii dla znaku [{sign_id}]"))
         return False
 
     # Pobierz kształt znaku z bazy danych
@@ -585,7 +585,7 @@ def process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database
     vertical_alignment = sign_data.get('vertical_alignment', 'bottom')
     target_width = scale_size_from_mm_to_px(sign_width)
     target_height = scale_size_from_mm_to_px(sign_height)
-    print_if_not_quiet(ConsoleStyle.section(f"Przetwarzanie znaku {sign_id}"))
+    print_if_not_quiet(ConsoleStyle.section(f"Przetwarzanie znaku [{sign_id}]"))
     print_if_not_quiet(ConsoleStyle.info(f"Kształt: {sign_shape}, Wymiary: {sign_width}x{sign_height}, Wyrównanie: {vertical_alignment}"))
     print_if_not_quiet(ConsoleStyle.divider("-", 30))
 
@@ -620,15 +620,15 @@ def create_averse_texture_if_needed(sign_id, target_width, target_height, wikipe
     if os.path.exists(png_path):
         if force_rebuild:
             os.remove(png_path)
-            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto istniejącą teksturę: {png_path}"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto istniejącą teksturę [{png_path}]"))
         else:
-            print_if_not_quiet(ConsoleStyle.success(f"Tekstura znaku już istnieje: {png_path}"))
+            print_if_not_quiet(ConsoleStyle.success(f"Tekstura znaku już istnieje [{png_path}]"))
             return True
 
     if not convert_svg_to_png(svg_path, png_path, target_width, target_height):
         print_if_not_quiet(ConsoleStyle.error(f"Nie udało się skonwertować SVG dla {sign_id}"))
         return False
-    print_if_not_quiet(ConsoleStyle.success(f"Utworzono teksturę znaku {png_path} ({target_width}x{target_height})"))
+    print_if_not_quiet(ConsoleStyle.success(f"Utworzono teksturę znaku [{png_path}] ({target_width}x{target_height})"))
 
     # Dodaj teksturę znaku do terrain_texture.json
     add_averse_texture_to_terrain(sign_id)
@@ -643,28 +643,28 @@ def get_svg(target_dir, sign_id, wikipedia_file_page, skip_download=False):
     if skip_download:
         # Sprawdź, czy lokalny plik SVG istnieje
         if not os.path.exists(svg_path):
-            print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono lokalnego pliku SVG: {svg_path}"))
+            print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono lokalnego pliku SVG [{svg_path}]"))
             return False
-        print_if_not_quiet(ConsoleStyle.info(f"Używam lokalnego SVG: {svg_path}"))
+        print_if_not_quiet(ConsoleStyle.info(f"Używam lokalnego SVG [{svg_path}]"))
     else:
         # Pobierz stronę Wikipedii (użyj bezpośredniego linku do pliku)
         html_content = download_wikipedia_page(wikipedia_file_page)
         if not html_content:
-            print_if_not_quiet(ConsoleStyle.error(f"Nie udało się pobrać strony dla {sign_id}"))
+            print_if_not_quiet(ConsoleStyle.error(f"Nie udało się pobrać strony dla [{sign_id}]"))
             return False
 
         # Wyciągnij link do SVG z pliku
         svg_url = extract_svg_url(html_content)
         if not svg_url:
-            print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono linku SVG dla {sign_id}"))
+            print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono linku SVG dla [{sign_id}]"))
             return False
 
         # Pobierz SVG do katalogu cache obok PNG
         if not download_svg(svg_url, svg_path):
-            print_if_not_quiet(ConsoleStyle.error(f"Nie udało się pobrać SVG dla {sign_id}"))
+            print_if_not_quiet(ConsoleStyle.error(f"Nie udało się pobrać SVG dla [{sign_id}]"))
             return False
 
-        print_if_not_quiet(ConsoleStyle.success(f"Pobrano SVG: {svg_path}"))
+        print_if_not_quiet(ConsoleStyle.success(f"Pobrano SVG [{svg_path}]"))
     return svg_path
 
 
@@ -732,7 +732,7 @@ def convert_svg_to_png(svg_path, png_path, target_width, target_height):
             padding = (target_height - target_width) // 2
             new_width = target_height
             new_height = target_height
-            print_if_not_quiet(ConsoleStyle.info(f"Dodaję padding wokół obrazka: {new_width}x{new_height} (padding: {padding}px)"))
+            print_if_not_quiet(ConsoleStyle.info(f"Dodaję padding wokół obrazka [{new_width}x{new_height}] (padding: {padding}px)"))
 
             # Najpierw konwertuj SVG do oryginalnych wymiarów
             with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
@@ -765,7 +765,7 @@ def convert_svg_to_png(svg_path, png_path, target_width, target_height):
                 return False
         else:
             # Użyj oryginalnych wymiarów
-            print_if_not_quiet(ConsoleStyle.info(f"Używam oryginalnych wymiarów {target_width}x{target_height}"))
+            print_if_not_quiet(ConsoleStyle.info(f"Używam oryginalnych wymiarów [{target_width}x{target_height}]"))
             result = subprocess.run([
                 'inkscape', '--export-type=png',
                 '--export-filename=' + png_path,
@@ -811,9 +811,9 @@ def update_block_if_needed(sign_id, model_name, reverse_texture_name, sign_width
         json.dump(block_template, f, indent=2)
 
     if new_block:
-        print_if_not_quiet(ConsoleStyle.success(f"Utworzono blok {sign_id} ({cube_width}x{cube_height})"))
+        print_if_not_quiet(ConsoleStyle.success(f"Utworzono blok [{sign_id}] ({cube_width}x{cube_height})"))
     else:
-        print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano blok {sign_id} ({cube_width}x{cube_height})"))
+        print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano blok [{sign_id}] ({cube_width}x{cube_height})"))
     return True
 
 
@@ -831,7 +831,7 @@ def cleanup_category_files(data, category):
         for file in os.listdir(block_dir):
             if file.endswith('.block.json'):
                 os.remove(os.path.join(block_dir, file))
-                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto blok: {category_lower}/{file}"))
+                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto blok [{category_lower}/{file}]"))
                 removed_count += 1
 
     # Usuń tekstury PNG dla kategorii (zachowaj SVG)
@@ -840,7 +840,7 @@ def cleanup_category_files(data, category):
         for file in os.listdir(texture_dir):
             if file.endswith('.png'):
                 os.remove(os.path.join(texture_dir, file))
-                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę: {category_lower}/{file}"))
+                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę [{category_lower}/{file}]"))
                 removed_count += 1
 
     # Usuń wpisy z terrain_texture.json dla znaków z tej kategorii
@@ -857,16 +857,16 @@ def cleanup_category_files(data, category):
 
         for key in keys_to_remove:
             del terrain_data['texture_data'][key]
-            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto z terrain_texture.json: {key}"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto [{key}] z terrain_texture.json"))
             removed_count += 1
 
         with open(terrain_path, 'w') as f:
             json.dump(terrain_data, f, indent=2)
 
     if removed_count > 0:
-        print_if_not_quiet(ConsoleStyle.success(f"Czyszczenie kategorii {category} zakończone - usunięto {removed_count} plików"))
+        print_if_not_quiet(ConsoleStyle.success(f"Czyszczenie kategorii [{category}] zakończone - usunięto {removed_count} plików"))
     else:
-        print_if_not_quiet(ConsoleStyle.info(f"Brak plików do usunięcia w kategorii {category}"))
+        print_if_not_quiet(ConsoleStyle.info(f"Brak plików do usunięcia w kategorii [{category}]"))
     print()
 
 
@@ -894,7 +894,7 @@ def cleanup_orphaned_files(data):
                     sign_id = file.replace('.block.json', '')
                     if sign_id not in database_signs:
                         os.remove(os.path.join(block_dir, file))
-                        print_if_not_quiet(ConsoleStyle.warning(f"Usunięto blok: {category_lower}/{file} (nie istnieje w bazie)"))
+                        print_if_not_quiet(ConsoleStyle.warning(f"Usunięto blok [{category_lower}/{file}] (nie istnieje w bazie)"))
                         removed_count += 1
 
     # Sprawdź i usuń tekstury dla nieistniejących znaków
@@ -907,7 +907,7 @@ def cleanup_orphaned_files(data):
                     sign_id = file.replace('.png', '')
                     if sign_id not in database_signs:
                         os.remove(os.path.join(texture_dir, file))
-                        print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę: {category_lower}/{file} (nie istnieje w bazie)"))
+                        print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę [{category_lower}/{file}] (nie istnieje w bazie)"))
                         removed_count += 1
 
     # Usuń wpisy z terrain_texture.json dla nieistniejących znaków
@@ -925,7 +925,7 @@ def cleanup_orphaned_files(data):
 
         for key in keys_to_remove:
             del terrain_data['texture_data'][key]
-            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto z terrain_texture.json: {key} (nie istnieje w bazie)"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto [{key}] z terrain_texture.json (nie istnieje w bazie)"))
             removed_count += 1
 
         with open(terrain_path, 'w') as f:
@@ -956,7 +956,7 @@ def cleanup_all_files(data):
             for file in os.listdir(block_dir):
                 if file.endswith('.block.json'):
                     os.remove(os.path.join(block_dir, file))
-                    print_if_not_quiet(ConsoleStyle.warning(f"Usunięto blok: {category_lower}/{file}"))
+                    print_if_not_quiet(ConsoleStyle.warning(f"Usunięto blok [{category_lower}/{file}]"))
                     removed_count += 1
 
     # Usuń wszystkie modele 3D
@@ -965,7 +965,7 @@ def cleanup_all_files(data):
         for file in os.listdir(models_dir):
             if file.startswith('road_sign_') and file.endswith('.geo.json'):
                 os.remove(os.path.join(models_dir, file))
-                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto model: {file}"))
+                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto model [{file}]"))
                 removed_count += 1
 
     # Usuń wszystkie tekstury PNG (zachowaj SVG)
@@ -976,7 +976,7 @@ def cleanup_all_files(data):
             for file in os.listdir(texture_dir):
                 if file.endswith('.png'):
                     os.remove(os.path.join(texture_dir, file))
-                    print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę: {category_lower}/{file}"))
+                    print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę [{category_lower}/{file}]"))
                     removed_count += 1
 
     # Usuń tekstury tła
@@ -985,7 +985,7 @@ def cleanup_all_files(data):
         for file in os.listdir(sign_backs_dir):
             if file.endswith('.png'):
                 os.remove(os.path.join(sign_backs_dir, file))
-                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę tła: {file}"))
+                print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę tła [{file}]"))
                 removed_count += 1
 
     # Wyczyść terrain_texture.json (zachowaj tylko nie-polish_road_sign wpisy)
@@ -1002,7 +1002,7 @@ def cleanup_all_files(data):
 
         for key in keys_to_remove:
             del terrain_data['texture_data'][key]
-            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto z terrain_texture.json: {key}"))
+            print_if_not_quiet(ConsoleStyle.warning(f"Usunięto [{key}] z terrain_texture.json"))
             removed_count += 1
 
         with open(terrain_path, 'w') as f:
@@ -1063,7 +1063,7 @@ def update_language_files(data):
         with open(lang_file, 'w', encoding='utf-8') as f:
             for key in sorted_keys:
                 f.write(f"{key}={existing_content[key]}\n")
-            print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano {lang_file} ({len(lang_map[lang])} tłumaczeń)"))
+            print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano [{lang_file}] ({len(lang_map[lang])} tłumaczeń)"))
         total_translations += len(lang_map[lang])
     
     print_if_not_quiet(ConsoleStyle.info(f"Łącznie zaktualizowano {len(languages)} języków i {total_translations} tłumaczeń"))
@@ -1097,7 +1097,7 @@ def update_crafting_catalog(data):
     with open(catalog_path, 'w', encoding='utf-8') as f:
         json.dump(catalog, f, indent=2, ensure_ascii=False)
     
-    print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano {catalog_path}"))
+    print_if_not_quiet(ConsoleStyle.success(f"Zaktualizowano [{catalog_path}]"))
     print_if_not_quiet(ConsoleStyle.info(f"Łącznie {len(groups)} kategorii i {total_items} znaków"))
 
 def update_all_related_files(data):
@@ -1142,7 +1142,7 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
     database_path = "road_signs_full_database.json"
 
     if not os.path.exists(database_path):
-        print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono bazy danych: {database_path}"))
+        print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono bazy danych [{database_path}]"))
         return
 
     # Sprawdź flagę --skip-download / -s
@@ -1185,7 +1185,7 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
         categories = list(data['road_signs'].keys())
         for category in categories:
             if category in data['road_signs']:
-                print_if_not_quiet(ConsoleStyle.section(f"Kategoria {category}"))
+                print_if_not_quiet(ConsoleStyle.section(f"Kategoria [{category}]"))
                 signs = data['road_signs'][category]['signs']
 
                 for sign_id in signs:
@@ -1216,17 +1216,17 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
         category = category_param.upper()
 
         if category not in data['road_signs']:
-            print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono kategorii {category} w bazie danych"))
+            print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono kategorii [{category}] w bazie danych"))
             print_if_not_quiet(ConsoleStyle.info(f"Dostępne kategorie: {', '.join(list(data['road_signs'].keys()))}"))
             return
 
-        print_if_not_quiet(ConsoleStyle.info(f"Przetwarzanie kategorii {category}..."))
+        print_if_not_quiet(ConsoleStyle.info(f"Przetwarzanie kategorii [{category}]..."))
 
         # Wyczyść pliki dla tej kategorii przed przetwarzaniem
         cleanup_category_files(data, category)
 
         signs = data['road_signs'][category]['signs']
-        print_if_not_quiet(ConsoleStyle.info(f"Znaleziono {len(signs)} znaków w kategorii {category}"))
+        print_if_not_quiet(ConsoleStyle.info(f"Znaleziono [{len(signs)}] znaków w kategorii [{category}]"))
 
         for sign_id in signs:
             total_count += 1
@@ -1261,7 +1261,7 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
             # Znajdź znak w bazie
             sign_data = find_sign_in_database(sign_id, data)
             if not sign_data:
-                print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono znaku {sign_id} w bazie danych"))
+                print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono znaku [{sign_id}] w bazie danych"))
                 errors.append(f"{sign_id}: nie znaleziono w bazie")
                 continue
 

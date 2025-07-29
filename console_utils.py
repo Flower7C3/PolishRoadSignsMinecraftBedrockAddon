@@ -49,23 +49,33 @@ class ConsoleStyle:
     TEST = "🧪"
     
     # Kolory ANSI (dla terminali wspierających kolory)
-    RESET = "\033[0m"
-    BOLD = "\033[1m"
-    RED = "\033[31m"
-    GREEN = "\033[32m"
-    YELLOW = "\033[33m"
-    BLUE = "\033[34m"
-    MAGENTA = "\033[35m"
-    CYAN = "\033[36m"
-    WHITE = "\033[37m"
+    FORMAT_RESET = "\033[0m"
+    FORMAT_BOLD = "\033[1m"
+    COLOR_RED = "\033[31m"
+    COLOR_RED_HIGHLIGHT = "\033[91m"
+    COLOR_GREEN = "\033[32m"
+    COLOR_GREEN_HIGHLIGHT = "\033[92m"
+    COLOR_YELLOW = "\033[33m"
+    COLOR_YELLOW_HIGHLIGHT = "\033[93m"
+    COLOR_BLUE = "\033[34m"
+    COLOR_BLUE_HIGHLIGHT = "\033[94m"
+    COLOR_MAGENTA = "\033[35m"
+    COLOR_MAGENTA_HIGHLIGHT = "\033[95m"
+    COLOR_CYAN = "\033[36m"
+    COLOR_WHITE = "\033[37m"
     
     # Style dla różnych typów komunikatów
-    HEADER = f"{BOLD}{CYAN}"
-    SUCCESS_MSG = f"{GREEN}"
-    ERROR_MSG = f"{RED}"
-    WARNING_MSG = f"{YELLOW}"
-    INFO_MSG = f"{BLUE}"
-    PROCESS_MSG = f"{MAGENTA}"
+    HEADER = f"{FORMAT_BOLD}{COLOR_CYAN}"
+    SUCCESS_NORMAL = f"{COLOR_GREEN}"
+    SUCCESS_HIGHLIGHT = f"{COLOR_GREEN_HIGHLIGHT}"
+    ERROR_NORMAL = f"{COLOR_RED}"
+    ERROR_HIGHLIGHT = f"{COLOR_RED_HIGHLIGHT}"
+    WARNING_NORMAL = f"{COLOR_YELLOW}"
+    WARNING_HIGHLIGHT = f"{COLOR_YELLOW_HIGHLIGHT}"
+    INFO_NORMAL = f"{COLOR_BLUE}"
+    INFO_HIGHLIGHT = f"{COLOR_BLUE_HIGHLIGHT}"
+    PROCESS_NORMAL = f"{COLOR_MAGENTA}"
+    PROCESS_HIGHLIGHT = f"{COLOR_MAGENTA_HIGHLIGHT}"
     
     # Tryb cichy
     QUIET_MODE = False
@@ -81,7 +91,7 @@ class ConsoleStyle:
         if ConsoleStyle.QUIET_MODE:
             return None
         if sys.stdout.isatty():
-            return f"{color}{text}{ConsoleStyle.RESET}"
+            return f"{color}{text}{ConsoleStyle.FORMAT_RESET}"
         return text
     
     @staticmethod
@@ -96,47 +106,53 @@ class ConsoleStyle:
         """Stylizuj komunikat sukcesu"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.SUCCESS}  {text}", ConsoleStyle.SUCCESS_MSG)
+        text = text.replace("[", ConsoleStyle.SUCCESS_HIGHLIGHT).replace("]", ConsoleStyle.SUCCESS_NORMAL)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.SUCCESS}  {text}", ConsoleStyle.SUCCESS_NORMAL)
     
     @staticmethod
     def error(text: str) -> str:
-        """Stylizuj komunikat błędu"""
-        return ConsoleStyle.colorize(f"{ConsoleStyle.ERROR}  {text}", ConsoleStyle.ERROR_MSG)
+        """Stylizuj komunikat o błędzie"""
+        text = text.replace("[", ConsoleStyle.ERROR_HIGHLIGHT).replace("]", ConsoleStyle.ERROR_NORMAL)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.ERROR}  {text}", ConsoleStyle.ERROR_NORMAL)
     
     @staticmethod
     def warning(text: str) -> str:
         """Stylizuj komunikat ostrzeżenia"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.WARNING}  {text}", ConsoleStyle.WARNING_MSG)
+        text = text.replace("[", ConsoleStyle.WARNING_HIGHLIGHT).replace("]", ConsoleStyle.WARNING_NORMAL)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.WARNING}  {text}", ConsoleStyle.WARNING_NORMAL)
     
     @staticmethod
     def delete(text: str) -> str:
         """Stylizuj komunikat usuwania"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.DELETE}  {text}", ConsoleStyle.WARNING_MSG)
+        text = text.replace("[", ConsoleStyle.WARNING_HIGHLIGHT).replace("]", ConsoleStyle.WARNING_NORMAL)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.DELETE}  {text}", ConsoleStyle.WARNING_NORMAL)
 
     @staticmethod
     def info(text: str) -> str:
         """Stylizuj komunikat informacyjny"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.INFO}  {text}", ConsoleStyle.INFO_MSG)
+        text = text.replace("[", ConsoleStyle.INFO_HIGHLIGHT).replace("]", ConsoleStyle.INFO_NORMAL)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.INFO}  {text}", ConsoleStyle.INFO_NORMAL)
     
     @staticmethod
     def process(text: str) -> str:
         """Stylizuj komunikat procesu"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"{ConsoleStyle.PROCESSING}  {text}", ConsoleStyle.PROCESS_MSG)
+        text = text.replace("[", ConsoleStyle.PROCESS_HIGHLIGHT).replace("]", ConsoleStyle.PROCESS_NORMAL)
+        return ConsoleStyle.colorize(f"{ConsoleStyle.PROCESSING}  {text}", ConsoleStyle.PROCESS_NORMAL)
     
     @staticmethod
     def section(title: str) -> str:
         """Stylizuj tytuł sekcji"""
         if ConsoleStyle.QUIET_MODE:
             return None
-        return ConsoleStyle.colorize(f"\n{title}", ConsoleStyle.HEADER + ConsoleStyle.BOLD)
+        return ConsoleStyle.colorize(f"\n{title}", ConsoleStyle.HEADER + ConsoleStyle.FORMAT_BOLD)
     
     @staticmethod
     def divider(char: str = "=", length: int = 50) -> str:
@@ -173,8 +189,8 @@ class ConsoleStyle:
         if ConsoleStyle.QUIET_MODE or not stats_dict:
             return
         
-        print(ConsoleStyle.section(title))
-        max_key_length = max(len(str(key)) for key in stats_dict.keys())
+        ConsoleStyle.print_section(title)
+        max_key_length = max(len(str(key)) for key in stats_dict.keys()) + 2
         
         for key, value in stats_dict.items():
             key_padded = str(key).ljust(max_key_length)
