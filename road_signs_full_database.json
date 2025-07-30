@@ -1,6 +1,6 @@
 {
   "road_signs": {
-    "A": {
+    "a": {
       "crafting_group": "warning_signs",
       "icon": "a_30",
       "translations": {
@@ -474,7 +474,7 @@
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_ostrzegawcze_w_Polsce",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-ostrzegawcze.html"
     },
-    "B": {
+    "b": {
       "crafting_group": "prohibition_signs",
       "icon": "b_1",
       "translations": {
@@ -1157,7 +1157,7 @@
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_zakazu_w_Polsce",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-zakazu.html"
     },
-    "C": {
+    "c": {
       "crafting_group": "mandatory_signs",
       "icon": "c_5",
       "translations": {
@@ -1433,7 +1433,7 @@
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_nakazu_w_Polsce",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-nakazu.html"
     },
-    "D": {
+    "d": {
       "crafting_group": "information_signs",
       "icon": "d_1",
       "translations": {
@@ -2322,7 +2322,7 @@
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_informacyjne_w_Polsce",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-informacyjne.html"
     },
-    "F": {
+    "f": {
       "crafting_group": "additional_signs",
       "icon": "f_2a",
       "translations": {
@@ -2345,7 +2345,7 @@
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_uzupe%C5%82niaj%C4%85ce",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-uzupelniajace.html"
     },
-    "T": {
+    "t": {
       "crafting_group": "road_sign_plates",
       "icon": "t_13",
       "translations": {
@@ -2823,7 +2823,7 @@
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Tabliczki_do_znaków_drogowych",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/tabliczki.html"
     },
-    "G": {
+    "g": {
       "crafting_group": "road_railway_crossing_signs",
       "icon": "g_3",
       "translations": {
@@ -2934,7 +2934,7 @@
       "wikipedia_category_page": "https://pl.wikipedia.org/wiki/Znaki_dodatkowe#Dodatkowe_znaki_przed_przejazdami_kolejowo-drogowymi",
       "sizes_category_page": "https://www.znaki-rawicz.pl/produkcja-znakow-i-oznakowania/znaki-drogowe/znaki-informacyjne.html"
     },
-    "U": {
+    "u": {
       "crafting_group": "traffic_safety_devices",
       "icon": "u_4a",
       "translations": {

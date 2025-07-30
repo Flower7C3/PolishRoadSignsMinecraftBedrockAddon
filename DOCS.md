@@ -1,4 +1,4 @@
-# Polish Road Signs - Dokumentacja techniczna
+# Polish Road Signs – Dokumentacja techniczna
 
 ## 📚 Przegląd techniczny
 
@@ -6,8 +6,8 @@
 
 Addon składa się z dwóch głównych komponentów:
 
-1. **Behavior Pack (BP)** - definiuje logikę bloków
-2. **Resource Pack (RP)** - zawiera tekstury i tłumaczenia
+1. **Behavior Pack (BP)** – definiuje logikę bloków
+2. **Resource Pack (RP)** – zawiera tekstury i tłumaczenia
 
 ### Struktura plików
 
@@ -96,8 +96,8 @@ RP/
 - **Identifier**: `polish_road_sign:sign_code`
 - **Geometry**: Różne modele w zależności od kształtu znaku
 - **Textures**:
-  - `*` - szary beton (ramka)
-  - `south` - tekstura znaku (przezroczysta)
+  - `*` – szary beton (ramka)
+  - `south` – tekstura znaku (przezroczysta)
 - **Collision**: 16x16x2 piksele
 - **Placement**: 4 kierunki (N, S, E, W)
 
@@ -124,7 +124,7 @@ RP/
 - **Tekstury**: `textures/blocks/category/sign_code.png`
 - **Klucze**: `sign_code` (np. `a_1`, `b_20`)
 - **Format**: PNG z przezroczystością
-- **Rozmiar**: 128x128 pikseli (skalowane z zachowaniem proporcji)
+- **Rozmiar**: 128 x 128 pikseli (skalowane z zachowaniem proporcji)
 - **Tła**: Neutralne białe tło dla wszystkich znaków (automatycznie generowane)
 
 ### Tekstury tła
@@ -261,29 +261,29 @@ Sprawdza integralność całego projektu:
 - Wykrywa nadmiarowe/brakujące pliki
 
 ### build.py
-Buduje pakiety Minecraft (.mcaddon i/lub .mcpack):
-- **--mcaddon** / **-m** - Buduje tylko pakiet .mcaddon
-- **--mcpack** / **-p** - Buduje tylko pakiety .mcpack (BP i RP)
-- **--all** / **-a** - Buduje wszystkie formaty
-- **--no-bump** / **-n** - Nie zwiększa wersji (używa obecnej)
-- **--test-on-local** / **-t** - Automatycznie zainstaluj i przetestuj lokalnie
-- **--no-clean** / **-c** - Nie usuwaj starych pakietów przed instalacją
+Buduje pakiety Minecraft (`.mcaddon` i/lub `.mcpack`):
+- **--mcaddon** / **-m** – Buduje tylko pakiet `.mcaddon`
+- **--mcpack** / **-p** – Buduje tylko pakiety `.mcpack` (BP i RP)
+- **--all** / **-a** – Buduje wszystkie formaty
+- **--no-bump** / **-n** – Nie zwiększa wersji (używa obecnej)
+- **--test-on-local** / **-t** – Automatycznie zainstaluj i przetestuj lokalnie
+- **--no-clean** / **-c** – Nie usuwaj starych pakietów przed instalacją
 - Automatycznie zwiększa wersję (chyba że użyto --no-bump)
 - Tworzy strukturę BP i RP
 - Pakuje do odpowiednich formatów
 
 ### generate_examples.py
 Generuje przykładowe komendy testowe i deweloperskie:
-- **--test** / **-t** - Generuje komendy testowe dla różnych kombinacji kształtów/wymiarów
-- **--dev** / **-d** - Generuje komendy deweloperskie (weryfikacja, budowanie, testowanie)
+- **--test** / **-t** – Generuje komendy testowe dla różnych kombinacji kształtów/wymiarów
+- **--dev** / **-d** – Generuje komendy deweloperskie (weryfikacja, budowanie, testowanie)
 - Automatycznie wykrywa kombinacje kształtów i wymiarów z bazy danych
 - Generuje komendy z `--test-on-local` dla automatycznego testowania
 
 ### road_sign_processor.py
 Przetwarza znaki drogowe:
-- **--skip-download** / **-s** - Tryb offline (użyj lokalnych plików SVG)
-- **--force-rebuild** / **-f** - Wymuś przebudowanie tekstur
-- **--quiet** / **-q** - Tryb cichy (tylko błędy)
+- **--skip-download** / **-s** – Tryb offline (użyj lokalnych plików SVG)
+- **--force-rebuild** / **-f** – Wymuś przebudowanie tekstur
+- **--quiet** / **-q** – Tryb cichy (tylko błędy)
 - Pobiera SVG z Wikipedii przez .fullImageLink
 - Skaluje z zachowaniem proporcji
 - Konwertuje SVG→PNG używając Inkscape

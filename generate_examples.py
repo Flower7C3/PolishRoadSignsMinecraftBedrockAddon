@@ -2,7 +2,7 @@
 import json
 import sys
 from collections import Counter
-from console_utils import ConsoleStyle, print_header, print_usage
+from console_utils import ConsoleStyle, print_if_not_quiet
 
 
 def get_example_combinations():
@@ -33,51 +33,48 @@ def generate_test_commands():
     """Generate test commands for different combinations"""
     shape_size_combinations, shape_size_examples = get_example_combinations()
     
-    print(ConsoleStyle.section("GENEROWANIE PRZYKŁADOWYCH KOMEND TESTOWYCH"))
-    print(ConsoleStyle.divider())
+    print_if_not_quiet(ConsoleStyle.section("GENEROWANIE PRZYKŁADOWYCH KOMEND TESTOWYCH"))
 
     # Show combinations
-    print(f"🔗 KOMBINACJE KSZTAŁTÓW I WYMIARÓW ({len(shape_size_combinations)})")
+    print_if_not_quiet(ConsoleStyle.info(f"🔗 KOMBINACJE KSZTAŁTÓW I WYMIARÓW ({len(shape_size_combinations)})"))
     example_combinations = set()
     for combination, count in shape_size_combinations.items():
         shape, size = combination.split('_', 1)
         example_combinations.add(shape_size_examples[combination])
-        print(f"  - {shape} {size}: {count} znaków (przykład: {shape_size_examples[combination]})")
+        print_if_not_quiet(ConsoleStyle.info(f"  - {shape} {size}: {count} znaków (przykład: {shape_size_examples[combination]})"))
 
     # Generate test commands
-    print(f"\n🖥️ KOMENDY TESTOWE")
-    print(ConsoleStyle.divider())
+    print_if_not_quiet(ConsoleStyle.section("KOMENDY TESTOWE"))
     
     # Basic test command
     basic_command = f"python3 road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} -s -f"
-    print(f"📋 Test wszystkich kombinacji:")
-    print(f"  {basic_command}")
+    print_if_not_quiet(ConsoleStyle.info(f"📋 Test wszystkich kombinacji:"))
+    print_if_not_quiet(ConsoleStyle.info(f"  {basic_command}"))
     
     # Build and test command
     build_test_command = f"{basic_command} && python3 build.py -m -t"
-    print(f"\n🚀 Test z budowaniem i instalacją:")
-    print(f"  {build_test_command}")
+    print_if_not_quiet(ConsoleStyle.info(f"\n🚀 Test z budowaniem i instalacją:"))
+    print_if_not_quiet(ConsoleStyle.info(f"  {build_test_command}"))
     
     # Individual category tests
-    print(f"\n📂 Testy pojedynczych kategorii:")
+    print_if_not_quiet(ConsoleStyle.info(f"\n📂 Testy pojedynczych kategorii:"))
     categories = ['A', 'B', 'C', 'D', 'F', 'G', 'T', 'U']
     for category in categories:
         category_command = f"python3 road_sign_processor.py category:{category} -s -f && python3 build.py -m -t"
-        print(f"  Kategoria {category}: {category_command}")
+        print_if_not_quiet(ConsoleStyle.info(f"  Kategoria {category}: {category_command}"))
     
     # Quick test with few examples
     quick_examples = list(example_combinations)[:5]  # First 5 examples
     quick_command = f"python3 road_sign_processor.py {' '.join(quick_examples)} -s -f && python3 build.py -m -t"
-    print(f"\n⚡ Szybki test (5 przykładów):")
-    print(f"  {quick_command}")
+    print_if_not_quiet(ConsoleStyle.info(f"\n⚡ Szybki test (5 przykładów):"))
+    print_if_not_quiet(ConsoleStyle.info(f"  {quick_command}"))
     
     return example_combinations
 
 
 def generate_development_commands():
     """Generate development workflow commands"""
-    print(ConsoleStyle.section("KOMENDY PRACY DEWELOPERSKIEJ"))
-    print(ConsoleStyle.divider())
+    print_if_not_quiet(ConsoleStyle.section("KOMENDY PRACY DEWELOPERSKIEJ"))
     
     commands = [
         ("🔍 Weryfikacja projektu", "python3 verify_all.py"),
@@ -89,9 +86,9 @@ def generate_development_commands():
     ]
     
     for description, command in commands:
-        print(f"{description}:")
-        print(f"  {command}")
-        print()
+        print_if_not_quiet(ConsoleStyle.info(f"{description}:"))
+        print_if_not_quiet(ConsoleStyle.info(f"  {command}"))
+        print_if_not_quiet(ConsoleStyle.divider('-'))
 
 
 def main():
@@ -123,16 +120,16 @@ Przykłady użycia:
         args.test = True
         args.dev = True
     
-    print_header("GENEROWANIE PRZYKŁADOWYCH KOMEND")
+    ConsoleStyle.print_section("GENEROWANIE PRZYKŁADOWYCH KOMEND")
     
     if args.test:
         generate_test_commands()
-        print(ConsoleStyle.divider())
+        print_if_not_quiet(ConsoleStyle.divider())
     
     if args.dev:
         generate_development_commands()
     
-    print(ConsoleStyle.success("✅ Generowanie komend zakończone!"))
+    print_if_not_quiet(ConsoleStyle.success("Generowanie komend zakończone!"))
 
 
 if __name__ == "__main__":

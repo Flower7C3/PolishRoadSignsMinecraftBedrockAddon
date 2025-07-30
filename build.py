@@ -11,7 +11,7 @@ import sys
 import argparse
 from datetime import datetime
 from pathlib import Path
-from console_utils import ConsoleStyle, print_header, print_installation_info
+from console_utils import ConsoleStyle
 
 # Pack name from directory name
 PACK_NAME = os.path.basename(os.getcwd())
@@ -85,7 +85,7 @@ def install_mcaddon(mcaddon_path, clean_existing=True):
             file_count += 1
 
     print(ConsoleStyle.success(f"Installed [{file_count}] files"))
-    print_installation_info(PACK_NAME, mc_dir)
+    ConsoleStyle.print_installation_info(PACK_NAME, mc_dir)
     return True
 
 
@@ -126,12 +126,15 @@ def update_version(file_path, new_version):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
-def build_mcaddon(bp_version, rp_version, plugin_name, output_dir, timestamp):
+def build_mcaddon(bp_version, rp_version, plugin_name, output_dir, timestamp, simplify_name):
     """Build the .mcaddon package"""
-    print(ConsoleStyle.process("Building .mcaddon package..."))
-
-    mcaddon_name = f"{plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcaddon"
+    if simplify_name:
+        mcaddon_name = f"{plugin_name}.mcaddon"
+    else:
+        mcaddon_name = f"{plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcaddon"
     mcaddon_path = os.path.join(output_dir, mcaddon_name)
+
+    print(ConsoleStyle.process(f"Building {mcaddon_name}..."))
 
     with zipfile.ZipFile(mcaddon_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         # Add BP files
@@ -153,21 +156,22 @@ def build_mcaddon(bp_version, rp_version, plugin_name, output_dir, timestamp):
                 zipf.write(file_path, arc_name)
 
     mcaddon_size = os.path.getsize(mcaddon_path) / 1024 / 1024
-    print(ConsoleStyle.success(f"Created {mcaddon_name} ({mcaddon_size:.2f} MB)"))
+    ConsoleStyle.print_build_info("MCADDON", mcaddon_path, f"{mcaddon_size:.2f} MB")
 
     return mcaddon_path, mcaddon_size
 
 
-def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp):
+def build_mcpack(bp_version, rp_version, bp_plugin_name, rp_plugin_name, output_dir, timestamp, simplify_name):
     """Build separate .mcpack files for BP and RP"""
-    print(ConsoleStyle.process("Building .mcpack packages..."))
 
     # Build BP .mcpack
-    bp_plugin_name = bp_name.replace(" BP", "").replace(" ", "")
-    bp_mcpack_name = f"{bp_plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcpack"
+    if simplify_name:
+        bp_mcpack_name = f"{bp_plugin_name}.mcpack"
+    else:
+        bp_mcpack_name = f"{bp_plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcpack"
     bp_mcpack_path = os.path.join(output_dir, bp_mcpack_name)
 
-    print(ConsoleStyle.process(f"Building {bp_mcpack_path}..."))
+    print(ConsoleStyle.process(f"Building {bp_mcpack_name}..."))
 
     with zipfile.ZipFile(bp_mcpack_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, dirs, files in os.walk('BP'):
@@ -178,12 +182,14 @@ def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp
                 arc_name = file_path
                 zipf.write(file_path, arc_name)
 
-    print(ConsoleStyle.success(f"BP utworzony: {bp_mcpack_path}"))
-    print(ConsoleStyle.info(f"Rozmiar BP: {os.path.getsize(bp_mcpack_path) / 1024:.2f} KB"))
+    bp_size = os.path.getsize(bp_mcpack_path) / 1024 / 1024
+    ConsoleStyle.print_build_info("BP MCPACK", bp_mcpack_path, f"{bp_size:.2f} MB")
 
     # Build RP .mcpack
-    rp_plugin_name = rp_name.replace(" RP", "").replace(" ", "")
-    rp_mcpack_name = f"{rp_plugin_name}_v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}_{timestamp}.mcpack"
+    if simplify_name:
+        rp_mcpack_name = f"{rp_plugin_name}.mcpack"
+    else:
+        rp_mcpack_name = f"{rp_plugin_name}_v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}_{timestamp}.mcpack"
     rp_mcpack_path = os.path.join(output_dir, rp_mcpack_name)
 
     print(ConsoleStyle.process(f"Building {rp_mcpack_path}..."))
@@ -197,12 +203,8 @@ def build_mcpack(bp_version, rp_version, bp_name, rp_name, output_dir, timestamp
                 arc_name = file_path
                 zipf.write(file_path, arc_name)
 
-    # Calculate sizes after both files are created
-    bp_size = os.path.getsize(bp_mcpack_path) / 1024 / 1024
     rp_size = os.path.getsize(rp_mcpack_path) / 1024 / 1024
-
-    print(ConsoleStyle.success(f"Created {bp_mcpack_path} ({bp_size:.2f} MB)"))
-    print(ConsoleStyle.success(f"Created {rp_mcpack_path} ({rp_size:.2f} MB)"))
+    ConsoleStyle.print_build_info("RP MCPACK", rp_mcpack_path, f"{rp_size:.2f} MB")
 
     return bp_mcpack_path, rp_mcpack_path, bp_size, rp_size
 
@@ -235,6 +237,8 @@ examples:
     parser.add_argument("--test-on-local", '-t', action="store_true", help="install to local Minecraft after building")
     parser.add_argument('--no-clean', '-c', action='store_true',
                         help='do not clean old packages before installation (only with --test-on-local)')
+    parser.add_argument('--simplify-name', '-s', action='store_true',
+                        help='simplify package file name (do not append version and timestamp)')
     parser.add_argument("--output", '-o', default="dist", help="output directory")
 
     args = parser.parse_args()
@@ -243,7 +247,7 @@ examples:
         parser.print_help()
         return
 
-    print_header("🏗️ BUILDING MINECRAFT PACKAGES")
+    ConsoleStyle.print_section("🏗️ BUILDING MINECRAFT PACKAGES")
 
     # Read current versions and names
     bp_name, bp_version = read_manifest('BP/manifest.json')
@@ -280,21 +284,22 @@ examples:
     rp_mcpack_path = None
 
     if args.mcaddon or args.all:
-        mcaddon_path, mcaddon_size = build_mcaddon(bp_version, rp_version, PACK_NAME, args.output, timestamp)
+        mcaddon_path, mcaddon_size = build_mcaddon(bp_version, rp_version, PACK_NAME, args.output, timestamp,
+                                                   args.simplify_name)
 
     if args.mcpack or args.all:
         bp_mcpack_path, rp_mcpack_path, bp_size, rp_size = build_mcpack(
-            bp_version, rp_version, f"{PACK_NAME}_BP", f"{PACK_NAME}_RP", args.output, timestamp
+            bp_version, rp_version, f"{PACK_NAME}_BP", f"{PACK_NAME}_RP", args.output, timestamp, args.simplify_name
         )
 
-    # Count files
-    file_count = count_files()
-
-    ConsoleStyle.print_section("BUILD SUMMARY", f"📦 Total files: {file_count}")
+    stats = {
+        "📦Total files": count_files()
+    }
     if mcaddon_path:
-        print(f"📦 .mcaddon: {os.path.basename(mcaddon_path)}")
+        stats["📦 .mcaddon"] = os.path.basename(mcaddon_path)
     if bp_mcpack_path and rp_mcpack_path:
-        print(f"📦 .mcpack: {os.path.basename(bp_mcpack_path)}, {os.path.basename(rp_mcpack_path)}")
+        stats["📦 .mcpack"] = f"{os.path.basename(bp_mcpack_path)}, {os.path.basename(rp_mcpack_path)}"
+    ConsoleStyle.print_stats(stats, "BUILD SUMMARY")
 
     # Install to local Minecraft if requested
     if args.test_on_local:

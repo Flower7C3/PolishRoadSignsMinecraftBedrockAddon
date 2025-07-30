@@ -8,7 +8,7 @@ import time
 import tempfile
 import argparse
 from natsort import natsorted
-from console_utils import ConsoleStyle, print_usage, print_header, print_if_not_quiet
+from console_utils import ConsoleStyle, print_if_not_quiet
 
 
 def scale_size_from_mm_to_px(value):
@@ -253,11 +253,15 @@ def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, textur
 
     # Pobierz odpowiednią teksturę tła na podstawie kształtu
     reverse_texture_name = get_reverse_texture_for_shape(sign_shape, sign_width, sign_height)
-    reverse_texture_path = f"RP/textures/blocks/reverse/{reverse_texture_name}.png"
+    reverse_texture_dir = f"RP/textures/blocks/reverse/"
+    reverse_texture_path = f"{reverse_texture_dir}{reverse_texture_name}.png"
 
     if os.path.exists(reverse_texture_path) and not force_rebuild:
         print_if_not_quiet(ConsoleStyle.success(f"Tekstura tła już istnieje [{reverse_texture_name}]"))
         return reverse_texture_name
+
+    # Utwórz katalog, jeśli nie istnieje
+    os.makedirs(os.path.dirname(reverse_texture_dir), exist_ok=True)
 
     # Sprawdź, czy trzeba zrobić kwadrat (width < height)
     if texture_width < texture_height:
@@ -587,7 +591,6 @@ def process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database
     target_height = scale_size_from_mm_to_px(sign_height)
     print_if_not_quiet(ConsoleStyle.section(f"Przetwarzanie znaku [{sign_id}]"))
     print_if_not_quiet(ConsoleStyle.info(f"Kształt: {sign_shape}, Wymiary: {sign_width}x{sign_height}, Wyrównanie: {vertical_alignment}"))
-    print_if_not_quiet(ConsoleStyle.divider("-", 30))
 
     if not create_averse_texture_if_needed(sign_id, target_width, target_height, wikipedia_file_page, skip_download, force_rebuild):
         return False
@@ -790,7 +793,8 @@ def convert_svg_to_png(svg_path, png_path, target_width, target_height):
 def update_block_if_needed(sign_id, model_name, reverse_texture_name, sign_width, sign_height, vertical_alignment="bottom"):
     print_if_not_quiet(ConsoleStyle.section("TWORZENIE BLOKU"))
     category = sign_id.split('_')[0]
-    block_path = f"BP/blocks/{category}/{sign_id}.block.json"
+    category_lower = category.lower()
+    block_path = f"BP/blocks/{category_lower}/{sign_id}.block.json"
     new_block = False
     # Utwórz lub zaktualizuj definicję bloku
     if not os.path.exists(block_path):
@@ -819,8 +823,7 @@ def update_block_if_needed(sign_id, model_name, reverse_texture_name, sign_width
 
 def cleanup_category_files(data, category):
     """Usuń pliki dla konkretnej kategorii"""
-    print_if_not_quiet(ConsoleStyle.section(f"CZYSZCZENIE KATEGORII {category}"))
-    print_if_not_quiet(ConsoleStyle.divider())
+    ConsoleStyle.print_section(f"CZYSZCZENIE KATEGORII {category}")
 
     category_lower = category.lower()
     removed_count = 0
@@ -867,13 +870,12 @@ def cleanup_category_files(data, category):
         print_if_not_quiet(ConsoleStyle.success(f"Czyszczenie kategorii [{category}] zakończone - usunięto {removed_count} plików"))
     else:
         print_if_not_quiet(ConsoleStyle.info(f"Brak plików do usunięcia w kategorii [{category}]"))
-    print()
+    print_if_not_quiet(ConsoleStyle.divider())
 
 
 def cleanup_orphaned_files(data):
     """Usuń pliki dla znaków, które nie istnieją w bazie danych"""
-    print_if_not_quiet(ConsoleStyle.section("CZYSZCZENIE OSIEROCONYCH PLIKÓW"))
-    print_if_not_quiet(ConsoleStyle.divider())
+    ConsoleStyle.print_section("CZYSZCZENIE OSIEROCONYCH PLIKÓW")
 
     # Zbierz wszystkie znaki z bazy danych
     database_signs = set()
@@ -935,12 +937,11 @@ def cleanup_orphaned_files(data):
         print_if_not_quiet(ConsoleStyle.success(f"Czyszczenie zakończone - usunięto {removed_count} plików"))
     else:
         print_if_not_quiet(ConsoleStyle.info("Brak plików do usunięcia"))
-    print()
+    print_if_not_quiet(ConsoleStyle.divider())
 
 def cleanup_all_files(data):
     """Usuń wszystkie istniejące bloki, modele, tekstury PNG i ich definicje"""
-    print_if_not_quiet(ConsoleStyle.section("CZYSZCZENIE WSZYSTKICH PLIKÓW"))
-    print_if_not_quiet(ConsoleStyle.divider())
+    ConsoleStyle.print_section("CZYSZCZENIE WSZYSTKICH PLIKÓW")
 
     # Pobierz kategorie z bazy danych
     categories = list(data['road_signs'].keys())
@@ -1012,7 +1013,7 @@ def cleanup_all_files(data):
         print_if_not_quiet(ConsoleStyle.success(f"Czyszczenie zakończone - usunięto {removed_count} plików"))
     else:
         print_if_not_quiet(ConsoleStyle.info("Brak plików do usunięcia"))
-    print()
+    print_if_not_quiet(ConsoleStyle.divider())
 
 
 def get_all_languages(data):
@@ -1028,8 +1029,7 @@ def get_all_languages(data):
 
 def update_language_files(data):
     """Aktualizuj pliki językowych na podstawie bazy danych"""
-    print_if_not_quiet(ConsoleStyle.section("AKTUALIZACJA PLIKÓW JĘZYKOWYCH"))
-    print_if_not_quiet(ConsoleStyle.divider("-", 40))
+    ConsoleStyle.print_section("AKTUALIZACJA PLIKÓW JĘZYKOWYCH")
     
     languages = get_all_languages(data)
     lang_map = {lang: {} for lang in languages}
@@ -1069,8 +1069,7 @@ def update_language_files(data):
     print_if_not_quiet(ConsoleStyle.info(f"Łącznie zaktualizowano {len(languages)} języków i {total_translations} tłumaczeń"))
 
 def update_crafting_catalog(data):
-    print_if_not_quiet(ConsoleStyle.section("AKTUALIZACJA KATALOGU CRAFTING"))
-    print_if_not_quiet(ConsoleStyle.divider("-", 40))
+    ConsoleStyle.print_section("AKTUALIZACJA KATALOGU CRAFTING")
     
     catalog_path = "BP/item_catalog/crafting_item_catalog.json"
     with open(catalog_path, 'r', encoding='utf-8') as f:
@@ -1138,7 +1137,7 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
     parser.add_argument('--quiet', '-q', action='store_true', help='Tryb cichy (tylko błędy)')
     
     args = parser.parse_args()
-    
+
     database_path = "road_signs_full_database.json"
 
     if not os.path.exists(database_path):
@@ -1150,13 +1149,11 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
     if skip_download:
         print_if_not_quiet(ConsoleStyle.info("Tryb offline: pomijam pobieranie plików SVG z internetu"))
         print_if_not_quiet(ConsoleStyle.info("Używam lokalnych plików SVG"))
-        print()
 
     # Sprawdź flagę --force-rebuild / -f
     force_rebuild = args.force_rebuild
     if force_rebuild:
         print_if_not_quiet(ConsoleStyle.process("Tryb wymuszenia przebudowania: usuwam istniejące tekstury przed przetwarzaniem"))
-        print()
 
     # Sprawdź flagę --quiet / -q
     quiet_mode = args.quiet
@@ -1167,8 +1164,7 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
     with open(database_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    print_if_not_quiet(ConsoleStyle.section("PRZETWARZANIE ZNAKÓW DROGOWYCH"))
-    print_if_not_quiet(ConsoleStyle.divider())
+    ConsoleStyle.print_section("PRZETWARZANIE ZNAKÓW DROGOWYCH")
 
     success_count = 0
     total_count = 0
@@ -1293,6 +1289,8 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
     if success_count > 0:
         update_all_related_files(data)
 
+    print_if_not_quiet(ConsoleStyle.divider())
+    print_if_not_quiet(ConsoleStyle.success("Wszystkie operacje zakończone pomyślnie!"))
     print_if_not_quiet(ConsoleStyle.divider())
 
 
