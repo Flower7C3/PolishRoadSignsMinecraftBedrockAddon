@@ -252,7 +252,7 @@ def verify_translations():
                 database_categories = set()
                 for category in data['road_signs']:
                     group_name = data['road_signs'][category]['crafting_group']
-                    database_categories.add(f'{group_name}')
+                    database_categories.add(f"{group_name}")
                     for sign_id in data['road_signs'][category]['signs']:
                         database_blocks.add(sign_id)
 
@@ -295,7 +295,7 @@ def verify_translations():
                                 warnings.append(f"Error reading crafting catalog: {e}")
 
                             stats[ConsoleStyle.info("Items in lang file")] \
-                                = f'{len(lang_file_category_translations) + len(lang_file_block_translations)}'
+                                = f"{len(lang_file_category_translations) + len(lang_file_block_translations)}"
 
                             stats[ConsoleStyle.info("   Categories in lang file")] \
                                 = len(lang_file_category_translations)
@@ -310,27 +310,37 @@ def verify_translations():
                                 = len(project_block_translations)
 
                             lang_file_extra_categories = lang_file_category_translations - project_category_translations
-                            stats[ConsoleStyle.info("Extra categories in lang file") if lang_file_extra_categories else ConsoleStyle.info("Extra categories in lang file") ] \
-                                = f'[{len(lang_file_extra_categories)}] ({', '.join(sorted(lang_file_extra_categories))})' if lang_file_extra_categories else 0
+                            stats[ConsoleStyle.info(
+                                "Extra categories in lang file") if lang_file_extra_categories else ConsoleStyle.info(
+                                "Extra categories in lang file")] \
+                                = f"[{len(lang_file_extra_categories)}] ({', '.join(sorted(lang_file_extra_categories))})" if lang_file_extra_categories else 0
                             if lang_file_extra_categories:
-                                warnings.append(f"Extra [{len(lang_file_extra_categories)}] categories in [{lang_name}] lang file")
+                                warnings.append(
+                                    f"Extra [{len(lang_file_extra_categories)}] categories in [{lang_name}] lang file")
 
                             lang_file_extra_blocks = lang_file_block_translations - project_block_translations
-                            stats[ConsoleStyle.error("Extra blocks in lang file") if lang_file_extra_blocks else ConsoleStyle.info("Extra blocks in lang file") ] \
-                                = f'[{len(lang_file_extra_blocks)}] ({', '.join(sorted(lang_file_extra_blocks))})' if lang_file_extra_blocks else 0
+                            stats[ConsoleStyle.error(
+                                "Extra blocks in lang file") if lang_file_extra_blocks else ConsoleStyle.info(
+                                "Extra blocks in lang file")] \
+                                = f"[{len(lang_file_extra_blocks)}] ({', '.join(sorted(lang_file_extra_blocks))})" if lang_file_extra_blocks else 0
                             if lang_file_extra_blocks:
-                                warnings.append(f"Extra [{len(lang_file_extra_blocks)}] blocks in [{lang_name}] lang file")
+                                warnings.append(
+                                    f"Extra [{len(lang_file_extra_blocks)}] blocks in [{lang_name}] lang file")
 
                             lang_file_missing_categories = project_category_translations - lang_file_category_translations
-                            stats[ConsoleStyle.error("Missing categories defined in lang file") if lang_file_missing_categories else ConsoleStyle.info("Missing categories defined in lang file") ] \
-                                = f'[{len(lang_file_missing_categories)}] ({', '.join(sorted(lang_file_missing_categories))})' if lang_file_missing_categories else 0
+                            stats[ConsoleStyle.error(
+                                "Missing categories defined in lang file") if lang_file_missing_categories else ConsoleStyle.info(
+                                "Missing categories defined in lang file")] \
+                                = f"[{len(lang_file_missing_categories)}] ({', '.join(sorted(lang_file_missing_categories))})" if lang_file_missing_categories else 0
                             if lang_file_missing_categories:
                                 warnings.append(
                                     f"Missing [{len(lang_file_missing_categories)}] categories defined in [{lang_name}] lang file")
 
                             lang_file_missing_blocks = project_block_translations - lang_file_block_translations
-                            stats[ConsoleStyle.error("Missing blocks defined in lang file") if lang_file_missing_blocks else ConsoleStyle.info("Missing blocks defined in lang file") ] \
-                                = f'[{len(lang_file_missing_blocks)}] ({', '.join(sorted(lang_file_missing_blocks))})' if lang_file_missing_blocks else 0
+                            stats[ConsoleStyle.error(
+                                "Missing blocks defined in lang file") if lang_file_missing_blocks else ConsoleStyle.info(
+                                "Missing blocks defined in lang file")] \
+                                = f"[{len(lang_file_missing_blocks)}] ({', '.join(sorted(lang_file_missing_blocks))})" if lang_file_missing_blocks else 0
                             if lang_file_missing_blocks:
                                 warnings.append(
                                     f"Missing [{len(lang_file_missing_blocks)}] blocks from defined in [{lang_name}] lang file")
@@ -339,14 +349,18 @@ def verify_translations():
                             stats[ConsoleStyle.info("   Categories in database")] = len(database_categories)
                             stats[ConsoleStyle.info("   Blocks in database")] = len(database_blocks)
                             database_missing_categories = database_categories - lang_file_category_translations
-                            stats[ConsoleStyle.error("Missing categories from database") if database_missing_categories else ConsoleStyle.info("Missing categories from database") ] \
-                                = f'[{len(database_missing_categories)}] ({', '.join(sorted(database_missing_categories))})' if database_missing_categories else 0
+                            stats[ConsoleStyle.error(
+                                "Missing categories from database") if database_missing_categories else ConsoleStyle.info(
+                                "Missing categories from database")] \
+                                = f"[{len(database_missing_categories)}] ({', '.join(sorted(database_missing_categories))})" if database_missing_categories else 0
                             if database_missing_categories:
                                 warnings.append(
                                     f"Missing [{len(database_missing_categories)}] from database in [{lang_name}]")
                             database_missing_blocks = database_blocks - project_block_translations
-                            stats[ConsoleStyle.error("Missing blocks from database") if database_missing_blocks else ConsoleStyle.info("Missing blocks from database") ] \
-                                = f'[{len(database_missing_blocks)}] ({', '.join(sorted(database_missing_blocks))})' if database_missing_blocks else 0
+                            stats[ConsoleStyle.error(
+                                "Missing blocks from database") if database_missing_blocks else ConsoleStyle.info(
+                                "Missing blocks from database")] \
+                                = f"[{len(database_missing_blocks)}] ({', '.join(sorted(database_missing_blocks))})" if database_missing_blocks else 0
                             if database_missing_blocks:
                                 warnings.append(
                                     f"Missing [{len(database_missing_blocks)}] from database in [{lang_name}]")
@@ -459,7 +473,7 @@ def get_texture_dimensions(texture_path):
     try:
         with Image.open(texture_path) as img:
             return img.size[0], img.size[1]
-    except Exception as e:
+    except Exception:
         return None, None
 
 
@@ -479,7 +493,7 @@ def get_model_dimensions(model_path):
                     return description['texture_width'], description['texture_height']
 
         return None, None
-    except Exception as e:
+    except Exception:
         return None, None
 
 
@@ -696,10 +710,11 @@ def verify_blocks_comprehensive():
         file_extra_blocks = file_block_signs - database_blocks
         database_extra_blocks = database_blocks - file_block_signs
 
-        stats = {ConsoleStyle.success("Loaded"): f"[{file_blocks_found}]"}
-        stats[ConsoleStyle.error(f"Missing blocks") if file_blocks_missing else ConsoleStyle.info(
-            f"Missing blocks")] \
-            = f"[{len(file_blocks_missing)}] ({', '.join(sorted(file_blocks_missing))})" if file_blocks_missing else "0"
+        stats = {
+            ConsoleStyle.success("Loaded"): f"[{file_blocks_found}]",
+            ConsoleStyle.error(f"Missing blocks") if file_blocks_missing else ConsoleStyle.info(
+                f"Missing blocks"): f"[{len(file_blocks_missing)}] ({', '.join(sorted(file_blocks_missing))})" if file_blocks_missing else "0",
+        }
         if file_blocks_missing:
             warnings.append(f"Missing [{len(file_blocks_missing)}] file blocks")
         stats[ConsoleStyle.error("Extra blocks") if file_extra_blocks else ConsoleStyle.info(
@@ -988,18 +1003,18 @@ def verify_blocks_comprehensive():
         stats[ConsoleStyle.error("Missing models") if missing_models else ConsoleStyle.info("Missing models")] \
             = f"[{len(missing_models)}] {', '.join(sorted(missing_models))}" if missing_models else "0"
         if missing_models:
-            warnings.append(f'Missing models: {len(missing_models)}')
+            warnings.append(f"Missing models: {len(missing_models)}")
 
         stats[ConsoleStyle.error("Missing textures") if missing_textures else ConsoleStyle.info("Missing textures")] \
             = f"[{len(missing_textures)}] {', '.join(sorted(missing_textures))}" if missing_textures else "0"
         if missing_textures:
-            warnings.append(f'Missing textures: {len(missing_textures)}')
+            warnings.append(f"Missing textures: {len(missing_textures)}")
 
         stats[ConsoleStyle.error("Compatibility issues") if compatibility_issues else ConsoleStyle.info(
             "Compatibility issues")] \
             = f"[{len(compatibility_issues)}] {', '.join(sorted(compatibility_issues))}" if compatibility_issues else "0"
         if compatibility_issues:
-            warnings.append(f'Compatibility issues: {len(compatibility_issues)}')
+            warnings.append(f"Compatibility issues: {len(compatibility_issues)}")
 
         ConsoleStyle.print_stats(stats, "🔧 BLOCKS COMPATIBILITY")
 
