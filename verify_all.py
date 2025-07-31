@@ -311,26 +311,26 @@ def verify_translations():
 
                             lang_file_extra_categories = lang_file_category_translations - project_category_translations
                             stats[ConsoleStyle.info("Extra categories in lang file") if lang_file_extra_categories else ConsoleStyle.info("Extra categories in lang file") ] \
-                                = f'[{len(lang_file_extra_categories)}] ({', '.join([f'{name}' for name in sorted(lang_file_extra_categories)])})' if lang_file_extra_categories else 0
+                                = f'[{len(lang_file_extra_categories)}] ({', '.join(sorted(lang_file_extra_categories))})' if lang_file_extra_categories else 0
                             if lang_file_extra_categories:
                                 warnings.append(f"Extra [{len(lang_file_extra_categories)}] categories in [{lang_name}] lang file")
 
                             lang_file_extra_blocks = lang_file_block_translations - project_block_translations
                             stats[ConsoleStyle.error("Extra blocks in lang file") if lang_file_extra_blocks else ConsoleStyle.info("Extra blocks in lang file") ] \
-                                = f'[{len(lang_file_extra_blocks)}] ({', '.join([f'{name}' for name in sorted(lang_file_extra_blocks)])})' if lang_file_extra_blocks else 0
+                                = f'[{len(lang_file_extra_blocks)}] ({', '.join(sorted(lang_file_extra_blocks))})' if lang_file_extra_blocks else 0
                             if lang_file_extra_blocks:
                                 warnings.append(f"Extra [{len(lang_file_extra_blocks)}] blocks in [{lang_name}] lang file")
 
                             lang_file_missing_categories = project_category_translations - lang_file_category_translations
                             stats[ConsoleStyle.error("Missing categories defined in lang file") if lang_file_missing_categories else ConsoleStyle.info("Missing categories defined in lang file") ] \
-                                = f'[{len(lang_file_missing_categories)}] ({', '.join([f'{name}' for name in sorted(lang_file_missing_categories)])})' if lang_file_missing_categories else 0
+                                = f'[{len(lang_file_missing_categories)}] ({', '.join(sorted(lang_file_missing_categories))})' if lang_file_missing_categories else 0
                             if lang_file_missing_categories:
                                 warnings.append(
                                     f"Missing [{len(lang_file_missing_categories)}] categories defined in [{lang_name}] lang file")
 
                             lang_file_missing_blocks = project_block_translations - lang_file_block_translations
                             stats[ConsoleStyle.error("Missing blocks defined in lang file") if lang_file_missing_blocks else ConsoleStyle.info("Missing blocks defined in lang file") ] \
-                                = f'[{len(lang_file_missing_blocks)}] ({', '.join([f'{name}' for name in sorted(lang_file_missing_blocks)])})' if lang_file_missing_blocks else 0
+                                = f'[{len(lang_file_missing_blocks)}] ({', '.join(sorted(lang_file_missing_blocks))})' if lang_file_missing_blocks else 0
                             if lang_file_missing_blocks:
                                 warnings.append(
                                     f"Missing [{len(lang_file_missing_blocks)}] blocks from defined in [{lang_name}] lang file")
@@ -340,13 +340,13 @@ def verify_translations():
                             stats[ConsoleStyle.info("   Blocks in database")] = len(database_blocks)
                             database_missing_categories = database_categories - lang_file_category_translations
                             stats[ConsoleStyle.error("Missing categories from database") if database_missing_categories else ConsoleStyle.info("Missing categories from database") ] \
-                                = f'[{len(database_missing_categories)}] ({', '.join([f'{name}' for name in sorted(database_missing_categories)])})' if database_missing_categories else 0
+                                = f'[{len(database_missing_categories)}] ({', '.join(sorted(database_missing_categories))})' if database_missing_categories else 0
                             if database_missing_categories:
                                 warnings.append(
                                     f"Missing [{len(database_missing_categories)}] from database in [{lang_name}]")
                             database_missing_blocks = database_blocks - project_block_translations
                             stats[ConsoleStyle.error("Missing blocks from database") if database_missing_blocks else ConsoleStyle.info("Missing blocks from database") ] \
-                                = f'[{len(database_missing_blocks)}] ({', '.join([f'{name}' for name in sorted(database_missing_blocks)])})' if database_missing_blocks else 0
+                                = f'[{len(database_missing_blocks)}] ({', '.join(sorted(database_missing_blocks))})' if database_missing_blocks else 0
                             if database_missing_blocks:
                                 warnings.append(
                                     f"Missing [{len(database_missing_blocks)}] from database in [{lang_name}]")
@@ -699,22 +699,22 @@ def verify_blocks_comprehensive():
         stats = {ConsoleStyle.success("Loaded"): f"[{file_blocks_found}]"}
         stats[ConsoleStyle.error(f"Missing blocks") if file_blocks_missing else ConsoleStyle.info(
             f"Missing blocks")] \
-            = f"[{len(file_blocks_missing)}] ({', '.join([f'{name}' for name in sorted(file_blocks_missing)])})" if file_blocks_missing else "0"
+            = f"[{len(file_blocks_missing)}] ({', '.join(sorted(file_blocks_missing))})" if file_blocks_missing else "0"
         if file_blocks_missing:
             warnings.append(f"Missing [{len(file_blocks_missing)}] file blocks")
         stats[ConsoleStyle.error("Extra blocks") if file_extra_blocks else ConsoleStyle.info(
             "Extra blocks")] \
-            = f"[{len(file_extra_blocks)}] ({', '.join([f'{name}' for name in sorted(file_extra_blocks)])})" if file_extra_blocks else "0"
+            = f"[{len(file_extra_blocks)}] ({', '.join(sorted(file_extra_blocks))})" if file_extra_blocks else "0"
         if file_extra_blocks:
             warnings.append(f'Extra [{len(file_extra_blocks)}] file blocks')
         stats[ConsoleStyle.error("Missing blocks in database") if database_missing_blocks else ConsoleStyle.info(
             "Missing blocks in database")] \
-            = f"[{len(database_missing_blocks)}] ({', '.join([f'{name}' for name in sorted(database_missing_blocks)])})" if database_missing_blocks else "0"
+            = f"[{len(database_missing_blocks)}] ({', '.join(sorted(database_missing_blocks))})" if database_missing_blocks else "0"
         if database_missing_blocks:
             warnings.append(f"Missing [{len(database_missing_blocks)}] database blocks")
         stats[ConsoleStyle.error("Extra blocks in database") if database_extra_blocks else ConsoleStyle.info(
             "Extra blocks in database")] \
-            = f"[{len(database_extra_blocks)}] ({', '.join([f'{name}' for name in sorted(database_extra_blocks)])})" if database_extra_blocks else "0"
+            = f"[{len(database_extra_blocks)}] ({', '.join(sorted(database_extra_blocks))})" if database_extra_blocks else "0"
         if database_extra_blocks:
             warnings.append(f'Extra [{len(database_extra_blocks)}] database blocks')
         terrain_textures_found = 0
@@ -730,7 +730,7 @@ def verify_blocks_comprehensive():
         stats[ConsoleStyle.info(
             "Textures by terrain_texture.json (with existing PNG files)")] = f"[{terrain_textures_found}]"
         stats[ConsoleStyle.error("Missing files") if missing_png_textures else ConsoleStyle.info("Missing files")] \
-            = f"[{len(missing_png_textures)}] ({', '.join([f'{name}' for name in sorted(missing_png_textures)])})" if missing_png_textures else "0"
+            = f"[{len(missing_png_textures)}] ({', '.join(sorted(missing_png_textures))})" if missing_png_textures else "0"
         if missing_png_textures:
             warnings.append(f'Missing [{len(missing_png_textures)}] PNG textures')
         ConsoleStyle.print_stats(stats, "📄 BLOCK DEFINITIONS")
@@ -769,7 +769,7 @@ def verify_blocks_comprehensive():
         if extra_png_files:
             warnings.append(f'Missing [{len(extra_png_files)}] definitions terrain_texture.json')
             stats[ConsoleStyle.error(
-                "  Missing definitions terrain_texture.json")] = f'[{len(extra_png_files)}] {', '.join([f'{name}' for name in sorted(extra_png_files)])}'
+                "  Missing definitions terrain_texture.json")] = f'[{len(extra_png_files)}] {', '.join(sorted(extra_png_files))}'
 
         # Sprawdź PNG w bazie danych kontra pliki
         database_blocks = set()
@@ -791,11 +791,11 @@ def verify_blocks_comprehensive():
 
         stats[ConsoleStyle.info("In database")] = f'[{len(database_blocks)}]'
         stats[ConsoleStyle.error("Missing db PNGs") if database_missing_pngs else ConsoleStyle.info("Missing db PNGs")] \
-            = f"[{len(database_missing_pngs)}] {', '.join([f'{name}' for name in sorted(database_missing_pngs)])}" if database_missing_pngs else "0"
+            = f"[{len(database_missing_pngs)}] {', '.join(sorted(database_missing_pngs))}" if database_missing_pngs else "0"
         if database_missing_pngs:
             warnings.append(f"Missing [{len(database_missing_pngs)}] PNG files in database")
         stats[ConsoleStyle.error("Extra file PNGs") if file_extra_pngs else ConsoleStyle.info("Extra file PNGs")] \
-            = f"[{len(file_extra_pngs)}] {', '.join([f'{name}' for name in sorted(file_extra_pngs)])}" if file_extra_pngs else "0"
+            = f"[{len(file_extra_pngs)}] {', '.join(sorted(file_extra_pngs))}" if file_extra_pngs else "0"
         if file_extra_pngs:
             warnings.append(f"Extra [{len(file_extra_pngs)}] PNG files in database")
 
@@ -835,11 +835,11 @@ def verify_blocks_comprehensive():
             warnings.append(f"Missing [{len(missing_in_terrain)}] items textures in terrain_texture.json")
             stats[ConsoleStyle.error("Missing from terrain_texture.json") if missing_in_terrain else ConsoleStyle.info(
                 "Missing from terrain_texture.json")] \
-                = f"[{len(missing_in_terrain)}] {', '.join([f'{name}' for name in sorted(missing_in_terrain)])}" if missing_in_terrain else "0"
+                = f"[{len(missing_in_terrain)}] {', '.join(sorted(missing_in_terrain))}" if missing_in_terrain else "0"
 
         stats[ConsoleStyle.error("Unused in terrain_texture.json") if unused_textures else ConsoleStyle.info(
             "Unused in terrain_texture.json")] \
-            = f"[{len(unused_textures)}] {', '.join([f'{name}' for name in sorted(unused_textures)])}" if unused_textures else "0"
+            = f"[{len(unused_textures)}] {', '.join(sorted(unused_textures))}" if unused_textures else "0"
         if unused_textures:
             warnings.append(f"Unused [{len(unused_textures)}] items textures in terrain_texture.json")
 
@@ -865,7 +865,7 @@ def verify_blocks_comprehensive():
         stats[ConsoleStyle.info(f"Signs with shape field")] = f"[{signs_with_shape}]"
         stats[ConsoleStyle.error("Signs without shape field") if signs_without_shape else ConsoleStyle.info(
             "Signs without shape field")] \
-            = f"[{len(signs_without_shape)}] ({', '.join([f'{name}' for name in sorted(signs_without_shape)])})" if signs_without_shape else "0"
+            = f"[{len(signs_without_shape)}] ({', '.join(sorted(signs_without_shape))})" if signs_without_shape else "0"
         if signs_without_shape:
             warnings.append(f"Missing [{len(signs_without_shape)}] signs without shape field")
         stats[ConsoleStyle.info("Shape types")] \
@@ -920,7 +920,7 @@ def verify_blocks_comprehensive():
         if unused_models:
             warnings.append(f'Unused [{len(unused_models)}] models')
             stats[ConsoleStyle.error(
-                "Unused")] = f"[{len(unused_models)}] {', '.join([f'{name}' for name in sorted(unused_models)])}"
+                "Unused")] = f"[{len(unused_models)}] {', '.join(sorted(unused_models))}"
 
         stats[ConsoleStyle.info(
             "Model dimensions")] = f"{', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}"
@@ -983,21 +983,21 @@ def verify_blocks_comprehensive():
             warnings.append(f'Texture-model mismatch: {len(texture_model_mismatches)}')
             stats[ConsoleStyle.error("Texture-model mismatches") if texture_model_mismatches else ConsoleStyle.info(
                 "Texture-model mismatches")] \
-                = f"[{len(texture_model_mismatches)}] {', '.join([f'{name}' for name in sorted(texture_model_mismatches)])}" if texture_model_mismatches else "0"
+                = f"[{len(texture_model_mismatches)}] {', '.join(sorted(texture_model_mismatches))}" if texture_model_mismatches else "0"
 
         stats[ConsoleStyle.error("Missing models") if missing_models else ConsoleStyle.info("Missing models")] \
-            = f"[{len(missing_models)}] {', '.join([f'{name}' for name in sorted(missing_models)])}" if missing_models else "0"
+            = f"[{len(missing_models)}] {', '.join(sorted(missing_models))}" if missing_models else "0"
         if missing_models:
             warnings.append(f'Missing models: {len(missing_models)}')
 
         stats[ConsoleStyle.error("Missing textures") if missing_textures else ConsoleStyle.info("Missing textures")] \
-            = f"[{len(missing_textures)}] {', '.join([f'{name}' for name in sorted(missing_textures)])}" if missing_textures else "0"
+            = f"[{len(missing_textures)}] {', '.join(sorted(missing_textures))}" if missing_textures else "0"
         if missing_textures:
             warnings.append(f'Missing textures: {len(missing_textures)}')
 
         stats[ConsoleStyle.error("Compatibility issues") if compatibility_issues else ConsoleStyle.info(
             "Compatibility issues")] \
-            = f"[{len(compatibility_issues)}] {', '.join([f'{name}' for name in sorted(compatibility_issues)])}" if compatibility_issues else "0"
+            = f"[{len(compatibility_issues)}] {', '.join(sorted(compatibility_issues))}" if compatibility_issues else "0"
         if compatibility_issues:
             warnings.append(f'Compatibility issues: {len(compatibility_issues)}')
 
