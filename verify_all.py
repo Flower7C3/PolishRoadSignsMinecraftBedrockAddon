@@ -664,7 +664,7 @@ def verify_blocks_comprehensive():
                     shape = combination.split('_', 1)[0]
                     shape_count[shape] = count
             if shape_count:
-                shapes_list[size] = ', '.join([f"{shape}({count})" for shape, count in shape_count.items()])
+                shapes_list[size] = ', '.join([f'{shape}({count})' for shape, count in shape_count.items()])
 
         ConsoleStyle.print_stats(rsort(sizes),
                                  f"📏 SIGN SIZES ([{len(sizes)}])")
@@ -884,7 +884,7 @@ def verify_blocks_comprehensive():
         if signs_without_shape:
             warnings.append(f"Missing [{len(signs_without_shape)}] signs without shape field")
         stats[ConsoleStyle.info("Shape types")] \
-            = f"{', '.join([f"{shape}({count})" for shape, count in shape_types.items()])}"
+            = f"{', '.join([f'{shape}({count})' for shape, count in shape_types.items()])}"
         ConsoleStyle.print_stats(stats, "🔷 SHAPE FIELD VERIFICATION")
 
         # 4. SPRAWDŹ MODELE 3D
@@ -938,7 +938,7 @@ def verify_blocks_comprehensive():
                 "Unused")] = f"[{len(unused_models)}] {', '.join(sorted(unused_models))}"
 
         stats[ConsoleStyle.info(
-            "Model dimensions")] = f"{', '.join([f"{name}({w}x{h})" for name, (w, h) in model_dimensions.items()])}"
+            "Model dimensions")] = f"{', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}"
         ConsoleStyle.print_stats(stats, "🎲 3D MODELS")
 
         # Sprawdź kompatybilność
