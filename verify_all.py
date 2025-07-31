@@ -700,7 +700,7 @@ def verify_blocks_comprehensive():
         # Znajdź wszystkie bloki w plikach
         file_block_signs = set()
         for category in get_file_categories():
-            block_dir = f'BP/blocks/{category}'
+            block_dir = f"BP/blocks/{category}"
             if os.path.exists(block_dir):
                 for filename in os.listdir(block_dir):
                     if filename.endswith('.block.json'):
@@ -721,7 +721,7 @@ def verify_blocks_comprehensive():
             "Extra blocks")] \
             = f"[{len(file_extra_blocks)}] ({', '.join(sorted(file_extra_blocks))})" if file_extra_blocks else "0"
         if file_extra_blocks:
-            warnings.append(f'Extra [{len(file_extra_blocks)}] file blocks')
+            warnings.append(f"Extra [{len(file_extra_blocks)}] file blocks")
         stats[ConsoleStyle.error("Missing blocks in database") if database_missing_blocks else ConsoleStyle.info(
             "Missing blocks in database")] \
             = f"[{len(database_missing_blocks)}] ({', '.join(sorted(database_missing_blocks))})" if database_missing_blocks else "0"
@@ -731,7 +731,7 @@ def verify_blocks_comprehensive():
             "Extra blocks in database")] \
             = f"[{len(database_extra_blocks)}] ({', '.join(sorted(database_extra_blocks))})" if database_extra_blocks else "0"
         if database_extra_blocks:
-            warnings.append(f'Extra [{len(database_extra_blocks)}] database blocks')
+            warnings.append(f"Extra [{len(database_extra_blocks)}] database blocks")
         terrain_textures_found = 0
         missing_png_textures = set()
         for texture_id, texture_info in terrain_data['texture_data'].items():
@@ -747,7 +747,7 @@ def verify_blocks_comprehensive():
         stats[ConsoleStyle.error("Missing files") if missing_png_textures else ConsoleStyle.info("Missing files")] \
             = f"[{len(missing_png_textures)}] ({', '.join(sorted(missing_png_textures))})" if missing_png_textures else "0"
         if missing_png_textures:
-            warnings.append(f'Missing [{len(missing_png_textures)}] PNG textures')
+            warnings.append(f"Missing [{len(missing_png_textures)}] PNG textures")
         ConsoleStyle.print_stats(stats, "📄 BLOCK DEFINITIONS")
 
         # Test 2: Sprawdź, czy są pliki PNG bez definicji
@@ -756,7 +756,7 @@ def verify_blocks_comprehensive():
 
         # Sprawdź tekstury znaków w katalogu averse
         for category in get_file_categories():
-            texture_dir = f'RP/textures/blocks/averse/{category}'
+            texture_dir = f"RP/textures/blocks/averse/{category}"
             if os.path.exists(texture_dir):
                 for filename in os.listdir(texture_dir):
                     if filename.endswith('.png'):
@@ -780,11 +780,11 @@ def verify_blocks_comprehensive():
         extra_png_files = all_png_files - terrain_texture_paths
 
         stats[ConsoleStyle.success(
-            "Textures by PNG files (with definition in terrain_texture.json)")] = f'[{len(all_png_files)}]'
+            "Textures by PNG files (with definition in terrain_texture.json)")] = f"[{len(all_png_files)}]"
         if extra_png_files:
-            warnings.append(f'Missing [{len(extra_png_files)}] definitions terrain_texture.json')
+            warnings.append(f"Missing [{len(extra_png_files)}] definitions terrain_texture.json")
             stats[ConsoleStyle.error(
-                "  Missing definitions terrain_texture.json")] = f'[{len(extra_png_files)}] {', '.join(sorted(extra_png_files))}'
+                "  Missing definitions terrain_texture.json")] = f"[{len(extra_png_files)}] {', '.join(sorted(extra_png_files))}"
 
         # Sprawdź PNG w bazie danych kontra pliki
         database_blocks = set()
@@ -794,7 +794,7 @@ def verify_blocks_comprehensive():
 
         file_png_signs = set()
         for category in get_file_categories():
-            texture_dir = f'RP/textures/blocks/averse/{category}'
+            texture_dir = f"RP/textures/blocks/averse/{category}"
             if os.path.exists(texture_dir):
                 for filename in os.listdir(texture_dir):
                     if filename.endswith('.png'):
@@ -804,7 +804,7 @@ def verify_blocks_comprehensive():
         database_missing_pngs = database_blocks - file_png_signs
         file_extra_pngs = file_png_signs - database_blocks
 
-        stats[ConsoleStyle.info("In database")] = f'[{len(database_blocks)}]'
+        stats[ConsoleStyle.info("In database")] = f"[{len(database_blocks)}]"
         stats[ConsoleStyle.error("Missing db PNGs") if database_missing_pngs else ConsoleStyle.info("Missing db PNGs")] \
             = f"[{len(database_missing_pngs)}] {', '.join(sorted(database_missing_pngs))}" if database_missing_pngs else "0"
         if database_missing_pngs:
@@ -820,7 +820,7 @@ def verify_blocks_comprehensive():
         stats = {}
         block_textures = set()
         for category in get_file_categories():
-            block_dir = f'BP/blocks/{category}'
+            block_dir = f"BP/blocks/{category}"
             if os.path.exists(block_dir):
                 for filename in os.listdir(block_dir):
                     if filename.endswith('.block.json'):
@@ -884,7 +884,7 @@ def verify_blocks_comprehensive():
         if signs_without_shape:
             warnings.append(f"Missing [{len(signs_without_shape)}] signs without shape field")
         stats[ConsoleStyle.info("Shape types")] \
-            = f"{', '.join([f'{shape}({count})' for shape, count in shape_types.items()])}"
+            = f"{', '.join([f"{shape}({count})" for shape, count in shape_types.items()])}"
         ConsoleStyle.print_stats(stats, "🔷 SHAPE FIELD VERIFICATION")
 
         # 4. SPRAWDŹ MODELE 3D
@@ -904,7 +904,7 @@ def verify_blocks_comprehensive():
 
         # Sprawdź, które modele są używane
         for category in get_file_categories():
-            block_dir = f'BP/blocks/{category}'
+            block_dir = f"BP/blocks/{category}"
             if os.path.exists(block_dir):
                 for filename in os.listdir(block_dir):
                     if filename.endswith('.block.json'):
@@ -933,12 +933,12 @@ def verify_blocks_comprehensive():
         }
 
         if unused_models:
-            warnings.append(f'Unused [{len(unused_models)}] models')
+            warnings.append(f"Unused [{len(unused_models)}] models")
             stats[ConsoleStyle.error(
                 "Unused")] = f"[{len(unused_models)}] {', '.join(sorted(unused_models))}"
 
         stats[ConsoleStyle.info(
-            "Model dimensions")] = f"{', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}"
+            "Model dimensions")] = f"{', '.join([f"{name}({w}x{h})" for name, (w, h) in model_dimensions.items()])}"
         ConsoleStyle.print_stats(stats, "🎲 3D MODELS")
 
         # Sprawdź kompatybilność
@@ -949,7 +949,7 @@ def verify_blocks_comprehensive():
         missing_textures = []
 
         for category in get_file_categories():
-            block_dir = f'BP/blocks/{category}'
+            block_dir = f"BP/blocks/{category}"
             if os.path.exists(block_dir):
                 for filename in os.listdir(block_dir):
                     if filename.endswith('.block.json'):
@@ -995,7 +995,7 @@ def verify_blocks_comprehensive():
             "Blocks checked")] = f"[{len([f for f in os.listdir('BP/blocks/a') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/b') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/c') if f.endswith('.block.json')]) + len([f for f in os.listdir('BP/blocks/d') if f.endswith('.block.json')])}]"
 
         if texture_model_mismatches:
-            warnings.append(f'Texture-model mismatch: {len(texture_model_mismatches)}')
+            warnings.append(f"Texture-model mismatch: {len(texture_model_mismatches)}")
             stats[ConsoleStyle.error("Texture-model mismatches") if texture_model_mismatches else ConsoleStyle.info(
                 "Texture-model mismatches")] \
                 = f"[{len(texture_model_mismatches)}] {', '.join(sorted(texture_model_mismatches))}" if texture_model_mismatches else "0"
