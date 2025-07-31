@@ -251,7 +251,8 @@ def verify_translations():
                 database_blocks = set()
                 database_categories = set()
                 for category in data['road_signs']:
-                    database_categories.add(f'{data['road_signs'][category]['crafting_group']}')
+                    group_name = data['road_signs'][category]['crafting_group']
+                    database_categories.add(f'{group_name}')
                     for sign_id in data['road_signs'][category]['signs']:
                         database_blocks.add(sign_id)
 
