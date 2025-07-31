@@ -112,12 +112,12 @@ def verify_manifests():
             errors.append(f"Error reading {pack_type} manifest: {e}")
 
     if errors:
-        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(errors)}] manifest errors: {'\n   • '.join(errors)}"))
+        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(errors)}] manifest errors: {',,,,, '.join(errors)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("All manifests are valid!"))
 
     if warnings:
-        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(warnings)}] manifest warnings: {'\n   • '.join(warnings)}"))
+        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(warnings)}] manifest warnings: {', '.join(warnings)}"))
 
     return errors, warnings
 
@@ -175,12 +175,12 @@ def verify_config():
         errors.append(f"Error reading config.json: {e}")
 
     if errors:
-        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(errors)}] config errors: {'\n   • '.join(errors)}"))
+        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(errors)}] config errors: {', '.join(errors)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("Config is valid!"))
 
     if warnings:
-        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(warnings)}] config warnings: {'\n   • '.join(warnings)}"))
+        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(warnings)}] config warnings: {', '.join(warnings)}"))
 
     return errors, warnings
 
@@ -1041,12 +1041,12 @@ def main():
     ConsoleStyle.print_section("📋 VERIFICATION SUMMARY")
 
     if all_errors:
-        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(all_errors)}] errors: {'\n   • '.join(all_errors)}"))
+        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(all_errors)}] errors: {', '.join(all_errors)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("No errors found!"))
 
     if all_warnings:
-        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(all_warnings)}] warnings: {'\n   • '.join(all_warnings)}"))
+        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(all_warnings)}] warnings: {', '.join(all_warnings)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("No warnings found!"))
 
