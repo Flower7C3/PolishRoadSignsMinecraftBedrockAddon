@@ -7,7 +7,6 @@ Verifies project structure, files, textures, and build readiness
 import os
 import json
 import sys
-import re
 from typing import Dict, Any
 
 try:
@@ -113,16 +112,12 @@ def verify_manifests():
             errors.append(f"Error reading {pack_type} manifest: {e}")
 
     if errors:
-        print_if_not_quiet(ConsoleStyle.error(f"Found {len(errors)} manifest errors:"))
-        for error in errors:
-            print_if_not_quiet(f"  • {error}")
+        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(errors)}] manifest errors: {'\n   • '.join(errors)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("All manifests are valid!"))
 
     if warnings:
-        print_if_not_quiet(ConsoleStyle.warning(f"Found {len(warnings)} manifest warnings:"))
-        for warning in warnings:
-            print_if_not_quiet(f"  • {warning}")
+        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(warnings)}] manifest warnings: {'\n   • '.join(warnings)}"))
 
     return errors, warnings
 
@@ -180,16 +175,12 @@ def verify_config():
         errors.append(f"Error reading config.json: {e}")
 
     if errors:
-        print_if_not_quiet(ConsoleStyle.error(f"Found {len(errors)} config errors:"))
-        for error in errors:
-            print_if_not_quiet(f"  • {error}")
+        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(errors)}] config errors: {'\n   • '.join(errors)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("Config is valid!"))
 
     if warnings:
-        print_if_not_quiet(ConsoleStyle.warning(f"Found {len(warnings)} config warnings:"))
-        for warning in warnings:
-            print_if_not_quiet(f"  • {warning}")
+        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(warnings)}] config warnings: {'\n   • '.join(warnings)}"))
 
     return errors, warnings
 
@@ -236,13 +227,41 @@ def verify_translations():
                 language_files = data
                 print_if_not_quiet(ConsoleStyle.success(f"Found {len(language_files)} language files"))
 
+                # Wczytaj bloki
+                project_block_translations = set()
+                for root, dirs, files in os.walk("BP/blocks"):
+                    for file in files:
+                        if file.endswith('.block.json'):
+                            file_path = os.path.join(root, file)
+                            try:
+                                with open(file_path, 'r', encoding='utf-8') as f:
+                                    block_data = json.load(f)
+                                    block_name = block_data['minecraft:block']['description']['identifier']
+                                    project_block_translations.add(
+                                        block_name.replace('polish_road_sign:', ''))
+                            except Exception as e:
+                                print_if_not_quiet(
+                                    ConsoleStyle.error(f"Error reading block data file [{file}]: {e}"))
+                                warnings.append(f"Error reading block data file [{file}]: {e}")
+                # Wczytaj bazę danych
+                with open('road_signs_full_database.json', 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+
+                # Pobierz wszystkie znaki z bazy danych
+                database_blocks = set()
+                database_categories = set()
+                for category in data['road_signs']:
+                    database_categories.add(f'{data['road_signs'][category]['crafting_group']}')
+                    for sign_id in data['road_signs'][category]['signs']:
+                        database_blocks.add(sign_id)
+
                 # Check if language files exist
                 for lang_name in language_files:
                     lang_path = f"RP/texts/{lang_name}.lang"
                     if os.path.exists(lang_path):
                         # Wczytaj plik językowy
-                        file_block_translations = set()
-                        file_category_translations = set()
+                        lang_file_block_translations = set()
+                        lang_file_category_translations = set()
                         stats = {}
                         try:
                             with open(lang_path, 'r', encoding='utf-8') as f:
@@ -252,11 +271,11 @@ def verify_translations():
                                         key = line.split('=', 1)[0].strip()
                                         if key.startswith('tile.polish_road_sign:') and key.endswith('.name'):
                                             block_name = key.replace('tile.polish_road_sign:', '').replace('.name', '')
-                                            file_block_translations.add(block_name)
+                                            lang_file_block_translations.add(block_name)
                                         elif key.startswith('polish_road_sign:'):
                                             # Kategorie mają format polish_road_sign:category_name
                                             category_name = key.replace('polish_road_sign:', '')
-                                            file_category_translations.add(category_name)
+                                            lang_file_category_translations.add(category_name)
 
                             # Wczytaj crafting catalog
                             project_category_translations = set()
@@ -274,86 +293,62 @@ def verify_translations():
                                 print_if_not_quiet(ConsoleStyle.error(f"Error reading crafting catalog: {e}"))
                                 warnings.append(f"Error reading crafting catalog: {e}")
 
-                            # Wczytaj bloki
-                            project_block_translations = set()
-                            for root, dirs, files in os.walk("BP/blocks"):
-                                for file in files:
-                                    if file.endswith('.block.json'):
-                                        file_path = os.path.join(root, file)
-                                        try:
-                                            with open(file_path, 'r', encoding='utf-8') as f:
-                                                block_data = json.load(f)
-                                                block_name = block_data['minecraft:block']['description']['identifier']
-                                                project_block_translations.add(
-                                                    block_name.replace('polish_road_sign:', ''))
-                                        except Exception as e:
-                                            print_if_not_quiet(
-                                                ConsoleStyle.error(f"Error reading block data file [{file}]: {e}"))
-                                            warnings.append(f"Error reading block data file [{file}]: {e}")
-                            # Wczytaj bazę danych
-                            try:
-                                with open('road_signs_full_database.json', 'r', encoding='utf-8') as f:
-                                    data = json.load(f)
-                            except:
-                                print_if_not_quiet(ConsoleStyle.error("Database file not found"))
-                                warnings.append(f"Database file not found")
-                                continue
+                            stats[ConsoleStyle.info("Items in lang file")] \
+                                = f'{len(lang_file_category_translations) + len(lang_file_block_translations)}'
 
-                            # Pobierz wszystkie znaki z bazy danych
-                            database_blocks = set()
-                            database_categories = set()
-                            for category in data['road_signs']:
-                                database_categories.add(f'{data['road_signs'][category]['crafting_group']}')
-                                for sign_id in data['road_signs'][category]['signs']:
-                                    database_blocks.add(sign_id)
+                            stats[ConsoleStyle.info("   Categories in lang file")] \
+                                = len(lang_file_category_translations)
+                            stats[ConsoleStyle.info("   Blocks in lang file")] \
+                                = len(lang_file_block_translations)
 
-                            stats[ConsoleStyle.info(
-                                "In lang file")] = f'{len(file_category_translations) + len(file_block_translations)}'
-                            stats["   crafting catalog in file"] = len(file_block_translations)
-                            file_extra_categories = file_category_translations - project_category_translations
-                            if file_extra_categories:
-                                warnings.append(f"Extra [{len(file_extra_categories)}] categories in [{lang_name}]")
-                                stats[
-                                    "   extra categories in lang file"] = f'[{len(file_extra_categories)}] ({', '.join([f'{name}' for name in sorted(file_extra_categories)])})'
-                            stats["   blocks in file"] = len(project_block_translations)
-                            file_extra_blocks = file_block_translations - project_block_translations
-                            if file_extra_blocks:
-                                warnings.append(f"Extra [{len(file_extra_blocks)}] blocks in [{lang_name}]")
-                                stats[
-                                    "   extra blocks in lang file"] = f'[{len(file_extra_blocks)}] ({', '.join([f'{name}' for name in sorted(file_extra_blocks)])})'
-
-                            stats[ConsoleStyle.info("In project")] = len(project_category_translations) + len(
+                            stats[ConsoleStyle.info("Items in project")] = len(project_category_translations) + len(
                                 project_block_translations)
-                            stats["   blocks in project"] = len(project_block_translations)
-                            stats["   crafting catalog in project"] = len(project_category_translations)
-                            file_missing_categories = project_category_translations - file_category_translations
-                            if file_missing_categories:
+                            stats[ConsoleStyle.info("   Categories in project")] \
+                                = len(project_category_translations)
+                            stats[ConsoleStyle.info("   Blocks in project")] \
+                                = len(project_block_translations)
+
+                            lang_file_extra_categories = lang_file_category_translations - project_category_translations
+                            stats[ConsoleStyle.info("Extra categories in lang file") if lang_file_extra_categories else ConsoleStyle.info("Extra categories in lang file") ] \
+                                = f'[{len(lang_file_extra_categories)}] ({', '.join([f'{name}' for name in sorted(lang_file_extra_categories)])})' if lang_file_extra_categories else 0
+                            if lang_file_extra_categories:
+                                warnings.append(f"Extra [{len(lang_file_extra_categories)}] categories in [{lang_name}] lang file")
+
+                            lang_file_extra_blocks = lang_file_block_translations - project_block_translations
+                            stats[ConsoleStyle.error("Extra blocks in lang file") if lang_file_extra_blocks else ConsoleStyle.info("Extra blocks in lang file") ] \
+                                = f'[{len(lang_file_extra_blocks)}] ({', '.join([f'{name}' for name in sorted(lang_file_extra_blocks)])})' if lang_file_extra_blocks else 0
+                            if lang_file_extra_blocks:
+                                warnings.append(f"Extra [{len(lang_file_extra_blocks)}] blocks in [{lang_name}] lang file")
+
+                            lang_file_missing_categories = project_category_translations - lang_file_category_translations
+                            stats[ConsoleStyle.error("Missing categories defined in lang file") if lang_file_missing_categories else ConsoleStyle.info("Missing categories defined in lang file") ] \
+                                = f'[{len(lang_file_missing_categories)}] ({', '.join([f'{name}' for name in sorted(lang_file_missing_categories)])})' if lang_file_missing_categories else 0
+                            if lang_file_missing_categories:
                                 warnings.append(
-                                    f"Missing [{len(file_missing_categories)}] categories from crafting catalog in [{lang_name}]")
-                                stats[
-                                    "   missing categories from crafting catalog"] = f'[{len(file_missing_categories)}] ({', '.join([f'{name}' for name in sorted(file_missing_categories)])})'
-                            file_missing_blocks = project_block_translations - file_block_translations
-                            if file_missing_blocks:
+                                    f"Missing [{len(lang_file_missing_categories)}] categories defined in [{lang_name}] lang file")
+
+                            lang_file_missing_blocks = project_block_translations - lang_file_block_translations
+                            stats[ConsoleStyle.error("Missing blocks defined in lang file") if lang_file_missing_blocks else ConsoleStyle.info("Missing blocks defined in lang file") ] \
+                                = f'[{len(lang_file_missing_blocks)}] ({', '.join([f'{name}' for name in sorted(lang_file_missing_blocks)])})' if lang_file_missing_blocks else 0
+                            if lang_file_missing_blocks:
                                 warnings.append(
-                                    f"Missing [{len(file_missing_blocks)}] blocks from crafting catalog in [{lang_name}]")
-                                stats[
-                                    "   missing blocks from files"] = f'[{len(file_missing_blocks)}] ({', '.join([f'{name}' for name in sorted(file_missing_blocks)])})'
+                                    f"Missing [{len(lang_file_missing_blocks)}] blocks from defined in [{lang_name}] lang file")
 
                             stats[ConsoleStyle.info("In database")] = len(database_categories) + len(database_blocks)
-                            stats["   categories"] = len(database_categories)
-                            stats["   blocks"] = len(database_blocks)
-                            database_missing_categories = database_categories - file_category_translations
+                            stats[ConsoleStyle.info("   Categories in database")] = len(database_categories)
+                            stats[ConsoleStyle.info("   Blocks in database")] = len(database_blocks)
+                            database_missing_categories = database_categories - lang_file_category_translations
+                            stats[ConsoleStyle.error("Missing categories from database") if database_missing_categories else ConsoleStyle.info("Missing categories from database") ] \
+                                = f'[{len(database_missing_categories)}] ({', '.join([f'{name}' for name in sorted(database_missing_categories)])})' if database_missing_categories else 0
                             if database_missing_categories:
                                 warnings.append(
                                     f"Missing [{len(database_missing_categories)}] from database in [{lang_name}]")
-                                stats[
-                                    "   missing categories from database"] = f'[{len(database_missing_categories)}] ({', '.join([f'{name}' for name in sorted(database_missing_categories)])})'
                             database_missing_blocks = database_blocks - project_block_translations
+                            stats[ConsoleStyle.error("Missing blocks from database") if database_missing_blocks else ConsoleStyle.info("Missing blocks from database") ] \
+                                = f'[{len(database_missing_blocks)}] ({', '.join([f'{name}' for name in sorted(database_missing_blocks)])})' if database_missing_blocks else 0
                             if database_missing_blocks:
                                 warnings.append(
                                     f"Missing [{len(database_missing_blocks)}] from database in [{lang_name}]")
-                                stats[
-                                    "   missing blocks from database"] = f'[{len(database_missing_blocks)}] ({', '.join([f'{name}' for name in sorted(database_missing_blocks)])})'
 
                             ConsoleStyle.print_stats(stats, f"{lang_name}", '-')
 
@@ -578,8 +573,8 @@ def verify_database():
                 categories_with_translations += 1
 
         stats[ConsoleStyle.success("Found")] = f"[{len(categories)}]"
-        stats["  With Wikipedia URLs"] = f"[{categories_with_wikipedia_category_page}]"
-        stats["  With translations"] = f"[{categories_with_translations}]"
+        stats[ConsoleStyle.info("   With Wikipedia URLs")] = f"[{categories_with_wikipedia_category_page}]"
+        stats[ConsoleStyle.info("   With translations")] = f"[{categories_with_translations}]"
 
         ConsoleStyle.print_stats(stats, "🗄️ CATEGORIES")
 
@@ -1046,22 +1041,18 @@ def main():
     ConsoleStyle.print_section("📋 VERIFICATION SUMMARY")
 
     if all_errors:
-        print_if_not_quiet(ConsoleStyle.error(f"Found {len(all_errors)} errors:"))
-        for error in all_errors:
-            print_if_not_quiet(f"  • {error}")
+        print_if_not_quiet(ConsoleStyle.error(f"Found [{len(all_errors)}] errors: {'\n   • '.join(all_errors)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("No errors found!"))
 
     if all_warnings:
-        print_if_not_quiet(ConsoleStyle.warning(f"Found {len(all_warnings)} warnings:"))
-        for warning in all_warnings:
-            print_if_not_quiet(f"  • {warning}")
+        print_if_not_quiet(ConsoleStyle.warning(f"Found [{len(all_warnings)}] warnings: {'\n   • '.join(all_warnings)}"))
     else:
         print_if_not_quiet(ConsoleStyle.success("No warnings found!"))
 
     # Exit with appropriate code
     if all_errors:
-        print_if_not_quiet(ConsoleStyle.error(f"Verification failed with {len(all_errors)} errors"))
+        print_if_not_quiet(ConsoleStyle.error(f"Verification failed with [{len(all_errors)}] errors"))
         sys.exit(1)
     else:
         print_if_not_quiet(ConsoleStyle.success("Verification passed! Project is ready for building."))
