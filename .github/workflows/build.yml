@@ -99,16 +99,16 @@ jobs:
           # Get statistics from database
           STATS=$(python3 -c "
           import json
-          with open('road_signs_full_database.json', 'r', encoding='utf-8') as f:
+          with open('database.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
           
-          categories = len(data['road_signs'])
-          total_signs = sum(len(cat['signs']) for cat in data['road_signs'].values())
+          categories = len(data['categories'])
+          total_signs = sum(len(cat['blocks']) for cat in data['categories'].values())
           
           # Count unique shape/size combinations
           combinations = set()
-          for category in data['road_signs'].values():
-              for sign in category['signs'].values():
+          for category in data['categories'].values():
+              for sign in category['blocks'].values():
                   width = sign.get('sign_width', 900)
                   height = sign.get('sign_height', 900)
                   shape = sign.get('sign_shape', 'rectangle')
