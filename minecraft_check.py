@@ -128,7 +128,8 @@ class MinecraftUtils:
         for root, dirs, files in os.walk("RP/textures/blocks"):
             for file in files:
                 if file.endswith('.png'):
-                    all_png_files.add(f'textures/blocks/{file}')
+                    full_path = os.path.join(root, file).replace('RP/', '')
+                    all_png_files.add(full_path)
 
         return all_png_files
 
