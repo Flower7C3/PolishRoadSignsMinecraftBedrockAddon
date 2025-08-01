@@ -1,5 +1,5 @@
 {
-  "road_signs": {
+  "categories": {
     "a": {
       "crafting_group": "warning_signs",
       "icon": "a_30",
@@ -7,7 +7,7 @@
         "pl_PL": "Znaki ostrzegawcze (A)",
         "en_US": "Warning signs (A)"
       },
-      "signs": {
+      "blocks": {
         "a_1": {
           "code": "A-1",
           "translations": {
@@ -481,7 +481,7 @@
         "pl_PL": "Znaki zakazu (B)",
         "en_US": "Prohibition signs (B)"
       },
-      "signs": {
+      "blocks": {
         "b_1": {
           "code": "B-1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_B-1.svg",
@@ -1164,7 +1164,7 @@
         "pl_PL": "Znaki nakazu (C)",
         "en_US": "Mandatory signs (C)"
       },
-      "signs": {
+      "blocks": {
         "c_1": {
           "code": "C-1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_C-1.svg",
@@ -1440,7 +1440,7 @@
         "pl_PL": "Znaki informacyjne (D)",
         "en_US": "Information signs (D)"
       },
-      "signs": {
+      "blocks": {
         "d_1": {
           "code": "D-1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_D-1.svg",
@@ -2329,7 +2329,7 @@
         "pl_PL": "Znaki dodatkowe (F)",
         "en_US": "Additional signs (F)"
       },
-      "signs": {
+      "blocks": {
         "f_2a": {
           "code": "F-2a",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_F-2a.svg",
@@ -2352,7 +2352,7 @@
         "pl_PL": "Tabliczki do znaków drogowych (F)",
         "en_US": "Road sign plates (F)"
       },
-      "signs": {
+      "blocks": {
         "t_1": {
           "code": "T-1",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_T-1.svg",
@@ -2830,7 +2830,7 @@
         "pl_PL": "Znaki przejazdów drogowo-kolejowych (G)",
         "en_US": "Road and railway crossings signs (G)"
       },
-      "signs": {
+      "blocks": {
         "g_1a": {
           "code": "G-1a",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:PL_road_sign_G-1a.svg",
@@ -2941,7 +2941,7 @@
         "pl_PL": "Urządzenia bezpieczeństwa ruchu",
         "en_US": "Traffic safety devices"
       },
-      "signs": {
+      "blocks": {
         "u_3a": {
           "code": "U-3a",
           "wikipedia_file_page": "https://pl.wikipedia.org/wiki/Plik:U-3a.svg",

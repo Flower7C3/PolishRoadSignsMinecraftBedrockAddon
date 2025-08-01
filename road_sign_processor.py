@@ -45,18 +45,18 @@ def normalize_sign_id(sign_code):
 
 def find_sign_in_database(sign_id, data):
     """Znajdź znak w bazie danych"""
-    categories = list(data['road_signs'].keys())
+    categories = list(data['categories'].keys())
     for category in categories:
-        if sign_id in data['road_signs'][category]['signs']:
-            return data['road_signs'][category]['signs'][sign_id]
+        if sign_id in data['categories'][category]['blocks']:
+            return data['categories'][category]['blocks'][sign_id]
     return None
 
 
 def get_category_for_sign(sign_id, data):
     """Pobierz kategorię dla znaku"""
-    categories = list(data['road_signs'].keys())
+    categories = list(data['categories'].keys())
     for category in categories:
-        if sign_id in data['road_signs'][category]['signs']:
+        if sign_id in data['categories'][category]['blocks']:
             return category
     return None
 
@@ -878,36 +878,36 @@ def cleanup_orphaned_files(data):
     ConsoleStyle.print_section("CZYSZCZENIE OSIEROCONYCH PLIKÓW")
 
     # Zbierz wszystkie znaki z bazy danych
-    database_signs = set()
-    for category in data['road_signs'].values():
-        database_signs.update(category['signs'].keys())
+    database_blocks = set()
+    for category in data['categories'].values():
+        database_blocks.update(category['blocks'].keys())
     
-    print_if_not_quiet(ConsoleStyle.info(f"Znaki w bazie danych: {len(database_signs)}"))
+    print_if_not_quiet(ConsoleStyle.info(f"Znaki w bazie danych: {len(database_blocks)}"))
     
     removed_count = 0
     
     # Sprawdź i usuń bloki dla nieistniejących znaków
-    for category in data['road_signs'].keys():
+    for category in data['categories'].keys():
         category_lower = category.lower()
         block_dir = f"BP/blocks/{category_lower}"
         if os.path.exists(block_dir):
             for file in os.listdir(block_dir):
                 if file.endswith('.block.json'):
                     sign_id = file.replace('.block.json', '')
-                    if sign_id not in database_signs:
+                    if sign_id not in database_blocks:
                         os.remove(os.path.join(block_dir, file))
                         print_if_not_quiet(ConsoleStyle.warning(f"Usunięto blok [{category_lower}/{file}] (nie istnieje w bazie)"))
                         removed_count += 1
 
     # Sprawdź i usuń tekstury dla nieistniejących znaków
-    for category in data['road_signs'].keys():
+    for category in data['categories'].keys():
         category_lower = category.lower()
         texture_dir = f"RP/textures/blocks/averse/{category_lower}"
         if os.path.exists(texture_dir):
             for file in os.listdir(texture_dir):
                 if file.endswith('.png'):
                     sign_id = file.replace('.png', '')
-                    if sign_id not in database_signs:
+                    if sign_id not in database_blocks:
                         os.remove(os.path.join(texture_dir, file))
                         print_if_not_quiet(ConsoleStyle.warning(f"Usunięto teksturę [{category_lower}/{file}] (nie istnieje w bazie)"))
                         removed_count += 1
@@ -922,7 +922,7 @@ def cleanup_orphaned_files(data):
         for key in terrain_data['texture_data']:
             if key.startswith('polish_road_sign:'):
                 sign_id = key.replace('polish_road_sign:', '')
-                if sign_id not in database_signs:
+                if sign_id not in database_blocks:
                     keys_to_remove.append(key)
 
         for key in keys_to_remove:
@@ -944,7 +944,7 @@ def cleanup_all_files(data):
     ConsoleStyle.print_section("CZYSZCZENIE WSZYSTKICH PLIKÓW")
 
     # Pobierz kategorie z bazy danych
-    categories = list(data['road_signs'].keys())
+    categories = list(data['categories'].keys())
     print_if_not_quiet(ConsoleStyle.info(f"Znalezione kategorie: {', '.join(categories)}"))
 
     removed_count = 0
@@ -1019,10 +1019,10 @@ def cleanup_all_files(data):
 def get_all_languages(data):
     """Dynamicznie wykryj wszystkie języki z bazy danych"""
     langs = set()
-    for cat in data['road_signs'].values():
+    for cat in data['categories'].values():
         if 'translations' in cat:
             langs.update(cat['translations'].keys())
-        for sign in cat['signs'].values():
+        for sign in cat['blocks'].values():
             if 'translations' in sign:
                 langs.update(sign['translations'].keys())
     return sorted(langs)
@@ -1035,14 +1035,14 @@ def update_language_files(data):
     lang_map = {lang: {} for lang in languages}
     total_translations = 0
     # Kategorie
-    for cat_key, cat in data['road_signs'].items():
+    for cat_key, cat in data['categories'].items():
         if 'translations' in cat:
             for lang in cat['translations']:
                 group_key = cat.get('crafting_group', cat_key)
                 lang_map[lang][f'polish_road_sign:{group_key}'] = cat['translations'][lang]
     # Znaki
-    for cat in data['road_signs'].values():
-        for sign_id, sign in cat['signs'].items():
+    for cat in data['categories'].values():
+        for sign_id, sign in cat['blocks'].items():
             if 'translations' in sign:
                 for lang in sign['translations']:
                     lang_map[lang][f'tile.polish_road_sign:{sign_id}.name'] = sign['translations'][lang]
@@ -1078,16 +1078,16 @@ def update_crafting_catalog(data):
     # Przygotuj grupy na podstawie bazy
     groups = []
     total_items = 0
-    for cat_key, cat in data['road_signs'].items():
+    for cat_key, cat in data['categories'].items():
         group = {
             "group_identifier": {
-                "icon": f"polish_road_sign:{cat.get('icon', next(iter(cat['signs'])))}",
+                "icon": f"polish_road_sign:{cat.get('icon', next(iter(cat['blocks'])))}",
                 "name": f"polish_road_sign:{cat.get('crafting_group', cat_key)}"
             },
-            "items": natsorted([f"polish_road_sign:{sign_id}" for sign_id in cat['signs']])
+            "items": natsorted([f"polish_road_sign:{sign_id}" for sign_id in cat['blocks']])
         }
         groups.append(group)
-        total_items += len(cat['signs'])
+        total_items += len(cat['blocks'])
     
     # Zastąp grupy w katalogu
     for category in catalog["minecraft:crafting_items_catalog"]["categories"]:
@@ -1130,15 +1130,15 @@ Przykłady użycia:
 Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danych
         """
     )
-    
-    parser.add_argument('signs', nargs='+', help='Kody znaków do przetworzenia (np. a_1, b_5) lub "all" dla wszystkich znaków, lub "category:X" dla kategorii')
+
+    parser.add_argument('blocks', nargs='+', help='Kody znaków do przetworzenia (np. a_1, b_5) lub "all" dla wszystkich znaków, lub "category:X" dla kategorii')
     parser.add_argument('--skip-download', '-s', action='store_true', help='Tryb offline - użyj lokalnych plików SVG')
     parser.add_argument('--force-rebuild', '-f', action='store_true', help='Wymuś przebudowanie tekstur')
     parser.add_argument('--quiet', '-q', action='store_true', help='Tryb cichy (tylko błędy)')
     
     args = parser.parse_args()
 
-    database_path = "road_signs_full_database.json"
+    database_path = "database.json"
 
     if not os.path.exists(database_path):
         print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono bazy danych [{database_path}]"))
@@ -1171,30 +1171,30 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
     errors = []
 
     # Sprawdź, czy przetwarzamy wszystkie znaki
-    if len(args.signs) == 1 and args.signs[0].lower() == 'all':
+    if len(args.blocks) == 1 and args.blocks[0].lower() == 'all':
         print_if_not_quiet(ConsoleStyle.info("Przetwarzanie wszystkich znaków z bazy danych..."))
 
         # Wyczyść wszystkie pliki przed przetwarzaniem
         cleanup_all_files(data)
 
         # Pobierz kategorie z bazy danych
-        categories = list(data['road_signs'].keys())
+        categories = list(data['categories'].keys())
         for category in categories:
-            if category in data['road_signs']:
+            if category in data['categories']:
                 print_if_not_quiet(ConsoleStyle.section(f"Kategoria [{category}]"))
-                signs = data['road_signs'][category]['signs']
+                blocks = data['categories'][category]['blocks']
 
-                for sign_id in signs:
+                for sign_id in blocks:
                     total_count += 1
 
                     # Sprawdź, czy znak ma link do pliku Wikipedii
-                    if 'wikipedia_file_page' not in signs[sign_id]:
+                    if 'wikipedia_file_page' not in blocks[sign_id]:
                         print_if_not_quiet(ConsoleStyle.warning(f"{sign_id}: brak linku do pliku Wikipedii"))
                         continue
 
-                    wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
-                    sign_width = int(signs[sign_id].get('sign_width', 900))
-                    sign_height = int(signs[sign_id].get('sign_height', 900))
+                    wikipedia_file_page = blocks[sign_id]['wikipedia_file_page']
+                    sign_width = int(blocks[sign_id].get('sign_width', 900))
+                    sign_height = int(blocks[sign_id].get('sign_height', 900))
 
                     if process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database_path, skip_download,
                                     force_rebuild):
@@ -1207,13 +1207,13 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
                         time.sleep(1)
 
     # Sprawdź, czy przetwarzamy konkretną kategorię
-    elif len(args.signs) == 1 and args.signs[0].lower().startswith('category:'):
-        category_param = args.signs[0].lower().replace('category:', '')
+    elif len(args.blocks) == 1 and args.blocks[0].lower().startswith('category:'):
+        category_param = args.blocks[0].lower().replace('category:', '')
         category = category_param.upper()
 
-        if category not in data['road_signs']:
+        if category not in data['categories']:
             print_if_not_quiet(ConsoleStyle.error(f"Nie znaleziono kategorii [{category}] w bazie danych"))
-            print_if_not_quiet(ConsoleStyle.info(f"Dostępne kategorie: {', '.join(list(data['road_signs'].keys()))}"))
+            print_if_not_quiet(ConsoleStyle.info(f"Dostępne kategorie: {', '.join(list(data['categories'].keys()))}"))
             return
 
         print_if_not_quiet(ConsoleStyle.info(f"Przetwarzanie kategorii [{category}]..."))
@@ -1221,20 +1221,20 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
         # Wyczyść pliki dla tej kategorii przed przetwarzaniem
         cleanup_category_files(data, category)
 
-        signs = data['road_signs'][category]['signs']
-        print_if_not_quiet(ConsoleStyle.info(f"Znaleziono [{len(signs)}] znaków w kategorii [{category}]"))
+        blocks = data['categories'][category]['blocks']
+        print_if_not_quiet(ConsoleStyle.info(f"Znaleziono [{len(blocks)}] znaków w kategorii [{category}]"))
 
-        for sign_id in signs:
+        for sign_id in blocks:
             total_count += 1
 
             # Sprawdź, czy znak ma link do pliku Wikipedii
-            if 'wikipedia_file_page' not in signs[sign_id]:
+            if 'wikipedia_file_page' not in blocks[sign_id]:
                 print_if_not_quiet(ConsoleStyle.warning(f"{sign_id}: brak linku do pliku Wikipedii"))
                 continue
 
-            wikipedia_file_page = signs[sign_id]['wikipedia_file_page']
-            sign_width = int(signs[sign_id].get('sign_width', 900))
-            sign_height = int(signs[sign_id].get('sign_height', 900))
+            wikipedia_file_page = blocks[sign_id]['wikipedia_file_page']
+            sign_width = int(blocks[sign_id].get('sign_width', 900))
+            sign_height = int(blocks[sign_id].get('sign_height', 900))
 
             if process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database_path, skip_download,
                             force_rebuild):
@@ -1247,7 +1247,7 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
                 time.sleep(1)
     else:
         # Przetwórz podane znaki
-        for sign_code in args.signs:
+        for sign_code in args.blocks:
             total_count += 1
 
             # Normalizuj kod znaku

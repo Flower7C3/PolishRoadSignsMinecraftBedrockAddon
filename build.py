@@ -7,7 +7,6 @@ import os
 import json
 import shutil
 import zipfile
-import sys
 import argparse
 from datetime import datetime
 from pathlib import Path
@@ -247,7 +246,7 @@ examples:
         parser.print_help()
         return
 
-    ConsoleStyle.print_section("🏗️ BUILDING MINECRAFT PACKAGES")
+    ConsoleStyle.print_section("BUILDING MINECRAFT PACKAGES", icon="🏗️")
 
     # Read current versions and names
     bp_name, bp_version = read_manifest('BP/manifest.json')
