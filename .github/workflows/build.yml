@@ -91,23 +91,23 @@ jobs:
         run: |
           # Get statistics from database
           STATS=$(python3 -c "
-            import json
-            with open('database.json', 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            
-            categories = len(data['categories'])
-            total_signs = sum(len(cat['blocks']) for cat in data['categories'].values())
-            
-            # Count unique shape/size combinations
-            combinations = set()
-            for category in data['categories'].values():
-                for sign in category['blocks'].values():
-                    width = sign.get('sign_width', 900)
-                    height = sign.get('sign_height', 900)
-                    shape = sign.get('sign_shape', 'rectangle')
-                    combinations.add(f'{shape}_{width}x{height}')
-            
-            print(f'{categories},{total_signs},{len(combinations)}')
+          import json
+          with open('database.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          
+          categories = len(data['categories'])
+          total_signs = sum(len(cat['blocks']) for cat in data['categories'].values())
+          
+          # Count unique shape/size combinations
+          combinations = set()
+          for category in data['categories'].values():
+              for sign in category['blocks'].values():
+                  width = sign.get('sign_width', 900)
+                  height = sign.get('sign_height', 900)
+                  shape = sign.get('sign_shape', 'rectangle')
+                  combinations.add(f'{shape}_{width}x{height}')
+          
+          print(f'{categories},{total_signs},{len(combinations)}')
           ")
           
           IFS=',' read -r CATEGORIES TOTAL_SIGNS COMBINATIONS <<< "$STATS"
