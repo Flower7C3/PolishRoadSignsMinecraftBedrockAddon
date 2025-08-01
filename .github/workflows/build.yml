@@ -1,4 +1,4 @@
-name: Build, Test & Release Polish Road Signs Addon
+name: Test, Build & Release Polish Road Signs Addon
 
 on:
   push:
@@ -11,16 +11,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.get_version.outputs.version }}
-      bp_files: ${{ steps.count_files.outputs.bp_files }}
-      rp_files: ${{ steps.count_files.outputs.rp_files }}
-      total_blocks: ${{ steps.count_blocks.outputs.total_blocks }}
-      categories: ${{ steps.get_version_stats.outputs.categories }}
-      total_signs: ${{ steps.get_version_stats.outputs.total_signs }}
-      combinations: ${{ steps.get_version_stats.outputs.combinations }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,9 +31,43 @@ jobs:
       - name: Verify project integrity
         run: python3 verify_all.py
 
+  build:
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    outputs:
+      bp_files: ${{ steps.count_files.outputs.bp_files }}
+      rp_files: ${{ steps.count_files.outputs.rp_files }}
+      version: ${{ steps.get_version.outputs.version }}
+      categories: ${{ steps.get_version_stats.outputs.categories }}
+      total_signs: ${{ steps.get_version_stats.outputs.total_signs }}
+      combinations: ${{ steps.get_version_stats.outputs.combinations }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || echo "No requirements.txt found"
+
       - name: Build all packages (.mcaddon and .mcpack)
         run: |
           python3 build.py --all
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist/*.mcaddon
+            dist/*.mcpack
+          retention-days: 30
 
       - name: Count files
         id: count_files
@@ -53,13 +79,6 @@ jobs:
           echo "📦 BP files: $BP_FILES"
           echo "📦 RP files: $RP_FILES"
 
-      - name: Count blocks
-        id: count_blocks
-        run: |
-          TOTAL_BLOCKS=$(find BP/blocks -name "*.block.json" | wc -l)
-          echo "total_blocks=$TOTAL_BLOCKS" >> $GITHUB_OUTPUT
-          echo "⏹️ Total blocks: $TOTAL_BLOCKS"
-
       - name: Get version
         id: get_version
         run: |
@@ -67,19 +86,34 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "📋 Version: $VERSION"
 
-      - name: List dist contents
+      - name: Get version and statistics for release
+        id: get_version_stats
         run: |
-          echo "📁 Build artifacts:"
-          ls -lh dist/ || echo "No dist directory found"
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: |
-            dist/*.mcaddon
-            dist/*.mcpack
-          retention-days: 30
+          # Get statistics from database
+          STATS=$(python3 -c "
+            import json
+            with open('database.json', 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            categories = len(data['categories'])
+            total_signs = sum(len(cat['blocks']) for cat in data['categories'].values())
+            
+            # Count unique shape/size combinations
+            combinations = set()
+            for category in data['categories'].values():
+                for sign in category['blocks'].values():
+                    width = sign.get('sign_width', 900)
+                    height = sign.get('sign_height', 900)
+                    shape = sign.get('sign_shape', 'rectangle')
+                    combinations.add(f'{shape}_{width}x{height}')
+            
+            print(f'{categories},{total_signs},{len(combinations)}')
+          ")
+          
+          IFS=',' read -r CATEGORIES TOTAL_SIGNS COMBINATIONS <<< "$STATS"
+          echo "categories=$CATEGORIES" >> $GITHUB_OUTPUT
+          echo "total_signs=$TOTAL_SIGNS" >> $GITHUB_OUTPUT
+          echo "combinations=$COMBINATIONS" >> $GITHUB_OUTPUT
 
       - name: Commit and push version bump (only on main)
         if: github.ref == 'refs/heads/main'
@@ -90,89 +124,21 @@ jobs:
           git commit -m "Auto-bump version for release" || exit 0
           git push origin main
 
-      - name: Get version and statistics for release
-        id: get_version_stats
-        run: |
-          VERSION=$(python3 -c "import json; print('.'.join(map(str, json.load(open('BP/manifest.json'))['header']['version'])))")
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          
-          # Get statistics from database
-          STATS=$(python3 -c "
-          import json
-          with open('database.json', 'r', encoding='utf-8') as f:
-              data = json.load(f)
-          
-          categories = len(data['categories'])
-          total_signs = sum(len(cat['blocks']) for cat in data['categories'].values())
-          
-          # Count unique shape/size combinations
-          combinations = set()
-          for category in data['categories'].values():
-              for sign in category['blocks'].values():
-                  width = sign.get('sign_width', 900)
-                  height = sign.get('sign_height', 900)
-                  shape = sign.get('sign_shape', 'rectangle')
-                  combinations.add(f'{shape}_{width}x{height}')
-          
-          print(f'{categories},{total_signs},{len(combinations)}')
-          ")
-          
-          IFS=',' read -r CATEGORIES TOTAL_SIGNS COMBINATIONS <<< "$STATS"
-          echo "categories=$CATEGORIES" >> $GITHUB_OUTPUT
-          echo "total_signs=$TOTAL_SIGNS" >> $GITHUB_OUTPUT
-          echo "combinations=$COMBINATIONS" >> $GITHUB_OUTPUT
-
-  test:
-    needs: build
+  release:
+    needs: [ test, build ]
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
           path: dist/
-
-      - name: Validate project structure
-        run: |
-          echo "Checking project structure..."
-          test -f build.py || exit 1
-          test -d BP || exit 1
-          test -d RP || exit 1
-          test -f BP/manifest.json || exit 1
-          test -f RP/manifest.json || exit 1
-          echo "✅ Project structure is valid"
-
-      - name: Validate manifests
-        run: |
-          echo "Validating manifests..."
-          python3 -c "
-          import json
-          import sys
-          # Check BP manifest
-          with open('BP/manifest.json', 'r') as f:
-              bp_manifest = json.load(f)
-          print(f'BP version: {bp_manifest.get(\"header\", {}).get(\"version\", \"missing\")}')
-          # Check RP manifest
-          with open('RP/manifest.json', 'r') as f:
-              rp_manifest = json.load(f)
-          print(f'RP version: {rp_manifest.get(\"header\", {}).get(\"version\", \"missing\")}')
-          # Check if versions match
-          bp_version = bp_manifest.get('header', {}).get('version', [])
-          rp_version = rp_manifest.get('header', {}).get('version', [])
-          if bp_version != rp_version:
-              print('❌ Version mismatch between BP and RP manifests')
-              sys.exit(1)
-          else:
-              print('✅ Manifest versions match')
-          "
 
       - name: Test build artifacts
         run: |
@@ -197,22 +163,6 @@ jobs:
             fi
           done
           echo "🎯 All packages integrity verified successfully!"
-
-  release:
-    needs: [ build, test ]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
-          path: dist/
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
@@ -245,6 +195,8 @@ jobs:
             2. Aktywuj pakiety w ustawieniach świata
 
             ### 📊 Statystyki:
+            - **${{ needs.build.outputs.bp_files }} plików BP**
+            - **${{ needs.build.outputs.rp_files }} plików RP**
             - **${{ needs.build.outputs.categories }} kategorii** znaków drogowych
             - **${{ needs.build.outputs.total_signs }} znaków** z oficjalnymi teksturami
             - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
