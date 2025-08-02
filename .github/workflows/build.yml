@@ -119,8 +119,8 @@ jobs:
       - name: Get changelog from last tag
         id: get_changelog
         run: |
-          # Get the most recent tag (not necessarily in HEAD history)
-          LAST_TAG=$(git tag --sort=-version:refname | head -1 2>/dev/null || echo "")
+          # Get the last tag in HEAD history
+          LAST_TAG=$(git describe --tags --abbrev=0 HEAD 2>/dev/null || echo "")
           
           if [ -n "$LAST_TAG" ]; then
             # Get commits since last tag
