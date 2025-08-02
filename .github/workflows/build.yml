@@ -87,7 +87,7 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "📋 Version: $VERSION"
 
-      - name: Get version and statistics for release
+      - name: Get statistics for release
         id: get_version_stats
         run: |
           # Get statistics from database
