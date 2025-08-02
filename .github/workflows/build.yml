@@ -119,8 +119,8 @@ jobs:
       - name: Get changelog from last tag
         id: get_changelog
         run: |
-          # Get the last tag
-          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          # Get the most recent tag (not necessarily in HEAD history)
+          LAST_TAG=$(git tag --sort=-version:refname | head -1 2>/dev/null || echo "")
           
           if [ -n "$LAST_TAG" ]; then
             # Get commits since last tag
@@ -131,6 +131,11 @@ jobs:
           else
             # If no tags exist, get last 10 commits
             CHANGELOG=$(git log --oneline --no-merges -10)
+          fi
+          
+          # Ensure we have some content
+          if [ -z "$CHANGELOG" ]; then
+            CHANGELOG="No changes detected"
           fi
           
           # Escape newlines for GitHub Actions
