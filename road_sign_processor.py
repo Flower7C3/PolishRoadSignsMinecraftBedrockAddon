@@ -198,7 +198,7 @@ def create_model_if_needed(sign_shape, sign_width, sign_height, target_width, ta
 
 def update_model_if_needed(sign_shape, sign_width, sign_height, target_width, target_height, vertical_alignment="bottom"):
     """Zaktualizuj model 3D, jeśli wymiary się zmieniły"""
-    print_if_not_quiet(ConsoleStyle.section("TWORZENIE MODELU"))
+    ConsoleStyle.print_section("TWORZENIE MODELU")
 
     model_name = f"road_sign_{sign_shape}_{sign_width}x{sign_height}_{vertical_alignment}"
     model_path = f"RP/models/blocks/{model_name}.geo.json"
@@ -249,7 +249,7 @@ def update_model_if_needed(sign_shape, sign_width, sign_height, target_width, ta
 def create_reverse_texture_if_needed(sign_shape, sign_width, sign_height, texture_width, texture_height,
                                         force_rebuild=False):
     """Twórz teksturę tła, jeśli nie istnieje"""
-    print_if_not_quiet(ConsoleStyle.section("TWORZENIE TEKSTURY REWERSU"))
+    ConsoleStyle.print_section("TWORZENIE TEKSTURY REWERSU")
 
     # Pobierz odpowiednią teksturę tła na podstawie kształtu
     reverse_texture_name = get_reverse_texture_for_shape(sign_shape, sign_width, sign_height)
@@ -589,7 +589,7 @@ def process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database
     vertical_alignment = sign_data.get('vertical_alignment', 'bottom')
     target_width = scale_size_from_mm_to_px(sign_width)
     target_height = scale_size_from_mm_to_px(sign_height)
-    print_if_not_quiet(ConsoleStyle.section(f"Przetwarzanie znaku [{sign_id}]"))
+    ConsoleStyle.print_section(f"Przetwarzanie znaku [{sign_id}]")
     print_if_not_quiet(ConsoleStyle.info(f"Kształt: {sign_shape}, Wymiary: {sign_width}x{sign_height}, Wyrównanie: {vertical_alignment}"))
 
     if not create_averse_texture_if_needed(sign_id, target_width, target_height, wikipedia_file_page, skip_download, force_rebuild):
@@ -606,7 +606,7 @@ def process_sign(sign_id, wikipedia_file_page, sign_width, sign_height, database
 
 
 def create_averse_texture_if_needed(sign_id, target_width, target_height, wikipedia_file_page, skip_download=False, force_rebuild=False):
-    print_if_not_quiet(ConsoleStyle.section("TWORZENIE TEKSTURY AWERSU"))
+    ConsoleStyle.print_section("TWORZENIE TEKSTURY AWERSU")
     category = sign_id.split('_')[0]
 
     # Przygotuj katalogi
@@ -791,7 +791,7 @@ def convert_svg_to_png(svg_path, png_path, target_width, target_height):
 
 
 def update_block_if_needed(sign_id, model_name, reverse_texture_name, sign_width, sign_height, vertical_alignment="bottom"):
-    print_if_not_quiet(ConsoleStyle.section("TWORZENIE BLOKU"))
+    ConsoleStyle.print_section("TWORZENIE BLOKU")
     category = sign_id.split('_')[0]
     category_lower = category.lower()
     block_path = f"BP/blocks/{category_lower}/{sign_id}.block.json"
@@ -1181,7 +1181,7 @@ Skrypt automatycznie usuwa pliki dla znaków, które nie istnieją w bazie danyc
         categories = list(data['categories'].keys())
         for category in categories:
             if category in data['categories']:
-                print_if_not_quiet(ConsoleStyle.section(f"Kategoria [{category}]"))
+                ConsoleStyle.print_section(f"Kategoria [{category}]")
                 blocks = data['categories'][category]['blocks']
 
                 for sign_id in blocks:

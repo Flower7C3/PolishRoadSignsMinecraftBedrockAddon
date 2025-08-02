@@ -33,7 +33,7 @@ def generate_test_commands():
     """Generate test commands for different combinations"""
     shape_size_combinations, shape_size_examples = get_example_combinations()
     
-    print_if_not_quiet(ConsoleStyle.section("GENEROWANIE PRZYKŁADOWYCH KOMEND TESTOWYCH"))
+    ConsoleStyle.print_section("GENEROWANIE PRZYKŁADOWYCH KOMEND TESTOWYCH")
 
     # Show combinations
     print_if_not_quiet(ConsoleStyle.info(f"🔗 KOMBINACJE KSZTAŁTÓW I WYMIARÓW ({len(shape_size_combinations)})"))
@@ -44,7 +44,7 @@ def generate_test_commands():
         print_if_not_quiet(ConsoleStyle.info(f"  - {shape} {size}: {count} znaków (przykład: {shape_size_examples[combination]})"))
 
     # Generate test commands
-    print_if_not_quiet(ConsoleStyle.section("KOMENDY TESTOWE"))
+    ConsoleStyle.print_section("KOMENDY TESTOWE")
     
     # Basic test command
     basic_command = f"python3 road_sign_processor.py {' '.join([f'{code}' for code in example_combinations])} -s -f"
@@ -74,7 +74,7 @@ def generate_test_commands():
 
 def generate_development_commands():
     """Generate development workflow commands"""
-    print_if_not_quiet(ConsoleStyle.section("KOMENDY PRACY DEWELOPERSKIEJ"))
+    ConsoleStyle.print_section("KOMENDY PRACY DEWELOPERSKIEJ")
     
     commands = [
         ("🔍 Weryfikacja projektu", "python3 verify_all.py"),

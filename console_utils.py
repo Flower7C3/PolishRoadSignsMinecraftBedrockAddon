@@ -193,12 +193,9 @@ class ConsoleStyle:
         if ConsoleStyle.QUIET_MODE:
             return
 
-        print(ConsoleStyle.section(f"BUILDING {build_type.upper()}", icon='⚒️'))
-        print(ConsoleStyle.divider())
-        print(ConsoleStyle.success(f"  Created: {output_path}"))
+        print(ConsoleStyle.success(f"Created: {output_path}"))
         if file_size:
-            print(ConsoleStyle.info(f"  Size: {file_size}"))
-        print(ConsoleStyle.divider())
+            print(ConsoleStyle.info(f"Size: {file_size}"))
 
     @staticmethod
     def print_installation_info(pack_name: str, install_path: str):
@@ -206,31 +203,8 @@ class ConsoleStyle:
         if ConsoleStyle.QUIET_MODE:
             return
 
-        print(ConsoleStyle.section("INSTALLATION", icon='🖥'))
-        print(ConsoleStyle.divider())
-        print(ConsoleStyle.success(f"  Installed: {pack_name}"))
-        print(ConsoleStyle.info(f"  Location: {install_path}"))
-        print(ConsoleStyle.divider())
-
-    @staticmethod
-    def errors(errors, padding=0) -> Union[str, None]:
-        if errors:
-            padding_spaces = " " * padding
-            error_list = f'\n{padding_spaces}• '.join(errors)
-            return ConsoleStyle.error(f"Found [{len(errors)}] errors: \n{padding_spaces}• {error_list}", padding)
-        else:
-            return ConsoleStyle.success("No errors found!", padding)
-
-    @staticmethod
-    def warnings(warnings, padding=0) -> Union[str, None]:
-        if warnings:
-            padding_spaces = " " * padding
-            warning_list = f'\n{padding_spaces}• '.join(warnings)
-            return ConsoleStyle.warning(
-                f"Found [{len(warnings)}] warnings: \n{padding_spaces}• {warning_list}",
-                padding)
-        else:
-            return ConsoleStyle.success("No warnings found!", padding)
+        print(ConsoleStyle.success(f"Installed: {pack_name}"))
+        print(ConsoleStyle.info(f"Location: {install_path}"))
 
 
 def rsort(sizes: Dict[str, Any]) -> Dict[str, Any]:
