@@ -244,4 +244,4 @@ jobs:
             - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
 
             ### 🚀 Ostatnie zmiany:
-            ${{ steps.get_changelog.outputs.changelog }} 
+            ${{ needs.build.outputs.changelog }} 
