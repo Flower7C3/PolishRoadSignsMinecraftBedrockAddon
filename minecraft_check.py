@@ -252,7 +252,7 @@ class MinecraftUtils:
         stats[ConsoleStyle.error("Missing blocks") if file_blocks_missing else ConsoleStyle.info("Missing blocks")] = \
             f"[{len(file_blocks_missing)}] ({', '.join(sorted(file_blocks_missing))})" if file_blocks_missing else "0"
         if file_blocks_missing:
-            warnings.append(
+            errors.append(
                 f"Missing [{len(file_blocks_missing)}] file blocks: {', '.join(sorted(file_blocks_missing))}")
 
         ConsoleStyle.print_stats(stats, "DATABASE BLOCK COVERAGE", icon="📄")
@@ -272,7 +272,7 @@ class MinecraftUtils:
         stats[ConsoleStyle.info("Total file blocks")] = f"[{len(file_block_ids)}]"
         stats[ConsoleStyle.info("Total database blocks")] = f"[{len(database_block_ids)}]"
         if database_block_ids:
-            stats[ConsoleStyle.error("Extra blocks") if file_extra_blocks else ConsoleStyle.info("Extra blocks")] \
+            stats[ConsoleStyle.warning("Extra blocks") if file_extra_blocks else ConsoleStyle.info("Extra blocks")] \
                 = f"[{len(file_extra_blocks)}] ({', '.join(sorted(file_extra_blocks))})" if file_extra_blocks else "0"
             if file_extra_blocks:
                 warnings.append(f"Extra [{len(file_extra_blocks)}] file blocks: {', '.join(sorted(file_extra_blocks))}")
@@ -308,7 +308,7 @@ class MinecraftUtils:
         stats[ConsoleStyle.error("Missing models") if missing_models else ConsoleStyle.info("Missing models")] \
             = f"[{len(missing_models)}] {', '.join(sorted(missing_models))}" if missing_models else "0"
         if missing_models:
-            warnings.append(f"Missing models: {len(missing_models)}")
+            errors.append(f"Missing models: {len(missing_models)}")
         stats[ConsoleStyle.info(
             "Model dimensions")] = f"{', '.join([f'{name}({w}x{h})' for name, (w, h) in model_dimensions.items()])}"
 
@@ -343,7 +343,7 @@ class MinecraftUtils:
 
         stats[ConsoleStyle.info("Total models")] = f"[{len(model_dimensions)}]"
         stats[ConsoleStyle.info("Used models")] = f"[{len(used_models)}]"
-        stats[ConsoleStyle.error("Unused models") if unused_models else ConsoleStyle.info("Unused models")] \
+        stats[ConsoleStyle.warning("Unused models") if unused_models else ConsoleStyle.info("Unused models")] \
             = f"[{len(unused_models)}] {', '.join(sorted(unused_models))}" if unused_models else "0"
         if unused_models:
             warnings.append(f"Unused [{len(unused_models)}] models: {', '.join(sorted(unused_models))}")
@@ -367,7 +367,7 @@ class MinecraftUtils:
         stats[ConsoleStyle.error("Missing PNG files") if missing_textures else ConsoleStyle.info("Missing PNG files")] \
             = f"[{len(missing_textures)}] ({', '.join([f'{texture_id} -> {texture_name}' for texture_id, texture_name in missing_textures])})" if missing_textures else "0"
         if missing_textures:
-            warnings.append(
+            errors.append(
                 f"Missing [{len(missing_textures)}] PNG files: {', '.join([f'{texture_id} -> {texture_name}' for texture_id, texture_name in missing_textures])}")
 
         ConsoleStyle.print_stats(stats, "TEXTURE PNG EXISTENCE", icon="🎨")
@@ -394,7 +394,7 @@ class MinecraftUtils:
 
         stats[ConsoleStyle.info("Total PNG files")] = f"[{len(all_png_files)}]"
         stats[ConsoleStyle.success("PNG files with definitions")] = f"[{len(all_png_files - extra_png_files)}]"
-        stats[ConsoleStyle.error("PNG files without definitions") if extra_png_files else ConsoleStyle.info(
+        stats[ConsoleStyle.warning("PNG files without definitions") if extra_png_files else ConsoleStyle.info(
             "PNG files without definitions")] \
             = f"[{len(extra_png_files)}] {', '.join(sorted(extra_png_files))}" if extra_png_files else "0"
         if extra_png_files:
@@ -427,14 +427,14 @@ class MinecraftUtils:
         unused_textures = terrain_texture_keys - block_textures
 
         stats[ConsoleStyle.info("Block textures referenced")] = f"[{len(block_textures)}]"
-        stats[ConsoleStyle.error("Missing from terrain_texture.json") if missing_in_terrain else ConsoleStyle.info(
+        stats[ConsoleStyle.warning("Missing from terrain_texture.json") if missing_in_terrain else ConsoleStyle.info(
             "Missing from terrain_texture.json")] \
             = f"[{len(missing_in_terrain)}] {', '.join(sorted(missing_in_terrain))}" if missing_in_terrain else "0"
         if missing_in_terrain:
             warnings.append(
                 f"Missing [{len(missing_in_terrain)}] textures in terrain_texture.json: {', '.join(sorted(missing_in_terrain))}")
 
-        stats[ConsoleStyle.error("Unused in terrain_texture.json") if unused_textures else ConsoleStyle.info(
+        stats[ConsoleStyle.warning("Unused in terrain_texture.json") if unused_textures else ConsoleStyle.info(
             "Unused in terrain_texture.json")] \
             = f"[{len(unused_textures)}] {', '.join(sorted(unused_textures))}" if unused_textures else "0"
         if unused_textures:
@@ -469,8 +469,6 @@ class MinecraftUtils:
             warnings.extend(extra_warnings)
         except FileNotFoundError:
             warnings.append("Database file not found")
-        # if database_block_ids is None:
-        # else:
 
         return errors, warnings
 
@@ -791,7 +789,7 @@ class MinecraftUtils:
                         = len(project_block_translations)
 
                     lang_file_extra_categories = lang_file_category_translations - project_category_translations
-                    stats[ConsoleStyle.info(
+                    stats[ConsoleStyle.warning(
                         "Extra categories in lang file") if lang_file_extra_categories else ConsoleStyle.info(
                         "Extra categories in lang file")] \
                         = f"[{len(lang_file_extra_categories)}] ({', '.join(sorted(lang_file_extra_categories))})" if lang_file_extra_categories else 0
@@ -800,7 +798,7 @@ class MinecraftUtils:
                             f"Extra [{len(lang_file_extra_categories)}] categories in [{lang_name}] lang file")
 
                     lang_file_extra_blocks = lang_file_block_translations - project_block_translations
-                    stats[ConsoleStyle.error(
+                    stats[ConsoleStyle.warning(
                         "Extra blocks in lang file") if lang_file_extra_blocks else ConsoleStyle.info(
                         "Extra blocks in lang file")] \
                         = f"[{len(lang_file_extra_blocks)}] ({', '.join(sorted(lang_file_extra_blocks))})" if lang_file_extra_blocks else 0
@@ -814,7 +812,7 @@ class MinecraftUtils:
                         "Missing categories defined in lang file")] \
                         = f"[{len(lang_file_missing_categories)}] ({', '.join(sorted(lang_file_missing_categories))})" if lang_file_missing_categories else 0
                     if lang_file_missing_categories:
-                        warnings.append(
+                        errors.append(
                             f"Missing [{len(lang_file_missing_categories)}] categories defined in [{lang_name}] lang file")
 
                     lang_file_missing_blocks = project_block_translations - lang_file_block_translations
@@ -823,7 +821,7 @@ class MinecraftUtils:
                         "Missing blocks defined in lang file")] \
                         = f"[{len(lang_file_missing_blocks)}] ({', '.join(sorted(lang_file_missing_blocks))})" if lang_file_missing_blocks else 0
                     if lang_file_missing_blocks:
-                        warnings.append(
+                        errors.append(
                             f"Missing [{len(lang_file_missing_blocks)}] blocks from defined in [{lang_name}] lang file")
 
                     if os.path.exists(MinecraftUtils.DATABASE_FILE_NAME):
@@ -837,7 +835,7 @@ class MinecraftUtils:
                             "Missing categories from database")] \
                             = f"[{len(database_missing_categories)}] ({', '.join(sorted(database_missing_categories))})" if database_missing_categories else 0
                         if database_missing_categories:
-                            warnings.append(
+                            errors.append(
                                 f"Missing [{len(database_missing_categories)}] from database in [{lang_name}]")
                         database_missing_blocks = database_block_ids - project_block_translations
                         stats[ConsoleStyle.error(
@@ -845,7 +843,7 @@ class MinecraftUtils:
                             "Missing blocks from database")] \
                             = f"[{len(database_missing_blocks)}] ({', '.join(sorted(database_missing_blocks))})" if database_missing_blocks else 0
                         if database_missing_blocks:
-                            warnings.append(
+                            errors.append(
                                 f"Missing [{len(database_missing_blocks)}] from database in [{lang_name}]")
 
                     ConsoleStyle.print_stats(stats, f"{lang_name}", '-')
