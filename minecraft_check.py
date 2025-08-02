@@ -17,7 +17,7 @@ class MinecraftUtils:
     DATABASE_FILE_NAME = 'database.json'
 
     @staticmethod
-    def _load_json_file(file_path: str):
+    def load_json_file(file_path: str):
         """Load a JSON file and return its content"""
         with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -32,7 +32,7 @@ class MinecraftUtils:
             for file in files:
                 if file.endswith('.block.json'):
                     file_path = os.path.join(root, file)
-                    data = MinecraftUtils._load_json_file(file_path)
+                    data = MinecraftUtils.load_json_file(file_path)
                     if data:
                         blocks[file.replace('.block.json', '')] = data
         return blocks
@@ -53,7 +53,7 @@ class MinecraftUtils:
     @staticmethod
     def _get_model_dimensions(model_path):
         """Pobierz wymiary modelu z pliku .geo.json"""
-        model_data = MinecraftUtils._load_json_file(model_path)
+        model_data = MinecraftUtils.load_json_file(model_path)
         if 'minecraft:geometry' in model_data and isinstance(model_data['minecraft:geometry'], list) and len(
                 model_data['minecraft:geometry']) > 0:
             geometry = model_data['minecraft:geometry'][0]
@@ -69,7 +69,7 @@ class MinecraftUtils:
         """Znajdź kategorię dla znaku w bazie danych"""
         if not os.path.exists(MinecraftUtils.DATABASE_FILE_NAME):
             return None
-        data = MinecraftUtils._load_json_file('database.json')
+        data = MinecraftUtils.load_json_file('database.json')
         if not data:
             return None
 
@@ -98,7 +98,7 @@ class MinecraftUtils:
     @staticmethod
     def _verify_terrain_texture_mappings():
         """Wspólna weryfikacja mapowań terrain_texture.json"""
-        terrain_data = MinecraftUtils._load_json_file('RP/textures/terrain_texture.json')
+        terrain_data = MinecraftUtils.load_json_file('RP/textures/terrain_texture.json')
         if not terrain_data:
             return [], [], {}
 
@@ -188,7 +188,7 @@ class MinecraftUtils:
     def _get_database_block_ids():
         """Pobierz wszystkie bloki z bazy danych"""
 
-        data = MinecraftUtils._load_json_file(MinecraftUtils.DATABASE_FILE_NAME)
+        data = MinecraftUtils.load_json_file(MinecraftUtils.DATABASE_FILE_NAME)
         if not data:
             return set()
 
@@ -713,7 +713,7 @@ class MinecraftUtils:
 
         # Check languages.json
         try:
-            languages_list = MinecraftUtils._load_json_file('RP/texts/languages.json')
+            languages_list = MinecraftUtils.load_json_file('RP/texts/languages.json')
 
             # languages.json is a list, not an object
             if isinstance(languages_list, list):
@@ -729,7 +729,7 @@ class MinecraftUtils:
                 database_block_ids = set()
                 database_categories = set()
                 if os.path.exists(MinecraftUtils.DATABASE_FILE_NAME):
-                    database_file_content = MinecraftUtils._load_json_file(MinecraftUtils.DATABASE_FILE_NAME)
+                    database_file_content = MinecraftUtils.load_json_file(MinecraftUtils.DATABASE_FILE_NAME)
                     for category in database_file_content['categories']:
                         group_name = database_file_content['categories'][category]['crafting_group']
                         database_categories.add(f"{group_name}")
