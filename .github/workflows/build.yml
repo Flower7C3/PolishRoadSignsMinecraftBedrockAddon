@@ -119,31 +119,18 @@ jobs:
       - name: Get changelog from last tag
         id: get_changelog
         run: |
-          # Debug: Show current state
-          echo "🔍 Debug: Current HEAD"
-          git log --oneline -3
-          echo ""
-          echo "🔍 Debug: Available tags"
-          git tag --sort=-version:refname | head -5
-          echo ""
-          
           # Get the last tag in HEAD history
           LAST_TAG=$(git describe --tags --abbrev=0 HEAD 2>/dev/null || echo "")
-          echo "🔍 Debug: LAST_TAG=$LAST_TAG"
           
           if [ -n "$LAST_TAG" ]; then
             # Get commits since last tag
             CHANGELOG=$(git log --oneline --no-merges "${LAST_TAG}..HEAD" | head -10)
-            echo "🔍 Debug: Commits since $LAST_TAG"
-            echo "$CHANGELOG"
             if [ -z "$CHANGELOG" ]; then
               CHANGELOG="No changes since last release"
             fi
           else
             # If no tags exist, get last 10 commits
             CHANGELOG=$(git log --oneline --no-merges -10)
-            echo "🔍 Debug: Last 10 commits"
-            echo "$CHANGELOG"
           fi
           
           # Ensure we have some content
@@ -152,7 +139,7 @@ jobs:
           fi
           
           # Escape newlines for GitHub Actions
-          CHANGELOG_ESCAPED=$(echo "$CHANGELOG" | tr '\n' '\\n')
+          CHANGELOG_ESCAPED=$(printf "%s" "$CHANGELOG" | tr '\n' '\\n')
           echo "changelog=$CHANGELOG_ESCAPED" >> $GITHUB_OUTPUT
           echo "📝 Changelog generated from ${LAST_TAG:-'beginning'} to HEAD"
 
