@@ -134,7 +134,7 @@ jobs:
           fi
           
           # Escape newlines for GitHub Actions
-          CHANGELOG_ESCAPED=$(echo "$CHANGELOG" | sed ':a;N;$!ba;s/\n/\\n/g')
+          CHANGELOG_ESCAPED=$(echo "$CHANGELOG" | tr '\n' '\\n')
           echo "changelog=$CHANGELOG_ESCAPED" >> $GITHUB_OUTPUT
           echo "📝 Changelog generated from ${LAST_TAG:-'beginning'} to HEAD"
 
