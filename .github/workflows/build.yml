@@ -41,6 +41,7 @@ jobs:
       categories: ${{ steps.get_version_stats.outputs.categories }}
       total_signs: ${{ steps.get_version_stats.outputs.total_signs }}
       combinations: ${{ steps.get_version_stats.outputs.combinations }}
+      changelog: ${{ steps.get_changelog.outputs.changelog }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -114,6 +115,28 @@ jobs:
           echo "categories=$CATEGORIES" >> $GITHUB_OUTPUT
           echo "total_signs=$TOTAL_SIGNS" >> $GITHUB_OUTPUT
           echo "combinations=$COMBINATIONS" >> $GITHUB_OUTPUT
+
+      - name: Get changelog from last tag
+        id: get_changelog
+        run: |
+          # Get the last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          if [ -n "$LAST_TAG" ]; then
+            # Get commits since last tag
+            CHANGELOG=$(git log --oneline --no-merges "${LAST_TAG}..HEAD" | head -10)
+            if [ -z "$CHANGELOG" ]; then
+              CHANGELOG="No changes since last release"
+            fi
+          else
+            # If no tags exist, get last 10 commits
+            CHANGELOG=$(git log --oneline --no-merges -10)
+          fi
+          
+          # Escape newlines for GitHub Actions
+          CHANGELOG_ESCAPED=$(echo "$CHANGELOG" | sed ':a;N;$!ba;s/\n/\\n/g')
+          echo "changelog=$CHANGELOG_ESCAPED" >> $GITHUB_OUTPUT
+          echo "📝 Changelog generated from ${LAST_TAG:-'beginning'} to HEAD"
 
       - name: Commit and push version bump (only on main)
         if: github.ref == 'refs/heads/main'
@@ -202,4 +225,4 @@ jobs:
             - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
 
             ### 🚀 Ostatnie zmiany:
-            ${{ github.event.head_commit.message }} 
+            ${{ steps.get_changelog.outputs.changelog }} 
