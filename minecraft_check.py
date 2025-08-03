@@ -956,7 +956,7 @@ class MinecraftUtils:
                         = f"[{len(lang_file_missing_blocks)}] ({', '.join(sorted(lang_file_missing_blocks))})" if lang_file_missing_blocks else 0
                     if lang_file_missing_blocks:
                         errors.append(
-                            f"Missing [{len(lang_file_missing_blocks)}] blocks from defined in [{lang_name}] lang file")
+                            f"Missing [{len(lang_file_missing_blocks)}] blocks defined in [{lang_name}] lang file")
 
                     if os.path.exists(MinecraftUtils.DATABASE_FILE_NAME):
                         stats[ConsoleStyle.info("In database")] = len(database_categories) + len(
