@@ -195,13 +195,8 @@ jobs:
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ needs.build.outputs.version }}
-          name: Release v${{ needs.build.outputs.version }}
-          files: |
-            dist/*.mcaddon
-            dist/*.mcpack
-          body: |
+        env:
+          RELEASE_BODY: |
             ## Polish Road Signs Addon v${{ needs.build.outputs.version }}
 
             ### 📦 Zawartość:
@@ -231,4 +226,11 @@ jobs:
             - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
 
             ### 🚀 Ostatnie zmiany:
-            ${{ needs.build.outputs.changelog }} 
+            ${{ needs.build.outputs.changelog }}
+        with:
+          tag_name: v${{ needs.build.outputs.version }}
+          name: Release v${{ needs.build.outputs.version }}
+          files: |
+            dist/*.mcaddon
+            dist/*.mcpack
+          body: ${{ env.RELEASE_BODY }}
