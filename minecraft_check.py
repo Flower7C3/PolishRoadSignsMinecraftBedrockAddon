@@ -16,6 +16,30 @@ class MinecraftUtils:
     namespace = None
     DATABASE_FILE_NAME = 'database.json'
 
+    # Lista wbudowanych tekstur Minecraft Bedrock Edition
+    BUILTIN_TEXTURES_FILE = 'minecraft_textures.json'
+
+    @staticmethod
+    def _load_builtin_textures():
+        """Załaduj wbudowane tekstury z zewnętrznego pliku"""
+        try:
+            data = MinecraftUtils.load_json_file(MinecraftUtils.BUILTIN_TEXTURES_FILE)
+            if data and 'builtin_textures' in data:
+                return set(data['builtin_textures'])
+            else:
+                print(ConsoleStyle.warning(f"Nieprawidłowa struktura pliku [{MinecraftUtils.BUILTIN_TEXTURES_FILE}]"))
+                return set()
+        except Exception as e:
+            print(ConsoleStyle.error(f"Błąd podczas ładowania [{MinecraftUtils.BUILTIN_TEXTURES_FILE}]: {e}"))
+            return set()
+
+    @staticmethod
+    def get_builtin_textures():
+        """Pobierz wbudowane tekstury (singleton pattern)"""
+        if not hasattr(MinecraftUtils, '_builtin_textures_cache'):
+            MinecraftUtils._builtin_textures_cache = MinecraftUtils._load_builtin_textures()
+        return MinecraftUtils._builtin_textures_cache
+
     @staticmethod
     def load_json_file(file_path: str):
         """Load a JSON file and return its content"""
@@ -36,6 +60,19 @@ class MinecraftUtils:
                     if data:
                         blocks[file.replace('.block.json', '')] = data
         return blocks
+
+    @staticmethod
+    def _get_bp_items():
+        """Pobierz wszystkie itemy z BP"""
+        items = {}
+        for root, dirs, files in os.walk("BP/items"):
+            for file in files:
+                if file.endswith('.item.json'):
+                    file_path = os.path.join(root, file)
+                    data = MinecraftUtils.load_json_file(file_path)
+                    if data:
+                        items[file.replace('.item.json', '')] = data
+        return items
 
     @staticmethod
     def _get_rp_block_model_dimensions():
@@ -96,35 +133,50 @@ class MinecraftUtils:
     # ===== WSPÓLNE FUNKCJE POMOCNICZE =====
 
     @staticmethod
-    def _verify_terrain_texture_mappings():
+    def _verify_texture_mappings():
         """Wspólna weryfikacja mapowań terrain_texture.json"""
-        terrain_data = MinecraftUtils.load_json_file('RP/textures/terrain_texture.json')
-        if not terrain_data:
-            return [], [], {}
+        try:
+            terrain_data = MinecraftUtils.load_json_file('RP/textures/terrain_texture.json')
+        except FileNotFoundError:
+            terrain_data = []
+        try:
+            item_data = MinecraftUtils.load_json_file('RP/textures/item_texture.json')
+        except FileNotFoundError:
+            item_data = {}
+        if not terrain_data and not item_data:
+            return [], [], [], []
 
-        texture_mappings = terrain_data.get('texture_data', {})
         missing_textures = []
         valid_textures = []
 
-        for texture_id, texture_info in texture_mappings.items():
-            texture_path = texture_info.get('textures')
-            if texture_path:
-                texture_name = texture_path.replace('textures/blocks/', '')
-                full_path = os.path.join("RP/textures/blocks", texture_name)
+        groups = {
+            'blocks': terrain_data.get('texture_data', {}),
+            'items': item_data.get('texture_data', {})
+        }
 
-                if os.path.exists(full_path):
-                    valid_textures.append(texture_id)
-                else:
-                    missing_textures.append((texture_id, texture_name))
+        for key, data in groups.items():
+            for texture_id, texture_info in data.items():
+                if texture_id.startswith("minecraft:") or texture_id in MinecraftUtils.get_builtin_textures():
+                    continue
+                texture_path = texture_info.get('textures')
+                if texture_path:
+                    full_path = os.path.join("RP/", texture_path)
+                    if os.path.exists(full_path):
+                        valid_textures.append(texture_id)
+                    elif os.path.exists(full_path + '.png'):
+                        valid_textures.append(texture_id)
+                        groups[key][texture_id]['textures'] = texture_path + '.png'
+                    else:
+                        missing_textures.append((texture_id, texture_path))
 
-        return valid_textures, missing_textures, texture_mappings
+        return valid_textures, missing_textures, groups['blocks'], groups['items']
 
     @staticmethod
     def _verify_png_files():
         """Wspólna weryfikacja plików PNG"""
         all_png_files = set()
 
-        for root, dirs, files in os.walk("RP/textures/blocks"):
+        for root, dirs, files in os.walk("RP/textures/"):
             for file in files:
                 if file.endswith('.png'):
                     full_path = os.path.join(root, file).replace('RP/', '')
@@ -135,16 +187,32 @@ class MinecraftUtils:
     @staticmethod
     def _verify_material_instances(block_data):
         """Wspólna weryfikacja material_instances w bloku"""
+        textures = []
+
+        # Sprawdź główne material_instances w components
         material_instances = block_data.get('minecraft:block', {}).get('components', {}).get(
             'minecraft:material_instances', {})
-
-        textures = []
         for face, material in material_instances.items():
             if 'texture' in material:
                 texture_name = material['texture']
                 textures.append((face, texture_name))
 
+        # Sprawdź material_instances w permutations (lista)
+        permutations = block_data.get('minecraft:block', {}).get('permutations', [])
+        for permutation in permutations:
+            permutation_material_instances = permutation.get('components', {}).get('minecraft:material_instances', {})
+            for face, material in permutation_material_instances.items():
+                if 'texture' in material:
+                    texture_name = material['texture']
+                    textures.append((face, texture_name))
+
         return textures
+
+    @staticmethod
+    def _verify_icon(item_data):
+        """Wspólna weryfikacja material_instances w bloku"""
+        return item_data.get('minecraft:item', {}).get('components', {}).get(
+            'minecraft:icon', {})
 
     @staticmethod
     def _verify_block_structure(block_id: str, block_data):
@@ -360,10 +428,13 @@ class MinecraftUtils:
         stats = {}
 
         # Użyj wspólnej funkcji do weryfikacji terrain_texture.json
-        valid_textures, missing_textures, texture_mappings = MinecraftUtils._verify_terrain_texture_mappings()
+        valid_textures, missing_textures, terrain_texture_mappings, item_texture_mappings = MinecraftUtils._verify_texture_mappings()
 
-        stats[ConsoleStyle.info("Total defined textures")] = f"[{len(texture_mappings)}]"
-        stats[ConsoleStyle.success("Valid textures")] = f"[{len(valid_textures)}]"
+        stats[ConsoleStyle.info(
+            "Total defined terrain textures")] = f"[{len(terrain_texture_mappings)}]" if terrain_texture_mappings else "0"
+        stats[ConsoleStyle.info(
+            "Total defined item textures")] = f"[{len(item_texture_mappings)}]" if item_texture_mappings else "0"
+        stats[ConsoleStyle.success("Valid textures")] = f"[{len(valid_textures)}]" if valid_textures else "0"
         stats[ConsoleStyle.error("Missing PNG files") if missing_textures else ConsoleStyle.info("Missing PNG files")] \
             = f"[{len(missing_textures)}] ({', '.join([f'{texture_id} -> {texture_name}' for texture_id, texture_name in missing_textures])})" if missing_textures else "0"
         if missing_textures:
@@ -382,23 +453,24 @@ class MinecraftUtils:
         stats = {}
 
         all_png_files = MinecraftUtils._verify_png_files()
-        valid_textures, missing_textures, texture_mappings = MinecraftUtils._verify_terrain_texture_mappings()
+        valid_textures, missing_textures, terrain_texture_mappings, item_texture_mappings = MinecraftUtils._verify_texture_mappings()
 
-        # Znajdź ścieżki tekstur z terrain_texture.json
-        terrain_texture_paths = set()
-        for texture_id, texture_info in texture_mappings.items():
-            terrain_texture_paths.add(texture_info['textures'])
+        texture_paths = set()
+        for texture_id, texture_info in terrain_texture_mappings.items():
+            texture_paths.add(texture_info['textures'])
+        for texture_id, texture_info in item_texture_mappings.items():
+            texture_paths.add(texture_info['textures'])
 
         # Znajdź nadmiarowe pliki PNG
-        extra_png_files = all_png_files - terrain_texture_paths
+        extra_png_files = all_png_files - texture_paths
 
         stats[ConsoleStyle.info("Total PNG files")] = f"[{len(all_png_files)}]"
         stats[ConsoleStyle.success("PNG files with definitions")] = f"[{len(all_png_files - extra_png_files)}]"
-        stats[ConsoleStyle.warning("PNG files without definitions") if extra_png_files else ConsoleStyle.info(
+        stats[ConsoleStyle.error("PNG files without definitions") if extra_png_files else ConsoleStyle.info(
             "PNG files without definitions")] \
             = f"[{len(extra_png_files)}] {', '.join(sorted(extra_png_files))}" if extra_png_files else "0"
         if extra_png_files:
-            warnings.append(
+            errors.append(
                 f"Missing [{len(extra_png_files)}] definitions for PNG files: {', '.join(sorted(extra_png_files))}")
 
         ConsoleStyle.print_stats(stats, "PNG DEFINITIONS", icon="🎨")
@@ -413,25 +485,32 @@ class MinecraftUtils:
         stats = {}
 
         block_textures = set()
-        valid_textures, missing_textures, texture_mappings = MinecraftUtils._verify_terrain_texture_mappings()
+        build_in_textures = set()
+        valid_textures, missing_textures, terrain_texture_mappings, item_texture_mappings = MinecraftUtils._verify_texture_mappings()
 
         # Sprawdź tekstury używane w blokach
         for block_id, block_data in MinecraftUtils._get_bp_blocks().items():
             # Użyj wspólnej funkcji do weryfikacji material_instances
             textures = MinecraftUtils._verify_material_instances(block_data)
             for face, texture_name in textures:
-                block_textures.add(texture_name)
+                if texture_name.startswith("minecraft:") or texture_name in MinecraftUtils.get_builtin_textures():
+                    build_in_textures.add(texture_name)
+                else:
+                    block_textures.add(texture_name)
 
-        terrain_texture_keys = set(texture_mappings.keys())
+        terrain_texture_keys = set(terrain_texture_mappings.keys())
         missing_in_terrain = block_textures - terrain_texture_keys
         unused_textures = terrain_texture_keys - block_textures
 
-        stats[ConsoleStyle.info("Block textures referenced")] = f"[{len(block_textures)}]"
-        stats[ConsoleStyle.warning("Missing from terrain_texture.json") if missing_in_terrain else ConsoleStyle.info(
+        stats[ConsoleStyle.info(
+            "Build in block textures referenced")] = f"[{len(build_in_textures)}] {', '.join(sorted(build_in_textures))}" if build_in_textures else '0'
+        stats[ConsoleStyle.info(
+            "Custom block textures referenced")] = f"[{len(block_textures)}]" if block_textures else '0'
+        stats[ConsoleStyle.error("Missing from terrain_texture.json") if missing_in_terrain else ConsoleStyle.info(
             "Missing from terrain_texture.json")] \
             = f"[{len(missing_in_terrain)}] {', '.join(sorted(missing_in_terrain))}" if missing_in_terrain else "0"
         if missing_in_terrain:
-            warnings.append(
+            errors.append(
                 f"Missing [{len(missing_in_terrain)}] textures in terrain_texture.json: {', '.join(sorted(missing_in_terrain))}")
 
         stats[ConsoleStyle.warning("Unused in terrain_texture.json") if unused_textures else ConsoleStyle.info(
@@ -442,6 +521,51 @@ class MinecraftUtils:
                 f"Unused [{len(unused_textures)}] textures in terrain_texture.json: {', '.join(sorted(unused_textures))}")
 
         ConsoleStyle.print_stats(stats, "BLOCK TEXTURE DEFINITIONS", icon="🔗")
+
+        return errors, warnings
+
+    @staticmethod
+    def _verify_item_texture_definitions():
+        """8. Weryfikacja czy użyte w itemach tekstury są zdefiniowane"""
+        errors = []
+        warnings = []
+        stats = {}
+
+        item_textures = set()
+        build_in_textures = set()
+        valid_textures, missing_textures, terrain_texture_mappings, item_texture_mappings = MinecraftUtils._verify_texture_mappings()
+
+        # Sprawdź tekstury używane w blokach
+        for item_id, item_data in MinecraftUtils._get_bp_items().items():
+            texture_name = MinecraftUtils._verify_icon(item_data)
+            if texture_name.startswith("minecraft:") or texture_name in MinecraftUtils.get_builtin_textures():
+                build_in_textures.add(texture_name)
+            else:
+                item_textures.add(texture_name)
+
+        item_texture_keys = set(item_texture_mappings.keys())
+        missing_in_item = item_textures - item_texture_keys
+        unused_textures = item_texture_keys - item_textures
+
+        stats[ConsoleStyle.info(
+            "Build in textures referenced")] = f"[{len(build_in_textures)}] {', '.join(sorted(build_in_textures))}" if build_in_textures else '0'
+        stats[
+            ConsoleStyle.info("Custom item textures referenced")] = f"[{len(item_textures)}]" if item_textures else '0'
+        stats[ConsoleStyle.error("Missing from item_texture.json") if missing_in_item else ConsoleStyle.info(
+            "Missing from item_texture.json")] \
+            = f"[{len(missing_in_item)}] {', '.join(sorted(missing_in_item))}" if missing_in_item else "0"
+        if missing_in_item:
+            errors.append(
+                f"Missing [{len(missing_in_item)}] textures in item_texture.json: {', '.join(sorted(missing_in_item))}")
+
+        stats[ConsoleStyle.warning("Unused in item_texture.json") if unused_textures else ConsoleStyle.info(
+            "Unused in item_texture.json")] \
+            = f"[{len(unused_textures)}] {', '.join(sorted(unused_textures))}" if unused_textures else "0"
+        if unused_textures:
+            warnings.append(
+                f"Unused [{len(unused_textures)}] textures in item_texture.json: {', '.join(sorted(unused_textures))}")
+
+        ConsoleStyle.print_stats(stats, "ITEM TEXTURE DEFINITIONS", icon="🔗")
 
         return errors, warnings
 
@@ -460,6 +584,10 @@ class MinecraftUtils:
 
         try:
             database_block_ids = MinecraftUtils._get_database_block_ids()
+        except FileNotFoundError:
+            database_block_ids = {}
+
+        if isinstance(database_block_ids, list):
             coverage_errors, coverage_warnings = MinecraftUtils._verify_database_block_coverage(database_block_ids)
             errors.extend(coverage_errors)
             warnings.extend(coverage_warnings)
@@ -467,8 +595,6 @@ class MinecraftUtils:
             extra_errors, extra_warnings = MinecraftUtils._verify_extra_block_files(database_block_ids)
             errors.extend(extra_errors)
             warnings.extend(extra_warnings)
-        except FileNotFoundError:
-            warnings.append("Database file not found")
 
         return errors, warnings
 
@@ -497,6 +623,10 @@ class MinecraftUtils:
 
         # Uruchom wszystkie weryfikacje tekstur
         texture_errors, texture_warnings = MinecraftUtils._verify_block_texture_definitions()
+        errors.extend(texture_errors)
+        warnings.extend(texture_warnings)
+
+        texture_errors, texture_warnings = MinecraftUtils._verify_item_texture_definitions()
         errors.extend(texture_errors)
         warnings.extend(texture_warnings)
 
@@ -648,59 +778,60 @@ class MinecraftUtils:
     @staticmethod
     def verify_project_structure():
         """Verify basic project structure"""
-        required_locations = [
-            'config.json',
-            'BP/',
-            'BP/manifest.json',
-            'BP/pack_icon.png',
-            'RP/',
-            'RP/manifest.json',
-            'RP/pack_icon.png',
-        ]
+        state_required: int = 1
+        state_optional: int = 2
 
-        optional_locations = [
-            'database.json',
-            'BP/item_catalog/crafting_item_catalog.json',
-            'RP/blocks.json',
-            'BP/blocks/',
-            'BP/items/',
-            'RP/models/',
-            'RP/models/blocks/',
-            'RP/models/items/',
-            'RP/models/',
-            'RP/sounds/',
-            'RP/sounds/sound_definitions.json',
-            'RP/sounds/blocks/',
-            'RP/sounds/items/',
-            'RP/textures/',
-            'RP/textures/terrain_texture.json',
-            'RP/textures/item_texture.json',
-            'RP/textures/blocks/',
-            'RP/textures/items/',
-            'RP/texts/',
-            'RP/texts/languages.json',
-        ]
+        state_name = {
+            state_required: 'required',
+            state_optional: 'optional',
+        }
+
+        locations = {
+            'config.json': state_required,
+            'BP/': state_required,
+            'BP/manifest.json': state_required,
+            'BP/pack_icon.png': state_required,
+            'RP/': state_required,
+            'RP/manifest.json': state_required,
+            'RP/pack_icon.png': state_required,
+            'database.json': state_optional,
+            'BP/item_catalog/crafting_item_catalog.json': state_optional,
+            'RP/blocks.json': state_optional,
+            'BP/blocks/': state_optional,
+            'BP/items/': state_optional,
+            'RP/models/': state_optional,
+            'RP/models/blocks/': state_optional,
+            'RP/models/items/': state_optional,
+            'RP/sounds/': state_optional,
+            'RP/sounds/sound_definitions.json': state_optional,
+            'RP/sounds/blocks/': state_optional,
+            'RP/sounds/items/': state_optional,
+            'RP/textures/': state_optional,
+            'RP/textures/terrain_texture.json': state_optional,
+            'RP/textures/item_texture.json': state_optional,
+            'RP/textures/blocks/': state_optional,
+            'RP/textures/items/': state_optional,
+            'RP/texts/': state_optional,
+            'RP/texts/languages.json': state_optional,
+        }
 
         errors = []
         warnings = []
 
         item_stats = {}
-        for file_path in required_locations:
+        for file_path, state in sorted(locations.items(), key=lambda item: item[0]):
             if os.path.exists(file_path):
-                item_stats[ConsoleStyle.success(file_path, icon=f'📁' if file_path.endswith('/') else '📄')] = "Found"
+                item_stats[ConsoleStyle.success(file_path, icon=f'📁' if file_path.endswith(
+                    '/') else '📄')] = f"Found {state_name[state]}"
             else:
-                item_stats[ConsoleStyle.error(file_path)] = "Missing"
-                errors.append(f"Missing required {'directory' if file_path.endswith('/') else 'file'}: {file_path}")
-        ConsoleStyle.print_stats(item_stats, "REQUIRED FILES & DIRECTORIES", icon="🗂️")
+                item_stats[ConsoleStyle.error(file_path)] = f"Missing {state_name[state]}"
+                if state == state_required:
+                    errors.append(
+                        f"Missing {state_name[state]} {'directory' if file_path.endswith('/') else 'file'}: {file_path}")
+                else:
+                    warnings.append(f"Missing {'directory' if file_path.endswith('/') else 'file'}: {file_path}")
 
-        item_stats = {}
-        for file_path in optional_locations:
-            if os.path.exists(file_path):
-                item_stats[ConsoleStyle.success(file_path, icon=f'📁' if file_path.endswith('/') else '📄')] = "Found"
-            else:
-                item_stats[ConsoleStyle.error(file_path)] = "Missing"
-                warnings.append(f"Missing required {'directory' if file_path.endswith('/') else 'file'}: {file_path}")
-        ConsoleStyle.print_stats(item_stats, "OPTIONAL FILES & DIRECTORIES", icon="🗂️")
+        ConsoleStyle.print_stats(item_stats, "REQUIRED FILES & DIRECTORIES", icon="🗂️")
 
         return errors, warnings
 
@@ -713,7 +844,10 @@ class MinecraftUtils:
 
         # Check languages.json
         try:
-            languages_list = MinecraftUtils.load_json_file('RP/texts/languages.json')
+            try:
+                languages_list = MinecraftUtils.load_json_file('RP/texts/languages.json')
+            except FileNotFoundError:
+                languages_list = {}
 
             # languages.json is a list, not an object
             if isinstance(languages_list, list):
@@ -774,19 +908,19 @@ class MinecraftUtils:
                         warnings.append(f"Error reading crafting catalog: {e}")
 
                     stats[ConsoleStyle.info("Items in lang file")] \
-                        = f"{len(lang_file_category_translations) + len(lang_file_block_translations)}"
+                        = f"[{len(lang_file_category_translations) + len(lang_file_block_translations)}]"
 
                     stats[ConsoleStyle.info("Categories in lang file", 3)] \
-                        = len(lang_file_category_translations)
+                        = f"[{len(lang_file_category_translations)}]" if lang_file_category_translations else "0"
                     stats[ConsoleStyle.info("Blocks in lang file", 3)] \
-                        = len(lang_file_block_translations)
+                        = f"[{len(lang_file_block_translations)}]" if lang_file_block_translations else "0"
 
-                    stats[ConsoleStyle.info("Items in project")] = len(project_category_translations) + len(
-                        project_block_translations)
+                    stats[ConsoleStyle.info("Items in project")] \
+                        = f"[{len(project_category_translations) + len(project_block_translations)}]" if project_category_translations and project_block_translations else "0"
                     stats[ConsoleStyle.info("Categories in project", 3)] \
-                        = len(project_category_translations)
+                        = f"[{len(project_category_translations)}]" if project_category_translations else "0"
                     stats[ConsoleStyle.info("Blocks in project", 3)] \
-                        = len(project_block_translations)
+                        = f"[{len(project_block_translations)}]" if project_block_translations else "0"
 
                     lang_file_extra_categories = lang_file_category_translations - project_category_translations
                     stats[ConsoleStyle.warning(
