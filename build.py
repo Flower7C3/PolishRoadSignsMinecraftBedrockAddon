@@ -13,7 +13,7 @@ from pathlib import Path
 from console_utils import ConsoleStyle
 
 # Pack name from directory name
-PACK_NAME = os.path.basename(os.getcwd())
+PACK_NAME = os.path.basename(os.getcwd()).replace(" ", "_").replace("-", "_").lower()
 
 
 def get_minecraft_dir():
@@ -130,7 +130,7 @@ def build_mcaddon(bp_version, rp_version, plugin_name, output_dir, timestamp, si
     if simplify_name:
         mcaddon_name = f"{plugin_name}.mcaddon"
     else:
-        mcaddon_name = f"{plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcaddon"
+        mcaddon_name = f"{plugin_name}-v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcaddon"
     mcaddon_path = os.path.join(output_dir, mcaddon_name)
 
     print(ConsoleStyle.process(f"Building {mcaddon_name}..."))
@@ -167,7 +167,7 @@ def build_mcpack(bp_version, rp_version, bp_plugin_name, rp_plugin_name, output_
     if simplify_name:
         bp_mcpack_name = f"{bp_plugin_name}.mcpack"
     else:
-        bp_mcpack_name = f"{bp_plugin_name}_v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcpack"
+        bp_mcpack_name = f"{bp_plugin_name}-v{bp_version[0]}.{bp_version[1]}.{bp_version[2]}_{timestamp}.mcpack"
     bp_mcpack_path = os.path.join(output_dir, bp_mcpack_name)
 
     print(ConsoleStyle.process(f"Building {bp_mcpack_name}..."))
