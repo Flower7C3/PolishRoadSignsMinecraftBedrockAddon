@@ -8,13 +8,13 @@ from typing import Dict, Any, Union
 
 
 def print_if_not_quiet(text):
-    """Wyświetl tekst, tylko jeśli nie jest w trybie cichym"""
+    """Display text only if not in quiet mode"""
     if not ConsoleStyle.QUIET_MODE:
         print(text)
 
 
 class ConsoleStyle:
-    """Klasa do stylizacji komunikatów w konsoli"""
+    """Class for console message styling"""
 
     # Kolory ANSI (dla terminali wspierających kolory)
     FORMAT_RESET = "\033[0m"
@@ -51,13 +51,13 @@ class ConsoleStyle:
 
     @staticmethod
     def set_quiet_mode(enabled: bool = True):
-        """Ustaw tryb cichy"""
+        """Set quiet mode"""
         ConsoleStyle.QUIET_MODE = enabled
 
     @staticmethod
     def _colorize(color: str, text: str, padding: int = 0, icon: str = "", prefix: str = "", suffix: str = "") -> Union[
         str, None]:
-        """Dodaj kolor do tekstu (tylko jeśli terminal wspiera kolory)"""
+        """Add color to text (only if terminal supports colors)"""
         if ConsoleStyle.QUIET_MODE:
             return None
         if sys.stdout.isatty():
@@ -66,7 +66,7 @@ class ConsoleStyle:
 
     @staticmethod
     def success(text: str, padding: int = 0, icon: str = "✅️") -> Union[str, None]:
-        """Stylizuj komunikat sukcesu"""
+        """Style success message"""
         if ConsoleStyle.QUIET_MODE:
             return None
         text = text.replace("[", ConsoleStyle.SUCCESS_HIGHLIGHT).replace("]", ConsoleStyle.SUCCESS_NORMAL)
@@ -74,13 +74,13 @@ class ConsoleStyle:
 
     @staticmethod
     def error(text: str, padding: int = 0, icon: str = "❌️") -> str:
-        """Stylizuj komunikat o błędzie"""
+        """Style error message"""
         text = text.replace("[", ConsoleStyle.ERROR_HIGHLIGHT).replace("]", ConsoleStyle.ERROR_NORMAL)
         return ConsoleStyle._colorize(ConsoleStyle.ERROR_NORMAL, text, padding, icon)
 
     @staticmethod
     def warning(text: str, padding: int = 0, icon: str = "⚠️") -> Union[str, None]:
-        """Stylizuj komunikat ostrzeżenia"""
+        """Style warning message"""
         if ConsoleStyle.QUIET_MODE:
             return None
         text = text.replace("[", ConsoleStyle.WARNING_HIGHLIGHT).replace("]", ConsoleStyle.WARNING_NORMAL)
@@ -88,7 +88,7 @@ class ConsoleStyle:
 
     @staticmethod
     def delete(text: str, padding: int = 0, icon: str = "🗑️") -> Union[str, None]:
-        """Stylizuj komunikat usuwania"""
+        """Style delete message"""
         if ConsoleStyle.QUIET_MODE:
             return None
         text = text.replace("[", ConsoleStyle.WARNING_HIGHLIGHT).replace("]", ConsoleStyle.WARNING_NORMAL)
@@ -96,7 +96,7 @@ class ConsoleStyle:
 
     @staticmethod
     def info(text: str, padding: int = 0, icon: str = "ℹ️") -> Union[str, None]:
-        """Stylizuj komunikat informacyjny"""
+        """Style info message"""
         if ConsoleStyle.QUIET_MODE:
             return None
         text = text.replace("[", ConsoleStyle.INFO_HIGHLIGHT).replace("]", ConsoleStyle.INFO_NORMAL)
@@ -104,7 +104,7 @@ class ConsoleStyle:
 
     @staticmethod
     def process(text: str, padding: int = 0, icon: str = "🔄️") -> Union[str, None]:
-        """Stylizuj komunikat procesu"""
+        """Style process message"""
         if ConsoleStyle.QUIET_MODE:
             return None
         text = text.replace("[", ConsoleStyle.PROCESS_HIGHLIGHT).replace("]", ConsoleStyle.PROCESS_NORMAL)
@@ -112,7 +112,7 @@ class ConsoleStyle:
 
     @staticmethod
     def section(title: str, icon: str = "") -> Union[str, None]:
-        """Stylizuj tytuł sekcji"""
+        """Style section title"""
         if ConsoleStyle.QUIET_MODE:
             return None
         title = title.replace("[", ConsoleStyle.COLOR_CYAN_HIGHLIGHT).replace("]",
@@ -121,14 +121,14 @@ class ConsoleStyle:
 
     @staticmethod
     def divider(char: str = "=", length: int = 50) -> Union[str, None]:
-        """Utwórz separator"""
+        """Create separator"""
         if ConsoleStyle.QUIET_MODE:
             return None
         return char * length
 
     @staticmethod
     def print_stats(stats_dict: Dict[str, Any], title: str = "Statistics", divider_sign: str = "=", icon: str = "📊"):
-        """Wyświetl statystyki w ładnej tabeli"""
+        """Display statistics in a nice table"""
         if ConsoleStyle.QUIET_MODE or not stats_dict:
             return
 
@@ -145,7 +145,7 @@ class ConsoleStyle:
 
     @staticmethod
     def print_section(title: str, divider_sign: str = "=", icon: str = ""):
-        """Wyświetl sekcję z tytułem i opcjonalną zawartością"""
+        """Display section with title and optional content"""
         if ConsoleStyle.QUIET_MODE:
             return
 
@@ -154,7 +154,7 @@ class ConsoleStyle:
 
     @staticmethod
     def print_summary(success_count: int, total_count: int, errors: list = None):
-        """Wyświetl podsumowanie operacji"""
+        """Display operation summary"""
         if ConsoleStyle.QUIET_MODE:
             return
 
@@ -174,7 +174,7 @@ class ConsoleStyle:
 
     @staticmethod
     def print_file_operation(operation: str, file_path: str, status: str = "OK"):
-        """Wyświetl informację o operacji na pliku"""
+        """Display file operation information"""
         if ConsoleStyle.QUIET_MODE:
             return
 
@@ -189,7 +189,7 @@ class ConsoleStyle:
 
     @staticmethod
     def print_build_info(build_type: str, output_path: str, file_size: str = ""):
-        """Wyświetl informacje o budowaniu"""
+        """Display build information"""
         if ConsoleStyle.QUIET_MODE:
             return
 
@@ -199,7 +199,7 @@ class ConsoleStyle:
 
     @staticmethod
     def print_installation_info(pack_name: str, install_path: str):
-        """Wyświetl informacje o instalacji"""
+        """Display installation information"""
         if ConsoleStyle.QUIET_MODE:
             return
 
