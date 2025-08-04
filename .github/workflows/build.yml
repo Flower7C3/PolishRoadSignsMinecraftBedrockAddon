@@ -138,9 +138,10 @@ jobs:
             CHANGELOG="No changes detected"
           fi
           
-          # Escape newlines for GitHub Actions
-          CHANGELOG_ESCAPED=$(printf "%s" "$CHANGELOG" | tr '\n' '\\n')
-          echo "changelog=$CHANGELOG_ESCAPED" >> $GITHUB_OUTPUT
+          # Pass changelog with actual newlines
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
           echo "📝 Changelog generated from ${LAST_TAG:-'beginning'} to HEAD"
 
       - name: Commit and push version bump (only on main)
@@ -195,8 +196,13 @@ jobs:
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
-        env:
-          RELEASE_BODY: |
+        with:
+          tag_name: v${{ needs.build.outputs.version }}
+          name: Release v${{ needs.build.outputs.version }}
+          files: |
+            dist/*.mcaddon
+            dist/*.mcpack
+          body: |
             ## Polish Road Signs Addon v${{ needs.build.outputs.version }}
 
             ### 📦 Zawartość:
@@ -227,10 +233,3 @@ jobs:
 
             ### 🚀 Ostatnie zmiany:
             ${{ needs.build.outputs.changelog }}
-        with:
-          tag_name: v${{ needs.build.outputs.version }}
-          name: Release v${{ needs.build.outputs.version }}
-          files: |
-            dist/*.mcaddon
-            dist/*.mcpack
-          body: ${{ env.RELEASE_BODY }}
