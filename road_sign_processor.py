@@ -115,7 +115,7 @@ def create_model_template(model_name, sign_width, sign_height, target_width, tar
     origin_y = calculate_vertical_position(vertical_alignment, cube_height)
     
     return {
-        "format_version": "1.21.90",
+        "format_version": "1.21.60",
         "minecraft:geometry": [
             {
                 "description": {
@@ -476,7 +476,7 @@ def create_block_template(sign_id, model_name, reverse_texture_name, model_width
     origin_z = 6.9
 
     return {
-        "format_version": "1.20.60",
+        "format_version": "1.21.60",
         "minecraft:block": {
             "description": {
                 "identifier": f"polish_road_sign:{sign_id}",
