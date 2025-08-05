@@ -122,25 +122,23 @@ jobs:
           # Get the last tag in HEAD history
           LAST_TAG=$(git describe --tags --abbrev=0 HEAD 2>/dev/null || echo "")
           
+          echo 'changelog<<EOF' >> $GITHUB_OUTPUT
           if [ -n "$LAST_TAG" ]; then
             # Get commits since last tag
-            CHANGELOG=$(git log --oneline --no-merges "${LAST_TAG}..HEAD" | head -10)
-            if [ -z "$CHANGELOG" ]; then
-              CHANGELOG="No changes since last release"
+            if [ $(git log --oneline --no-merges "${LAST_TAG}..HEAD" | head -10 | head -10 | wc -l | tr -s " ") -gt 0 ]; then
+              git log --oneline --no-merges "${LAST_TAG}..HEAD" | head -10
+            else
+              echo "No changes since last release"
             fi
           else
             # If no tags exist, get last 10 commits
-            CHANGELOG=$(git log --oneline --no-merges -10)
+            git log --oneline --no-merges -10
           fi
           
           # Ensure we have some content
           if [ -z "$CHANGELOG" ]; then
-            CHANGELOG="No changes detected"
+            echo "No changes detected"
           fi
-          
-          CHANGELOG_ESCAPED=$(printf "%s" "$CHANGELOG" | tr '\n' '\\n')
-          echo 'changelog<<EOF' >> $GITHUB_OUTPUT
-          echo $CHANGELOG_ESCAPED >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
           echo "📝 Changelog generated from ${LAST_TAG:-'beginning'} to HEAD"
 
