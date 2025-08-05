@@ -38,10 +38,10 @@ jobs:
       bp_files: ${{ steps.count_files.outputs.bp_files }}
       rp_files: ${{ steps.count_files.outputs.rp_files }}
       version: ${{ steps.get_version.outputs.version }}
+      changelog: ${{ steps.get_changelog.outputs.changelog }}
       categories: ${{ steps.get_version_stats.outputs.categories }}
       total_signs: ${{ steps.get_version_stats.outputs.total_signs }}
       combinations: ${{ steps.get_version_stats.outputs.combinations }}
-      changelog: ${{ steps.get_changelog.outputs.changelog }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -138,10 +138,10 @@ jobs:
             CHANGELOG="No changes detected"
           fi
           
-          # Pass changelog with actual newlines
-          echo "changelog<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGELOG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          CHANGELOG_ESCAPED=$(printf "%s" "$CHANGELOG" | tr '\n' '\\n')
+          echo 'changelog<<EOF' >> $GITHUB_OUTPUT
+          echo $CHANGELOG_ESCAPED >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
           echo "📝 Changelog generated from ${LAST_TAG:-'beginning'} to HEAD"
 
       - name: Commit and push version bump (only on main)
