@@ -210,4 +210,4 @@ jobs:
             - **${{ needs.build.outputs.total_signs }} znaków** z oficjalnymi teksturami
             - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
 
-            ### 🚀 [Ostatnie zmiany](${{ GITHUB_SERVER_URL }}/${{ GITHUB_REPOSITORY }}/compare/v${{ needs.build.outputs.version }}..${{ needs.build.outputs.last_tag }})
+            ### 🚀 [Ostatnie zmiany](${{ github.server_url }}/${{ github.repositoryUrl }}/compare/v${{ needs.build.outputs.version }}..${{ needs.build.outputs.last_tag }})
