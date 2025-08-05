@@ -38,7 +38,7 @@ jobs:
       bp_files: ${{ steps.count_files.outputs.bp_files }}
       rp_files: ${{ steps.count_files.outputs.rp_files }}
       version: ${{ steps.get_version.outputs.version }}
-      changelog: ${{ steps.get_changelog.outputs.changelog }}
+      last_tag: ${{ steps.get_last_tag.outputs.last_tag }}
       categories: ${{ steps.get_version_stats.outputs.categories }}
       total_signs: ${{ steps.get_version_stats.outputs.total_signs }}
       combinations: ${{ steps.get_version_stats.outputs.combinations }}
@@ -116,31 +116,12 @@ jobs:
           echo "total_signs=$TOTAL_SIGNS" >> $GITHUB_OUTPUT
           echo "combinations=$COMBINATIONS" >> $GITHUB_OUTPUT
 
-      - name: Get changelog from last tag
-        id: get_changelog
+      - name: Get last tag
+        id: get_last_tag
         run: |
           # Get the last tag in HEAD history
           LAST_TAG=$(git describe --tags --abbrev=0 HEAD 2>/dev/null || echo "")
-          
-          echo 'changelog<<EOF' >> $GITHUB_OUTPUT
-          if [ -n "$LAST_TAG" ]; then
-            # Get commits since last tag
-            if [ $(git log --oneline --no-merges "${LAST_TAG}..HEAD" | head -10 | head -10 | wc -l | tr -s " ") -gt 0 ]; then
-              git log --oneline --no-merges "${LAST_TAG}..HEAD" | head -10
-            else
-              echo "No changes since last release"
-            fi
-          else
-            # If no tags exist, get last 10 commits
-            git log --oneline --no-merges -10
-          fi
-          
-          # Ensure we have some content
-          if [ -z "$CHANGELOG" ]; then
-            echo "No changes detected"
-          fi
-          echo 'EOF' >> $GITHUB_OUTPUT
-          echo "📝 Changelog generated from ${LAST_TAG:-'beginning'} to HEAD"
+          echo "last_tag=$LAST_TAG" >> $GITHUB_OUTPUT
 
       - name: Commit and push version bump (only on main)
         if: github.ref == 'refs/heads/main'
@@ -224,10 +205,9 @@ jobs:
 
             ### 📊 Statystyki:
             - **${{ needs.build.outputs.bp_files }} plików BP**
-            - **${{ needs.build.outputs.rp_files }} plików RP**
+            - **${{ needs.build.outputs.rp_fi les }} plików RP**
             - **${{ needs.build.outputs.categories }} kategorii** znaków drogowych
             - **${{ needs.build.outputs.total_signs }} znaków** z oficjalnymi teksturami
             - **${{ needs.build.outputs.combinations }} kombinacji** kształtów i wymiarów 
 
-            ### 🚀 Ostatnie zmiany:
-            ${{ needs.build.outputs.changelog }}
+            ### 🚀 [Ostatnie zmiany](${{ GITHUB_SERVER_URL }}/${{ GITHUB_REPOSITORY }}/compare/v${{ needs.build.outputs.version }}..${{ needs.build.outputs.last_tag }})
