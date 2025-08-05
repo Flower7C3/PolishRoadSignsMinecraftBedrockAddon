@@ -188,7 +188,7 @@ def build_mcpack(bp_version, rp_version, bp_plugin_name, rp_plugin_name, output_
     if simplify_name:
         rp_mcpack_name = f"{rp_plugin_name}.mcpack"
     else:
-        rp_mcpack_name = f"{rp_plugin_name}_v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}_{timestamp}.mcpack"
+        rp_mcpack_name = f"{rp_plugin_name}-v{rp_version[0]}.{rp_version[1]}.{rp_version[2]}_{timestamp}.mcpack"
     rp_mcpack_path = os.path.join(output_dir, rp_mcpack_name)
 
     print(ConsoleStyle.process(f"Building {rp_mcpack_path}..."))
